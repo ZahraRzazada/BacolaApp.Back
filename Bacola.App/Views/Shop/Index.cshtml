@@ -1,0 +1,537 @@
+﻿@model IEnumerable<ProductGetDto>
+
+@if (!string.IsNullOrWhiteSpace((string)TempData["AddBasket"]))
+{
+    <div style="display:none" id="basket">@TempData["AddBasket"]</div>
+}
+@if (!string.IsNullOrWhiteSpace((string)TempData["AddWishlist"]))
+{
+    <div style="display:none" id="wishlist">@TempData["AddWishlist"]</div>
+}
+<main>
+    <section id="Shop-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-3 content-primary">
+                    <div class="product-categories">
+                        <h4 class="widget-title">Product Categories</h4>
+                        <div style="  overflow-x: hidden;
+                            overflow-y: auto; " class="checkbox-lists">
+                            <div class="site-scroll ps ps--active-y ps--scrolling-y">
+                                <ul>
+                                    <li class="cat-parent">
+                                        <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=31"
+                                           class="product_cat">
+                                            <input name="product_cat[]" value="31"
+                                                   id="Beverages"
+                                                   type="checkbox"><label><span></span>Beverages</label>
+                                        </a>
+                                        <ul class="children">
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="45" id="Coffee"
+                                                           type="checkbox"><label><span></span>Coffee</label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="50" id="Craft Beer"
+                                                           type="checkbox"><label><span></span>Craft Beer</label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="52"
+                                                           id="Drink Boxes &amp; Pouches"
+                                                           type="checkbox"><label>
+                                                        <span></span>Drink Boxes &amp;
+                                                        Pouches
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="69"
+                                                           id="Milk &amp; Plant-Based Milk"
+                                                           type="checkbox"><label>
+                                                        <span></span>Milk &amp; Plant-Based
+                                                        Milk
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=81">
+                                                    <input name="product_cat[]" value="81" id="Soda &amp; Pop"
+                                                           type="checkbox"><label>
+                                                        <span></span>Soda &amp;
+                                                        Pop
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=83">
+                                                    <input name="product_cat[]" value="83" id="Sparkling Water"
+                                                           type="checkbox"><label>
+                                                        <span></span>Sparkling
+                                                        Water
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=85">
+                                                    <input name="product_cat[]" value="85" id="Tea &amp; Kombucha"
+                                                           type="checkbox"><label>
+                                                        <span></span>Tea &amp;
+                                                        Kombucha
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=87">
+                                                    <input name="product_cat[]" value="87" id="Water"
+                                                           type="checkbox"><label><span></span>Water</label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=90">
+                                                    <input name="product_cat[]" value="90" id="Wine"
+                                                           type="checkbox"><label><span></span>Wine</label>
+                                                </a>
+                                            </li>
+                                        </ul><span class="subDropdown plus"></span>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="cat-parent">
+                                        <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=31"
+                                           class="product_cat">
+                                            <input name="product_cat[]" value="31"
+                                                   id="Beverages"
+                                                   type="checkbox"><label><span></span>Beverages</label>
+                                        </a>
+                                        <ul class="children">
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="45" id="Coffee"
+                                                           type="checkbox"><label><span></span>Coffee</label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="50" id="Craft Beer"
+                                                           type="checkbox"><label><span></span>Craft Beer</label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="52"
+                                                           id="Drink Boxes &amp; Pouches"
+                                                           type="checkbox"><label>
+                                                        <span></span>Drink Boxes &amp;
+                                                        Pouches
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="69"
+                                                           id="Milk &amp; Plant-Based Milk"
+                                                           type="checkbox"><label>
+                                                        <span></span>Milk &amp; Plant-Based
+                                                        Milk
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=81">
+                                                    <input name="product_cat[]" value="81" id="Soda &amp; Pop"
+                                                           type="checkbox"><label>
+                                                        <span></span>Soda &amp;
+                                                        Pop
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=83">
+                                                    <input name="product_cat[]" value="83" id="Sparkling Water"
+                                                           type="checkbox"><label>
+                                                        <span></span>Sparkling
+                                                        Water
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=85">
+                                                    <input name="product_cat[]" value="85" id="Tea &amp; Kombucha"
+                                                           type="checkbox"><label>
+                                                        <span></span>Tea &amp;
+                                                        Kombucha
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=87">
+                                                    <input name="product_cat[]" value="87" id="Water"
+                                                           type="checkbox"><label><span></span>Water</label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=90">
+                                                    <input name="product_cat[]" value="90" id="Wine"
+                                                           type="checkbox"><label><span></span>Wine</label>
+                                                </a>
+                                            </li>
+                                        </ul><span class="subDropdown plus"></span>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="cat-parent">
+                                        <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=31"
+                                           class="product_cat">
+                                            <input name="product_cat[]" value="31"
+                                                   id="Beverages"
+                                                   type="checkbox"><label><span></span>Beverages</label>
+                                        </a>
+                                        <ul class="children">
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="45" id="Coffee"
+                                                           type="checkbox"><label><span></span>Coffee</label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="50" id="Craft Beer"
+                                                           type="checkbox"><label><span></span>Craft Beer</label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="52"
+                                                           id="Drink Boxes &amp; Pouches"
+                                                           type="checkbox"><label>
+                                                        <span></span>Drink Boxes &amp;
+                                                        Pouches
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <input name="product_cat[]" value="69"
+                                                           id="Milk &amp; Plant-Based Milk"
+                                                           type="checkbox"><label>
+                                                        <span></span>Milk &amp; Plant-Based
+                                                        Milk
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=81">
+                                                    <input name="product_cat[]" value="81" id="Soda &amp; Pop"
+                                                           type="checkbox"><label>
+                                                        <span></span>Soda &amp;
+                                                        Pop
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=83">
+                                                    <input name="product_cat[]" value="83" id="Sparkling Water"
+                                                           type="checkbox"><label>
+                                                        <span></span>Sparkling
+                                                        Water
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=85">
+                                                    <input name="product_cat[]" value="85" id="Tea &amp; Kombucha"
+                                                           type="checkbox"><label>
+                                                        <span></span>Tea &amp;
+                                                        Kombucha
+                                                    </label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=87">
+                                                    <input name="product_cat[]" value="87" id="Water"
+                                                           type="checkbox"><label><span></span>Water</label>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/bacola/shop/?column=4&amp;shop_view=grid_view&amp;filter_cat=90">
+                                                    <input name="product_cat[]" value="90" id="Wine"
+                                                           type="checkbox"><label><span></span>Wine</label>
+                                                </a>
+                                            </li>
+                                        </ul><span class="subDropdown plus"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="price-filter">
+                            <h4 class="widget-title">Filter by price</h4>
+                            <form method="get" action="https://klbtheme.com/bacola/shop/">
+                                <div class="price_slider_wrapper">
+                                    <div class="price_slider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                        <div class="ui-slider-range ui-corner-all ui-widget-header"
+                                             style="left: 0%; width: 100%;"></div><span tabindex="0"
+                                                                                        class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                                        style="left: 0%;"></span><span tabindex="0"
+                                                                                                                       class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                                                                       style="left: 90%;"></span>
+                                    </div>
+                                    <div class="price_slider_amount" data-step="10">
+                                        <!-- <label class="screen-reader-text" for="min_price">Min price</label> -->
+                                        <input type="text" id="min_price" name="min_price" value="0" data-min="0"
+                                               placeholder="Min price" style="display: none;">
+                                        <!-- <label class="screen-reader-text" for="max_price">Max price</label> -->
+                                        <input type="text" id="max_price" name="max_price" value="70" data-max="70"
+                                               placeholder="Max price" style="display: none;">
+                                        <button type="submit" class="button">Filter</button>
+                                        <div class="price_label" style="">
+                                            Price: <span class="from">$0</span> — <span class="to">$70</span>
+                                        </div>
+                                        <input type="hidden" name="column" value="4"><input type="hidden"
+                                                                                            name="shop_view" value="grid_view"><input type="hidden" name="_pjax"
+                                                                                                                                      value=".site-content">
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="product-status">
+                            <h4 class="widget-title">Product Status</h4>
+                            <div class="checkbox-lists">
+                                <div class="site-scroll ps">
+                                    <ul>
+                                        @foreach (ProductGetDto item in Model)
+                                        {
+                                            <li>
+                                                <a href="">
+                                                    <input name="stockonsale" value="onsale" id="onsale"
+                                                           type="checkbox">
+                                                    <label>
+                                                        <span class="stock-state">@item.InStock</span>
+                                                    </label>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-brand">
+                            <h4 class="widget-title">Brands</h4>
+                            <ul>
+                                @foreach (ProductGetDto item in Model)
+                                {
+                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                        <div class="type-button">
+                                            <span class="button-box"></span><a>
+                                                @item.Brand.Name
+                                            </a> <span class="count">(10)</span>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="product-banner">
+                            <img src="~/assets/img/shop/shop-banner2.gif" alt="">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-12 col-lg-9 shop-primary">
+                    <div class="shop-banner">
+                        <div class="banner-img">
+                            <img src="~/assets/img/shop/shop-banner.jpeg" alt="">
+                        </div>
+                        <div class="banner-content">
+                            <h4 class="entry-subtitle color-text xlight">Organic Meals Prepared</h4>
+                            <h3 class="entry-title color-text large">
+                                Delivered to <strong class="color-success">
+                                    your
+                                    Home
+                                </strong>
+                            </h3>
+                            <p>Fully prepared & delivered nationwide.</p>
+                        </div>
+                    </div>
+                    <div class="before-shop-loop">
+                        <div class="left">
+                            <a href=""><i class="fa-solid fa-bars"></i></a>
+                            <a href=""><i class="fa-solid fa-grip"></i></a>
+                            <a href=""><i class="fa-solid fa-grip-vertical"></i></a>
+                            <a class="shop-viewactive" href=""><i class="fa-solid fa-braille"></i></a>
+                        </div>
+                        <div class="right">
+                            <select class="first" name="" id="">
+                                <option value="">Sort by popularity</option>
+                                <option selected value="">Sort by average rating</option>
+                                <option value="">Sort by latest</option>
+                                <option value="">Sort by price: low to high</option>
+                                <option value="">Sort by price: high to low</option>
+                            </select>
+                            <select class="second" name="" id="">
+                                <option value="">Show 12</option>
+                                <option value="">Show 24</option>
+                                <option value="">Show 36</option>
+                                <option value="">Show 48</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="container">
+                        @foreach (ProductGetDto item in Model)
+                        {
+                            <div class="product">
+                                <div class="product-card">
+                                    <div class="card-thumbnail">
+                                        <div class="card-badges">
+                                            <span class="badge on-sale">@item.DiscountPercent</span>
+                                            <span class="badge recommend">recommended</span>
+                                        </div>
+                                        <a asp-controller="shop" asp-action="detail" asp-route-id="@item.Id" class="img-box">
+                                            <img src="~/assets/img/product/@item.ProductImages.FirstOrDefault(x=>x.IsMain&&!x.IsDeleted)?.Image"
+                                                 alt="card-img" />
+                                        </a>
+                                        <div class="card-buttons">
+                                            <button class="show-detail-btn top-btn">
+                                                <i class="fa-solid fa-expand"></i>
+                                            </button>
+                                            <a  asp-controller="shop" asp-action="AddWishlist" asp-route-id="@item.Id" class="whislist-btn top-btn">
+                                                <i class="fa-solid fa-heart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3 class="card-title">
+                                            <a href="" class="title-1">
+                                                @item.Title
+                                            </a>
+                                        </h3>
+                                        @if (item.InStock == true)
+                                        {
+                                            <span class="stock-state">In Stock</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="stock-state">IsNotInStock</span>
+                                        }
+                                        <div class="card-rating">
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                        </div>
+                                        <div class="card-price">
+                                            <del>
+                                                <bdi>
+                                                    <span class="price-amount old-price">@item.Price</span>
+                                                </bdi>
+                                            </del>
+                                            <ins>
+                                                <bdi><span class="price-amount new-price">@item.DiscountPrice</span></bdi>
+                                            </ins>
+                                        </div>
+                                        <div class="product-fade-block">
+                                            <div class="product-button-group">
+                                                <div class="quantity">
+                                                    <div class="quantity-btn minus">
+                                                        <a asp-controller="shop" asp-action="RemoveBasketItem" asp-route-id="@item.Id" class="btn-remove-basket  btn-plus">
+                                                            <i style="color:black"
+                                                               class="fa-solid fa-minus"></i>
+                                                        </a>
+                                                    </div>
+                                                    <input style="border-left: 0px;border-right:0px" type="text"
+                                                           class="quantity-counter" name="quantity" min="0"
+                                                           max="57" step="1" value="1" />
+                                                    <div class="quantity-btn plus">
+                                                        <a asp-controller="shop" asp-action="Addbasket" asp-route-id="@item.Id" class="btn-add-basket  btn-minus" >
+                                                            <i style="color: black;"
+                                                               class="fa-solid fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <a  asp-controller="shop" asp-action="AddBasket" asp-route-id="@item.Id" class="btn btn-add-basket btn-primary">Add To Card</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <!-- Pagination -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Shop-bottom">
+        <div class="container">
+            <div class="recently">
+                <div class="related-head">
+                    <div class="column">
+                        <h4 class="entry-title">RECENTLY VIEWED PRODUCTS</h4>
+
+                    </div>
+                    <div class="rproduct-body">
+                        <div class="products">
+                            @foreach (ProductGetDto item in Model.Take(4))
+                            {
+                                //Product
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+        const resetPasswordData = document.getElementById("basket");
+        if (resetPasswordData !== null) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "warning",
+                iconColor: "#007bff",
+                title: "Product was added to the Basket succesfully"
+            });
+            const resetPasswordData = document.getElementById("wishlist");
+            if (resetPasswordData !== null) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-right",
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "warning",
+                    iconColor: "#007bff",
+                    title: "Product was added to the Basket succesfully"
+                });
+        }</script>

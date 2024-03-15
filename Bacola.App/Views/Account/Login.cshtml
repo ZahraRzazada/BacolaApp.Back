@@ -1,0 +1,46 @@
+﻿@model LoginDto
+<main>
+    <!-- Login Part Start -->
+    <section id="Login">
+        <div class="container">
+
+            <div class="login-form">
+                <a href="#" class="active">Login</a>
+                <form method="post" class="woocommerce-form woocommerce-form-register register">
+                    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                        <label for="reg_username">Username&nbsp;<span class="required">*</span></label>
+                        <input asp-for="UserNameOrEmail" type="text" class="zhr2 form-control woocommerce-Input woocommerce-Input--text input-text" placeholder="UsernameOrEmail" id="reg_username" autocomplete="username" value="">
+                        <span asp-validation-for="UserNameOrEmail" style="color:red"></span>
+                    </p>
+                    <div form-group>
+                        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                            <label for="reg_password">Password&nbsp;<span class="required">*</span></label>
+                            <span class="password-input"><input asp-for="Password" placeholder="Password" style="width:200%" type="password" class="zhr2 form-control woocommerce-Input woocommerce-Input--text input-text" id="reg_password" autocomplete="new-password"><span class="show-password-input"></span></span>
+                            <span asp-validation-for="Password" style="color:red"></span>
+                        </p>
+                    </div>
+                    <p class="woocommerce-form-row form-row">
+                        <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+                            <input asp-for="RememberMe" type="checkbox" name="rememberme" id="rememberme" > <span>Remember me</span>
+                        </label>
+                        <span asp-validation-for="RememberMe" style="color:red"></span>
+                        @*<inpu type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="bb80be5298"><input type="hidden" name="_wp_http_referer" value="/bacola/my-account/">*@
+                        <button class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" type="submit" value="submit" value="Register">Log In</button>
+
+                    </p>
+                    <p style="    font-size: 14px;
+                    font-weight: 400;
+                    letter-spacing: 0;
+                    line-height: 24px;" class="pzhr woocommerce-LostPassword lost_password">
+                        <a style=" color: #2bbef9;
+                        text-decoration: none;
+                        background-color: transparent;justify-content:flex-start;font-size:15px" asp-controller="account" asp-action="ForgetPassword">Lost your password?</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Login Part End -->
+</main>
+

@@ -1,0 +1,123 @@
+﻿@model BlogGetDto
+<div class="page-body">
+    <!-- New Product Add Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-8 m-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-header-2">
+                                    <h5>Blog Information</h5>
+                                </div>
+
+                                <form enctype="multipart/form-data" method="post">
+                                    <div class="alert alert-info" asp-validation-summary="ModelOnly"></div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="Title" class="form-label-title col-sm-3 mb-0">Blog Title</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Title" class="form-control" type="text" placeholder="Blog Title">
+                                            <span class="text text-danger" asp-validation-for="Title"></span>
+                                        </div>
+                                    </div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="Description" class="form-label-title col-sm-3 mb-0">Blog Description</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Description" class="form-control" type="text" placeholder="Blog Description">
+                                            <span class="text text-danger" asp-validation-for="Description"></span>
+                                        </div>
+                                    </div>
+
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="Info" class="form-label-title col-sm-3 mb-0">Blog Info</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Info" class="form-control" type="text" placeholder="Blog Info">
+                                            <span class="text text-danger" asp-validation-for="Info"></span>
+                                        </div>
+                                    </div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="Quotes" class="form-label-title col-sm-3 mb-0">Blog Quotes</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Quotes" class="form-control" type="text" placeholder="Blog Quotes">
+                                            <span class="text text-danger" asp-validation-for="Quotes"></span>
+                                        </div>
+                                    </div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="SubTitle" class="form-label-title col-sm-3 mb-0">Blog SubTitle</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="SubTitle" class="form-control" type="text" placeholder="Blog SubTitle">
+                                            <span class="text text-danger" asp-validation-for="SubTitle"></span>
+                                        </div>
+                                    </div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="SubInfo" class="form-label-title col-sm-3 mb-0">Blog SubInfo</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="SubInfo" class="form-control" type="text" placeholder="Blog SubInfo">
+                                            <span class="text text-danger" asp-validation-for="SubInfo"></span>
+                                        </div>
+                                    </div>
+                                    <div style="margin:50px 0px" class="form-group d-flex">
+                                        <label style="margin-right:5px" class="col-sm-3 col-lg-3 col-form-label form-label-title">Last Image</label>
+                                        <img style="width:50%" class="col-lg-9" src="~/assets/img/blog/@Model.Image" />
+                                    </div>
+                                    <div style="margin:50px 0px" class="form-group d-flex">
+                                        <label style="margin-right:5px" class="col-sm-3 col-lg-3 col-form-label form-label-title">Blog Image</label>
+                                        <input type="file" accept="image/*" name="ImageFile" class="form-control " placeholder="Image">
+                                        <span class="text text-danger" asp-validation-for="Image"></span>
+                                    </div>
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Category</label>
+                                        <div class="col-sm-9 form-group">
+                                            <select style="width: 100%;border-radius:5px;padding-right:10px; color: #444; font-size: 15px; padding-left: 8px; line-height: 28px; padding-right: 20px; height: 40px !important; background-color: #f9f9f6 !important; border: 1px solid #efefef; " name="CategoryId" class=" js-example-basic-single w-100 select2-hidden-accessible" name="state" data-select2-id="select2-data-4-9scn" tabindex="-1" aria-hidden="true">
+                                                <option disabled>Categories</option>
+                                                @foreach (var item in ViewBag.Categories)
+                                                {
+                                                    @if (Model.CategoryGetDto.Id == item.Id)
+                                                    {
+                                                        <option selected value="@item.Id">@item.Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 row align-items-center">
+                                        <label class="col-sm-3 col-form-label form-label-title">Multiple Tags</label>
+                                        <div class="col-sm-9 form-group">
+                                            <select multiple name="TagIds" class=" js-example-basic-single w-100 select2-hidden-accessible" multiple name="TagsIds" data-select2-id="select2-data-4-9scn" tabindex="-1" aria-hidden="true">
+                                                <option disabled>Tags</option>   
+                                                @foreach (var item in ViewBag.Tags)
+                                                {
+                                                    @if (Model.Tags.Any(x => x.Id == item.Id))
+                                                    {
+                                                        <option selected value="@item.Id">@item.Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                }
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-around" class="buttons">
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <button class="btn btn-light">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

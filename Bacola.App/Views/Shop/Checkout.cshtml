@@ -1,0 +1,260 @@
+﻿@using System.Linq
+<main>
+    @if (ViewBag.BasketData.basketItems.Count > 0)
+    {
+        <section id="Checkout">
+            <div class="container">
+                <div class="cupon-part">
+                    <i class="fa-regular fa-bookmark"></i>
+                    <div class="wc-block-components-notice-banner is-info" role="alert">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <div class="wc-block-components-notice-banner__content">
+                            Have a coupon? <span class="showcoupon">Enter your code in the following input</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cupon-input">
+                    -
+                    <form class="checkout_coupon woocommerce-form-coupon" method="post" style="">
+                        <p>If you have a coupon code, please apply it below.</p>
+                        <p class="form-row form-row-first">
+                            <label for="coupon_code" class="screen-reader-text">Coupon:</label>
+                            <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code" id="coupon_code" value="">
+                        </p>
+                        <p class="form-row form-row-last">
+                            <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                        </p>
+                        <div class="clear"></div>
+                    </form>
+                </div>
+                <div class="checkout-top">
+                    <div class="klb-free-progress-bar warning">
+                        <div class="free-shipping-notice">
+                            Add <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>42.75</span> to cart and get free shipping!
+                        </div>
+                        <div class="klb-progress-bar">
+                            <span class="progress" style="width: 14%"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12 content-primary">
+                        <div class="col2-set" id="customer_details">
+                            <div class="col-1">
+                                <div class="woocommerce-billing-fields">
+                                    <h3>Billing details</h3>
+
+                                <form method="post" novalidate="novalidate" action="/shop/checkout">
+                                    <div class="field form-group">
+                                        <p class="form-row address-field validate-required form-row-wide" id="billing_address_1_field" data-priority="50">
+                                            <label for="billing_address_1">Street address <abbr class="required" title="required">*</abbr></label>
+                                            <span class="woocommerce-input-wrapper">
+                                                <input type="text" class="form-control" name="Address" id="Address" placeholder="Your Address" required>
+                                            </span>
+                                        </p>
+                                        <p class="form-row form-row-wide validate-required validate-phone" id="billing_phone_field" data-priority="100">
+                                            <label for="billing_phone">Phone <abbr class="required" title="required">*</abbr></label>
+                                            <span class="woocommerce-input-wrapper">
+                                                <input type="tel" class="form-control" name="PhoneNumber" id="billing_phone" placeholder="Your phone number" required>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="col-2 form-group">
+                                        <div class="woocommerce-additional-fields">
+                                            <div class="woocommerce-additional-fields__field-wrapper">
+                                                <p class="form-row notes" id="order_comments_field" data-priority="">
+                                                    <label for="order_comments">Order notes <span class="optional">(optional)</span></label>
+                                                    <span class="woocommerce-input-wrapper">
+                                                        <textarea class="form-control" name="Text" id="order_comments" placeholder="Notes about your order, e.g. special notes for delivery." rows="2" cols="5"></textarea>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" style="color: #fff; background-color: #ed174a; border-color: #ed174a; width: 100%; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; height: 3.125rem; font-size: .875rem; font-weight: 500; text-decoration: none; display: inline-flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center;" name="checkout_button">Place order</button>
+                                </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="order-review-wrapper">
+                            <h3 id="order_review_heading">Your order</h3>
+                            <div id="order_review" class="woocommerce-checkout-review-order">
+                                <table class="shop_table woocommerce-checkout-review-order-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-total">Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="cart_item">
+                                            <td class="product-name">
+                                                Angie's Boomchickapop Sweet &amp; Salty Kettle Corn&nbsp;						 <strong class="product-quantity">×&nbsp;20</strong>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>65.80</bdi></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+
+                                        <tr class="cart-subtotal">
+                                            <th>Subtotal</th>
+                                            <td><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>65.80</bdi></span></td>
+                                        </tr>
+
+
+
+
+                                        <tr class="woocommerce-shipping-totals shipping">
+                                            <th>Shipping</th>
+                                            <td data-title="Shipping">
+                                                <ul id="shipping_method" class="woocommerce-shipping-methods">
+                                                    <li>
+                                                        <input type="radio" name="shipping_method[0]" data-index="0" id="shipping_method_0_free_shipping2" value="free_shipping:2" class="shipping_method" checked="checked"><label for="shipping_method_0_free_shipping2">Free shipping</label>
+                                                    </li>
+                                                    <li>
+                                                        <input type="radio" name="shipping_method[0]" data-index="0" id="shipping_method_0_local_pickup3" value="local_pickup:3" class="shipping_method"><label for="shipping_method_0_local_pickup3">Local pickup</label>
+                                                    </li>
+                                                </ul>
+
+
+                                            </td>
+                                        </tr>
+                                        <tr class="order-total">
+                                            <th>Total</th>
+                                            <td><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>65.80</bdi></span></strong> </td>
+                                        </tr>
+
+
+                                    </tfoot>
+                                </table>
+                                <div id="payment" class="woocommerce-checkout-payment">
+                                    <ul class="wc_payment_methods payment_methods methods">
+                                        <li class="wc_payment_method payment_method_bacs">
+                                            <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" data-order_button_text="">
+
+                                            <label for="payment_method_bacs">
+                                                Direct bank transfer
+                                            </label>
+                                            <div class="payment_box payment_method_bacs" style="display:none;">
+                                                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
+                                            </div>
+                                        </li>
+                                        <li class="wc_payment_method payment_method_cheque">
+                                            <input id="payment_method_cheque" type="radio" class="input-radio" name="payment_method" value="cheque" checked="checked" data-order_button_text="">
+
+                                            <label for="payment_method_cheque">
+                                                Check payments
+                                            </label>
+                                            <div class="payment_box payment_method_cheque">
+                                                <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                            </div>
+                                        </li>
+                                        <li class="wc_payment_method payment_method_cod">
+                                            <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" data-order_button_text="">
+
+                                            <label for="payment_method_cod">
+                                                Cash on delivery
+                                            </label>
+                                            <div class="payment_box payment_method_cod" style="display:none;">
+                                                <p>Pay with cash upon delivery.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="form-row place-order">
+                                        <noscript>
+                                            Since your browser does not support JavaScript, or it is disabled, please ensure you click the <em>Update Totals</em> button before placing your order. You may be charged more than the amount stated above if you fail to do so.			<br /><button type="submit" class="button alt" name="woocommerce_checkout_update_totals" value="Update totals">Update totals</button>
+                                        </noscript>
+
+                                        <div class="woocommerce-terms-and-conditions-wrapper">
+                                            <div class="woocommerce-privacy-policy-text">
+                                                <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="https://klbtheme.com/bacola/privacy-policy/" class="woocommerce-privacy-policy-link" target="_blank">privacy policy</a>.</p>
+                                            </div><div class="woocommerce-terms-and-conditions" style="display: none; max-height: 200px; overflow: auto;">
+                                                <h3>Our Terms &amp; Conditions</h3>
+                                                <p>
+                                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like<br>
+                                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn’t anything embarrassing hidden in the middle of text.
+                                                </p>
+                                                <h3>
+                                                    Where does it come from?<br>
+                                                </h3>
+                                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose injected humour and the like</p>
+                                                <ol>
+                                                    <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur</li>
+                                                    <li>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</li>
+                                                    <li>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</li>
+                                                    <li>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</li>
+                                                </ol>
+                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn’t anything embarrassing hidden in the middle of text.</p>
+                                                <h3>
+                                                    Why do we use it?<br>
+                                                </h3>
+                                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words</p>
+                                                <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+                                                <ul>
+                                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                                    <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                                    <li>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.</li>
+                                                </ul>
+                                            </div>
+                                            <p class="form-row validate-required">
+                                                <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                                    <input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" name="terms" id="terms">
+                                                    <span class="woocommerce-terms-and-conditions-checkbox-text">I have read and agree to the website <a href="https://klbtheme.com/bacola/terms-and-conditions/" class="woocommerce-terms-and-conditions-link" target="_blank">terms and conditions.</a></span>&nbsp;<abbr class="required" title="required"></abbr>
+                                                </label>
+                                                <input type="hidden" name="terms-field" value="1">
+                                            </p>
+                                        </div>
+
+
+
+
+                                        <input type="hidden" id="woocommerce-process-checkout-nonce" name="woocommerce-process-checkout-nonce" value="88a75cd398"><input type="hidden" name="_wp_http_referer" value="/bacola/?wc-ajax=update_order_review">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+<div style=" flex: 0 0 100%; max-width: 100%;" class="col-12 col-md-12 col-lg-12 content-primary">
+
+    <div class="cart-wrapper">
+
+        <div style="text-align: center; max-width: 760px; margin-top: 40px; margin-bottom: 40px; margin-left: auto; margin-right: auto" class="cart-empty-page">
+            <div style="height: 10rem !important; display: inline-flex; align-items: flex-end; -webkit-box-pack: center; justify-content: center; width: 10rem; height: 10rem; margin-bottom: 1.875rem; position: relative; text-align: center;  border-radius: 50%; background-color: #eaecef; overflow: hidden; " class="empty-icon">
+                <svg style="width: 5rem; overflow: hidden; vertical-align: middle; text-align: center " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280.028 280.028" width="280.028" height="80.028">
+                    <path style="fill: #b7343e" class="c-01" d="M35.004 0h210.02v78.758H35.004V0z" fill="#d07c40"></path>
+                    <path style="fill: #f04652;" class="c-02" d="M262.527 61.256v201.27c0 9.626-7.876 17.502-17.502 17.502H35.004c-9.626 0-17.502-7.876-17.502-17.502V61.256h245.025z" fill="#f4b459"></path>
+                    <path style="fill: #f04652;" class="c-03" d="M35.004 70.007h26.253V26.253L35.004 0v70.007zm183.767-43.754v43.754h26.253V0l-26.253 26.253z" fill="#f4b459"></path>
+                    <path style=" fill: #ab212b;" class="c-04" d="M61.257 61.256V26.253L17.503 61.256h43.754zm157.514-35.003v35.003h43.754l-43.754-35.003z" fill="#e3911c"></path>
+                    <path style=" fill: #c13942;" class="c-05" d="M65.632 105.01c-5.251 0-8.751 3.5-8.751 8.751s3.5 8.751 8.751 8.751 8.751-3.5 8.751-8.751c0-5.25-3.5-8.751-8.751-8.751zm148.764 0c-5.251 0-8.751 3.5-8.751 8.751s3.5 8.751 8.751 8.751 8.751-3.5 8.751-8.751c.001-5.25-3.501-8.751-8.751-8.751z" fill="#cf984a"></path>
+                    <path style=" fill: #c13942;" class="c-06" d="M65.632 121.637c5.251 0 6.126 6.126 6.126 6.126 0 39.379 29.753 70.882 68.257 70.882s68.257-31.503 68.257-70.882c0 0 .875-6.126 6.126-6.126s6.126 6.126 6.126 6.126c0 46.38-35.003 83.133-80.508 83.133s-80.508-37.629-80.508-83.133c-.001-.001.874-6.126 6.124-6.126z" fill="#cf984a"></path>
+                    <path class="c-07" d="M65.632 112.886c5.251 0 6.126 6.126 6.126 6.126 0 39.379 29.753 70.882 68.257 70.882s68.257-31.503 68.257-70.882c0 0 .875-6.126 6.126-6.126s6.126 6.126 6.126 6.126c0 46.38-35.003 83.133-80.508 83.133s-80.508-37.629-80.508-83.133c-.001 0 .874-6.126 6.124-6.126z" fill="#fdfbf7"></path>
+                </svg>
+            </div><!-- empty-icon -->
+            <div class="woocommerce-notices-wrapper"></div><div class="wc-empty-cart-message">
+                <div style="font-size: 1.125rem; font-weight: 700; text-transform: uppercase; color: #ed174a; margin-bottom: 1.25rem; " class="cart-empty woocommerce-info">
+                    Your cart is currently empty.
+                </div>
+            </div>                  <p style="font-size: 14px; font-weight: 400; letter-spacing: 0; line-height: 24px;" class="return-to-shop">
+                <a style="height: 3.125rem !important; display: inline-flex; border-radius: 1.875rem !important; color: #fff; background-color: #233a95; border-color: #233a95; padding-left: 2.25rem; padding-right: 2.25rem; margin-top: 1.875rem;  display: center; align-items: center; font-size: .875rem; font-weight: 500; text-decoration: none; border: 1px solid; " class="button-primary rounded large button wc-backward" asp-controller="shop" asp-action="index">
+                    Return to shop
+                </a>
+            </p>
+        </div><!-- cart-empty -->
+
+    </div><!-- cart-wrapper -->
+
+</div>
+    }
+</main>
+

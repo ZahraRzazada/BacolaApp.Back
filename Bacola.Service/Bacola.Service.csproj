@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bacola.Data\Bacola.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Extensions\" />
+    <None Remove="ExternalServices\" />
+    <None Remove="ExternalServices\Interfaces\" />
+    <None Remove="ExternalServices\Implementations\" />
+    <None Remove="ServiceRegisterations\" />
+    <None Remove="Services\" />
+    <None Remove="Services\Implementations\" />
+    <None Remove="Services\Interfaces\" />
+    <None Remove="Mappers\" />
+    <None Remove="Responses\" />
+    <None Remove="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="ExternalServices\" />
+    <Folder Include="ExternalServices\Interfaces\" />
+    <Folder Include="ExternalServices\Implementations\" />
+    <Folder Include="ServiceRegisterations\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Implementations\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="Mappers\" />
+    <Folder Include="Responses\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+  </ItemGroup>
+</Project>

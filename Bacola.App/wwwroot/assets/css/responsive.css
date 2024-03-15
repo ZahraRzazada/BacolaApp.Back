@@ -1,0 +1,70 @@
+@media only screen and (max-width: 1024px) {
+  #Wishlist .container .wishlist form table tfoot td .tinvwl-to-left {
+    float: none;
+    width: auto;
+    margin-right: 0;
+  }
+  #Wishlist .container .wishlist form table tfoot td .tinvwl-to-right {
+    float: none;
+    width: auto;
+    text-align: left;
+    margin-top: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .wishlist form table thead .wishlist_header .product-cb,
+  .product-remove,
+  .product-thumbnail,
+  .product-price,
+  .product-date,
+  .product-stock,
+  .product-action {
+    display: none;
+  }
+  #Wishlist .container .wishlist form table tbody .wishlist_item td {
+    width: 100%;
+    text-align: center;
+    display: block !important;
+  }
+  #Wishlist
+    .container
+    .wishlist
+    form
+    table
+    tbody
+    .wishlist_item
+    .product-stock
+    p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wishlist form table thead .wishlist_header .product-name {
+    width: 100%;
+    text-align: center;
+  }
+  .wishlist form table thead .wishlist_header .product-name .tinvwl-mobile {
+    display: block;
+  }
+
+  .wishlist form table thead .wishlist_header .product-name .tinvwl-full {
+    display: none;
+  }
+  #Wishlist
+    .container
+    .wishlist
+    form
+    table
+    tbody
+    .wishlist_item
+    .product-action
+    button {
+    width: 100%;
+  }
+  #Wishlist .container .wishlist form table tfoot td .tinvwl-to-right {
+    margin-top: 10px;
+  }
+  #Wishlist .container .wishlist form table tfoot td .tinvwl-to-right .button {
+    width: 97%;
+  }
+}

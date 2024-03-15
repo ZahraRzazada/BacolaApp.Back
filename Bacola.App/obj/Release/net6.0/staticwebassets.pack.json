@@ -1,0 +1,289 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/Templates/ResetPassword.html",
+      "PackagePath": "staticwebassets/Templates/ResetPassword.html"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/Templates/VerifyPassword.html",
+      "PackagePath": "staticwebassets/Templates/VerifyPassword.html"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/.DS_Store",
+      "PackagePath": "staticwebassets/admin/assets/.DS_Store"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/.DS_Store",
+      "PackagePath": "staticwebassets/admin/assets/css/.DS_Store"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/css2",
+      "PackagePath": "staticwebassets/admin/assets/css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/linearicon.css",
+      "PackagePath": "staticwebassets/admin/assets/css/linearicon.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/ratio.css",
+      "PackagePath": "staticwebassets/admin/assets/css/ratio.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/remixicon.css",
+      "PackagePath": "staticwebassets/admin/assets/css/remixicon.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/style.css",
+      "PackagePath": "staticwebassets/admin/assets/css/style.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/vector-map.css",
+      "PackagePath": "staticwebassets/admin/assets/css/vector-map.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/vendors/animate.css",
+      "PackagePath": "staticwebassets/admin/assets/css/vendors/animate.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/vendors/bootstrap.css",
+      "PackagePath": "staticwebassets/admin/assets/css/vendors/bootstrap.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/vendors/feather-icon.css",
+      "PackagePath": "staticwebassets/admin/assets/css/vendors/feather-icon.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/vendors/font-awesome.css",
+      "PackagePath": "staticwebassets/admin/assets/css/vendors/font-awesome.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/vendors/scrollbar.css",
+      "PackagePath": "staticwebassets/admin/assets/css/vendors/scrollbar.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/vendors/slick.css",
+      "PackagePath": "staticwebassets/admin/assets/css/vendors/slick.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/vendors/themify.css",
+      "PackagePath": "staticwebassets/admin/assets/css/vendors/themify.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/css/zahra.css",
+      "PackagePath": "staticwebassets/admin/assets/css/zahra.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/icons/Linearicons-Free.woff2",
+      "PackagePath": "staticwebassets/admin/assets/icons/Linearicons-Free.woff2"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/.DS_Store",
+      "PackagePath": "staticwebassets/admin/assets/images/.DS_Store"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/breakfast.svg",
+      "PackagePath": "staticwebassets/admin/assets/images/breakfast.svg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/cup.svg",
+      "PackagePath": "staticwebassets/admin/assets/images/cup.svg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/frozen.svg",
+      "PackagePath": "staticwebassets/admin/assets/images/frozen.svg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/logo/.DS_Store",
+      "PackagePath": "staticwebassets/admin/assets/images/logo/.DS_Store"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/logo/bacola-logo.png",
+      "PackagePath": "staticwebassets/admin/assets/images/logo/bacola-logo.png"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/meats.svg",
+      "PackagePath": "staticwebassets/admin/assets/images/meats.svg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/milk.svg",
+      "PackagePath": "staticwebassets/admin/assets/images/milk.svg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/pet.svg",
+      "PackagePath": "staticwebassets/admin/assets/images/pet.svg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/product/.DS_Store",
+      "PackagePath": "staticwebassets/admin/assets/images/product/.DS_Store"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/users/4.jpg",
+      "PackagePath": "staticwebassets/admin/assets/images/users/4.jpg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/images/vegetable.svg",
+      "PackagePath": "staticwebassets/admin/assets/images/vegetable.svg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/apex-chart.js",
+      "PackagePath": "staticwebassets/admin/assets/js/apex-chart.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/apex-chart1.js",
+      "PackagePath": "staticwebassets/admin/assets/js/apex-chart1.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/bootstrap-notify.min.js",
+      "PackagePath": "staticwebassets/admin/assets/js/bootstrap-notify.min.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/admin/assets/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/chart-custom1.js",
+      "PackagePath": "staticwebassets/admin/assets/js/chart-custom1.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/config.js",
+      "PackagePath": "staticwebassets/admin/assets/js/config.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/custom-slick.js",
+      "PackagePath": "staticwebassets/admin/assets/js/custom-slick.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/custom.js",
+      "PackagePath": "staticwebassets/admin/assets/js/custom.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/customizer.js",
+      "PackagePath": "staticwebassets/admin/assets/js/customizer.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/feather-icon.js",
+      "PackagePath": "staticwebassets/admin/assets/js/feather-icon.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/feather.min.js",
+      "PackagePath": "staticwebassets/admin/assets/js/feather.min.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/index.js",
+      "PackagePath": "staticwebassets/admin/assets/js/index.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/jquery-3.6.0.min.js",
+      "PackagePath": "staticwebassets/admin/assets/js/jquery-3.6.0.min.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/moment.min.js",
+      "PackagePath": "staticwebassets/admin/assets/js/moment.min.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/ratio.js",
+      "PackagePath": "staticwebassets/admin/assets/js/ratio.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/script.js",
+      "PackagePath": "staticwebassets/admin/assets/js/script.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/sidebar-menu.js",
+      "PackagePath": "staticwebassets/admin/assets/js/sidebar-menu.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/sidebareffect.js",
+      "PackagePath": "staticwebassets/admin/assets/js/sidebareffect.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/simplebar.js",
+      "PackagePath": "staticwebassets/admin/assets/js/simplebar.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/slick.min.js",
+      "PackagePath": "staticwebassets/admin/assets/js/slick.min.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/stock-prices.js",
+      "PackagePath": "staticwebassets/admin/assets/js/stock-prices.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/admin/assets/js/tooltip-init.js",
+      "PackagePath": "staticwebassets/admin/assets/js/tooltip-init.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/css/blog.css",
+      "PackagePath": "staticwebassets/assets/css/blog.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/css/bootstrap.css",
+      "PackagePath": "staticwebassets/assets/css/bootstrap.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/css/common.css",
+      "PackagePath": "staticwebassets/assets/css/common.css"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/blog/blog-1.jpg",
+      "PackagePath": "staticwebassets/assets/img/blog/blog-1.jpg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/blog/blog-3.jpg",
+      "PackagePath": "staticwebassets/assets/img/blog/blog-3.jpg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/blog/blog-4.jpg",
+      "PackagePath": "staticwebassets/assets/img/blog/blog-4.jpg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/blog/blog-5.jpg",
+      "PackagePath": "staticwebassets/assets/img/blog/blog-5.jpg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/blog/sidebar-banner.gif",
+      "PackagePath": "staticwebassets/assets/img/blog/sidebar-banner.gif"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/footer/app-store.png",
+      "PackagePath": "staticwebassets/assets/img/footer/app-store.png"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/footer/coupon.png",
+      "PackagePath": "staticwebassets/assets/img/footer/coupon.png"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/footer/google-play.png",
+      "PackagePath": "staticwebassets/assets/img/footer/google-play.png"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/footer/payments.jpg",
+      "PackagePath": "staticwebassets/assets/img/footer/payments.jpg"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/logo/bacola-logo-mobile.png",
+      "PackagePath": "staticwebassets/assets/img/logo/bacola-logo-mobile.png"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Projects/Bacola.App/Bacola.App/wwwroot/assets/img/logo/bacola-logo.png",
+      "PackagePath": "staticwebassets/assets/img/logo/bacola-logo.png"
+    },
+    {
+      "Id": "obj/Release/net6.0/staticwebassets/msbuild.Bacola.App.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Release/net6.0/staticwebassets/msbuild.build.Bacola.App.props",
+      "PackagePath": "build\\Bacola.App.props"
+    },
+    {
+      "Id": "obj/Release/net6.0/staticwebassets/msbuild.buildMultiTargeting.Bacola.App.props",
+      "PackagePath": "buildMultiTargeting\\Bacola.App.props"
+    },
+    {
+      "Id": "obj/Release/net6.0/staticwebassets/msbuild.buildTransitive.Bacola.App.props",
+      "PackagePath": "buildTransitive\\Bacola.App.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

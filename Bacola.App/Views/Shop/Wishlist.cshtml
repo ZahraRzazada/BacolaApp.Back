@@ -1,0 +1,140 @@
+﻿@model CustomResponse<WishlistGetDto>
+<main>
+    <section id="Wishlist">
+        <div class="container">
+            <div class="wishlist">
+                <div class="headpart">
+                    <h2>Default wishlist</h2>
+                </div>
+                <form action="https://klbtheme.com/bacola/wishlist/6e6cc1/" method="post" autocomplete="off"
+                      data-tinvwl_paged="1" data-tinvwl_per_page="10" data-tinvwl_sharekey="6e6cc1">
+                    <table class="tinvwl-table-manage-list">
+                        <thead>
+                            <tr class="wishlist_header">
+                                <th class="product-cb">
+                                <span style="font-size: 15px; font-weight: 700; color: #71778e">Id</span>
+                                </th>
+                                <th class="product-remove"></th>
+                                <th class="product-thumbnail">&nbsp;</th>
+                                <th class="product-name">
+                                    <span class="tinvwl-full">Product Name</span>
+                                    <span class="tinvwl-mobile">Product</span>
+                                </th>
+                                <th class="product-price">Unit Price</th>
+                                <th class="product-date">Date Added</th>
+                                <th class="product-stock">Stock Status</th>
+                                <th class="product-action">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data.wishlistItems)
+                            {
+                                <tr class="wishlist_item">
+                                    <td class="product-cb">
+                                       <span style="font-size: 10px; font-weight: 700; color: #71778e;padding:5px">@item.Id</span>
+                                    </td>
+                                    <td class="product-remove">
+                                        <a style="font-weight: 900; font-size: 15px; color: #71778e" asp-controller="shop" asp-action="RemoveWishlistItem" asp-route-id="@item.Id" >
+                                            <i class="fa-solid fa-x"></i>
+                                        </a>
+                                    </td>
+                                    <td class="product-thumbnail">
+                                        <a asp-controller="shop" asp-action="detail" asp-route-id="@item.Id">
+                                            <img width="90" height="90"
+                                                 src="~/assets/img/product/@item.Image" />
+                                        </a>
+                                    </td>
+                                    <td class="product-name">
+                                        <a style="
+                          color: #212529;
+                          font-size: 0.7rem;
+                          box-shadow: none;
+                          text-decoration: none;
+                          font-weight: 500;
+                        ">
+                                            @item.Name
+                                        </a>
+                                    </td>
+                                    <td class="product-price">
+                                        <del aria-hidden="true">
+                                            <span class="woocommerce-Price-amount amount">
+                                                <bdi><span class="woocommerce-Price-currencySymbol">$</span>@item.Price</bdi>
+                                            </span>
+                                        </del>
+                                        <ins>
+                                            <span class="woocommerce-Price-amount amount">
+                                                <bdi>
+                                                    <span class="woocommerce-Price-currencySymbol">$</span>@item.DiscountPrice
+                                                </bdi>
+                                            </span>
+                                        </ins>
+                                    </td>
+                                    <td class="product-date">
+                                        <time class="entry-date" datetime="2024-02-05 12:12:39">@item.DateAdded.ToString("MMMM dd, yyyy")</time>
+                                    </td>
+                                    <td class="product-stock">
+                                        <p class="stock in-stock">
+                                            @if (item.InStock == true)
+                                            {
+                                                <span><i class="fa-solid fa-check"></i></span><span>In Stock</span>
+                                            }
+                                            else
+                                            {
+                                                <span><i class="fa-solid fa-x"></i></span><span>IsNotInStock</span>
+                                            }
+                                        </p>
+                                    </td>
+                                    <td class="product-action">
+                                        <a asp-controller="shop" asp-action="AddBasket" asp-route-id="@item.Id" style="color: white; display: inline-flex; align-items: center; height: 2.5rem; font-size: 0.7rem; font-weight: 500; white-space: pre; text-decoration: none; padding: 0 0.9375rem; border: 1px solid; color: #fff; background-color: #233a95; border-radius: 4px; border-color: transparent; box-shadow: none; outline: none;" title="Add to Cart">
+                                            <i class="ftinvwl ftinvwl-shopping-cart"></i>
+                                            <span class="tinvwl-txt">Add to Cart</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="100">
+                                    <div class="tinvwl-to-left look_in">
+                                        <div class="tinvwl-input-group tinvwl-no-full">
+                                            <input type="hidden" name="lists_per_page" value="10" id="tinvwl_lists_per_page" />
+                                            <select name="product_actions" id="tinvwl_product_actions"
+                                                    class="tinvwl-break-input-filed form-control">
+                                                <option value="" selected="selected">
+                                                    Actions
+                                                </option>
+                                                <option value="add_to_cart_selected">
+                                                    Add to Cart
+                                                </option>
+                                                <option value="remove_selected">
+                                                    Remove
+                                                </option>
+                                            </select><span class="tinvwl-input-group-btn">
+                                                <button type="submit" class="button" name="tinvwl-action-product_apply" value="product_apply"
+                                                        title="Apply Action">
+                                                    <span class="tinvwl-mobile">Apply Action</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="tinvwl-to-right look_in">
+                                        <a asp-controller="shop" asp-action="RemoveAllWishlist" style="color: white; display: inline-flex; align-items: center; height: 2.5rem; font-size: 0.7rem; font-weight: 500; white-space: pre; text-decoration: none; padding: 0 0.9375rem; border: 1px solid; color: #fff; background-color: #233a95; border-radius: 4px; border-color: transparent; box-shadow: none; outline: none;" 
+                                          >
+                                            <span>Remove All</span>
+                                        </a>
+                                        <a style="color: white; display: inline-flex; align-items: center; height: 2.5rem; font-size: 0.7rem; font-weight: 500; white-space: pre; text-decoration: none; padding: 0 0.9375rem; border: 1px solid; color: #fff; background-color: #233a95; border-radius: 4px; border-color: transparent; box-shadow: none; outline: none;">
+                                            <span>Add All to Cart</span>
+                                        </a>
+                                    </div>
+                                    <input type="hidden" id="wishlist_nonce" name="wishlist_nonce" value="9a21a5b60e" /><input type="hidden" name="_wp_http_referer" value="/bacola/wishlist/" />
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+

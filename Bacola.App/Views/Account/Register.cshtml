@@ -1,0 +1,48 @@
+﻿@model RegisterDto
+
+<main>
+    <!-- Register Part Start -->
+    <section id="Register">
+        <div class="container">
+
+            <div class="register-form">
+                <a href="#" class="active">Register</a>
+                <form method="post" class="woocommerce-form woocommerce-form-register register">
+
+                    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                        <label for="reg_username">FullName&nbsp;<span class="required">*</span></label>
+                        <input asp-for="FullName" type="text" class="zhr2 form-control woocommerce-Input woocommerce-Input--text input-text" placeholder="FullName" id="reg_username" autocomplete="username" value="">
+                        <span asp-validation-for="FullName" style="color:red"></span>
+                    </p>
+                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                        <label for="reg_username">UserName&nbsp;<span class="required">*</span></label>
+                        <input asp-for="Username" type="text" class="zhr2 form-control woocommerce-Input woocommerce-Input--text input-text" placeholder="UserName" id="reg_username" autocomplete="username" value="">
+                        <span asp-validation-for="Username" style="color:red"></span>
+                    </p>
+                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                        <label for="reg_username">Email&nbsp;<span class="required">*</span></label>
+                        <input asp-for="Email" type="text" class="zhr2 form-control woocommerce-Input woocommerce-Input--text input-text" placeholder="Email" id="reg_username" autocomplete="username" value="">
+                        <span asp-validation-for="Email" style="color:red"></span>
+                    </p>
+                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                        <label for="reg_password">Password&nbsp;<span class="required">*</span></label>
+                        <span class="password-input"><input asp-for="Password" style="width:200%" type="password" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="Password" id="reg_password" autocomplete="new-password"><span class="show-password-input"></span></span>
+                        <span asp-validation-for="Password" style="color:red"></span>
+                    </p>
+                    <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                        <label for="reg_password">ConfirmPassword&nbsp;<span class="required">*</span></label>
+                        <span class="password-input"><input asp-for="ConfirmPassword" style="width:200%" type="password" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="ConfirmPassword" id="reg_password" autocomplete="new-password"><span class="show-password-input"></span></span>
+                        <span asp-validation-for="ConfirmPassword" style="color:red"></span>
+                    </p>
+                    <p class="woocommerce-form-row form-row">
+                        <input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="bb80be5298"><input type="hidden" name="_wp_http_referer" value="/bacola/my-account/">
+                        <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="Register">Register</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Register Part End -->
+</main>
+

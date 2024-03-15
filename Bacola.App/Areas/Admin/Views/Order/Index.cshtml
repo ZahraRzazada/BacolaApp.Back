@@ -1,0 +1,49 @@
+﻿@model IEnumerable<OrderGetDto>
+<div class="page-body">
+    <!-- All User Table Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="title-header option-title">
+                            <h5>All Orders</h5>
+                        </div>
+
+                        <div class="table-responsive category-table">
+                            <div>
+                                <table class="table all-package theme-table" id="table_id">
+                                    <thead>
+                                        <tr>
+                                            <th>Order Id</th>
+                                            <th>Order Adress</th>
+                                            <th>User Email</th>
+                                            <th>Order Status</th>
+                                            <th>Operations</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (OrderGetDto item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Address</td>
+                                                <td>@item.UserEmail</td>
+                                                <td>@((Bacola.Core.Enums.OrderStatus)item.Status)</td>
+                                                <td>
+                                                    <a onclick="return confirm('are you sure?')" asp-action="reject" asp-route-id="@item.Id" class="badge badge-warning">Reject</a> <a asp-action="Success" asp-route-id="@item.Id" class="badge badge-primary ">Success</a><a asp-action="Accept" asp-route-id="@item.Id" class="badge badge-warning">Accept</a>
+                                                    <a asp-action="Detail" asp-route-id="@item.Id" class="badge badge-success">Detail</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

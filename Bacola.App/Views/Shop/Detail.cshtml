@@ -1,0 +1,520 @@
+﻿@model ProductGetDto
+
+<main>
+    <section style="margin-top:50px" id="Productcart">
+        <div class="container">
+            <div class="single-wrapper">
+                <div class="product-header">
+                    <h1 class="product_title entry-title">All Natural Italian-Style Chicken Meatballs</h1>
+                    <div class="bottom">
+                        <div class="product-brand">
+                            <p>
+                                Brands <span>@Model.Brand.Name</span>
+                            </p>
+                        </div>
+                        <div class="star-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>1 review</span>
+                        </div>
+                        <div class="sku-wrapper">
+                            <span class="first">SKU: <span>ZU49VOR</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-body">
+                    <div class="row">
+                        <div class="col-lg-5 product-slid">
+                            <div class="main-img">
+                                @if (Model.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
+                                {
+                                    <img src="~/assets/img/product/@Model.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
+                                }
+                                @foreach (var item in Model.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                {
+                                    <img src="~/assets/img/product/@item.Image" alt="">
+                                }
+                            </div>
+                            <div class="addition-img">
+                                @if (Model.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
+                                {
+                                    <img src="~/assets/img/product/@Model.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
+                                }
+                                @foreach (var item in Model.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                {
+                                    <img src="~/assets/img/product/@item.Image" alt="">
+                                }
+                            </div>
+
+                        </div>
+                        <div class="col col-12 col-lg-4 product-detail">
+                            <p class="price">
+                                <del>
+                                    <span class="woocommerce-Price-amount amount">
+                                        <span class="woocommerce-Price-currencySymbol">$</span>@Model.Price
+                                    </span>
+                                </del>
+                                <ins>
+                                    <span class="woocommerce-Price-amount amount">
+                                        <span class="woocommerce-Price-currencySymbol">$</span>@Model.DiscountPrice
+                                    </span>
+                                </ins>
+                            </p>
+                            <div class="product-meta">
+                                <div class="stock product-available in-stock">
+                                    @if (Model.InStock == true)
+                                        {
+                                        <span class="stock in-stock">In Stock</span>
+                                        }
+                                        else
+                                        {
+                                          <span class="stock in-stock">Is Not In Stock</span>
+                                        }
+                                </div>
+                            </div>
+                            <p>
+                                @Model.Description
+                            </p>
+                            <form class="cart single-ajax"
+                                  action="https://klbtheme.com/bacola/product/all-natural-italian-style-chicken-meatballs/"
+                                  method="post" enctype="multipart/form-data">
+
+                                <div class="quantity">
+                                    <label class="screen-reader-text" for="quantity_65ca19e5d5c09">
+                                       @Model.Title
+                                    </label>
+                                    <div class="quantity-button minus"><i class="fa-solid fa-minus"></i></div>
+                                    <input type="text" id="quantity_65ca19e5d5c09" class="input-text qty text"
+                                           name="quantity" value="1" aria-label="Product quantity" size="4" min="1"
+                                           max="61" step="1" placeholder="" inputmode="numeric" autocomplete="off">
+                                    <div class="quantity-button plus"><i class="fa-solid fa-plus"></i></div>
+                                </div>
+
+                                <button type="submit" name="add-to-cart" value="430"
+                                        class="single_add_to_cart_button button alt">
+                                    Add to cart
+                                </button>
+
+                            </form>
+
+                            <div class="product-actions">
+                                <div class="tinv-wraper woocommerce tinv-wishlist tinvwl-shortcode-add-to-cart tinvwl-woocommerce_single_product_summary"
+                                     data-tinvwl_product_id="430">
+                                    <div class="tinv-wishlist-clear"></div><a role="button" tabindex="0"
+                                                                              name="add-to-wishlist" aria-label="Add to Wishlist"
+                                                                              class="tinvwl_add_to_wishlist_button tinvwl-icon-heart tinvwl-position-shortcode tinvwl-product-in-list"
+                                                                              data-tinv-wl-list="{&quot;5603&quot;:{&quot;ID&quot;:5603,&quot;title&quot;:&quot;Default wishlist&quot;,&quot;status&quot;:&quot;share&quot;,&quot;share_key&quot;:&quot;6e6cc1&quot;,&quot;in&quot;:[0]}}"
+                                                                              data-tinv-wl-product="430" data-tinv-wl-productvariation="0"
+                                                                              data-tinv-wl-productvariations="[]" data-tinv-wl-producttype="simple"
+                                                                              data-tinv-wl-action="addto">
+                                        <span class="tinvwl_add_to_wishlist-text">
+                                            <i class="fa-solid fa-heart"></i>Add to Wishlist
+                                        </span>
+                                    </a>
+                                    <div class="tinv-wishlist-clear"></div>
+                                    <div class="d-none tinvwl-tooltip">Add to Wishlist</div>
+                                </div>
+                                <button class="woosc-btn woosc-btn-430 " data-id="430"
+                                        data-product_name="All Natural Italian-Style Chicken Meatballs"
+                                        data-product_image="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62-150x150.jpg">
+                                    <i class="fa-solid fa-code-compare"></i>Compare
+                                </button>
+                            </div>
+
+                            <div class="product-checklist">
+                                <ul>
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>Type:  @if (Model.IsOrganic == true)
+                                        {
+                                         <span>Organic</span>
+                                        }
+                                        else
+                                        {
+                                    <span>Non-Organic</span>
+                                        }
+                                    </li>
+                                    <li><i class="fa-solid fa-check"></i>MFG:  @Model.CreatedAt.ToString("dd.mm.yy")</li>
+                                    <li><i class="fa-solid fa-check"></i>LIFE:  @Model.PeriodOfUse</li>
+                                </ul>
+                            </div>
+                            <p class="p1">Category:  <span>@Model.Category.Name</span></p>
+                            <p class="p2">Tags: </p>
+                            <div class="product-share">
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/" class="facebook">
+                                            <i class="fa-brands fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/home" class="twitter">
+                                            <i class="fa-brands fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://pinterest.com/" class="pinterest">
+                                            <i class="fa-brands fa-pinterest"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/" class="linkedin">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www..com/" class="redit">
+                                            <i class="fa-brands fa-reddit-alien"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www..com/" class="vhats">
+                                            <i class="fa-brands fa-whatsapp"></i>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-12 col-lg-3 product-right">
+                            <div class="covid">
+                                <p>Covid-19 Info: We keep delivering.</p>
+                            </div>
+                            <div class="iconboxes-widget">
+                                <div class="item">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>Download the Bacola App to your Phone.</p>
+                                </div>
+                                <div class="item">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>Download the Bacola App to your Phone.</p>
+                                </div>
+                                <div class="item">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>Download the Bacola App to your Phone.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Tabmenu">
+        <div class="container">
+            <div class="tabmenu">
+                <div class="links">
+                    <button data-id="1" class="tabactive">Description</button>
+                    <button data-id="2">Addition Info</button>
+                </div>
+
+                <hr>
+                <div class="contents">
+                    <div id="1" class="first-content">
+                        <p>
+                            @Model.Info
+                        </p>
+                    </div>
+                    <div id="2" class="second-content d-none ">
+                        <table class="woocommerce-product-attributes shop_attributes">
+                            <tbody>
+
+                                @foreach (var item in Model.Specifications)
+                                {
+                                    <tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--attribute_pa_brands">
+                                        <th class="woocommerce-product-attributes-item__label">@item.Key</th>
+                                        <td class="woocommerce-product-attributes-item__value">
+                                            <p>@item.Value</p>
+                                        </td>
+                                    </tr>
+                                        }
+                                
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Shop-bottom">
+        <div class="container">
+            <div class="recently">
+                <div class="related-head">
+                    <div class="column">
+                        <h4 class="entry-title">Related Products
+
+                    </div>
+                    <div class="rproduct-body">
+                        <div class="products">
+                            <div class="product">
+                                <div class="product-card">
+                                    <div class="card-thumbnail">
+                                        <div class="card-badges">
+                                            <span class="badge on-sale">23%</span>
+                                            <span class="badge recommend">recommended</span>
+                                        </div>
+                                        <a href="" class="img-box">
+                                            <img src="~/assets/img/product-detail/product-image-62.jpg"
+                                                 alt="card-img" />
+                                        </a>
+                                        <div class="card-buttons">
+                                            <button class="show-detail-btn top-btn">
+                                                <i class="fa-solid fa-expand"></i>
+                                            </button>
+                                            <a href="" class="whislist-btn top-btn">
+                                                <i class="fa-solid fa-heart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3 class="card-title">
+                                            <a href="" class="title-1">
+                                                All Natural Italian-Style Chicken Meatballs
+                                            </a>
+                                        </h3>
+                                        <p class="stock-state">IN STOCK</p>
+                                        <div class="card-rating">
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                        </div>
+                                        <div class="card-price">
+                                            <del><bdi><span class="price-amount old-price">$9.23</span></bdi></del>
+                                            <ins>
+                                                <bdi><span class="price-amount new-price">$8.23</span></bdi>
+                                            </ins>
+                                        </div>
+                                        <div class="product-fade-block">
+                                            <div class="product-button-group">
+                                                <div class="quantity">
+                                                    <div class="quantity-btn minus">
+                                                        <a class="btn-plus">
+                                                            <i style="color:black" class="fa-solid fa-minus"></i>
+                                                        </a>
+                                                    </div>
+                                                    <input style="border-left: 0px;border-right:0px" type="text"
+                                                           class="quantity-counter" name="quantity" min="0" max="57"
+                                                           step="1" value="1" />
+                                                    <div class="quantity-btn plus">
+                                                        <a class="btn-minus">
+                                                            <i style="color: black;" class="fa-solid fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <a class="btn btn-primary">Add To Card</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product">
+                                <div class="product-card">
+                                    <div class="card-thumbnail">
+                                        <div class="card-badges">
+                                            <span class="badge on-sale">23%</span>
+                                            <span class="badge recommend">recommended</span>
+                                        </div>
+                                        <a href="" class="img-box">
+                                            <img src="~/assets/img/product-detail/product-image-62.jpg"
+                                                 alt="card-img" />
+                                        </a>
+                                        <div class="card-buttons">
+                                            <button class="show-detail-btn top-btn">
+                                                <i class="fa-solid fa-expand"></i>
+                                            </button>
+                                            <a href="" class="whislist-btn top-btn">
+                                                <i class="fa-solid fa-heart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3 class="card-title">
+                                            <a href="" class="title-1">
+                                                All Natural Italian-Style Chicken Meatballs
+                                            </a>
+                                        </h3>
+                                        <p class="stock-state">IN STOCK</p>
+                                        <div class="card-rating">
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                        </div>
+                                        <div class="card-price">
+                                            <del><bdi><span class="price-amount old-price">$9.23</span></bdi></del>
+                                            <ins>
+                                                <bdi><span class="price-amount new-price">$8.23</span></bdi>
+                                            </ins>
+                                        </div>
+                                        <div class="product-fade-block">
+                                            <div class="product-button-group">
+                                                <div class="quantity">
+                                                    <div class="quantity-btn minus">
+                                                        <a class="btn-plus">
+                                                            <i style="color:black" class="fa-solid fa-minus"></i>
+                                                        </a>
+                                                    </div>
+                                                    <input style="border-left: 0px;border-right:0px" type="text"
+                                                           class="quantity-counter" name="quantity" min="0" max="57"
+                                                           step="1" value="1" />
+                                                    <div class="quantity-btn plus">
+                                                        <a class="btn-minus">
+                                                            <i style="color: black;" class="fa-solid fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <a class="btn btn-primary">Add To Card</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product">
+                                <div class="product-card">
+                                    <div class="card-thumbnail">
+                                        <div class="card-badges">
+                                            <span class="badge on-sale">23%</span>
+                                            <span class="badge recommend">recommended</span>
+                                        </div>
+                                        <a href="" class="img-box">
+                                            <img src="~/assets/img/product-detail/product-image-62.jpg"
+                                                 alt="card-img" />
+                                        </a>
+                                        <div class="card-buttons">
+                                            <button class="show-detail-btn top-btn">
+                                                <i class="fa-solid fa-expand"></i>
+                                            </button>
+                                            <a href="" class="whislist-btn top-btn">
+                                                <i class="fa-solid fa-heart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3 class="card-title">
+                                            <a href="" class="title-1">
+                                                All Natural Italian-Style Chicken Meatballs
+                                            </a>
+                                        </h3>
+                                        <p class="stock-state">IN STOCK</p>
+                                        <div class="card-rating">
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                        </div>
+                                        <div class="card-price">
+                                            <del><bdi><span class="price-amount old-price">$9.23</span></bdi></del>
+                                            <ins>
+                                                <bdi><span class="price-amount new-price">$8.23</span></bdi>
+                                            </ins>
+                                        </div>
+                                        <div class="product-fade-block">
+                                            <div class="product-button-group">
+                                                <div class="quantity">
+                                                    <div class="quantity-btn minus">
+                                                        <a class="btn-plus">
+                                                            <i style="color:black" class="fa-solid fa-minus"></i>
+                                                        </a>
+                                                    </div>
+                                                    <input style="border-left: 0px;border-right:0px" type="text"
+                                                           class="quantity-counter" name="quantity" min="0" max="57"
+                                                           step="1" value="1" />
+                                                    <div class="quantity-btn plus">
+                                                        <a class="btn-minus">
+                                                            <i style="color: black;" class="fa-solid fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <a class="btn btn-primary">Add To Card</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product">
+                                <div class="product-card">
+                                    <div class="card-thumbnail">
+                                        <div class="card-badges">
+                                            <span class="badge on-sale">23%</span>
+                                            <span class="badge recommend">recommended</span>
+                                        </div>
+                                        <a href="" class="img-box">
+                                            <img src="~/assets/img/product-detail/product-image-62.jpg"
+                                                 alt="card-img" />
+                                        </a>
+                                        <div class="card-buttons">
+                                            <button class="show-detail-btn top-btn">
+                                                <i class="fa-solid fa-expand"></i>
+                                            </button>
+                                            <a href="" class="whislist-btn top-btn">
+                                                <i class="fa-solid fa-heart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3 class="card-title">
+                                            <a href="" class="title-1">
+                                                All Natural Italian-Style Chicken Meatballs
+                                            </a>
+                                        </h3>
+                                        <p class="stock-state">IN STOCK</p>
+                                        <div class="card-rating">
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                            <i class="fa-solid fa-star rating-star"></i>
+                                        </div>
+                                        <div class="card-price">
+                                            <del><bdi><span class="price-amount old-price">$9.23</span></bdi></del>
+                                            <ins>
+                                                <bdi><span class="price-amount new-price">$8.23</span></bdi>
+                                            </ins>
+                                        </div>
+                                        <div class="product-fade-block">
+                                            <div class="product-button-group">
+                                                <div class="quantity">
+                                                    <div class="quantity-btn minus">
+                                                        <a class="btn-plus">
+                                                            <i style="color:black" class="fa-solid fa-minus"></i>
+                                                        </a>
+                                                    </div>
+                                                    <input style="border-left: 0px;border-right:0px" type="text"
+                                                           class="quantity-counter" name="quantity" min="0" max="57"
+                                                           step="1" value="1" />
+                                                    <div class="quantity-btn plus">
+                                                        <a class="btn-minus">
+                                                            <i style="color: black;" class="fa-solid fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <a class="btn btn-primary">Add To Card</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</main>
+

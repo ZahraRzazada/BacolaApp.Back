@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DTOS\" />
+    <None Remove="Entities\" />
+    <None Remove="Entities\BaseEntities\" />
+    <None Remove="Repositories\" />
+    <None Remove="DTOS\Blog\" />
+    <None Remove="DTOS\Tag\" />
+    <None Remove="DTOS\Category\" />
+    <None Remove="DTOS\Brand\" />
+    <None Remove="DTOS\Product\" />
+    <None Remove="Repositories\Generic\" />
+    <None Remove="DTOS\HomeSlider\" />
+    <None Remove="DTOS\Setting\" />
+    <None Remove="DTOS\Contact\" />
+    <None Remove="DTOS\Account\" />
+    <None Remove="DTOS\Basket\" />
+    <None Remove="DTOS\Wishlist\" />
+    <None Remove="DTOS\Order\" />
+    <None Remove="DTOS\Coupon\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTOS\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Entities\BaseEntities\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="DTOS\Blog\" />
+    <Folder Include="DTOS\Tag\" />
+    <Folder Include="DTOS\Category\" />
+    <Folder Include="DTOS\Brand\" />
+    <Folder Include="DTOS\Product\" />
+    <Folder Include="Repositories\Generic\" />
+    <Folder Include="DTOS\HomeSlider\" />
+    <Folder Include="DTOS\Setting\" />
+    <Folder Include="DTOS\Contact\" />
+    <Folder Include="DTOS\Account\" />
+    <Folder Include="DTOS\Basket\" />
+    <Folder Include="DTOS\Wishlist\" />
+    <Folder Include="DTOS\Order\" />
+    <Folder Include="DTOS\Coupon\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.25" />
+  </ItemGroup>
+</Project>

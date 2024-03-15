@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TagGetDto>
+<!-- Container-fluid starts-->
+<div class="page-body">
+    <!-- All User Table Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="title-header option-title">
+                            <h5>All Category</h5>
+                            <form class="d-inline-flex">
+                                <a asp-action="create"
+                                   class="align-items-center btn btn-theme d-flex">
+                                    <i data-feather="plus-square"></i>Add New
+                                </a>
+                            </form>
+                        </div>
+
+                        <div class="table-responsive category-table">
+                            <div>
+                                <table class="table all-package theme-table" id="table_id">
+                                    <thead>
+                                        <tr>
+                                            <th>Tag Id</th>
+                                            <th>Tag Name</th>
+                                            <th>Date</th>
+                                            <th>Options</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (TagGetDto item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.CreatedAt.ToString("dd.MM.yyyy")</td>
+                                                <td>
+                                                    <a onclick="return confirm('are you sure?')" asp-action="remove" asp-route-id="@item.Id" class="badge badge-danger">Remove</a>
+                                                    <a asp-action="update" asp-route-id="@item.Id" class="badge badge-warning">Update</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- All User Table Ends-->
+

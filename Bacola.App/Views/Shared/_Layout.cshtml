@@ -1,0 +1,781 @@
+﻿@inject CategoryService _categoryService
+@{
+
+    var categories = await _categoryService.GetAllAsync();
+}
+@inject ProductService _productService
+@{
+
+    var products = await _productService.GetAllAsync();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bacola</title>
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets/css/common.css">
+    <link rel="stylesheet" href="~/assets/css/blog.css">
+    <link rel="stylesheet" href="~/assets/css/about.css">
+    <link rel="stylesheet" href="~/assets/css/cart.css">
+    <link rel="stylesheet" href="~/assets/css/checkout.css">
+    <link rel="stylesheet" href="~/assets/css/contact.css">
+    <link rel="stylesheet" href="~/assets/css/home.css">
+    <link rel="stylesheet" href="~/assets/css/login.css">
+    <link rel="stylesheet" href="~/assets/css/ordertracking.css">
+    <link rel="stylesheet" href="~/assets/css/register.css">
+    <link rel="stylesheet" href="~/assets/css/resetp.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/shop.css">
+
+  <style>
+      .custom-alert-style {
+          font-size: 1.5rem !important;
+          color: #007bff !important; 
+          background-color: white !important;
+      }
+
+  </style>
+</head>
+<body>
+    @foreach (var item in products)
+
+    {
+        <div id="@item.Id" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <!-- <i class="fa-solid fa-xmark"></i> -->
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <section id="Productcart">
+                            <div class="container">
+
+                                <div class="single-wrapper">
+                                    <div class="product-header">
+                                        <h1 class="product_title entry-title">
+                                            @item.Title
+                                        </h1>
+                                        <div class="bottom">
+                                            <div class="product-brand">
+                                                <p>
+                                                    Brands <span>@item.Brand.Name</span>
+                                                </p>
+                                            </div>
+                                            <div class="star-rating">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <span>1 review</span>
+                                            </div>
+                                            <div class="sku-wrapper">
+                                                <span class="first">SKU: <span>ZU49VOR</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-body">
+                                        <div class="row">
+                                            <div class="col-lg-6 product-slid">
+
+                                                <div class="main-img">
+                                                    @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
+                                                    {
+                                                        <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
+                                                    }
+                                                    @foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                                    {
+                                                        <img src="~/assets/img/product/@item2.Image" alt="">
+                                                    }
+                                                </div>
+                                                <div class="addition-img">
+                                                    @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
+                                                    {
+                                                        <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
+                                                    }
+                                                    @foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                                    {
+                                                        <img src="~/assets/img/product/@item2.Image" alt="">
+                                                    }
+                                                </div>
+
+                                            </div>
+                                            <div class="col col-12 col-lg-6 product-detail">
+                                                <p class="price">
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>@item.Price
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>@item.DiscountPrice
+                                                        </span>
+                                                    </ins>
+                                                </p>
+                                                <div class="product-meta">
+                                                    <div class="stock product-available in-stock">
+                                                        <span class="stock in-stock">
+                                                            @if (@item.InStock == true)
+                                                            {
+                                                                <span class="stock in-stock">In Stock</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="stock in-stock">Is Not In Stock</span>
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    @item.Info
+                                                </p>
+                                                <form class="cart single-ajax"
+                                                      action="https://klbtheme.com/bacola/product/all-natural-italian-style-chicken-meatballs/"
+                                                      method="post" enctype="multipart/form-data">
+
+                                                    <div class="quantity">
+                                                        <label class="screen-reader-text" for="quantity_65ca19e5d5c09">
+                                                            @item.Title
+                                                        </label>
+                                                        <div class="quantity-button minus">
+                                                            <i class="fa-solid fa-minus"></i>
+                                                        </div>
+                                                        <input type="text" id="quantity_65ca19e5d5c09"
+                                                               class="input-text qty text" name="quantity" value="1"
+                                                               aria-label="Product quantity" size="4" min="1" max="61" step="1"
+                                                               placeholder="" inputmode="numeric" autocomplete="off">
+                                                        <div class="quantity-button plus">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </div>
+                                                    </div>
+
+                                                    <button type="submit" name="add-to-cart" value="430"
+                                                            class="single_add_to_cart_button button alt">
+                                                        Add to cart
+                                                    </button>
+
+                                                </form>
+
+                                                <div class="product-actions">
+                                                    <div class="tinv-wraper woocommerce tinv-wishlist tinvwl-shortcode-add-to-cart tinvwl-woocommerce_single_product_summary"
+                                                         data-tinvwl_product_id="430">
+                                                        <div class="tinv-wishlist-clear"></div><a role="button" tabindex="0"
+                                                                                                  name="add-to-wishlist" aria-label="Add to Wishlist"
+                                                                                                  class="tinvwl_add_to_wishlist_button tinvwl-icon-heart tinvwl-position-shortcode tinvwl-product-in-list"
+                                                                                                  data-tinv-wl-list="{&quot;5603&quot;:{&quot;ID&quot;:5603,&quot;title&quot;:&quot;Default wishlist&quot;,&quot;status&quot;:&quot;share&quot;,&quot;share_key&quot;:&quot;6e6cc1&quot;,&quot;in&quot;:[0]}}"
+                                                                                                  data-tinv-wl-product="430" data-tinv-wl-productvariation="0"
+                                                                                                  data-tinv-wl-productvariations="[]"
+                                                                                                  data-tinv-wl-producttype="simple"
+                                                                                                  data-tinv-wl-action="addto">
+                                                            <span class="tinvwl_add_to_wishlist-text">
+                                                                <i class="fa-solid fa-heart"></i>Add to Wishlist
+                                                            </span>
+                                                        </a>
+                                                        <div class="tinv-wishlist-clear"></div>
+                                                        <div class="d-none tinvwl-tooltip">Add to Wishlist</div>
+                                                    </div>
+                                                    <button class="woosc-btn woosc-btn-430 " data-id="430"
+                                                            data-product_name="All Natural Italian-Style Chicken Meatballs"
+                                                            data-product_image="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62-150x150.jpg">
+                                                        <i class="fa-solid fa-code-compare"></i>Compare
+                                                    </button>
+                                                </div>
+
+                                                <div class="product-checklist">
+                                                    <ul>
+                                                        <li>
+                                                            <i class="fa-solid fa-check"></i>Type: @if (item.IsOrganic == true)
+                                                            {
+                                                                <span>Organic</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>Non-Organic</span>
+                                                            }
+                                                        </li>
+                                                        <li><i class="fa-solid fa-check"></i>MFG: Jun 4.2021</li>
+                                                        <li><i class="fa-solid fa-check"></i>LIFE: 30 days</li>
+                                                    </ul>
+                                                </div>
+                                                <p class="p1">Category: <span>@item.Category.Name</span></p>
+                                                @*<p class="p2">Tags: <span>@foreach(var item2 in item.TagProducts)
+                                                    {
+
+                                                    }</span></p>*@
+
+                                                <div class="product-share">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="https://www.facebook.com/" class="facebook">
+                                                                <i class="fa-brands fa-facebook"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://twitter.com/home" class="twitter">
+                                                                <i class="fa-brands fa-twitter"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://pinterest.com/" class="pinterest">
+                                                                <i class="fa-brands fa-pinterest"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://www.linkedin.com/" class="linkedin">
+                                                                <i class="fa-brands fa-linkedin"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://www..com/" class="redit">
+                                                                <i class="fa-brands fa-reddit-alien"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://www..com/" class="vhats">
+                                                                <i class="fa-brands fa-whatsapp"></i>
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <a href="/home.html">
+        <i id="Up" class="fa-solid fa-chevron-up"></i>
+    </a>
+    <!--Header Start  -->
+    <div class="store-notice">
+        <div class="container">
+            Due to the
+            <strong>COVID 19</strong>
+            epidemic, orders may be processed with a slight delay
+        </div>
+    </div>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="columncolumn-left">
+                    <nav class="site-menu horizontal">
+                        <ul class="menu-top-left">
+                            <li><a href="/about.html">About Us</a></li>
+                            <li><a href="/login.html">My Account</a></li>
+                            <li><a href="/wishlist.html">Wishlist</a></li>
+                            <li><a href="/order-tracking.html">Order Tracking</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="columncolumn-right">
+                    <div class="top-notice">
+                        <i class="fa-brands fa-airbnb"></i>
+                        <span>100% Secure delivery without contacting the courier</span>
+                    </div>
+                    <div class="text-content">
+                        Need help? Call Us:
+                        <a href="tel:0020500">
+                            <strong style="color: #2bbef9">+ 0020 500</strong>
+                        </a>
+                    </div>
+                    <div class="header-switchers">
+                        <nav class="store-language site-menu horizontal">
+                            <ul id="menu-top-right-1" class="menu">
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1832">
+                                    <a href="#">English <i class="fa-solid fa-chevron-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1838">
+                                            <a href="#">English</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1833">
+                                            <a href="#">Spanish</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1834">
+                                            <a href="#">German</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item2 menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1835">
+                                    <a href="#">USD <i class="fa-solid fa-chevron-down"></i></a>
+                                    <ul class="sub-menu2 ">
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1839">
+                                            <a href="#">USD</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1836">
+                                            <a href="#">INR</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1837">
+                                            <a href="#">GBP</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-main">
+            <div class="container">
+                <div class="columncolumn-left">
+                    <a href="/home.html">
+                        <img class="desktop-logo hide-mobile" src="~/assets/img/logo/bacola-logo.png"
+                             alt="Bacola – Grocery Market and Food Theme">
+                        <img class="d-none mobile-logo hide-desktop" src="~/assets/img/logo/bacola-logo-mobile.png"
+                             alt="Bacola – Grocery Market and Food Theme">
+                        <span class="dsply">Online Grocery Shopping Center</span>
+                    </a>
+                </div>
+                <div class="columncolumn-center">
+                    <div class="header-location">
+                        <a href="#">
+                            <span class="location-description">Your Location</span>
+                            <div class="current-location">Select a Location</div>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </a>
+                    </div>
+                    <div class="header-search">
+                        <form class="search-form" role="search" method="get" id="searchform">
+                            <input type="search" value="" name="s" placeholder="Search for products..."
+                                   autocomplete="off">
+                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <input type="hidden" name="post_type" value="product">
+                        </form>
+                    </div>
+                </div>
+                <div class="columncolumn-right">
+
+                    <div class="header-cart">
+                        <a href="">
+                            <div class="user-icon">
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <div class="cart-price">
+                                <span>$100</span>
+                            </div>
+
+                            <a asp-controller="shop" asp-action="Basket">
+                                <div class="button-icon">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                </div>
+                            </a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-nav">
+            <div style="justify-content:space-between" class="container">
+                <button class="toggle-btn" onclick="toggleDiv()" style="background-color: transparent;border:none;">
+                    <div class="all-categories">
+                        <a data-toggle="collapse" data-target="#all-categories" aria-expanded="false"
+                           class="collapsed">
+                            <i class="fa-solid fa-list"></i>
+                            <span class="text">ALL CATEGORIES</span>
+                            <div class="description">TOTAL 63 PRODUCTS</div>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-category">
+
+                            <ul class="menu-sidebar-menu-1">
+                                @foreach (var item in categories)
+                                {
+                                    @if (item.ParentCategoryId == null)
+                                    {
+                                        <li class="category-parent parent  menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children">
+                                            <a class="da zhr" href="/">
+                                                <i class="fa-regular fa-lemon"></i>@item.Name<i style="font-size:10px;     padding-left: 0.625rem;
+                margin-left: auto;" class="fa-solid fa-chevron-right"></i>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                @foreach (var item2 in item.Subcategories)
+                                                {
+
+                                                    <li class="category-child  menu-item menu-item-type-taxonomy menu-item-object-product_cat">
+                                                        <a class="da" href="/">@item2.Name</a>
+                                                    </li>
+
+                                                }
+                                            </ul>
+                                        </li>
+
+                                    }
+
+                                }
+                                <li class="link-parent1  menu-item menu-item-type-custom menu-item-object-custom">
+                                    <a class="da">
+                                        <i class="bottom"></i> Value of the Day
+                                    </a>
+                                </li>
+                                <li class="link-parent  menu-item menu-item-type-custom menu-item-object-custom">
+                                    <a class="da">
+                                        <i class="bottom"></i> Top 100 Offers
+                                    </a>
+                                </li>
+                                <li class="link-parent  menu-item menu-item-type-custom menu-item-object-custom">
+                                    <a class="da">
+                                        <i class="bottom"></i> New
+                                        Arrivals
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </button>
+                <nav class="site-menu primary-menu horizontal">
+                    <ul id="menu-menu-2" class="menu">
+                        <li class=" dropdown  menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children">
+                            <a class="active" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="dropdown2 mega-menu menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
+                            <a class="dropdown2a" asp-controller="Shop" asp-action="Index">Shop <i class="fa-solid fa-chevron-down"></i></a>
+                            <div class="dropdowns">
+                                <div class="dropdowns2">
+                                    <div class="firts">
+                                        <a style="color: #233a95; font-weight:600;font-size :15px" href="">
+                                            Shop
+                                            Lists
+                                        </a>
+                                        <a href=""><span>Shop Deafult</span></a>
+                                        <a href=""><span>Shop Right Sidebar</span></a>
+                                        <a href=""><span>Shop Wide</span></a>
+                                        <a href=""><span>Shop Left Sidebar</span></a>
+                                        <a href=""><span>Shop More Buttons</span></a>
+                                        <a href=""><span>Infinite Scrolling</span></a>
+                                    </div>
+                                    <div class="firts">
+                                        <a style="color: #233a95; font-weight:600;font-size :15px" href="">
+                                            Product
+                                            Detail
+                                        </a>
+                                        <a href=""><span>Product Deafult</span></a>
+                                        <a href=""><span>Product Variable</span></a>
+                                        <a href=""><span>Product Grouped</span></a>
+                                        <a href=""><span>Product External</span></a>
+                                        <a href=""><span>Product Downtable</span></a>
+                                        <a href=""><span>Product with Video</span></a>
+                                    </div>
+                                    <div class="firts">
+                                        <a style="color: #233a95; font-weight:600;font-size :15px" href="">
+                                            Product
+                                            Types
+                                        </a>
+                                        <a href=""><span>Single Type 1</span></a>
+                                        <a href=""><span>Single Type 2</span></a>
+                                        <a href=""><span>Single Type 3</span></a>
+                                        <a href=""><span>Single Type 4</span></a>
+                                        <a href=""><span>Thubnails Left </span></a>
+                                        <a href=""><span>Zoom Image</span></a>
+                                    </div>
+                                    <div class="firts">
+                                        <a style="color: #233a95; font-weight:600;font-size :15px" href="">
+                                            Shop
+                                            Pages
+                                        </a>
+                                        <a asp-controller="shop" asp-action="Basket" ><span>Cart</span></a>
+                                        <a asp-controller="shop" asp-action="Checkout"><span>Checkout</span></a>
+                                        <a asp-controller="account" asp-action="login"><span>My Account</span></a>
+                                        <a asp-controller="shop" asp-action="Wishlist"><span>WishList</span></a>
+                                        <a asp-controller="shop" asp-action="OrderTracking"><span>Order Tracking </span></a>
+                                        <a href=""><span>Order on Telegram</span></a>
+                                    </div>
+                                    <div class="firts">
+                                        <a style="color: #233a95; font-weight:600;font-size :15px" href="">
+                                            Shop
+                                            Layouts
+                                        </a>
+                                        <a href=""><span>Two Columns</span></a>
+                                        <a href=""><span>Three Columns Wide</span></a>
+                                        <a href=""><span>Three Columns</span></a>
+                                        <a href=""><span>Four Columns Wide</span></a>
+                                        <a href=""><span>Four Columns</span></a>
+                                        <a href=""><span>Five Columns Wide</span></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown  menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children">
+                            <a asp-controller="About" asp-action="Index">About</a>
+                        </li>
+                        <li class="dropdown  menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children">
+                            <a asp-controller="Blog" asp-action="Index">Blog</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+                        {
+                            <li class="dropdown1 mega-menu menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
+                                <a class="dropdown1a" asp-controller="account" asp-action="update">
+                                    <i style="margin-right: 10px;color:#3e445a;font-size:18px"
+                                       class="fa-regular fa-user"></i> @User.Identity.Name <i class="fa-solid fa-chevron-down"></i>
+                                </a>
+                                <div class="reg">
+                                    <a style=" margin-top: 15px;" asp-controller="Account" asp-action="logout"><span>Logout</span></a>
+                                    <a asp-controller="Account" asp-action="update"><span>Update</span></a>
+                                </div>
+                            </li>
+                        }
+
+                        else
+                        {
+                            <li class="dropdown1 mega-menu menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
+                                <a class="dropdown1a" href="">
+                                    <i style="margin-right: 10px;color:#3e445a;font-size:18px"
+                                       class="fa-regular fa-user"></i> Login / Register <i class="fa-solid fa-chevron-down"></i>
+                                </a>
+                                <div class="reg">
+                                    <a style=" margin-top: 15px;" asp-controller="Account" asp-action="Login"><span>Login</span></a>
+                                    <a asp-controller="Account" asp-action="Register"><span>Register</span></a>
+                                </div>
+                            </li>
+
+                        }
+
+                        <li class="dropdown  menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home current-menu-ancestor current-menu-parent menu-item-has-children">
+                            <a asp-controller="Contact" asp-action="Index">
+                                <i style="margin-right: 10px;color:#3e445a;font-size:18px"
+                                   class="fa-solid fa-mobile-screen"></i> Contact
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+    @RenderBody()
+
+    <!-- Footer Start -->
+    <footer>
+        <div class="footer-subscribe">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-5">
+                        <div class="subscribe-content">
+                            <h6>$20 discount for your first order</h6>
+                            <h3>Join our newsletter and get...</h3>
+
+                            <div class="subscribe-title">
+                                <p>Join our email subscription now to get updates on promotions and coupons.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-635" method="post" data-id="635" data-name="Bacola">
+                                    <div class="form-field">
+                                        <i class="fa-regular fa-envelope"></i>
+                                        <input class="subscribe-input" type="email" name="EMAIL" placeholder="Your email address" required="">
+                                        <input class="btn" type="submit" value="Subscribe">
+                                    </div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off"></label><input type="hidden" name="_mc4wp_timestamp" value="1707291566"><input type="hidden" name="_mc4wp_form_id" value="635"><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1"><div class="mc4wp-response"></div>
+                                </form><!-- / Mailchimp for WordPress Plugin -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-7">
+                        <div class="subscribe-image">
+                            <img src="~/assets/img/footer/coupon.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-iconboxes">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-12 col-md-6 col-lg-3">
+                        <div class="iconbox">
+                            <div class="iconbox-icon"><i class="fa-regular fa-money-bill-1"></i></div>
+                            <div class="iconbox-detail">
+                                <span>Everyday fresh products</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-md-6 col-lg-3">
+                        <div class="iconbox">
+                            <div class="iconbox-icon"><i class="fa-regular fa-money-bill-1"></i></div>
+                            <div class="iconbox-detail">
+                                <span>Everyday fresh products</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-md-6 col-lg-3">
+                        <div class="iconbox">
+                            <div class="iconbox-icon"><i class="fa-regular fa-money-bill-1"></i></div>
+                            <div class="iconbox-detail">
+                                <span>Everyday fresh products</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-md-6 col-lg-3">
+                        <div class="iconbox">
+                            <div class="iconbox-icon"><i class="fa-regular fa-money-bill-1"></i></div>
+                            <div class="iconbox-detail">
+                                <span>Everyday fresh products</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-12 col-lg-3 col-five">
+                        <div class="klbfooterwidget widget widget_nav_menu">
+                            <h4 class="widget-title">FRUIT &amp; VEGETABLES</h4><div class="menu-fruits-and-vegetables-container">
+                                <ul id="menu-fruits-and-vegetables" class="menu">
+                                    <li id="menu-item-1798" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1798"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-vegetables/">Fresh Vegetables</a></li>
+                                    <li id="menu-item-1799" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1799"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/herbs-seasonings/">Herbs &amp; Seasonings</a></li>
+                                    <li id="menu-item-1797" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1797"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-fruits/">Fresh Fruits</a></li>
+                                    <li id="menu-item-1795" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1795"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/cuts-sprouts/">Cuts &amp; Sprouts</a></li>
+                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1796"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/exotic-fruits-veggies/">Exotic Fruits &amp; Veggies</a></li>
+                                    <li id="menu-item-1800" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1800"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/packaged-produce/">Packaged Produce</a></li>
+                                    <li id="menu-item-1801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1801"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/party-trays/">Party Trays</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-lg-3 col-five">
+                        <div class="klbfooterwidget widget widget_nav_menu">
+                            <h4 class="widget-title">FRUIT &amp; VEGETABLES</h4><div class="menu-fruits-and-vegetables-container">
+                                <ul id="menu-fruits-and-vegetables" class="menu">
+                                    <li id="menu-item-1798" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1798"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-vegetables/">Fresh Vegetables</a></li>
+                                    <li id="menu-item-1799" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1799"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/herbs-seasonings/">Herbs &amp; Seasonings</a></li>
+                                    <li id="menu-item-1797" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1797"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-fruits/">Fresh Fruits</a></li>
+                                    <li id="menu-item-1795" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1795"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/cuts-sprouts/">Cuts &amp; Sprouts</a></li>
+                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1796"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/exotic-fruits-veggies/">Exotic Fruits &amp; Veggies</a></li>
+                                    <li id="menu-item-1800" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1800"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/packaged-produce/">Packaged Produce</a></li>
+                                    <li id="menu-item-1801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1801"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/party-trays/">Party Trays</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-lg-3 col-five">
+                        <div class="klbfooterwidget widget widget_nav_menu">
+                            <h4 class="widget-title">FRUIT &amp; VEGETABLES</h4><div class="menu-fruits-and-vegetables-container">
+                                <ul id="menu-fruits-and-vegetables" class="menu">
+                                    <li id="menu-item-1798" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1798"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-vegetables/">Fresh Vegetables</a></li>
+                                    <li id="menu-item-1799" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1799"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/herbs-seasonings/">Herbs &amp; Seasonings</a></li>
+                                    <li id="menu-item-1797" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1797"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-fruits/">Fresh Fruits</a></li>
+                                    <li id="menu-item-1795" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1795"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/cuts-sprouts/">Cuts &amp; Sprouts</a></li>
+                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1796"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/exotic-fruits-veggies/">Exotic Fruits &amp; Veggies</a></li>
+                                    <li id="menu-item-1800" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1800"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/packaged-produce/">Packaged Produce</a></li>
+                                    <li id="menu-item-1801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1801"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/party-trays/">Party Trays</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-lg-3 col-five">
+                        <div class="klbfooterwidget widget widget_nav_menu">
+                            <h4 class="widget-title">FRUIT &amp; VEGETABLES</h4><div class="menu-fruits-and-vegetables-container">
+                                <ul id="menu-fruits-and-vegetables" class="menu">
+                                    <li id="menu-item-1798" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1798"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-vegetables/">Fresh Vegetables</a></li>
+                                    <li id="menu-item-1799" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1799"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/herbs-seasonings/">Herbs &amp; Seasonings</a></li>
+                                    <li id="menu-item-1797" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1797"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-fruits/">Fresh Fruits</a></li>
+                                    <li id="menu-item-1795" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1795"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/cuts-sprouts/">Cuts &amp; Sprouts</a></li>
+                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1796"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/exotic-fruits-veggies/">Exotic Fruits &amp; Veggies</a></li>
+                                    <li id="menu-item-1800" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1800"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/packaged-produce/">Packaged Produce</a></li>
+                                    <li id="menu-item-1801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1801"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/party-trays/">Party Trays</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-12 col-lg-3 col-five">
+                        <div class="klbfooterwidget widget widget_nav_menu">
+                            <h4 class="widget-title">FRUIT &amp; VEGETABLES</h4><div class="menu-fruits-and-vegetables-container">
+                                <ul id="menu-fruits-and-vegetables" class="menu">
+                                    <li id="menu-item-1798" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1798"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-vegetables/">Fresh Vegetables</a></li>
+                                    <li id="menu-item-1799" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1799"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/herbs-seasonings/">Herbs &amp; Seasonings</a></li>
+                                    <li id="menu-item-1797" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1797"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/fresh-fruits/">Fresh Fruits</a></li>
+                                    <li id="menu-item-1795" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1795"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/cuts-sprouts/">Cuts &amp; Sprouts</a></li>
+                                    <li id="menu-item-1796" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1796"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/exotic-fruits-veggies/">Exotic Fruits &amp; Veggies</a></li>
+                                    <li id="menu-item-1800" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1800"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/packaged-produce/">Packaged Produce</a></li>
+                                    <li id="menu-item-1801" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1801"><a href="https://klbtheme.com/bacola/product-category/fruits-vegetables/party-trays/">Party Trays</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <div class="container">
+                <div class="columncolumn-left">
+                    <div class="site-phone">
+                        <div class="site-icon">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div class="sit-nom">
+                            <h4 class="entry-title">8 800 555-55</h4>
+                            <span>Working 8:00 - 22:00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="columncolumn-right">
+                    <div class="site-app">
+                        <div class="content">
+                            <h6 class="entry-title">Download App on Mobile :</h6>
+                            <span>15% discount on your first purchase</span>
+                        </div>
+                        <div class="buttons">
+                            <a href="https://play.google.com/store" class="google-play">
+                                <img src="~/assets/img/footer/google-play.png" alt="app">
+                            </a>
+                            <a href="https://www.apple.com/app-store/" class="google-play">
+                                <img src="~/assets/img/footer/app-store.png" alt="app">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="site-social">
+                        <ul>
+                            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="right">
+                    <p>Copyright 2023 © Bacola WordPress Theme. All rights reserved. Powered by KlbTheme.</p>
+                </div>
+                <nav class="site-menu footer-menu">
+                    <ul id="menu-footer-menu" class="menu">
+                        <li id="menu-item-1889" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-1889"><a rel="privacy-policy" href="https://klbtheme.com/bacola/privacy-policy/">Privacy Policy</a></li>
+                        <li id="menu-item-2066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2066"><a href="https://klbtheme.com/bacola/terms-and-conditions/">Terms and Conditions</a></li>
+                        <li id="menu-item-1844" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1844"><a href="#">Cookie</a></li>
+                    </ul>
+                </nav>
+                <div class="site-payments">
+                    <a href="#">
+                        <img src="~/assets/img/footer/payments.jpg" alt="payment">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    <script src="~/assets/js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,37 @@
+﻿@model BrandPostDto
+<div class="page-body">
+    <!-- New Product Add Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-8 m-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-header-2">
+                                    <h5>Brand Information</h5>
+                                </div>
+
+                                <form method="post">
+                                    <div class="alert alert-info" asp-validation-summary="ModelOnly"></div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="Name" class="form-label-title col-sm-3 mb-0">Brand Name</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Name" class="form-control" type="text" placeholder="Brand Name">
+                                            <span class="text text-danger" asp-validation-for="Name"></span>
+                                        </div>
+                                    </div>
+                                      <div style="display:flex;justify-content:space-around" class="buttons">
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <button class="btn btn-light">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- New Product Add End -->

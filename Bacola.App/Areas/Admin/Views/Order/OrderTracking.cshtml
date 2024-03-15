@@ -1,0 +1,46 @@
+﻿@model IEnumerable<OrderGetDto>
+<div class="page-body">
+    <!-- All User Table Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <div class="title-header option-title">
+                            <h5>All Orders</h5>
+                        </div>
+
+                        <div class="table-responsive category-table">
+                            <div>
+                                <table class="table all-package theme-table" id="table_id">
+                                    <thead>
+                                        <tr>
+                                            <th>Order Id</th>
+                                            <th>Order Status</th>
+                                            <th>Operations</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (OrderGetDto item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@((Bacola.Core.Enums.OrderTracking)item.OrderTracking)</td>
+                                                <td>
+                                                    <a asp-action="PreProduction" asp-route-id="@item.Id" class="badge badge-warning">PreProduction</a>  <a asp-action="InProduction" asp-route-id="@item.Id" class="badge badge-primary">InProduction</a>
+                                                    <a asp-action="Shipped" asp-route-id="@item.Id" class="badge badge-warning">Shipped</a>  <a asp-action="Delivered" asp-route-id="@item.Id" class="badge badge-success">Delivered</a>
+                                                    <a asp-action="Detail" asp-route-id="@item.Id" class="badge badge-primary">Detail</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

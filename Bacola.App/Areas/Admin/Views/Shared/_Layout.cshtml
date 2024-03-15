@@ -1,0 +1,594 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Fastkart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+    <meta name="keywords"
+          content="admin template, Fastkart admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <!-- <link rel="icon" href="~/admin/assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/admin/assets/favicon.png" type="image/x-icon"> -->
+    <title>Bacola - Dashboard</title>
+
+    <!-- Google font-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+          href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+
+    <!-- Linear Icon css -->
+    <link rel="stylesheet" href="~/admin/assets/css/linearicon.css">
+
+    <!-- fontawesome css -->
+    @*<link rel="stylesheet" type="text/css" href="~/admin/assets/css/vendors/font-awesome.css">*@
+
+    <!-- Themify icon css-->
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/vendors/themify.css">
+
+    <!-- ratio css -->
+    @*<link rel="stylesheet" type="text/css" href="~/admin/assets/css/ratio.css">*@
+
+    <!-- remixicon css -->
+    @*<link rel="stylesheet" type="text/css" href="~/admin/assets/css/remixicon.css">*@
+
+    <!-- Feather icon css-->
+    @*<link rel="stylesheet" type="text/css" href="~/admin/assets/css/vendors/feather-icon.css">*@
+
+    <!-- Plugins css -->
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/vendors/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/vendors/animate.css">
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/vendors/bootstrap.css">
+
+    <!-- vector map css -->
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/vector-map.css">
+
+    <!-- Slick Slider Css -->
+    <link rel="stylesheet" href="~/admin/assets/css/vendors/slick.css">
+
+    <!-- App css -->
+    <link rel="stylesheet" href="~/admin/assets/css/zahra.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- tap on top start -->
+    <div class="tap-top">
+        <span class="lnr lnr-chevron-up"></span>
+    </div>
+    <!-- tap on tap end -->
+    <!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+        <!-- Page Header Start-->
+        <div class="page-header">
+            <div class="header-wrapper m-0">
+                <div class="header-logo-wrapper p-0">
+                    <div class="logo-wrapper">
+                        <a href="index.html">
+                            <img class="img-fluid main-logo" src="~/admin/assetsimages/logo/bacola-logo.png" alt="logo">
+                            <img class="img-fluid white-logo" src="~/admin/assetsimages/logo/bacola-logo.png" alt="logo">
+                        </a>
+                    </div>
+                    <div class="toggle-sidebar">
+                        <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
+                        <a href="index.html">
+                            <img src="" class="img-fluid" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <form class="form-inline search-full" action="javascript:void(0)" method="get">
+                    <div class="form-group w-100">
+                        <div class="Typeahead Typeahead--twitterUsers">
+                            <div class="u-posRelative">
+                                <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
+                                       placeholder="Search Fastkart .." name="q" title="" autofocus>
+
+                                <div class="spinner-border Typeahead-spinner" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="Typeahead-menu"></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="nav-right col-6 pull-right right-header p-0">
+                    <ul class="nav-menus">
+                        <li>
+                            <span class="header-search">
+                                <i class="ri-search-line"></i>
+                            </span>
+                        </li>
+                        <li class="onhover-dropdown">
+                            <div class="notification-box">
+                                <i class="fa-solid fa-bell"></i>
+                                <span class="badge rounded-pill badge-theme">4</span>
+                            </div>
+                            <ul class="notification-dropdown onhover-show-div">
+                                <li>
+                                    <i class="ri-notification-line"></i>
+                                    <h6 class="f-18 mb-0">Notitications</h6>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-circle me-2 font-primary"></i>Delivery processing <span class="pull-right">10 min.</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-circle me-2 font-success"></i>Order Complete<span class="pull-right">1 hr</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-circle me-2 font-info"></i>Tickets Generated<span class="pull-right">3 hr</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <i class="fa fa-circle me-2 font-danger"></i>Delivery Complete<span class="pull-right">6 hr</span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <a class="btn btn-primary" href="javascript:void(0)">Check all notification</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="mode">
+                                <i class="fa-solid fa-moon"></i>
+                            </div>
+                        </li>
+                        <li class="profile-nav onhover-dropdown pe-0 me-0">
+                            <div class="media profile-media">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <img class="user-profile rounded-circle" src="~/admin/assets/images/users/4.jpg" alt="">
+                                    <span class="mb-1 mt-3 font-weight-semibold">@User.Identity.Name</span>
+                                }
+                            </div>
+                            <ul class="profile-dropdown onhover-show-div">
+                                <li>
+                                    <a asp-controller="account" asp-action="GetAllUsers">
+                                        <i data-feather="users"></i>
+                                        <span>Users</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="order-list.html">
+                                        <i data-feather="archive"></i>
+                                        <span>Orders</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="profile-setting.html">
+                                        <i data-feather="settings"></i>
+                                        <span>Settings</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="account" asp-action="update">
+                                        <i data-feather="archive"></i>
+                                        <span>Update</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                       asp-controller="account" asp-action="logout">
+                                        <i data-feather="log-out"></i>
+                                        <span>Log out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                         </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header Ends-->
+        <!-- Page Body Start-->
+        <div class="page-body-wrapper">
+            <!-- Page Sidebar Start-->
+            <div class="sidebar-wrapper">
+                <div id="sidebarEffect"></div>
+                <div>
+                    <div class="logo-wrapper logo-wrapper-center">
+                        <a asp-controller="Home" asp-action="Index" style="color: white;font-size:30px;font-weight:700;margin:0px;padding:0px"  data-bs-original-title="" title="">
+                            Bacola
+                          
+                        </a>
+                        <div class="back-btn">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="toggle-sidebar">
+                            <i class="ri-apps-line status_toggle middle sidebar-toggle"></i>
+                        </div>
+                    </div>
+                    <div class="logo-icon-wrapper">
+                        <a href="index.html">
+                            <img class="img-fluid main-logo main-white" src="~/admin/assets/images/logo/logo.png" alt="logo">
+                            <img class="img-fluid main-logo main-dark" src="~/admin/assets/images/logo/logo-white.png"
+                                 alt="logo">
+                        </a>
+                    </div>
+                    <nav class="sidebar-main">
+                        <div class="left-arrow" id="left-arrow">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+
+                        <div id="sidebar-menu">
+                            <ul class="sidebar-links" id="simple-bar">
+                                <li class="back-btn"></li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="index.html">
+                                        <i class="fa-regular fa-chart-bar"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-solid fa-list"></i>
+                                        <span>Product</span>
+                                        <i style="margin-left: 97px;" class="fa-solid fa-chevron-right"></i>
+
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Product" asp-action="index">Products List </a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-controller="Product" asp-action="create">Add New Product</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                        <span>Blog</span>
+                                        <i style="margin-left: 120px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Blog" asp-action="index">Blogs List </a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-controller="Blog" asp-action="create">Add New Blog</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-solid fa-compress"></i>
+                                        <span>Category</span>
+                                        <i style="margin-left: 90px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Category" asp-action="index">Categories List </a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-controller="Category" asp-action="create">Add New Category</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                        <span>Tag</span>
+                                        <i style="margin-left: 125px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Tag" asp-action="index">Tags List </a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-controller="Tag" asp-action="create">Add New Tag</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-solid fa-compress"></i>
+                                        <span>Brand</span>
+                                        <i style="margin-left: 110px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Brand" asp-action="index">Brands List </a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-controller="Brand" asp-action="create">Add New Brand</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-solid fa-list"></i>
+                                        <span>HomeSlider</span>
+                                        <i style="margin-left: 70px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="HomeSlider" asp-action="index">Slider List </a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-controller="HomeSlider" asp-action="Create">Add New Slider</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-solid fa-gear"></i>
+                                        <span>Setting</span>
+                                        <i style="margin-left: 100px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Setting" asp-action="index">Setting List </a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-controller="Setting" asp-action="create">Add New Setting</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span>Contact</span>
+                                        <i style="margin-left: 95px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Contact" asp-action="index">Contact List </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-regular fa-user"></i>
+                                        <span>Users</span>
+                                        <i style="margin-left: 113px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Account" asp-action="GetAllUsers">All users</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-regular fa-user"></i>
+                                        <span>Admins</span>
+                                        <i style="margin-left: 100px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Account" asp-action="GetAllAdmins">All Admins</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="Account" asp-action="CreateAdmin">Add new Admin</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                @*<li class="sidebar-list">
+            <a class="sidebar-link sidebar-title link-nav" href="media.html">
+                <i class="fa-solid fa-compress"></i>
+                <span>Media</span>
+            </a>
+        </li>*@
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-regular fa-credit-card"></i>
+                                        <span>Orders</span>
+                                        <i style="margin-left: 100px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="Order" asp-action="Index">Order List</a>
+                                        </li> 
+                                    </ul>
+                                </li>
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-regular fa-credit-card"></i>
+                                        <span>OrderTracking</span>
+                                        <i style="margin-left: 50px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                <li>
+                    <a asp-controller="Order" asp-action="OrderTracking">Status of Orders</a>
+                </li>
+                                    </ul>
+                                </li>
+
+                                @*<li class="sidebar-list">
+            <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Localization</span>
+                <i style="margin-left:70px;" class="fa-solid fa-chevron-right"></i>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="translation.html">Translation</a>
+                </li>
+
+                <li>
+                    <a href="currency-rates.html">Currency Rates</a>
+                </li>
+            </ul>
+        </li>*@
+
+                                <li class="sidebar-list">
+                                    <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                        <i class="fa-solid fa-tags"></i>
+                                        <span>Coupons</span>
+                                        <i style="margin-left: 85px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li>
+                                            <a asp-controller="coupon" asp-action="index">Coupon List</a>
+                                        </li>
+
+                                        <li>
+                                            <a asp-controller="coupon" asp-action="Create">Create Coupon</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="taxes.html">
+                                        <i class="fa-regular fa-square-check"></i>
+                                        <span>Tax</span>
+                                        <i style="margin-left: 123px;" class="fa-solid fa-chevron-right"></i>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="product-review.html">
+                                        <i class="fa-regular fa-comment"></i>
+                                        <span>Product Review</span>
+                                    </a>
+                                </li>
+
+                                <!-- <li class="sidebar-list">
+        <a class="sidebar-link sidebar-title link-nav" href="support-ticket.html">
+            <i class="ri-phone-line"></i>
+            <span>Support Ticket</span>
+        </a>
+    </li> --
+                                <!-- <li class="sidebar-list">
+        <a class="sidebar-link sidebar-title link-nav" href="reports.html">
+            <i class="ri-file-chart-line"></i>
+            <span>Reports</span>
+        </a>
+    </li> -->
+                                <!-- <li class="sidebar-list">
+        <a class="sidebar-link sidebar-title link-nav" href="list-page.html">
+            <i class="ri-list-check"></i>
+            <span>List Page</span>
+        </a>
+    </li> -->
+                            </ul>
+                        </div>
+
+                        <div class="right-arrow" id="right-arrow">
+                            <i data-feather="arrow-right"></i>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- Page Sidebar Ends-->
+            @RenderBody()
+
+
+            <!-- footer start-->
+            <div class="container-fluid">
+                <footer class="footer">
+                    <div class="row">
+                        <div class="col-md-12 footer-copyright text-center">
+                            <p class="mb-0">Copyright 2022 © Fastkart theme by pixelstrap</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- footer End-->
+        </div>
+        <!-- index body end -->
+
+    </div>
+    <!-- Page Body End -->
+    </div>
+    <!-- page-wrapper End-->
+    <!-- Modal Start -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="modal-title" id="staticBackdropLabel">Logging Out</h5>
+                    <p>Are you sure you want to log out?</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="button-box">
+                        <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn  btn--yes btn-primary">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+    <!-- latest js -->
+
+  <script src="~/admin/assets/js/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap js -->
+  <script src="~/admin/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- feather icon js -->
+  <script src="~/admin/assets/js/feather.min.js"></script>
+  <script src="~/admin/assets/js/feather-icon.js"></script>
+
+    <!-- scrollbar simplebar js -->
+  <script src="~/admin/assets/js/simplebar.js"></script>
+  <script src="~/admin/assets/js/custom.js"></script>
+
+    <!-- Sidebar jquery -->
+  <script src="~/admin/assets/js/config.js"></script>
+
+    <!-- tooltip init js -->
+  @*<script src="~/admin/assets/js/tooltip-init.js"></script>*@
+
+    <!-- Plugins JS -->
+  <script src="~/admin/assets/js/sidebar-menu.js"></script>
+  <script src="~/admin/assets/js/bootstrap-notify.min.js"></script>
+  <script src="~/admin/assets/js/index.js"></script>
+
+    <!-- Apexchar js -->
+  @*<script src="~/admin/assets/js/chart/apex-chart/apex-chart1.js"></script>
+  <script src="~/admin/assets/js/chart/apex-chart/moment.min.js"></script>
+  <script src="~/admin/assets/js/chart/apex-chart/apex-chart.js"></script>
+  <script src="~/admin/assets/js/chart/apex-chart/stock-prices.js"></script>
+  <script src="~/admin/assets/js/chart/apex-chart/chart-custom1.js"></script>*@
+
+
+    <!-- slick slider js -->
+  <script src="~/admin/assets/js/slick.min.js"></script>
+  <script src="~/admin/assets/js/custom-slick.js"></script>
+
+    <!-- customizer js -->
+  <script src="~/admin/assets/js/customizer.js"></script>
+
+    <!-- ratio js -->
+  <script src="~/admin/assets/js/ratio.js"></script>
+
+    <!-- sidebar effect -->
+  <script src="~/admin/assets/js/sidebareffect.js"></script>
+
+    <!-- Theme js -->
+  <script src="~/admin/assets/js/script.js"></script>
+</body>
+
+</html>
+

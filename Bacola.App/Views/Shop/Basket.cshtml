@@ -1,0 +1,207 @@
+﻿@model CustomResponse<BasketGetDto>
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div style="margin-top:20px" class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@if (TempData["Succes"] != null)
+{
+    <div style="margin-top:20px" class="alert alert-success" role="alert">
+        @TempData["Succes"]
+    </div>
+}
+<main>
+    @if (ViewBag.BasketData.basketItems.Count > 0)
+    {
+        <section id="Basket">
+            <div class="container">
+                <div class="woocommerce">
+                    <div class="row content-wrapper sidebar-right">
+                        <div class="col-12 col-md-12 col-lg-12 content-primary">
+                            <div class="cart-wrapper">
+                                <form class="woocommerce-cart-form" method="post" novalidate="novalidate" action="/shop/ApplyCoupon">
+
+                                    <div class="klb-free-progress-bar warning">
+                                        <div class="free-shipping-notice">
+                                            Add <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>42.75</span> to cart and get free shipping!
+                                        </div>
+                                        <div class="klb-progress-bar">
+                                            <span class="progress" style="width: 14%"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <table class="table shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th class="product-thumbnail">&nbsp;</th>
+                                                <th class="product-name">Product</th>
+                                                <th class="product-price">Price</th>
+                                                <th class="product-quantity">Quantity</th>
+                                                <th class="product-subtotal">Subtotal</th>
+                                                <th class="product-remove">&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach (var item in Model.Data.basketItems)
+                                            {
+                                                <tr class="woocommerce-cart-form__cart-item cart_item">
+
+                                                    <td class="product-thumbnail">
+                                                        <a asp-controller="shop" asp-action="detail" asp-route-id="@item.Id"><img decoding="async" width="90" height="90" src="~/assets/img/product/@item.Image" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt=""></a>
+                                                    </td>
+
+                                                    <td class="product-name" data-title="Product">
+                                                        <a>@item.Name</a>
+                                                    </td>
+
+                                                    <td class="product-price" data-title="Price">
+                                                        <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>@item.DiscountPrice</bdi></span>
+                                                    </td>
+
+                                                    <td class="product-quantity" data-title="Quantity">
+                                                        <div class="quantity">
+                                                            <label class="screen-reader-text" for="quantity_65c5cda352172">@item.Name</label>
+                                                            <a class="quantity-button minus" asp-controller="shop" asp-action="DecreaseCount" asp-route-id="@item.Id"><i class="fa-solid fa-minus"></i></a>
+                                                            <input type="text" id="quantity_65c5cda352172" class="input-text qty text" name="cart[f74909ace68e51891440e4da0b65a70c][qty]" value="@item.Count" aria-label="Product quantity" size="4" min="0" max="63" step="1" placeholder="" inputmode="numeric" autocomplete="off">
+                                                            <a class="quantity-button plus" asp-controller="shop" asp-action="IncreaseCount" asp-route-id="@item.Id"><i class="fa-solid fa-plus"></i></a>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="product-subtotal" data-title="Subtotal">
+                                                        <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>@(item.DiscountPrice * item.Count)</bdi></span>
+                                                    </td>
+
+                                                    <td class="product-remove">
+                                                        <a class="remove" aria-label="Remove All Natural Italian-Style Chicken Meatballs from cart" data-product_id="430" data-product_sku="ZU49VOR"><i class="klbth-icon-cancel"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+
+
+                                            <tr>
+
+                                                <td colspan="6" class="actions">
+
+                                                    <div class="actions-wrapper">
+                                                        <div class="coupon">
+                                                            <label for="coupon_code" class="d-none screen-reader-text">Coupon:</label>
+                                                            <input type="text" name="code" class="form-control" id="coupon_code" value="" placeholder="Coupon code">
+                                                            <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                                                        </div>
+
+                                                        <button type="submit" class=" d-none button" name="update_cart" value="Update cart" disabled="">Update cart</button>
+
+                                                        <a asp-controller="shop" asp-action="RemoveAllBasket" class=" button remove-all">Remove All</a>
+                                                        <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="0862185aed"><input type="hidden" name="_wp_http_referer" value="/bacola/cart/">
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                                <div style="height:350px;padding-top:30px" class="cart-total">
+                                    <h2>Cart totals</h2>
+                                    <table cellspacing="0" class="shop_table shop_table_responsive">
+
+                                        <tbody>
+                                            <tr class="cart-subtotal">
+                                                <th>Subtotals</th>
+                                                <td data-title="Subtotal">
+                                                    @foreach (var item in Model.Data.basketItems)
+                                                    {
+                                                        <span style="font-weight:900" class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>@(item.DiscountPrice * item.Count)</bdi></span>
+
+                                                    }
+                                                </td>
+
+                                            </tr>
+                                            <tr class="woocommerce-shipping-totals shipping">
+                                                <th>Shipping</th>
+                                                <td data-title="Shipping">
+                                                    <ul id="shipping_method" class="woocommerce-shipping-methods">
+                                                        <li>
+                                                            <input type="radio" name="shipping_method[0]" data-index="0" id="shipping_method_0_flat_rate1" value="flat_rate:1" class="shipping_method" checked="checked"><label for="shipping_method_0_flat_rate1">Flat rate: <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>5.00</bdi></span></label>
+                                                        </li>
+                                                        <li>
+                                                            <input type="radio" name="shipping_method[0]" data-index="0" id="shipping_method_0_local_pickup3" value="local_pickup:3" class="shipping_method"><label for="shipping_method_0_local_pickup3">Local pickup</label>
+                                                        </li>
+                                                    </ul>
+                                                    <p class="woocommerce-shipping-destination">
+                                                        Shipping to <strong>AL</strong>.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="order-total">
+                                                <th>Total</th>
+                                                <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>@Model.Data.TotalPrice</bdi></span></strong> </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                    <div class="checkout">
+
+                                        <a asp-controller="shop" asp-action="checkout" class="checkout-button button alt wc-forward">
+                                            Proceed to checkout
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <div style=" flex: 0 0 100%; max-width: 100%;" class="col-12 col-md-12 col-lg-12 content-primary">
+
+            <div class="cart-wrapper">
+
+                <div style="text-align: center; max-width: 760px; margin-top: 40px; margin-bottom: 40px; margin-left: auto; margin-right: auto" class="cart-empty-page">
+                    <div style="height: 10rem !important; display: inline-flex; align-items: flex-end; -webkit-box-pack: center; justify-content: center; width: 10rem; height: 10rem; margin-bottom: 1.875rem; position: relative; text-align: center;  border-radius: 50%; background-color: #eaecef; overflow: hidden; " class="empty-icon">
+                        <svg style="width: 5rem; overflow: hidden; vertical-align: middle; text-align: center " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280.028 280.028" width="280.028" height="80.028">
+                            <path style="fill: #b7343e" class="c-01" d="M35.004 0h210.02v78.758H35.004V0z" fill="#d07c40"></path>
+                            <path style="fill: #f04652;" class="c-02" d="M262.527 61.256v201.27c0 9.626-7.876 17.502-17.502 17.502H35.004c-9.626 0-17.502-7.876-17.502-17.502V61.256h245.025z" fill="#f4b459"></path>
+                            <path style="fill: #f04652;" class="c-03" d="M35.004 70.007h26.253V26.253L35.004 0v70.007zm183.767-43.754v43.754h26.253V0l-26.253 26.253z" fill="#f4b459"></path>
+                            <path style=" fill: #ab212b;" class="c-04" d="M61.257 61.256V26.253L17.503 61.256h43.754zm157.514-35.003v35.003h43.754l-43.754-35.003z" fill="#e3911c"></path>
+                            <path style=" fill: #c13942;" class="c-05" d="M65.632 105.01c-5.251 0-8.751 3.5-8.751 8.751s3.5 8.751 8.751 8.751 8.751-3.5 8.751-8.751c0-5.25-3.5-8.751-8.751-8.751zm148.764 0c-5.251 0-8.751 3.5-8.751 8.751s3.5 8.751 8.751 8.751 8.751-3.5 8.751-8.751c.001-5.25-3.501-8.751-8.751-8.751z" fill="#cf984a"></path>
+                            <path style=" fill: #c13942;" class="c-06" d="M65.632 121.637c5.251 0 6.126 6.126 6.126 6.126 0 39.379 29.753 70.882 68.257 70.882s68.257-31.503 68.257-70.882c0 0 .875-6.126 6.126-6.126s6.126 6.126 6.126 6.126c0 46.38-35.003 83.133-80.508 83.133s-80.508-37.629-80.508-83.133c-.001-.001.874-6.126 6.124-6.126z" fill="#cf984a"></path>
+                            <path class="c-07" d="M65.632 112.886c5.251 0 6.126 6.126 6.126 6.126 0 39.379 29.753 70.882 68.257 70.882s68.257-31.503 68.257-70.882c0 0 .875-6.126 6.126-6.126s6.126 6.126 6.126 6.126c0 46.38-35.003 83.133-80.508 83.133s-80.508-37.629-80.508-83.133c-.001 0 .874-6.126 6.124-6.126z" fill="#fdfbf7"></path>
+                        </svg>
+                    </div><!-- empty-icon -->
+                    <div class="woocommerce-notices-wrapper"></div><div class="wc-empty-cart-message">
+                        <div style="font-size: 1.125rem; font-weight: 700; text-transform: uppercase; color: #ed174a; margin-bottom: 1.25rem; " class="cart-empty woocommerce-info">
+                            Your cart is currently empty.
+                        </div>
+                    </div>                  <p style="font-size: 14px; font-weight: 400; letter-spacing: 0; line-height: 24px;" class="return-to-shop">
+                        <a style="height: 3.125rem !important; display: inline-flex; border-radius: 1.875rem !important; color: #fff; background-color: #233a95; border-color: #233a95; padding-left: 2.25rem; padding-right: 2.25rem; margin-top: 1.875rem;  display: center; align-items: center; font-size: .875rem; font-weight: 500; text-decoration: none; border: 1px solid; " class="button-primary rounded large button wc-backward" asp-controller="shop" asp-action="index">
+                            Return to shop
+                        </a>
+                    </p>
+                </div><!-- cart-empty -->
+
+            </div><!-- cart-wrapper -->
+
+        </div>
+    }
+
+</main>
+
+@*<script>function submitOuterForm() {
+
+        document.getElementById("outerForm").submit();
+    }
+
+    function submitInnerForm() {
+
+        document.getElementById("innerForm").submit();
+    }</script>*@

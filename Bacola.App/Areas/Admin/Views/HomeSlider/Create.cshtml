@@ -1,0 +1,66 @@
+﻿@model SliderPostDto
+<div class="page-body">
+    <!-- New Product Add Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-8 m-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-header-2">
+                                    <h5>Slider Information</h5>
+                                </div>
+
+                                <form enctype="multipart/form-data" method="post">
+                                    <div class="alert alert-info" asp-validation-summary="ModelOnly"></div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="Title" class="form-label-title col-sm-3 mb-0">Slider Title</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Title" class="form-control" type="text" placeholder="Slider Title">
+                                            <span class="text text-danger" asp-validation-for="Title"></span>
+                                        </div>
+                                    </div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="Text" class="form-label-title col-sm-3 mb-0">Slider Text</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Text" class="form-control" type="text" placeholder="Slider Title">
+                                            <span class="text text-danger" asp-validation-for="Title"></span>
+                                        </div>
+                                    </div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="Price" class="form-label-title col-sm-3 mb-0">Slider Price</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Price" class="form-control" type="text" placeholder="Slider Price">
+                                            <span class="text text-danger" asp-validation-for="Price"></span>
+                                        </div>
+                                    </div>
+                                    <div style="align-items:center" class="mb-4 row align-items-center">
+                                        <label asp-for="DisCountPercent" class="form-label-title col-sm-3 mb-0">DisCountPercent</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="DisCountPercent" class="form-control" type="text" placeholder="DisCountPercent">
+                                            <span class="text text-danger" asp-validation-for="DisCountPercent"></span>
+                                        </div>
+                                    </div>
+                                    <div style="margin:50px 0px" class="form-group ">
+                                        <div style="display:flex">
+                                            <label style="margin-right:5px" class="col-sm-3 col-lg-3 col-form-label form-label-title">Slider Image</label>
+                                            <input multiple accept="image/*" asp-for="ImageFile" class="form-control" placeholder="MainImage">
+                                        </div>
+                                        <span style="margin-top:10px" class="text text-danger" asp-validation-for="ImageFile"></span>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-around" class="buttons">
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <button class="btn btn-light">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

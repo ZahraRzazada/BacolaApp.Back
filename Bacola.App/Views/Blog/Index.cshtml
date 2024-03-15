@@ -1,0 +1,95 @@
+﻿@model List<BlogGetDto>
+<main>
+    <section id="Blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-9">
+                    @foreach (var item in Model)
+                        {
+                        <div class="left-part">
+                            <div class="blog-top">
+                                <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id"><img src="~/assets/img/blog/@item.Image" alt="blog"></a>
+                            </div>
+                            <div class="blog-bottom">
+                                <div class="blog-wrappers">
+                                    <span><i class="fa-regular fa-clock"></i>@item.Date.ToString("dd.MM.yyyy")</span>
+                                    <span><i class="fa-regular fa-bookmark"></i>@item.CategoryGetDto.Name</span>
+                                    @foreach (var item2 in item.Tags)
+                                        {
+                                        <span><i class="fa-solid fa-hashtag"></i>@item2.Name</span>
+                                        }
+
+                                </div>
+                                <div class="blog-title">
+                                    <h2>@item.Title</h2>
+                                </div>
+                                <div class="blog-content">
+                                    <p>@item.Description</p>
+                                    <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                </div>
+
+                <div id="sidebar" class="col-12 col-md-3 col-lg-3">
+                    <div class="search">
+                        <div class="search-form">
+                            <form class="search-form" id="search-form" action="https://klbtheme.com/bacola/" method="get">
+                                <input class="form_control" type="text" name="s" placeholder="Search..." autocomplete="off">
+                                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="posts">
+                        <h4 class="widget-title">Popular Posts</h4>
+                        <div class="all-posts">
+                            @foreach (var item in Model.OrderByDescending(x => x.Date).Take(3))
+                                {
+                                <div class="post">
+                                    <div class="post-img">
+                                        <a asp-controller="blog" asp-action="detail" asp-route-id="@item.Id"><img src="~/assets/img/blog/@item.Image" alt=""></a>
+                                    </div>
+                                    <div class="post-content">
+                                        <h2>@item.Title</h2>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+                    <div class="socials">
+                        <h4>Social Media</h4>
+                        <div class="social wide">
+                            <div class="site-social style-1 wide">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/" class="facebook"><i class="fa-brands fa-facebook"></i><span>facebook</span></a></li>
+                                    <li><a href="https://twitter.com/home" class="twitter"><i class="fa-brands fa-twitter"></i><span>twitter</span></a></li>
+                                    <li><a href="http://pinterest.com/" class="pinterest"><i class="fa-brands fa-pinterest"></i><span>pinterest</span></a></li>
+                                    <li><a href="https://www.linkedin.com/" class="linkedin"><i class="fa-brands fa-linkedin"></i><span>linkedin</span></a></li>
+                                    <li><a href="https://www.reddit.com/" class="reddit"><i class="fa-brands fa-reddit-alien"></i><span>reddit</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-img">
+                        <h4 class="widget-title">Widget Banner</h4>
+                        <img src="~/assets/img/blog/sidebar-banner.gif" alt="">
+                    </div>
+                    <div class="tags">
+                        <h4 class="widget-title">Tags</h4>
+                        @foreach (var item in ViewBag.Tags)
+                        {
+                            <div class="tag-cloud">
+                                <a href="">@item.Name</a>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

@@ -1,0 +1,50 @@
+﻿@model CouponGetDto
+
+<div class="page-body">
+    <!-- New Product Add Start -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-8 m-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-header-2">
+                                    <h5>Coupon Information</h5>
+                                </div>
+                                <form enctype="multipart/form-data" method="post">
+                                    <div class="alert alert-info" asp-validation-summary="ModelOnly"></div>
+                                    <div style="align-items:center" class="form-group mb-4 row align-items-center">
+                                        <label asp-for="Title" class="form-label-title col-sm-3 mb-0">Coupon Title</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Title" class="form-control" placeholder="Coupon Title">
+                                            <span class="text text-danger" asp-validation-for="Title"></span>
+                                        </div>
+                                    </div>
+                                    <div style="align-items:center" class="form-group mb-4 row align-items-center">
+                                        <label asp-for="Code" class="form-label-title col-sm-3 mb-0">Coupon Code</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="Code" class="form-control" placeholder="Coupon Code">
+                                            <span class="text text-danger" asp-validation-for="Code"></span>
+                                        </div>
+                                    </div>
+                                    <div style="align-items:center" class="form-group mb-4 row align-items-center">
+                                        <label asp-for="DiscountAmount" class="form-label-title col-sm-3 mb-0">Coupon DiscountAmount</label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="DiscountAmount" class="form-control" placeholder="Coupon DiscountAmount">
+                                            <span class="text text-danger" asp-validation-for="DiscountAmount"></span>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-around" class="buttons">
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <button class="btn btn-light">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

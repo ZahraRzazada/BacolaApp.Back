@@ -1,0 +1,77 @@
+﻿@model UpdateDto
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bacola</title>
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/assets/css/common.css">
+    <link rel="stylesheet" href="~/assets/css/blog.css">
+    <link rel="stylesheet" href="~/assets/css/about.css">
+    <link rel="stylesheet" href="~/assets/css/cart.css">
+    <link rel="stylesheet" href="~/assets/css/checkout.css">
+    <link rel="stylesheet" href="~/assets/css/contact.css">
+    <link rel="stylesheet" href="~/assets/css/home.css">
+    <link rel="stylesheet" href="~/assets/css/login.css">
+    <link rel="stylesheet" href="~/assets/css/ordertracking.css">
+    <link rel="stylesheet" href="~/assets/css/register.css">
+    <link rel="stylesheet" href="~/assets/css/resetp.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/shop.css">
+
+</head>
+<body>
+    <main>
+        <!-- Register Part Start -->
+        <section id="Register">
+            <div class="container">
+
+                <div class="register-form">
+                    <a href="#" class="active">Update User</a>
+                    <form method="post" class="woocommerce-form woocommerce-form-register register">
+
+                        <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                            <label for="reg_username">FullName&nbsp;<span class="required">*</span></label>
+                            <input asp-for="FullName" type="text" class="zhr2 form-control woocommerce-Input woocommerce-Input--text input-text" placeholder="FullName" id="reg_username" autocomplete="username" value="">
+                            <span asp-validation-for="FullName" style="color:red"></span>
+                        </p>
+                        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                            <label for="reg_username">UserName&nbsp;<span class="required">*</span></label>
+                            <input asp-for="Username" type="text" class="zhr2 form-control woocommerce-Input woocommerce-Input--text input-text" placeholder="UserName" id="reg_username" autocomplete="username" value="">
+                            <span asp-validation-for="Username" style="color:red"></span>
+                        </p>
+
+                        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                            <label for="reg_password">OldPassword&nbsp;<span class="required">*</span></label>
+                            <span class="password-input"><input asp-for="OldPassword" style="width:200%" type="password" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="OldPassword" id="reg_password" autocomplete="new-password"><span class="show-password-input"></span></span>
+                            <span asp-validation-for="OldPassword" style="color:red"></span>
+                        </p>
+                        <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                            <label for="reg_password">NewPassword&nbsp;<span class="required">*</span></label>
+                            <span class="password-input"><input asp-for="NewPassword" style="width:200%" type="password" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="NewPassword" id="reg_password" autocomplete="new-password"><span class="show-password-input"></span></span>
+                            <span asp-validation-for="NewPassword" style="color:red"></span>
+                        </p>
+                        <p class="woocommerce-form-row form-row">
+                            <input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="bb80be5298"><input type="hidden" name="_wp_http_referer" value="/bacola/my-account/">
+                            <button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="Register">Update</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Register Part End -->
+    </main>
+    <script src="~/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+</body>
+</html>
+

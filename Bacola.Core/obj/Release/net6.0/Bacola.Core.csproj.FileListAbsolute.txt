@@ -1,0 +1,12 @@
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/bin/Release/net6.0/Bacola.Core.deps.json
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/bin/Release/net6.0/Bacola.Core.dll
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/bin/Release/net6.0/Bacola.Core.pdb
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/obj/Release/net6.0/Bacola.Core.csproj.AssemblyReference.cache
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/obj/Release/net6.0/Bacola.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/obj/Release/net6.0/Bacola.Core.AssemblyInfoInputs.cache
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/obj/Release/net6.0/Bacola.Core.AssemblyInfo.cs
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/obj/Release/net6.0/Bacola.Core.csproj.CoreCompileInputs.cache
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/obj/Release/net6.0/Bacola.Core.dll
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/obj/Release/net6.0/refint/Bacola.Core.dll
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/obj/Release/net6.0/Bacola.Core.pdb
+/Users/zahrarzazada/Projects/Bacola.App/Bacola.Core/obj/Release/net6.0/ref/Bacola.Core.dll

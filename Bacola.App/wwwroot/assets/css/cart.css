@@ -1,0 +1,680 @@
+@import url(/cart.html);
+@import url(/wishlist.html);
+#Wishlist {
+  margin: 80px 0px;
+}
+#Wishlist .container .wishlist .headpart h2 {
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 2rem;
+}
+#Wishlist .container .wishlist form table {
+  position: relative;
+  table-layout: auto;
+  margin-bottom: 27px;
+  border-collapse: collapse;
+  width: 100%;
+}
+#Wishlist .container .wishlist form table th {
+  border: 1px solid #edeef5;
+}
+#Wishlist .container .wishlist form table td {
+  border: 1px solid #edeef5;
+}
+#Wishlist .container .wishlist form table thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+#Wishlist .container .wishlist form table thead tr .product-cb {
+  width: 35px;
+  text-align: center;
+}
+#Wishlist .container .wishlist form table thead tr .product-cb input {
+  margin-right: 0;
+}
+#Wishlist .container .wishlist form table thead tr .product-remove {
+  width: 35px;
+  text-align: center;
+  padding: 1em 0.5em;
+}
+#Wishlist .container .wishlist form table thead tr .product-thumbnail {
+  min-width: 100px;
+  max-width: 100%;
+  width: 100px;
+}
+#Wishlist .container .wishlist form table thead tr .product-name {
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table thead tr .product-price {
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table thead tr .product-date {
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table thead tr .product-stock {
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table thead tr .product-action {
+  width: 135px;
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+  text-align: center;
+}
+#Wishlist .container .wishlist form table tbody {
+  box-sizing: border-box;
+}
+#Wishlist .container .wishlist form table tbody tr .product-cb {
+  width: 35px;
+  text-align: center;
+}
+#Wishlist .container .wishlist form table tbody tr .product-cb input {
+  margin-right: 0;
+}
+#Wishlist .container .wishlist form table tbody tr .product-remove {
+  width: 35px;
+  text-align: center;
+  padding: 1em 0.5em;
+}
+#Wishlist .container .wishlist form table tbody tr .product-remove button {
+  border: none;
+  background-color: transparent;
+}
+#Wishlist .container .wishlist form table tbody tr .product-remove button i {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 900;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+#Wishlist .container .wishlist form table tbody tr .product-thumbnail {
+  min-width: 100px;
+  max-width: 100%;
+  width: 100px;
+}
+#Wishlist .container .wishlist form table tbody tr .product-name {
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table tbody tr .product-price {
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table tbody tr .product-date {
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table tbody tr .product-stock {
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table tbody tr .product-stock span {
+  display: table-cell;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table tbody tr .product-stock span i {
+  margin-right: 15px;
+}
+#Wishlist .container .wishlist form table tbody tr .product-action {
+  width: 135px;
+  font-size: 0.75rem;
+  color: #71778e;
+  font-weight: 600;
+  padding: 1em;
+  vertical-align: middle;
+  text-align: center;
+}
+#Wishlist .container .wishlist form table tbody tr .product-action BUTTON {
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  white-space: pre;
+  text-decoration: none;
+  padding: 0 0.9375rem;
+  border: 1px solid;
+  color: #fff;
+  background-color: #233a95;
+  border-radius: 4px;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+}
+#Wishlist .container .wishlist form table tfoot {
+  display: table-footer-group;
+}
+#Wishlist .container .wishlist form table tfoot td {
+  padding: 1em;
+  vertical-align: middle;
+}
+#Wishlist .container .wishlist form table tfoot td .tinvwl-to-left {
+  float: left;
+  width: 35%;
+  margin-right: 2%;
+}
+#Wishlist .container .wishlist form table tfoot td .tinvwl-to-left .tinvwl-input-group {
+  position: relative;
+  display: flex;
+  border-collapse: separate;
+}
+#Wishlist .container .wishlist form table tfoot td .tinvwl-to-left .tinvwl-input-group .button {
+  padding-left: 10px;
+  font-size: 0.75rem;
+  height: 2.75rem;
+  padding: 0 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 0.9375rem;
+  border: 1px solid;
+  color: #fff;
+  background-color: #233a95;
+  border-radius: 4px;
+  white-space: pre;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+  vertical-align: middle;
+  margin-left: 10px;
+}
+#Wishlist .container .wishlist form table tfoot td .tinvwl-to-left .tinvwl-input-group input {
+  overflow: visible;
+}
+#Wishlist .container .wishlist form table tfoot td .tinvwl-to-left .tinvwl-input-group select {
+  font-size: 0.875rem;
+  height: 2.75rem;
+  position: relative;
+  z-index: 1;
+  float: left;
+  height: 38px;
+  width: 100%;
+  margin: 0;
+  display: table-cell;
+}
+#Wishlist .container .wishlist form table tfoot td .tinvwl-to-left .tinvwl-input-group select option {
+  font-weight: normal;
+  display: block;
+  min-height: 1.2em;
+  padding: 0px 2px 1px;
+  white-space: nowrap;
+}
+#Wishlist .container .wishlist form table tfoot td .tinvwl-to-right {
+  margin-top: -10px;
+  float: left;
+  width: 63%;
+  text-align: right;
+}
+#Wishlist .container .wishlist form table tfoot td .tinvwl-to-right .button {
+  font-size: 0.75rem;
+  height: 2.75rem;
+  padding: 0 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 0.9375rem;
+  border: 1px solid;
+  color: #fff;
+  background-color: #233a95;
+  border-radius: 4px;
+  border-color: transparent;
+  box-shadow: none;
+  white-space: pre;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+  margin: 10px 0 0;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+#Basket {
+  margin: 50px 0px;
+}
+#Basket .container .woocommerce {
+  margin-top: 2.5rem;
+}
+#Basket .container .woocommerce .row {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+#Basket .container .woocommerce .row .content-primary {
+  padding-right: 15px;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper {
+  flex-flow: row wrap;
+  display: flex;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form {
+  flex: 1;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form .klb-free-progress-bar {
+  padding: 20px;
+  border: 1px solid #e4e5ee;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  width: 100%;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form .klb-free-progress-bar .free-shipping-notice {
+  color: #3e445a;
+  padding-bottom: 0.625rem;
+  font-size: 0.7rem;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form .klb-free-progress-bar .free-shipping-notice span {
+  color: #ed174a;
+  font-weight: bold;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form .klb-free-progress-bar .klb-progress-bar {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: #f2f3f5;
+  border-radius: 0.625rem;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form .klb-free-progress-bar .klb-progress-bar span {
+  width: 14%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.625rem;
+  background: #ed174a;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table thead th {
+  border: none;
+  border-bottom: 1px solid #e4e5ee;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-top: 0;
+  vertical-align: bottom;
+  color: #71778e;
+  padding: 0.75rem;
+  text-align: left;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody {
+  position: relative;
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody td {
+  padding-left: 0;
+  border: none;
+  border-top: 1px solid #dee2e6;
+  font-size: 0.75rem;
+  vertical-align: middle;
+  padding: 0.75rem;
+  text-align: left;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody td .quantity {
+  display: inline-flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody td .quantity label {
+  clip: rect(1px, 1px, 1px, 1px);
+  word-wrap: normal !important;
+  border: 0;
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  overflow-wrap: normal !important;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody td .quantity .quantity-button {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  background-color: #edeef5;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody td .quantity .quantity-button i {
+  line-height: 1;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 0.8em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody td .quantity .qty {
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  text-align: center;
+  pointer-events: none;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody td span {
+  color: #71778e;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody td a {
+  color: currentColor;
+  text-decoration: none;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody .actions {
+  padding-right: 0;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody .actions .actions-wrapper {
+  flex-flow: row wrap;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody .actions .actions-wrapper a {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 0.9375rem;
+  border: 1px solid;
+  color: #fff;
+  background-color: #233a95;
+  border-radius: 4px;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+  margin-left: 0.625rem;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody .actions .actions-wrapper .coupon {
+  display: inline-flex;
+  align-items: center;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody .actions .actions-wrapper .coupon input {
+  min-width: 17.5rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.9375rem;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  color: #3e445a;
+  background-color: #f3f4f7;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper form table tbody .actions .actions-wrapper .coupon button {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 0.9375rem;
+  border: 1px solid;
+  color: #fff;
+  background-color: #233a95;
+  border-radius: 4px;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+  margin-left: 0.625rem;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total {
+  flex: 0 0 20rem;
+  max-width: 20rem;
+  margin-left: 20px;
+  border: 1px solid #e4e5ee;
+  border-radius: 7px;
+  padding: 1.25rem;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total h2 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 0.9375rem;
+  border-bottom: 0.9375rem;
+  border-bottom: 1px solid #edeef5;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table {
+  width: 100%;
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .cart-subtotal th {
+  border: none;
+  border-bottom: 1px solid #edeef5;
+  padding-top: 0.4375rem;
+  padding-bottom: 0.625rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .cart-subtotal td {
+  border: none;
+  border-bottom: 1px solid #edeef5;
+  text-align: right;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .cart-subtotal td span {
+  font-size: 0.8rem;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals th {
+  border: none;
+  border-bottom: 1px solid #edeef5;
+  padding-top: 0.4375rem;
+  padding-bottom: 0.625rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td {
+  border: none;
+  border-bottom: 1px solid #edeef5;
+  text-align: right;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td ul {
+  list-style: none;
+  padding: 0;
+  font-size: 0.7rem;
+  margin: 0;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td ul li {
+  margin-bottom: 10px;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td ul li input {
+  box-sizing: border-box;
+  position: relative;
+  top: 4px;
+  float: right;
+  margin-right: 0;
+  margin-left: 7px;
+  vertical-align: middle;
+  padding: 0;
+  overflow: visible;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td ul li label {
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td ul li label span {
+  font-size: 0.875rem;
+  color: #ed174a;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td p {
+  font-size: 0.775rem;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td p strong {
+  font-weight: bolder;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td form {
+  display: block;
+  margin-top: 0em;
+  margin-right: 0px;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td form a {
+  margin-bottom: 10px;
+  display: block;
+  font-size: 0.7rem;
+  color: #2bbef9;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .woocommerce-shipping-totals td form td {
+  text-align: right;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .order-total th {
+  border: none;
+  padding-top: 1.25rem;
+  padding-bottom: 0.625rem;
+  font-size: 0.87rem;
+  font-weight: 600;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .order-total td {
+  border: none;
+  padding-top: 1.25rem;
+  padding-bottom: 0.625rem;
+  text-align: right;
+  padding: 4px;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .order-total td strong {
+  font-weight: 900;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total table tbody .order-total td strong span {
+  font-size: 1.2rem;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total .checkout {
+  padding-top: 0.9375rem;
+  border-top: 1px solid #edeef5;
+}
+#Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total .checkout a {
+  color: #fff;
+  background-color: #ed174a;
+  border-color: #ed174a;
+  width: 100%;
+  justify-content: center;
+  height: 3.125rem;
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 0.9375rem;
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+@media (max-width: 576px) {
+  #Basket .product-price {
+    display: none;
+  }
+  #Basket .product-subtotal {
+    display: none;
+  }
+  #Basket .remove-all {
+    width: 100%;
+    margin-left: 0px !important;
+    margin-top: 20px;
+  }
+  #Basket .coupon {
+    width: 100%;
+  }
+  #Basket #Basket .container .woocommerce .row .content-primary {
+    padding-right: 0px;
+  }
+  #Basket .quantity {
+    flex-flow: nowrap !important;
+  }
+  #Basket .container .woocommerce .row .content-primary {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 0.9375rem !important;
+    padding-right: 0.9375rem !important;
+  }
+  #Basket .container .woocommerce .row .content-primary .cart-wrapper .cart-total {
+    margin-left: 0px;
+    flex: 0 0 100% !important;
+    max-width: 100%;
+  }
+}/*# sourceMappingURL=cart.css.map */

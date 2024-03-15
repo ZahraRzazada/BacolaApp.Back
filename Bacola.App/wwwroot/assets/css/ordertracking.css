@@ -1,0 +1,67 @@
+@import url(/order-tracking.html);
+#Body .container {
+  padding: 80px 0px;
+}
+#Body .container .form form {
+  box-sizing: border-box;
+}
+#Body .container .form form p {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+#Body .container .form form .form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+#Body .container .form form .form-row button {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 0.9375rem;
+  border: 1px solid;
+  color: #fff;
+  background-color: #233a95;
+  border-radius: 4px;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+}
+#Body .container .form form .form-row label {
+  font-size: 0.8125rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+#Body .container .form form .form-row input {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.9375rem;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #202435;
+  background-color: #f3f4f7;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
+}
+
+@media (max-width: 576px) {
+  #Body .container .form {
+    margin: 0px 10px;
+  }
+}/*# sourceMappingURL=ordertracking.css.map */
