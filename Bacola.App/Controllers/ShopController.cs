@@ -162,20 +162,28 @@ namespace Bacola.App.Controllers
             await _orderService.CreateAsync(dto);
             return RedirectToAction(nameof(Index));
         }
-      
-        public async Task<IActionResult> ApplyCoupon(string code,int couponId,BasketGetDto dto)
+
+        //public async Task<IActionResult> ApplyCoupon(string code,int couponId,BasketGetDto dto)
+        //{
+        //    var response = await _basketService.ApplyCoupon(code,couponId, dto);
+        //    if (!response.IsSuccess)
+        //    {
+        //        TempData["ErrorMessage"] = response.Message;
+        //        return RedirectToAction("Basket", "Shop");
+        //    }
+        //    else
+        //    {
+        //        TempData["Succes"] = response.Message;
+        //        return RedirectToAction("Basket", "Shop");
+        //    }
+        //}
+        public async Task<IActionResult> OrderTracking()
         {
-            var response = await _basketService.ApplyCoupon(code,couponId, dto);
-            if (!response.IsSuccess)
-            {
-                TempData["ErrorMessage"] = response.Message;
-                return RedirectToAction("Basket", "Shop");
-            }
-            else
-            {
-                TempData["Succes"] = response.Message;
-                return RedirectToAction("Basket", "Shop");
-            }
+            return View();
+        }
+        public async Task<IActionResult> OrderTrackingDetail(int id)
+        {
+            return View(await _orderService.Get(id));
         }
     }
 }

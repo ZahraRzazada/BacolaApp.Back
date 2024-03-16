@@ -1,2 +1,218 @@
-﻿
+﻿@model OrderGetDto
 
+    <style>
+        #progressbar {
+            margin-bottom: 30px;
+            overflow: hidden;
+            color: #455A64;
+            padding-left: 0px;
+            margin-top: 30px;
+        }
+
+            #progressbar li {
+                list-style-type: none;
+                font-size: 13px;
+                width: 20%;
+                z-index: 3;
+                float: left;
+                position: relative !important;
+                font-weight: 400;
+            }
+
+            #progressbar .step0:before {
+                font-family: FontAwesome;
+                content: "\f10c";
+                color: #fff;
+            }
+
+            #progressbar li:before {
+                width: 40px;
+                height: 40px;
+                line-height: 45px;
+                display: block;
+                font-size: 20px;
+                background: #C5CAE9;
+                border-radius: 50%;
+                margin: auto;
+                padding: 0px;
+            }
+
+            /*ProgressBar connectors*/
+            #progressbar li:after {
+                content: '';
+                width: 100%;
+                height: 12px;
+                background: #C5CAE9;
+                position: absolute !important;
+                left: 0;
+                top: 16px;
+                z-index:-1;
+            }
+
+            #progressbar li:last-child:after {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                position: absolute;
+                /* left: -50%; */
+            }
+
+            #progressbar li:nth-child(2):after,
+            #progressbar li:nth-child(3):after {
+                /* left: -50%; */
+            }
+
+            #progressbar li:first-child:after {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                position: absolute;
+                /* left: 50%; */
+            }
+
+            #progressbar li:last-child:after {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            #progressbar li:first-child:after {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+            }
+
+            /*Color number of the step and the connector before it*/
+            #progressbar li.active:before,
+            #progressbar li.active:after {
+                background: #0da487;
+            }
+
+            #progressbar li.active:before {
+                font-family: FontAwesome;
+                content: "\f00c";
+            }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .icon-content {
+            padding-bottom: 20px;
+        }
+    </style>
+    <div class="page-body">
+        <!-- All User Table Start -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card card-table">
+                        <div class="card-body">
+                            <div class="title-header option-title">
+                                <h5>Order Info</h5>
+
+                            </div>
+                            <div class="col-12 overflow-hidden">
+                                <div class="order-left-image">
+                                    <div class="tracking-product-image">
+                                        <img src="https://lh6.googleusercontent.com/icxtSOKMAegPAXidPiICHVXkQNY73HSwpmdJKLyLQMre1DkIyf_i1YnqCD50gv0R349VNf5w6nIKEBx3qR6BC_kmWERwbUE-ym84GmxwxsC-XfaD0qsg-yNPWzIB2_d1qTjgDOPVdLxGgIlIErM2n2A" style="width:100%" alt="">
+                                    </div>
+
+                                    <div class="order-image-contain">
+                                        <p>Order Text : <span>@Model.Text</span></p>
+                                        <div class="tracker-number">
+                                            <p>Order Adress : <span>@Model.Address</span></p>
+                                            <p>Phone Number : <span>@Model.PhoneNumber</span></p>
+                                            <p>Order Email : <span>@Model.AppUser.Email</span></p>
+                                        </div>
+                                        <h5>
+                                            Your items is on the way. Tracking information will be
+                                            available within 24 hours.
+                                        </h5>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <div style="display: flex;" class=" justify-content-center">
+                                    <div class="col-12">
+                                        <ul id="progressbar" class="text-center">
+                                            <li class="active step0"></li>
+                                            <li class="step0"></li>
+                                            <li class="step0"></li>
+                                            <li class="step0"></li>
+                                            <li class="step0"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="padding:20px 20px" class=" d-flex justify-content-between top">
+                                    <div class=" d-flex icon-content">
+                                        <img class="icon"
+                                             src="https://cdn0.iconfinder.com/data/icons/common-version1-2/1024/track_order-512.png">
+                                        <div class="d-flex flex-column">
+                                            <p style="font-weight:800" class="font-weight-bold">Order<br>Processing</p>
+                                        </div>
+                                    </div>
+                                    <div class=" d-flex icon-content">
+                                        <img class="icon"
+                                             src="https://cdn0.iconfinder.com/data/icons/common-version1-2/1024/track_order-512.png">
+                                        <div class="d-flex flex-column">
+                                            <p class="font-weight-bold">Pre- <br>Production</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex icon-content">
+                                        <img class="icon"
+                                             src="https://cdn0.iconfinder.com/data/icons/common-version1-2/1024/track_order-512.png">
+                                        <div class="d-flex flex-column">
+                                            <p class="font-weight-bold">In<br>Production</p>
+                                        </div>
+                                    </div>
+                                    <div class=" d-flex icon-content">
+                                        <img class="icon"
+                                             src="https://cdn0.iconfinder.com/data/icons/common-version1-2/1024/track_order-512.png">
+                                        <div class="d-flex flex-column">
+                                            <p class="font-weight-bold">Order<br>Shipped</p>
+                                        </div>
+                                    </div>
+                                    <div class=" d-flex icon-content">
+                                        <img class="icon"
+                                             src="https://cdn0.iconfinder.com/data/icons/common-version1-2/1024/track_order-512.png">
+                                        <div class="d-flex flex-column">
+                                            <p class="font-weight-bold">Order<br>Delivered</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+     $(document).ready(function() {
+        const orderStatus = "@Model.OrderTracking";
+        console.log(orderStatus);
+
+        function updateProgressBar(status) {
+            const progressBar = document.getElementById('progressbar');
+            const steps = progressBar.getElementsByTagName('li');
+
+            // Loop through the steps and add 'active' class to previous steps when status is 'Shipped'
+            for (let i = 0; i < steps.length; i++) {
+                const step = steps[i];
+                if (i <= status) {
+                    step.classList.add('active');
+                } else {
+                    // Remove 'active' class from all steps if status is not 'Shipped'
+                    step.classList.remove('active');
+                }
+            }
+        }
+
+        // Call the function with the current order status
+        // Assuming orderStatus ranges from 0 to 4 representing different stages
+        updateProgressBar(parseInt(orderStatus));
+    });
+    </script>

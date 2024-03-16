@@ -88,7 +88,7 @@ namespace Bacola.Service.Services.Implementations
             string orderItemsInfo = "";
             foreach (var orderItem in order.OrderItems)
             {
-                orderItemsInfo += $"Product: {orderItem.Product.Title}, Quantity: {orderItem.Count}, Price: {orderItem.Product.Price}\n";
+                orderItemsInfo += $"Product: {orderItem.Product.Title}, Quantity: {orderItem.Count}, Price: {orderItem.Product.DiscountPrice}\n";
             }
 
             Helper.SendMessageToTelegram($"New Order - Id: {order.Id}\n" +
@@ -112,6 +112,7 @@ namespace Bacola.Service.Services.Implementations
                 Text=query.Text,
                 PhoneNumber=query.PhoneNumber,
                 Id = query.Id,
+                OrderTracking=query.OrderTracking,
                 OrderItems = query.OrderItems.Select(x => new OrderItemGetDto
                 {
                     Count = x.Count,
