@@ -294,37 +294,37 @@ namespace Bacola.Service.Services.Implementations
             }
         }
 
-        //public async Task<CustomResponse<double>> ApplyCoupon(string code,int couponId,BasketGetDto dto)
-        //{
-        //    bool isValidCoupon = await _couponService.CheckCouponValidity(code);
-        //    dto.TotalPrice = dto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
-        //    if (!isValidCoupon)
-        //    {
-        //        dto.TotalPrice = dto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
-        //        return new CustomResponse<double>
-        //        {
-        //            IsSuccess = false,
-        //            Data = dto.TotalPrice,
-        //            Message = "Invalid coupon ID or coupon is not active."
-                    
-        //        };
-              
-        //    }
-        //    var coupon = await _couponService.GetAsync(couponId);
-        //    double discountAmount = 0;
-        //    if (coupon != null && coupon.Data != null && dto.TotalPrice > 0)
-        //    {
-        //        discountAmount = (dto.TotalPrice * coupon.Data.DiscountAmount) / 100;
-        //    }
-        //    double discountedTotalPrice = dto.TotalPrice - discountAmount;
-        //    dto.TotalPrice = discountedTotalPrice;
-        //    return new CustomResponse<double>
-        //    {
-        //        IsSuccess = true,
-        //        Data =dto.TotalPrice, 
-        //        Message = $"Total price after applying the coupon: {discountedTotalPrice}"
-        //    };
-        //}
+        public async Task<CustomResponse<double>> ApplyCoupon(string code, int couponId, BasketGetDto dto)
+        {
+            bool isValidCoupon = await _couponService.CheckCouponValidity(code);
+            dto.TotalPrice = dto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
+            if (!isValidCoupon)
+            {
+                dto.TotalPrice = dto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
+                return new CustomResponse<double>
+                {
+                    IsSuccess = false,
+                    Data = dto.TotalPrice,
+                    Message = "Invalid coupon ID or coupon is not active."
+
+                };
+
+            }
+            var coupon = await _couponService.GetAsync(couponId);
+            double discountAmount = 0;
+            if (coupon != null && coupon.Data != null && dto.TotalPrice > 0)
+            {
+                discountAmount = (dto.TotalPrice * coupon.Data.DiscountAmount) / 100;
+            }
+            double discountedTotalPrice = dto.TotalPrice - discountAmount;
+            dto.TotalPrice = discountedTotalPrice;
+            return new CustomResponse<double>
+            {
+                IsSuccess = true,
+                Data = dto.TotalPrice,
+                Message = $"Total price after applying the coupon: {discountedTotalPrice}"
+            };
+        }
     }
 }
 

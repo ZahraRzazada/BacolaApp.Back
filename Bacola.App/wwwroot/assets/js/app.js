@@ -435,3 +435,42 @@ removeBaskets.forEach(basket1 => basket1.addEventListener('click', function (e) 
         }
     })
 }))
+
+
+
+//PriceFilter
+const rangeInput = document.querySelectorAll(".range-input input");
+const priceValue = document.querySelectorAll(".price-value");
+const range = document.querySelector(".progress");
+let priceGap = 10;
+
+function validateRange(e) {
+    let minVal = parseInt(rangeInput[0].value);
+    let maxVal = parseInt(rangeInput[1].value);
+
+    if (maxVal - minVal < priceGap) {
+        if (e.target.className === "range-min") {
+            rangeInput[0].value = maxVal - priceGap;
+        } else {
+            rangeInput[1].value = minVal + priceGap;
+        }
+    } else {
+        priceValue[0].textContent = `$${minVal}`;
+        priceValue[1].textContent = `$${maxVal}`;
+        range.style.left = `${(minVal / rangeInput[0].max) * 100}%`;
+        range.style.right = `${100 - (maxVal / rangeInput[1].max) * 100}%`;
+    }
+}
+
+rangeInput.forEach((input) => {
+    input.addEventListener("input", validateRange);
+});
+
+validateRange();
+
+//SubcategoryShopPage
+var icon = document.getElementById('toggleIcon');
+var subUl = document.querySelector('.children');
+icon.addEventListener('click', function () {
+    subUl.style.display = subUl.style.display === 'none' ? 'block' : 'none';
+});
