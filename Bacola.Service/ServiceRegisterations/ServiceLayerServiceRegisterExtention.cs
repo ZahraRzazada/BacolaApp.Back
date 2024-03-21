@@ -13,6 +13,7 @@ namespace Bacola.Service.ServiceRegisterations
         {
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<CategoryService>();
+            services.AddScoped<BrandService>();
             services.AddScoped<ProductService>();
             services.AddScoped<ITagService, TagService>();
             services.AddScoped<IBlogService, BlogService>();
@@ -27,6 +28,7 @@ namespace Bacola.Service.ServiceRegisterations
             services.AddScoped<IWishlistService, WishlistService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<ICouponService, CouponService>();
+            services.AddScoped<ICommentService, CommentService>();
             services.AddHttpContextAccessor();
             services.AddScoped<IEmailService, EmailService>();
 

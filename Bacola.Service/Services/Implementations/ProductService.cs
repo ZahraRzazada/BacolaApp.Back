@@ -10,6 +10,7 @@ using Bacola.Service.Responses;
 using Bacola.Service.Services.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Bacola.Service.Services.Implementations
 {
@@ -127,7 +128,7 @@ namespace Bacola.Service.Services.Implementations
                 InStock=x.InStock,
                 Category = new CategoryGetDto { Name = x.Category.Name },
                 Price = x.Price,
-                DiscountPrice = x.DiscountPercent == 0 ? x.Price : (x.Price * x.DiscountPercent) / 100,
+                DiscountPrice = x.DiscountPercent == 0 ? x.Price : Math.Round((x.Price * (100 - x.DiscountPercent)) / 100, 1),
                 ProductImages = x.ProductImages
             });
             return productGetDtos;
@@ -151,8 +152,8 @@ namespace Bacola.Service.Services.Implementations
                 Category = new CategoryGetDto { Name = x.Category.Name },
                 Description = x.Description,
                 Price = x.Price,
-                DiscountPrice =  x.DiscountPercent == 0 ? x.Price : (x.Price * x.DiscountPercent) / 100,
-                DiscountPercent=x.DiscountPercent,
+                DiscountPrice =  x.DiscountPercent == 0 ? x.Price : Math.Round((x.Price * (100 - x.DiscountPercent)) / 100, 1),
+                DiscountPercent =x.DiscountPercent,
                 Info = x.Info,
                 Title = x.Title,
                 PeriodOfUse = x.PeriodOfUse,
@@ -281,6 +282,66 @@ namespace Bacola.Service.Services.Implementations
             return new CustomResponse<Product> { IsSuccess = true, Message = $"{product.Title} is updated successfully", Data = product };
 
         }
+
+        public async Task<CustomResponse<List<ProductGetDto>>> GetFilteredProducts(ProductFilterDto filter)
+        {
+            try
+            {
+                var query = _productRepository.GetQuery(x => !x.IsDeleted);
+
+                query = query.Include(p => p.Category)
+                             .Include(p => p.Brand);
+                if (filter.categoryId != null)
+                {
+                    query = query.Where(p => p.CategoryId == filter.categoryId);
+                }
+                if (filter.brandId != null)
+                {
+                    query = query.Where(p => p.BrandId == filter.brandId);
+                }
+                if (filter.fromPrice != null)
+                {
+                    query = query.Where(p => p.DiscountPrice >= filter.fromPrice);
+                }
+                if (filter.toPrice != null)
+                {
+                    query = query.Where(p => p.DiscountPrice <= filter.toPrice);
+                }
+                if (filter.IsInStock != null)
+                {
+                    query = query.Where(p => p.InStock == filter.IsInStock);
+                }
+                var products = await query.Select(p => new ProductGetDto
+                {
+                    Id = p.Id,
+                    Category = new CategoryGetDto { Name = p.Category.Name },
+                    Brand = new BrandGetDto { Name = p.Brand.Name },
+                    Title = p.Title,
+                    InStock = p.InStock, 
+                    Price = p.Price,
+                    DiscountPrice = p.DiscountPercent == 0 ? p.Price : (p.Price * p.DiscountPercent) / 100,
+                    ProductImages = p.ProductImages 
+                }).ToListAsync();
+
+                return new CustomResponse<List<ProductGetDto>>
+                {
+                    IsSuccess = true,
+                    Message = "Products filtered successfully",
+                    Data = products
+                };
+            }
+            catch (Exception ex)
+            {
+                return new CustomResponse<List<ProductGetDto>>
+                {
+                    IsSuccess = false,
+                    Message = $"Error filtering products: {ex.Message}",
+                    Data = null
+                };
+            }
+        }
+
+
     }
 }
 

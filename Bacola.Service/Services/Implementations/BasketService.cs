@@ -216,11 +216,27 @@ namespace Bacola.Service.Services.Implementations
                  Id = item.ProductId,
                  Image = item.Product.ProductImages.FirstOrDefault(img => !img.IsDeleted && img.IsMain)?.Image,
                  Name = item.Product.Title,
-                 DiscountPrice = item.Product.DiscountPercent == 0 ? item.Product.Price : (item.Product.Price * item.Product.DiscountPercent) / 100,
+                 DiscountPrice = item.Product.DiscountPercent == 0 ? item.Product.Price : Math.Round((item.Product.Price * (100 - item.Product.DiscountPercent)) / 100, 1),
              }).ToList();
 
                     //salam
-                    basketGetDto.TotalPrice = basketGetDto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
+
+                    if (basketGetDto.IsCuouponApplied)
+                    {
+                        var couponResponse = await ApplyCoupon("", new CustomResponse<BasketGetDto> { IsSuccess = true, Data = basketGetDto });
+                        if (couponResponse.IsSuccess)
+                        {
+                            basketGetDto.TotalPrice = couponResponse.Data;
+                        }
+                        else
+                        {
+                
+                        }
+                    }
+                    else
+                    {
+                        basketGetDto.TotalPrice = basketGetDto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
+                    }
 
                 }
             }
@@ -243,7 +259,7 @@ namespace Bacola.Service.Services.Implementations
                                 Count = item.Count,
                                 Image = product.Data.ProductImages.FirstOrDefault(x => !x.IsDeleted && x.IsMain).Image,
                                 Name = product.Data.Title,
-                                DiscountPrice = product.Data.DiscountPercent == 0 ? product.Data.Price : (product.Data.Price * product.Data.DiscountPercent) / 100,
+                                DiscountPrice = product.Data.DiscountPercent == 0 ? product.Data.Price : Math.Round((product.Data.Price * (100 - product.Data.DiscountPercent)) / 100, 1),
                             };
                             basketGetDto.basketItems.Add(basketItem);
                             basketGetDto.TotalPrice += basketItem.DiscountPrice * basketItem.Count;
@@ -294,17 +310,17 @@ namespace Bacola.Service.Services.Implementations
             }
         }
 
-        public async Task<CustomResponse<double>> ApplyCoupon(string code, int couponId, BasketGetDto dto)
+        public async Task<CustomResponse<double>> ApplyCoupon(string code, CustomResponse<BasketGetDto> dto)
         {
-            bool isValidCoupon = await _couponService.CheckCouponValidity(code);
-            dto.TotalPrice = dto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
-            if (!isValidCoupon)
+            int couponId = await _couponService.CheckCouponValidity(code);
+            dto.Data.TotalPrice = dto.Data.basketItems.Sum(x => (x.DiscountPrice * x.Count));
+            if (couponId == 0)
             {
-                dto.TotalPrice = dto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
+                dto.Data.TotalPrice = dto.Data.basketItems.Sum(x => (x.DiscountPrice * x.Count));
                 return new CustomResponse<double>
                 {
                     IsSuccess = false,
-                    Data = dto.TotalPrice,
+                    Data = dto.Data.TotalPrice,
                     Message = "Invalid coupon ID or coupon is not active."
 
                 };
@@ -312,16 +328,17 @@ namespace Bacola.Service.Services.Implementations
             }
             var coupon = await _couponService.GetAsync(couponId);
             double discountAmount = 0;
-            if (coupon != null && coupon.Data != null && dto.TotalPrice > 0)
+            if (coupon != null && coupon.Data != null && dto.Data.TotalPrice > 0)
             {
-                discountAmount = (dto.TotalPrice * coupon.Data.DiscountAmount) / 100;
+                discountAmount = (dto.Data.TotalPrice * coupon.Data.DiscountAmount) / 100;
             }
-            double discountedTotalPrice = dto.TotalPrice - discountAmount;
-            dto.TotalPrice = discountedTotalPrice;
+            double discountedTotalPrice = dto.Data.TotalPrice - discountAmount;
+            dto.Data.TotalPrice = discountedTotalPrice;
+            dto.Data.IsCuouponApplied = true;
             return new CustomResponse<double>
             {
                 IsSuccess = true,
-                Data = dto.TotalPrice,
+                Data = dto.Data.TotalPrice,
                 Message = $"Total price after applying the coupon: {discountedTotalPrice}"
             };
         }

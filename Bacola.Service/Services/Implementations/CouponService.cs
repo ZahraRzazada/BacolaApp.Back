@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Net.NetworkInformation;
 using AutoMapper;
 using Bacola.Core.DTOS;
@@ -100,15 +100,15 @@ namespace Bacola.Service.Services.Implementations
             await _couponRepository.UpdateAsync(coupon);
             await _couponRepository.SaveChangesAsync();
         }
-        public async Task<bool> CheckCouponValidity(string code)
+        public async Task<int> CheckCouponValidity(string code)
         {
            
             var coupon = await _couponRepository.GetAsync(x => x.Code == code);
             if (coupon != null && (Bacola.Core.Enums.CouponStatus)coupon.Status == Bacola.Core.Enums.CouponStatus.Active)
             {
-                return true;
+                return coupon.Id;
             }
-            return false;
+            return 0;
         }
     }
 }

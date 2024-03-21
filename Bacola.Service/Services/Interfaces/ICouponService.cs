@@ -14,7 +14,7 @@ namespace Bacola.Service.Services.Interfaces
         public Task<CustomResponse<CouponGetDto>> GetAsync(int id);
         public Task UseLess(int id);
         public Task Active(int id);
-        public Task<bool> CheckCouponValidity(string code);
+        public Task<int> CheckCouponValidity(string code);
         
     }
 }

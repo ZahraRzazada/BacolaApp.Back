@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bacola.Core.DTOS;
 using Bacola.Core.Entities;
+using Bacola.Service.Responses;
 using Bacola.Service.Services.Implementations;
 using Bacola.Service.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -125,7 +126,7 @@ namespace Bacola.App.Controllers
                 return StatusCode(404);
 
             }
-            return RedirectToAction("index", "shop");
+            return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Wishlist()
         {
@@ -154,7 +155,6 @@ namespace Bacola.App.Controllers
                 return View("Error"); 
             }
         }
-
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Checkout(OrderPostDto dto)
@@ -162,10 +162,29 @@ namespace Bacola.App.Controllers
             await _orderService.CreateAsync(dto);
             return RedirectToAction(nameof(Index));
         }
-
-        public async Task<IActionResult> ApplyCoupon(string code, int couponId, BasketGetDto dto)
+        [Authorize]
+        public async Task<IActionResult> OrderTracking()
         {
-            var response = await _basketService.ApplyCoupon(code, couponId, dto);
+            return View();
+        }
+        [Authorize]
+        public async Task<IActionResult> OrderTrackingDetail(int id)
+        {
+            return View(await _orderService.Get(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> ApplyCoupon(string code, CustomResponse<BasketGetDto> dto)
+        {
+            var basketResponse = await _basketService.GetBasket();
+
+            if (!basketResponse.IsSuccess)
+            {
+                ViewBag.BasketData = basketResponse.Data;
+                return View(basketResponse);
+            }
+            dto.Data.basketItems = basketResponse.Data.basketItems;
+            
+            var response = await _basketService.ApplyCoupon(code, dto);
             if (!response.IsSuccess)
             {
                 TempData["ErrorMessage"] = response.Message;
@@ -177,14 +196,15 @@ namespace Bacola.App.Controllers
                 return RedirectToAction("Basket", "Shop");
             }
         }
-        public async Task<IActionResult> OrderTracking()
+
+        [HttpPost]
+        public async Task<IActionResult> FilterProducts(ProductFilterDto dto)
         {
-            return View();
+            var res = await _productService.GetFilteredProducts(dto);
+            return View(res.Data);
+
         }
-        public async Task<IActionResult> OrderTrackingDetail(int id)
-        {
-            return View(await _orderService.Get(id));
-        }
+
     }
 }
 

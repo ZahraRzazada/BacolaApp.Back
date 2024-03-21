@@ -13,6 +13,7 @@ namespace Bacola.Service.Services.Interfaces
 		public Task<CustomResponse<Product>> UpdateAsync(int id, ProductPostDto dto);
 		public Task<IEnumerable<ProductGetDto>> GetAllAsync();
 		public Task<CustomResponse<ProductGetDto>> GetAsync(int id);
-	}
+		public Task<CustomResponse<List<ProductGetDto>>> GetFilteredProducts(ProductFilterDto filter);
+    }
 }
 

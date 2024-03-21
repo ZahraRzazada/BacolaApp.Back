@@ -14,6 +14,226 @@
     <div id="update" style="display:none">@TempData["update"]</div>
 }
 <main>
+    <a asp-controller="home" asp-action="index">
+        <i id="Up" class="fa-solid fa-chevron-up"></i>
+    </a>
+    @foreach (var item in Model.Products)
+    {
+        <div aria-labelledby="@(item.Title+item.Id)Label" id="@(item.Title+item.Id)" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <!-- <i class="fa-solid fa-xmark"></i> -->
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <section id="Productcart">
+                            <div class="container">
+
+                                <div class="single-wrapper">
+                                    <div class="product-header">
+                                        <h1 class="product_title entry-title">
+                                            @item.Title
+                                        </h1>
+                                        <div class="bottom">
+                                            <div class="product-brand">
+                                                <p>
+                                                    Brands <span>@item.Brand.Name</span>
+                                                </p>
+                                            </div>
+                                            <div class="star-rating">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <span>1 review</span>
+                                            </div>
+                                            <div class="sku-wrapper">
+                                                <span class="first">SKU: <span>ZU49VOR</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-body">
+                                        <div class="row">
+                                            <div class="col-lg-6 product-slid">
+
+                                                <div class="main-img">
+                                                    @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
+                                                    {
+                                                        <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
+                                                    }
+                                                    @foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                                    {
+                                                        <img src="~/assets/img/product/@item2.Image" alt="">
+                                                    }
+                                                </div>
+                                                <div class="addition-img">
+                                                    @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
+                                                    {
+                                                        <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
+                                                    }
+                                                    @foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                                    {
+                                                        <img src="~/assets/img/product/@item2.Image" alt="">
+                                                    }
+                                                </div>
+
+                                            </div>
+                                            <div class="col col-12 col-lg-6 product-detail">
+                                                <p class="price">
+                                                    <del>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>@item.Price
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>@item.DiscountPrice
+                                                        </span>
+                                                    </ins>
+                                                </p>
+                                                <div class="product-meta">
+                                                    <div class="stock product-available in-stock">
+                                                        <span class="stock in-stock">
+                                                            @if (@item.InStock == true)
+                                                            {
+                                                                <span class="stock in-stock">In Stock</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="stock in-stock">Is Not In Stock</span>
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    @item.Info
+                                                </p>
+                                                <form class="cart single-ajax"
+                                                      action="https://klbtheme.com/bacola/product/all-natural-italian-style-chicken-meatballs/"
+                                                      method="post" enctype="multipart/form-data">
+
+                                                    <div class="quantity">
+                                                        <label class="screen-reader-text" for="quantity_65ca19e5d5c09">
+                                                            @item.Title
+                                                        </label>
+                                                        <div class="quantity-button minus">
+                                                            <i class="fa-solid fa-minus"></i>
+                                                        </div>
+                                                        <input type="text" id="quantity_65ca19e5d5c09"
+                                                               class="input-text qty text" name="quantity" value="1"
+                                                               aria-label="Product quantity" size="4" min="1" max="61" step="1"
+                                                               placeholder="" inputmode="numeric" autocomplete="off">
+                                                        <div class="quantity-button plus">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </div>
+                                                    </div>
+
+                                                    <button type="submit" name="add-to-cart" value="430"
+                                                            class="single_add_to_cart_button button alt">
+                                                        Add to cart
+                                                    </button>
+
+                                                </form>
+
+                                                <div class="product-actions">
+                                                    <div class="tinv-wraper woocommerce tinv-wishlist tinvwl-shortcode-add-to-cart tinvwl-woocommerce_single_product_summary"
+                                                         data-tinvwl_product_id="430">
+                                                        <div class="tinv-wishlist-clear"></div><a role="button" tabindex="0"
+                                                                                                  name="add-to-wishlist" aria-label="Add to Wishlist"
+                                                                                                  class="tinvwl_add_to_wishlist_button tinvwl-icon-heart tinvwl-position-shortcode tinvwl-product-in-list"
+                                                                                                  data-tinv-wl-list="{&quot;5603&quot;:{&quot;ID&quot;:5603,&quot;title&quot;:&quot;Default wishlist&quot;,&quot;status&quot;:&quot;share&quot;,&quot;share_key&quot;:&quot;6e6cc1&quot;,&quot;in&quot;:[0]}}"
+                                                                                                  data-tinv-wl-product="430" data-tinv-wl-productvariation="0"
+                                                                                                  data-tinv-wl-productvariations="[]"
+                                                                                                  data-tinv-wl-producttype="simple"
+                                                                                                  data-tinv-wl-action="addto">
+                                                            <span class="tinvwl_add_to_wishlist-text">
+                                                                <i class="fa-solid fa-heart"></i>Add to Wishlist
+                                                            </span>
+                                                        </a>
+                                                        <div class="tinv-wishlist-clear"></div>
+                                                        <div class="d-none tinvwl-tooltip">Add to Wishlist</div>
+                                                    </div>
+                                                    <button class="woosc-btn woosc-btn-430 " data-id="430"
+                                                            data-product_name="All Natural Italian-Style Chicken Meatballs"
+                                                            data-product_image="https://klbtheme.com/bacola/wp-content/uploads/2021/04/product-image-62-150x150.jpg">
+                                                        <i class="fa-solid fa-code-compare"></i>Compare
+                                                    </button>
+                                                </div>
+
+                                                <div class="product-checklist">
+                                                    <ul>
+                                                        <li>
+                                                            <i class="fa-solid fa-check"></i>Type: @if (item.IsOrganic == true)
+                                                            {
+                                                                <span>Organic</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>Non-Organic</span>
+                                                            }
+                                                        </li>
+                                                        <li><i class="fa-solid fa-check"></i>MFG: Jun 4.2021</li>
+                                                        <li><i class="fa-solid fa-check"></i>LIFE: 30 days</li>
+                                                    </ul>
+                                                </div>
+                                                <p class="p1">Category: <span>@item.Category.Name</span></p>
+                                                @*<p class="p2">Tags: <span>@foreach(var item2 in item.TagProducts)
+                                                    {
+
+                                                    }</span></p>*@
+
+                                                <div class="product-share">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="https://www.facebook.com/" class="facebook">
+                                                                <i class="fa-brands fa-facebook"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://twitter.com/home" class="twitter">
+                                                                <i class="fa-brands fa-twitter"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://pinterest.com/" class="pinterest">
+                                                                <i class="fa-brands fa-pinterest"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://www.linkedin.com/" class="linkedin">
+                                                                <i class="fa-brands fa-linkedin"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://www..com/" class="redit">
+                                                                <i class="fa-brands fa-reddit-alien"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://www..com/" class="vhats">
+                                                                <i class="fa-brands fa-whatsapp"></i>
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
     <!--Slider Section Start -->
     <section id="Hometop">
         <div class="container">
@@ -83,7 +303,7 @@
                                             </del>
                                             <span class="woocommerce-Price-amount amount">
                                                 <bdi>
-                                                    <span class="woocommerce-Price-currencySymbol">$</span>@item.DiscountPrice
+                                                    <span class="woocommerce-Price-currencySymbol">$</span>@item.DiscountPrice.ToString("0.0");
                                                 </bdi>
                                             </span>
                                         </div>
@@ -157,9 +377,86 @@
                         <div class="best-body">
                             <div class="product-slider">
                                 @foreach (ProductGetDto item in Model.Products)
-                                    {
-                                        //product
-                                    }
+                                {
+                                    <div class="product">
+                                        <div class="product-card">
+                                            <div class="card-thumbnail">
+                                                <div class="card-badges">
+                                                    <span class="badge on-sale">@item.DiscountPercent%</span>
+                                                    <span class="badge recommend">recommended</span>
+                                                </div>
+                                                <a asp-controller="shop" asp-action="detail" asp-route-id="@item.Id" class="img-box">
+                                                    <img src="~/assets/img/product/@item.ProductImages.FirstOrDefault(x=>x.IsMain&&!x.IsDeleted)?.Image"
+                                                         alt="card-img" />
+                                                </a>
+                                                <div class="card-buttons">
+                                                    <button data-bs-target="#@(item.Title+item.Id)" class="show-detail-btn top-btn" data-bs-toggle="modal">
+                                                        <i class="fa-solid fa-expand"></i>
+                                                    </button>
+                                                    <a asp-controller="shop" asp-action="AddWishlist" asp-route-id="@item.Id" class="whislist-btn top-btn">
+                                                        <i class="fa-solid fa-heart"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-content">
+                                                <h3 class="card-title">
+                                                    <a href="" class="title-1">
+                                                        @item.Title
+                                                    </a>
+                                                </h3>
+                                                @if (item.InStock == true)
+                                                {
+                                                    <span class="stock-state">In Stock</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="stock-state">Is Not In Stock</span>
+                                                }
+                                                <div class="card-rating">
+                                                    <i class="fa-solid fa-star rating-star"></i>
+                                                    <i class="fa-solid fa-star rating-star"></i>
+                                                    <i class="fa-solid fa-star rating-star"></i>
+                                                    <i class="fa-solid fa-star rating-star"></i>
+                                                    <i class="fa-solid fa-star rating-star"></i>
+                                                </div>
+                                                <div class="card-price">
+                                                    <del>
+                                                        <bdi>
+                                                            <span class="price-amount old-price">@item.Price</span>
+                                                        </bdi>
+                                                    </del>
+                                                    <ins>
+                                                        <bdi><span class="price-amount new-price">@item.DiscountPrice</span></bdi>
+                                                    </ins>
+                                                </div>
+                                                <div class="product-fade-block">
+                                                    <div class="product-button-group">
+                                                        <div class="quantity">
+                                                            <div class="quantity-btn minus">
+                                                                <a asp-controller="shop" asp-action="RemoveBasketItem" asp-route-id="@item.Id" class="btn-remove-basket  btn-plus">
+                                                                    <i style="color:black"
+                                                                       class="fa-solid fa-minus"></i>
+                                                                </a>
+                                                            </div>
+                                                            <input style="border-left: 0px;border-right:0px" type="text"
+                                                                   class="quantity-counter" name="quantity" min="0"
+                                                                   max="57" step="1" value="1" />
+                                                            <div class="quantity-btn plus">
+                                                                <a asp-controller="shop" asp-action="Addbasket" asp-route-id="@item.Id" class="btn-add-basket  btn-minus">
+                                                                    <i style="color: black;"
+                                                                       class="fa-solid fa-plus"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="add-to-cart">
+                                                            <a asp-controller="shop" asp-action="AddBasket" asp-route-id="@item.Id" class="btn btn-add-basket btn-primary">Add To Card</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -260,9 +557,86 @@
                         </div>
                         <div class="container">
                             @foreach (ProductGetDto item in Model.Products)
-                                {
-                                    //product
-                                }
+                            {
+                                <div class="product">
+                                    <div class="product-card">
+                                        <div class="card-thumbnail">
+                                            <div class="card-badges">
+                                                <span class="badge on-sale">@item.DiscountPercent%</span>
+                                                <span class="badge recommend">recommended</span>
+                                            </div>
+                                            <a asp-controller="shop" asp-action="detail" asp-route-id="@item.Id" class="img-box">
+                                                <img src="~/assets/img/product/@item.ProductImages.FirstOrDefault(x=>x.IsMain&&!x.IsDeleted)?.Image"
+                                                     alt="card-img" />
+                                            </a>
+                                            <div class="card-buttons">
+                                                <button data-bs-target="#@(item.Title+item.Id)" class="show-detail-btn top-btn" data-bs-toggle="modal">
+                                                    <i class="fa-solid fa-expand"></i>
+                                                </button>
+                                                <a asp-controller="shop" asp-action="AddWishlist" asp-route-id="@item.Id" class="whislist-btn top-btn">
+                                                    <i class="fa-solid fa-heart"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h3 class="card-title">
+                                                <a href="" class="title-1">
+                                                    @item.Title
+                                                </a>
+                                            </h3>
+                                            @if (item.InStock == true)
+                                            {
+                                                <span class="stock-state">In Stock</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="stock-state">Is Not In Stock</span>
+                                            }
+                                            <div class="card-rating">
+                                                <i class="fa-solid fa-star rating-star"></i>
+                                                <i class="fa-solid fa-star rating-star"></i>
+                                                <i class="fa-solid fa-star rating-star"></i>
+                                                <i class="fa-solid fa-star rating-star"></i>
+                                                <i class="fa-solid fa-star rating-star"></i>
+                                            </div>
+                                            <div class="card-price">
+                                                <del>
+                                                    <bdi>
+                                                        <span class="price-amount old-price">@item.Price</span>
+                                                    </bdi>
+                                                </del>
+                                                <ins>
+                                                    <bdi><span class="price-amount new-price">@item.DiscountPrice</span></bdi>
+                                                </ins>
+                                            </div>
+                                            <div class="product-fade-block">
+                                                <div class="product-button-group">
+                                                    <div class="quantity">
+                                                        <div class="quantity-btn minus">
+                                                            <a asp-controller="shop" asp-action="RemoveBasketItem" asp-route-id="@item.Id" class="btn-remove-basket  btn-plus">
+                                                                <i style="color:black"
+                                                                   class="fa-solid fa-minus"></i>
+                                                            </a>
+                                                        </div>
+                                                        <input style="border-left: 0px;border-right:0px" type="text"
+                                                               class="quantity-counter" name="quantity" min="0"
+                                                               max="57" step="1" value="1" />
+                                                        <div class="quantity-btn plus">
+                                                            <a asp-controller="shop" asp-action="Addbasket" asp-route-id="@item.Id" class="btn-add-basket  btn-minus">
+                                                                <i style="color: black;"
+                                                                   class="fa-solid fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="add-to-cart">
+                                                        <a asp-controller="shop" asp-action="AddBasket" asp-route-id="@item.Id" class="btn btn-add-basket btn-primary">Add To Card</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                         </div>
 
                     </div>

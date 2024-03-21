@@ -35,6 +35,8 @@ namespace Bacola.Data.RepositoryRegisterations
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             services.AddScoped<ICouponRepository, CouponRepository>();
+            services.AddScoped<IParentCommentRepository, ParentCommentRepository>();
+            services.AddScoped<IReplyRepository, ReplyRepository>();
 
             services.AddIdentity<AppUser, IdentityRole>(
                opt =>

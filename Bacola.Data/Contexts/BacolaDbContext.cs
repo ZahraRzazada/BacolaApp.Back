@@ -28,6 +28,8 @@ namespace Bacola.Data.Contexts
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Coupon> Coupons { get; set; }
+        public DbSet<ParentComment> ParentComments { get; set; }
+        public DbSet<Reply> Replies { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

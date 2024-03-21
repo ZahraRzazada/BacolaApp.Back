@@ -1,6 +1,12 @@
 ﻿@model ProductGetDto
-
+@if (!string.IsNullOrWhiteSpace((string)TempData["AddWishlist"]))
+{
+    <div style="display:none" id="wishlist">@TempData["AddWishlist"]</div>
+}
 <main>
+    <a asp-controller="shop" asp-action="detail">
+        <i id="Up" class="fa-solid fa-chevron-up"></i>
+    </a>
     <section style="margin-top:50px" id="Productcart">
         <div class="container">
             <div class="single-wrapper">
@@ -9,7 +15,7 @@
                     <div class="bottom">
                         <div class="product-brand">
                             <p>
-                                Brands <span>@Model.Brand.Name</span>
+                                Brands :<span>@Model.Brand.Name</span>
                             </p>
                         </div>
                         <div class="star-rating">
@@ -66,13 +72,13 @@
                             <div class="product-meta">
                                 <div class="stock product-available in-stock">
                                     @if (Model.InStock == true)
-                                        {
+                                    {
                                         <span class="stock in-stock">In Stock</span>
-                                        }
-                                        else
-                                        {
-                                          <span class="stock in-stock">Is Not In Stock</span>
-                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="stock in-stock">Is Not In Stock</span>
+                                    }
                                 </div>
                             </div>
                             <p>
@@ -84,7 +90,7 @@
 
                                 <div class="quantity">
                                     <label class="screen-reader-text" for="quantity_65ca19e5d5c09">
-                                       @Model.Title
+                                        @Model.Title
                                     </label>
                                     <div class="quantity-button minus"><i class="fa-solid fa-minus"></i></div>
                                     <input type="text" id="quantity_65ca19e5d5c09" class="input-text qty text"
@@ -103,7 +109,7 @@
                             <div class="product-actions">
                                 <div class="tinv-wraper woocommerce tinv-wishlist tinvwl-shortcode-add-to-cart tinvwl-woocommerce_single_product_summary"
                                      data-tinvwl_product_id="430">
-                                    <div class="tinv-wishlist-clear"></div><a role="button" tabindex="0"
+                                    <div class="tinv-wishlist-clear"></div><a id="wishlist" asp-controller="shop" asp-action="AddWishlist" asp-route-id="@Model.Id" tabindex="0"
                                                                               name="add-to-wishlist" aria-label="Add to Wishlist"
                                                                               class="tinvwl_add_to_wishlist_button tinvwl-icon-heart tinvwl-position-shortcode tinvwl-product-in-list"
                                                                               data-tinv-wl-list="{&quot;5603&quot;:{&quot;ID&quot;:5603,&quot;title&quot;:&quot;Default wishlist&quot;,&quot;status&quot;:&quot;share&quot;,&quot;share_key&quot;:&quot;6e6cc1&quot;,&quot;in&quot;:[0]}}"
@@ -129,11 +135,11 @@
                                     <li>
                                         <i class="fa-solid fa-check"></i>Type:  @if (Model.IsOrganic == true)
                                         {
-                                         <span>Organic</span>
+                                            <span>Organic</span>
                                         }
                                         else
                                         {
-                                    <span>Non-Organic</span>
+                                            <span>Non-Organic</span>
                                         }
                                     </li>
                                     <li><i class="fa-solid fa-check"></i>MFG:  @Model.CreatedAt.ToString("dd.mm.yy")</li>
@@ -230,9 +236,9 @@
                                             <p>@item.Value</p>
                                         </td>
                                     </tr>
-                                        }
-                                
-                                </tbody>
+                                }
+
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -517,4 +523,47 @@
             </div>
     </section>
 </main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>document.addEventListener("DOMContentLoaded", function () {
+        const resetPasswordData = document.getElementById("basket");
+        if (resetPasswordData !== null) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 10000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "warning",
+                iconColor: "#007bff",
+                title: "Product was added to the Basket succesfully"
+            });
+            const resetPasswordData = document.getElementById("wishlist");
+            if (resetPasswordData !== null) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-right",
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "warning",
+                    iconColor: "#007bff",
+                    title: "Product was added to the Basket succesfully"
+                });
+            }
+
+            });</script>
 

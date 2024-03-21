@@ -1,5 +1,8 @@
 ﻿@model CustomResponse<WishlistGetDto>
 <main>
+    <a asp-controller="shop" asp-action="wishlist">
+        <i id="Up" class="fa-solid fa-chevron-up"></i>
+    </a>
     <section id="Wishlist">
         <div class="container">
             <div class="wishlist">
@@ -12,7 +15,7 @@
                         <thead>
                             <tr class="wishlist_header">
                                 <th class="product-cb">
-                                <span style="font-size: 15px; font-weight: 700; color: #71778e">Id</span>
+                                    <span style="font-size: 15px; font-weight: 700; color: #71778e">Id</span>
                                 </th>
                                 <th class="product-remove"></th>
                                 <th class="product-thumbnail">&nbsp;</th>
@@ -31,10 +34,10 @@
                             {
                                 <tr class="wishlist_item">
                                     <td class="product-cb">
-                                       <span style="font-size: 10px; font-weight: 700; color: #71778e;padding:5px">@item.Id</span>
+                                        <span style="font-size: 10px; font-weight: 700; color: #71778e;padding:5px">@item.Id</span>
                                     </td>
                                     <td class="product-remove">
-                                        <a style="font-weight: 900; font-size: 15px; color: #71778e" asp-controller="shop" asp-action="RemoveWishlistItem" asp-route-id="@item.Id" >
+                                        <a style="font-weight: 900; font-size: 15px; color: #71778e" asp-controller="shop" asp-action="RemoveWishlistItem" asp-route-id="@item.Id">
                                             <i class="fa-solid fa-x"></i>
                                         </a>
                                     </td>
@@ -119,8 +122,7 @@
                                         </div>
                                     </div>
                                     <div class="tinvwl-to-right look_in">
-                                        <a asp-controller="shop" asp-action="RemoveAllWishlist" style="color: white; display: inline-flex; align-items: center; height: 2.5rem; font-size: 0.7rem; font-weight: 500; white-space: pre; text-decoration: none; padding: 0 0.9375rem; border: 1px solid; color: #fff; background-color: #233a95; border-radius: 4px; border-color: transparent; box-shadow: none; outline: none;" 
-                                          >
+                                        <a asp-controller="shop" asp-action="RemoveAllWishlist" style="color: white; display: inline-flex; align-items: center; height: 2.5rem; font-size: 0.7rem; font-weight: 500; white-space: pre; text-decoration: none; padding: 0 0.9375rem; border: 1px solid; color: #fff; background-color: #233a95; border-radius: 4px; border-color: transparent; box-shadow: none; outline: none;">
                                             <span>Remove All</span>
                                         </a>
                                         <a style="color: white; display: inline-flex; align-items: center; height: 2.5rem; font-size: 0.7rem; font-weight: 500; white-space: pre; text-decoration: none; padding: 0 0.9375rem; border: 1px solid; color: #fff; background-color: #233a95; border-radius: 4px; border-color: transparent; box-shadow: none; outline: none;">

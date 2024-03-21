@@ -15,6 +15,7 @@ namespace Bacola.Core.DTOS
         public string SubInfo { get; set; } = null!;
         public CategoryGetDto CategoryGetDto { get; set; }=null!;
         public IEnumerable<TagGetDto> Tags { get; set; } = null!;
+        public List<ParentComment> Comments { get; set; }
         public DateTime Date { get; set; }
     }
 }

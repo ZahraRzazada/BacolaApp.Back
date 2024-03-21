@@ -25,6 +25,8 @@
     <None Remove="DTOS\Wishlist\" />
     <None Remove="DTOS\Order\" />
     <None Remove="DTOS\Coupon\" />
+    <None Remove="DTOS\Filter\" />
+    <None Remove="DTOS\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOS\" />
@@ -45,6 +47,8 @@
     <Folder Include="DTOS\Wishlist\" />
     <Folder Include="DTOS\Order\" />
     <Folder Include="DTOS\Coupon\" />
+    <Folder Include="DTOS\Filter\" />
+    <Folder Include="DTOS\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />

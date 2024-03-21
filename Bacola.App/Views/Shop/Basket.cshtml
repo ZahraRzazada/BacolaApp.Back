@@ -14,6 +14,9 @@
     </div>
 }
 <main>
+    <a asp-controller="shop" asp-action="basket">
+        <i id="Up" class="fa-solid fa-chevron-up"></i>
+    </a>
     @if (ViewBag.BasketData.basketItems.Count > 0)
     {
         <section id="Basket">
@@ -22,7 +25,7 @@
                     <div class="row content-wrapper sidebar-right">
                         <div class="col-12 col-md-12 col-lg-12 content-primary">
                             <div class="cart-wrapper">
-                                <form class="woocommerce-cart-form" method="post" novalidate="novalidate" action="/shop/ApplyCoupon">
+                                <form class="woocommerce-cart-form" method="post" enctype="multipart/form-data" novalidate="novalidate" action="/shop/ApplyCoupon">
 
                                     <div class="klb-free-progress-bar warning">
                                         <div class="free-shipping-notice">
@@ -90,6 +93,10 @@
                                                     <div class="actions-wrapper">
                                                         <div class="coupon">
                                                             <label for="coupon_code" class="d-none screen-reader-text">Coupon:</label>
+                                                            @*@(ViewData.BasketItems=ViewBag.BasketData.basketItems)*@
+
+                                                            <input type="hidden" asp-for="@Model.Data.basketItems" />
+                                                            <input type="hidden" asp-for="@Model.Data.TotalPrice" />
                                                             <input type="text" name="code" class="form-control" id="coupon_code" value="" placeholder="Coupon code">
                                                             <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
                                                         </div>
@@ -196,12 +203,3 @@
 
 </main>
 
-@*<script>function submitOuterForm() {
-
-        document.getElementById("outerForm").submit();
-    }
-
-    function submitInnerForm() {
-
-        document.getElementById("innerForm").submit();
-    }</script>*@

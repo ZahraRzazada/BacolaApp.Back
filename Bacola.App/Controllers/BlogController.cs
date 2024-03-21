@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bacola.App.ViewModels;
 using Bacola.Core.DTOS;
 using Bacola.Data.Contexts;
+using Bacola.Service.Services.Implementations;
 using Bacola.Service.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,15 +18,18 @@ namespace Bacola.App.Controllers
     {
         readonly BacolaDbContext _context;
         readonly IBlogService _blogService;
-        public BlogController(BacolaDbContext context, IBlogService blogService)
+        readonly ICommentService _commentService;
+        public BlogController(BacolaDbContext context, IBlogService blogService, ICommentService commentService)
         {
             _context = context;
             _blogService = blogService;
+            _commentService = commentService;
         }
 
 
         public async Task<IActionResult> Index()
         {
+
             IEnumerable<BlogGetDto> blogGetDtos = await _blogService.GetAllAsync();
             ViewBag.Tags = _context.Tags.Where(x => !x.IsDeleted)
            .Include(x => x.TagBlogs)
@@ -38,6 +43,7 @@ namespace Bacola.App.Controllers
         }
         public async Task<IActionResult> Detail(int id)
         {
+            BlogViewModel blogViewModel = new BlogViewModel();
             ViewBag.Tags = _context.Tags.Where(x => !x.IsDeleted)
           .Include(x => x.TagBlogs)
           .ThenInclude(x => x.Blog)
@@ -46,9 +52,48 @@ namespace Bacola.App.Controllers
               Name = tag.Name
           }).AsNoTrackingWithIdentityResolution();
             ViewBag.Categories = _context.Categories.Where(x => !x.IsDeleted).Select(c => new CategoryGetDto { Name = c.Name }).AsNoTrackingWithIdentityResolution();
-            var blogGetDto = await _blogService.GetAsync(id);
-
-            return View(blogGetDto.Data);
+            blogViewModel.BlogGetDto= await _blogService.GetAsync(id);
+            blogViewModel.Comments = await _commentService.GetAllCommentsAsync();
+            return View(blogViewModel);
+        }
+        
+        //public async Task<IActionResult> AddComment()
+        //{
+        //    return View();
+        //}
+        [HttpPost]
+        public async Task<IActionResult> AddComment(ParentCommentDto dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            var response = await _commentService.CreateCommentAsync(dto);
+            if (!response.IsSuccess)
+            {
+                ModelState.AddModelError("", response.Message);
+                return View();
+            }
+            return RedirectToAction("Detail","Blog" , new { id = dto.BlogId});
+        }
+        //public async Task<IActionResult> AddReply()
+        //{
+        //    return View();
+        //}
+        [HttpPost]
+        public async Task<IActionResult> AddReply(ReplyDto dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            var response = await _commentService.CreateReplyAsync(dto);
+            if (!response.IsSuccess)
+            {
+                ModelState.AddModelError("", response.Message);
+                return View();
+            }
+            return RedirectToAction("Detail", "Blog");
         }
     }
 }

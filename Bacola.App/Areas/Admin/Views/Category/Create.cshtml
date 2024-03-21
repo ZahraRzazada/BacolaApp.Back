@@ -23,7 +23,7 @@
                                         <div style="align-items:center" class="mb-4 row align-items-center">
                                             <label  asp-for="Name" class="form-label-title col-sm-12 mb-0">Parent-Category Name (If you choose default it will be parent)</label>
                                             <select style="margin-top:20px" class="form-select col-sm-12" asp-for="ParentCategoryId" aria-label="Disabled select example">
-                                                <option value=@null selected>Choose Parent Category (Default)</option>
+                                                <option value=@null >Choose Parent Category (Default)</option>
                                                 @foreach (var item in ViewBag.Categories)
                                                 {
                                                     <option value="@item.Id">@item.Name</option>

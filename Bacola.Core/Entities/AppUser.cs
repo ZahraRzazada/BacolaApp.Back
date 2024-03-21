@@ -9,6 +9,8 @@ namespace Bacola.Core.Entities
         public List<Basket> BasketItems { get; set; } = null!;
         public List<Wishlist> WishlistItems { get; set; } = null!;
         public List<Order> Orders { get; set; } = null!;
+        public List<ParentComment> Comments { get; set; }
+        public List<Reply> Replies { get; set; }
     }
 }
 

@@ -95,8 +95,8 @@ $('.addition-img').slick({
 
 //TabMneu
 let tabbuttons = document.querySelectorAll('#Tabmenu .container .tabmenu .links button')
-console.log(tabbuttons);
-console.log("salam");
+//console.log(tabbuttons);
+//console.log("salam");
 for (let tbtn of tabbuttons) {
   tbtn.onclick = function () {
     let x = document.querySelector('.tabactive')
@@ -229,22 +229,6 @@ for (let i = 0; i < allAddToCart4.length; i++) {
 
 
 
-//Modal
-let locationbtn = document.querySelectorAll('.show-detail-btn')
-let modal = document.querySelector(".modal")
-let close = document.querySelector('.modal .modal-content .modal-header button')
-
-for (let i = 0; i < locationbtn.length; i++) {
-  locationbtn[i].onclick = (e) => {
-    modal.style.display = "block";
-    modal.classList.add('modal-open')
-
-  }
-}
-
-close.onclick = (e) => {
-  modal.style.display = "none";
-}
 
 //Category filter
 function toggleDiv2() {
@@ -438,39 +422,6 @@ removeBaskets.forEach(basket1 => basket1.addEventListener('click', function (e) 
 
 
 
-//PriceFilter
-const rangeInput = document.querySelectorAll(".range-input input");
-const priceValue = document.querySelectorAll(".price-value");
-const range = document.querySelector(".progress");
-let priceGap = 10;
 
-function validateRange(e) {
-    let minVal = parseInt(rangeInput[0].value);
-    let maxVal = parseInt(rangeInput[1].value);
 
-    if (maxVal - minVal < priceGap) {
-        if (e.target.className === "range-min") {
-            rangeInput[0].value = maxVal - priceGap;
-        } else {
-            rangeInput[1].value = minVal + priceGap;
-        }
-    } else {
-        priceValue[0].textContent = `$${minVal}`;
-        priceValue[1].textContent = `$${maxVal}`;
-        range.style.left = `${(minVal / rangeInput[0].max) * 100}%`;
-        range.style.right = `${100 - (maxVal / rangeInput[1].max) * 100}%`;
-    }
-}
 
-rangeInput.forEach((input) => {
-    input.addEventListener("input", validateRange);
-});
-
-validateRange();
-
-//SubcategoryShopPage
-var icon = document.getElementById('toggleIcon');
-var subUl = document.querySelector('.children');
-icon.addEventListener('click', function () {
-    subUl.style.display = subUl.style.display === 'none' ? 'block' : 'none';
-});
