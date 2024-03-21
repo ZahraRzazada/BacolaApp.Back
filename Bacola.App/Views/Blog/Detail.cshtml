@@ -11,7 +11,7 @@
                 <div class="col-12 col-md-12 col-lg-9">
                     <div class="left-part">
                         <div class="blog-top">
-                            <a href="/blog-detail.html"><img src="~/assets/img/blog/@Model.BlogGetDto.Data.Image" alt=""></a>
+                            <a ><img src="~/assets/img/blog/@Model.BlogGetDto.Data.Image" alt=""></a>
                         </div>
                         <div class="blog-bottom">
                             <div class="blog-wrappers">
@@ -49,11 +49,10 @@
                                 </h5>
                                 <ol class="comment-list">
                                     @if (Model.Comments != null && Model.Comments.Any())
-
                                         @foreach (var item in Model.Comments)
                                         {
-                                            <li class="comment byuser comment-author-bacola bypostauthor even thread-even depth-1" id="comment-19">
-                                                <div id="div-comment-19" class="comment-body">
+                                            <li class="comment byuser comment-author-bacola bypostauthor even thread-even depth-1" id="comment-@item.Id">
+                                                <div id="div-comment-@item.Id" class="comment-body">
                                                     <div class="comment-avatar">
                                                         <div class="comment-author vcard">
                                                             <img src="~/assets/img/blog/comment.jpeg" alt="admin" class="avatar">
@@ -70,17 +69,39 @@
                                                             <p>@item.Text</p>
                                                         </div>
                                                         <div class="reply">
-                                                            <a rel="nofollow" class="comment-reply-link" href="https://klbtheme.com/bacola/blog/but-i-must-explain-to-you-how-all-this-mistaken-idea/?replytocom=19#respond" data-commentid="19" data-postid="1035" data-belowelement="comment-19" data-respondelement="respond" data-replyto="Reply to admin" aria-label="Reply to admin">Reply</a>
+                                                            <a rel="nofollow" class="comment-reply-link" href="javascript:void(0)" data-commentid="@item.Id" aria-label="Reply to @User.Identity.Name">Reply</a>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </li>
+                                           
+                                            <ul class="children">
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <div class="post-comments-form" style="display:none" id="commentFormContainer-@item.Id">
+                                                        <div id="respond" class="comment-respond">
+                                                            <h3 id="reply-title" class="comment-reply-title">Add A Reply<small></small></h3>
+                                                            <form method="post" action="/blog/AddReply" id="commentform" class="comment-form">
+                                                                <input type="hidden" name="BlogId" id="BlogId" value="@Model.BlogGetDto.Data.Id">
+                                                                <input type="hidden" name="AspNetUsersId" id="AspNetUsersId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)">
+                                                                <input type="hidden" name="AppUser" id="AspNetUsersId" value="@User.Identity.Name">
+                                                                <p class="comment-form-comment">
+                                                                    <label for="comment">Reply <span class="required">*</span></label>
+                                                                    <textarea id="comment" name="text" cols="45" rows="8" maxlength="65525" required="required"></textarea>
+                                                                </p>
+                                                                <p class="form-submit">
+                                                                    <input name="submit" type="submit" id="submit" class="submit" value="Post Reply">
+                                                                    <input type="hidden" name="comment_post_ID" value="1759" id="comment_post_ID">
+                                                                    <input type="hidden" name="ParentCommentId" id="comment_parent" value="@item.Id">
+                                                                </p>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                }
 
-                                            @if (item.Replies != null && item.Replies.Any())
-                                                <ul class="children">
-
-                                                    <li class="comment odd alt depth-2" id="comment-21">
+                                                @if (item.Replies != null && item.Replies.Any())
+                                                {
+                                                    <li class="comment odd alt depth-2" id="comment-@item.Id">
                                                         <div id="div-comment-21" class="comment-body">
                                                             <div class="comment-avatar">
                                                                 <div class="comment-author vcard">
@@ -89,31 +110,30 @@
                                                             </div>
                                                             <div class="comment-content">
                                                                 <div class="comment-meta">
-                                                                    <b class="fn"><a class="url">Elliot Alderson</a></b>
+                                                                    <b class="fn"><a class="url">@User.Identity.Name</a></b>
                                                                     <div class="comment-metadata">
-                                                                        <time>May 22, 2021</time>
+                                                                        <time>@item.CreatedAt.ToString("MMM dd, yyyy")</time>
                                                                     </div>
                                                                 </div>
                                                                 <div class="klb-post">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                                                                    <p>@item.Text</p>
                                                                 </div>
                                                                 <div class="reply">
-                                                                    <a rel="nofollow" class="comment-reply-link" href="https://klbtheme.com/bacola/blog/but-i-must-explain-to-you-how-all-this-mistaken-idea/?replytocom=21#respond" data-commentid="21" data-postid="1035" data-belowelement="comment-21" data-respondelement="respond" data-replyto="Reply to Elliot Alderson" aria-label="Reply to Elliot Alderson">Reply</a>
+                                                                    <a rel="nofollow" class="comment-reply-link" href="javascript:void(0)" data-commentid="@item.Id" aria-label="Reply to @User.Identity.Name">Reply</a>
                                                                 </div>
                                                             </div>
 
                                                         </div>
                                                     </li>
-                                                </ul>
+                                                }
+                                            </ul>
+                                            
+                                        }
 
-                                            }
                                         else
                                         {
                                             <h1>No comments available.</h1>
                                         }
-
-
-
                                 </ol>
                             </div>
                             @if (User.Identity.IsAuthenticated)
@@ -147,7 +167,7 @@
                             }
                             else
                             {
-                                <h3 style="color:red">You must be logged in to leave a comment.</h3>
+                                <h3>You must be logged in to leave a comment.</h3>
                             }
 
                         </div>
@@ -232,5 +252,3 @@
     </section>
 </main>
 
-<script>var userId = getUserId();
-    document.getElementById("AspNetUsersId").value = userId;</script>

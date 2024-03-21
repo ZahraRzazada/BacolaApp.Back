@@ -81,14 +81,14 @@ namespace Bacola.Service.Services.Implementations
 
         public async Task<CustomResponse<BlogGetDto>> GetAsync(int id)
         {
-            Blog? blog = await _blogRepository.GetAsync(x => !x.IsDeleted && x.Id == id, "TagBlogs.Tag", "Category", "Comments");
+            Blog? blog = await _blogRepository.GetAsync(x => !x.IsDeleted && x.Id == id, "TagBlogs.Tag", "Category", "Comments", "Replies");
             if (blog == null)
             {
                 return new CustomResponse<BlogGetDto> { IsSuccess = false, Message = "This Blog doesnt exist" };
             }
             BlogGetDto blogGetDto = new BlogGetDto
             {
-          Id=blog.Id,
+                Id=blog.Id,
                 Description = blog.Description,
                 Info = blog.Info,
                 Quotes = blog.Quotes,

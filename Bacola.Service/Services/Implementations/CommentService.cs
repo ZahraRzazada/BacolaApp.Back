@@ -39,14 +39,6 @@ namespace Bacola.Service.Services.Implementations
                 AspNetUsersId = dto.AspNetUsersId
                  
             };
-            //foreach (var replyDto in dto.Replies)
-            //{
-            //    Reply reply = new Reply
-            //    {
-            //        Text = replyDto.Text,
-            //    };
-            //    comment.Replies.Add(reply);
-            //}
             await _commentRepositoy.AddAsync(comment);
             await _commentRepositoy.SaveChangesAsync();
             return new CustomResponse<ParentComment> { IsSuccess = true, Message = "Comment is created successfully", Data = comment };
@@ -84,6 +76,13 @@ namespace Bacola.Service.Services.Implementations
             IEnumerable<ParentCommentDto> comments = await _commentRepositoy.GetQuery(x => !x.IsDeleted)
                 .AsNoTrackingWithIdentityResolution().Select(x => new ParentCommentDto { AspNetUsersId = x.AspNetUsersId, Id = x.Id, CreatedAt=x.CreatedAt,BlogId = x.BlogId, Text = x.Text, Replies = new List<ReplyDto>() }).ToListAsync();
             return comments;
+        }
+
+        public async Task<IEnumerable<ReplyDto>> GetAllRepliesAsync()
+        {
+            IEnumerable<ReplyDto> replies = await _replyRepositoy.GetQuery(x => !x.IsDeleted)
+               .AsNoTrackingWithIdentityResolution().Select(x => new ReplyDto { AspNetUsersId = x.AspNetUsersId, Id = x.Id, CreatedAt = x.CreatedAt,  ParentCommentId=x.ParentCommentId, Text = x.Text }).ToListAsync();
+            return replies;
         }
     }
 }

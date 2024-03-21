@@ -13,7 +13,7 @@ namespace Bacola.App.ViewModels
         public IEnumerable<ParentCommentDto>? Comments { get; set; }
         public ParentComment? Comment { get; set; }
         public Reply? Reply { get; set; }
-        public List<Reply> Replies { get; set; }
+        public IEnumerable<ReplyDto> Replies { get; set; }
     }
 }
 

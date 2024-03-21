@@ -17,6 +17,7 @@ namespace Bacola.Core.DTOS
 
     public class ReplyDto   
     {
+        public DateTime CreatedAt { get; set; }
         public int Id { get; set; }
         public string Text { get; set; }
         public int ParentCommentId { get; set; }
