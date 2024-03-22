@@ -49,46 +49,22 @@ toggleIcons.forEach(function (icon) {
     });
 });
 
-//var replyLinks = document.querySelectorAll('.comment-reply-link');
-//console.log(replyLinks);
-//replyLinks.forEach(function (replyLink) {
-//    replyLink.addEventListener('click', function (event) {
-//        event.preventDefault(); // Prevent the default link behavior
-
-//        // Get the comment ID from the data attribute
-//        var commentId = replyLink.getAttribute('data-commentid');
-//        console.log(commentId);
-//        // Toggle the display of the corresponding comment form container
-//        var commentFormContainer = document.getElementById('commentFormContainer-' + commentId);
-//        console.log(commentFormContainer);
-//        if (commentFormContainer) {
-//            commentFormContainer.style.display = (commentFormContainer.style.display === 'none' || commentFormContainer.style.display === '') ? 'flex' : 'none';
-//        }
-//    });
-//});
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Get all reply links
-    var replyLinks = document.querySelectorAll('.comment-reply-link');
 
-    // Loop through each reply link
+    var replyLinks = document.querySelectorAll('.comment-reply-link');
     replyLinks.forEach(function (replyLink) {
         replyLink.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent default link behavior
+            event.preventDefault(); 
             var commentId = this.getAttribute('data-commentid');
-
-            // Show the corresponding reply form
             var commentFormContainer = document.getElementById('commentFormContainer-' + commentId);
             if (commentFormContainer) {
-                // Hide all other reply forms
                 document.querySelectorAll('.post-comments-form').forEach(function (form) {
                     if (form.id !== 'commentFormContainer-' + commentId) {
                         form.style.display = 'none';
                     }
                 });
-
-                // Toggle the display of the clicked reply form
                 commentFormContainer.style.display = (commentFormContainer.style.display === 'none' || commentFormContainer.style.display === '') ? 'flex' : 'none';
             }
         });

@@ -9,8 +9,8 @@ namespace Bacola.Service.Services.Interfaces
 	{
         Task<CustomResponse<ParentComment>> CreateCommentAsync(ParentCommentDto dto);
         Task<CustomResponse<Reply>> CreateReplyAsync(ReplyDto dto);
-        Task<IEnumerable<ParentCommentDto>> GetAllCommentsAsync();
-        Task<IEnumerable<ReplyDto>> GetAllRepliesAsync();
+        //Task<IEnumerable<ParentCommentDto>> GetAllCommentsAsync();
+        //Task<IEnumerable<ReplyDto>> GetAllRepliesAsync();
     }
 }
 

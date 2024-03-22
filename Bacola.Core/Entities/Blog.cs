@@ -21,7 +21,7 @@ namespace Bacola.Core.Entities
         public Category Category { get; set; } = null!;
         public List<TagBlog> TagBlogs { get; set; }
         public List<ParentComment> Comments { get; set; }
-        public List<Reply> Replies { get; set; }
+        public List<Reply> Replies { get; set; } = new List<Reply>();
     }
 }
 

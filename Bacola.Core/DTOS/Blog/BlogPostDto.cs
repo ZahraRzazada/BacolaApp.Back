@@ -13,7 +13,6 @@ namespace Bacola.Core.DTOS
         public string SubTitle { get; set; } = null!;
         public string SubInfo { get; set; } = null!;
         public int CategoryId { get; set; }
-
         public List<int> TagIds { get; set; } = null!;
     }
 }

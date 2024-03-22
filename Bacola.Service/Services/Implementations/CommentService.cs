@@ -36,9 +36,17 @@ namespace Bacola.Service.Services.Implementations
 
                 Text = dto.Text,
                 BlogId = dto.BlogId,
-                AspNetUsersId = dto.AspNetUsersId
+                //AspNetUserId = dto.AspNetUserId
                  
             };
+            //foreach (var replyDto in dto.Replies)
+            //{
+            //    Reply reply = new Reply
+            //    {
+            //        Text = replyDto.Text,
+            //    };
+            //    comment.Replies.Add();
+            //}
             await _commentRepositoy.AddAsync(comment);
             await _commentRepositoy.SaveChangesAsync();
             return new CustomResponse<ParentComment> { IsSuccess = true, Message = "Comment is created successfully", Data = comment };
@@ -58,8 +66,9 @@ namespace Bacola.Service.Services.Implementations
             var reply = new Reply
             {
                 Text = dto.Text,
+                BlogId = dto.BlogId,
                 ParentCommentId = dto.ParentCommentId,
-                AspNetUsersId = dto.AspNetUsersId
+                //AspNetUsersId = dto.AspNetUsersId
             };
             parentComment.Replies.Add(reply);
 
@@ -70,20 +79,32 @@ namespace Bacola.Service.Services.Implementations
 
         }
 
-        public async Task<IEnumerable<ParentCommentDto>> GetAllCommentsAsync()
-        {
+        //public async Task<IEnumerable<ParentCommentDto>> GetAllCommentsAsync()
+        //{
           
-            IEnumerable<ParentCommentDto> comments = await _commentRepositoy.GetQuery(x => !x.IsDeleted)
-                .AsNoTrackingWithIdentityResolution().Select(x => new ParentCommentDto { AspNetUsersId = x.AspNetUsersId, Id = x.Id, CreatedAt=x.CreatedAt,BlogId = x.BlogId, Text = x.Text, Replies = new List<ReplyDto>() }).ToListAsync();
-            return comments;
-        }
+        //    IEnumerable<ParentCommentDto> comments = await _commentRepositoy.GetQuery(x => !x.IsDeleted)
+        //        .AsNoTrackingWithIdentityResolution()
+        //        .Select(x => new ParentCommentDto { AspNetUsersId = x.AspNetUsersId, Id = x.Id, CreatedAt=x.CreatedAt,BlogId = x.BlogId, Text = x.Text,
+        //            Replies = x.Replies.Select(r => new ReplyDto
+        //            {
+        //               Text=r.Text,
+        //                AspNetUsersId=r.AspNetUsersId,
+        //                 BlogId=r.BlogId,
+        //                  CreatedAt=r.CreatedAt,
+        //                   Id=r.Id,
+        //                    ParentCommentId=r.ParentCommentId
+        //            }).ToList()
+        //        })
+        //        .ToListAsync();
+        //    return comments;
+        //}
 
-        public async Task<IEnumerable<ReplyDto>> GetAllRepliesAsync()
-        {
-            IEnumerable<ReplyDto> replies = await _replyRepositoy.GetQuery(x => !x.IsDeleted)
-               .AsNoTrackingWithIdentityResolution().Select(x => new ReplyDto { AspNetUsersId = x.AspNetUsersId, Id = x.Id, CreatedAt = x.CreatedAt,  ParentCommentId=x.ParentCommentId, Text = x.Text }).ToListAsync();
-            return replies;
-        }
+        //public async Task<IEnumerable<ReplyDto>> GetAllRepliesAsync()
+        //{
+        //    IEnumerable<ReplyDto> replies = await _replyRepositoy.GetQuery(x => !x.IsDeleted)
+        //       .AsNoTrackingWithIdentityResolution().Select(x => new ReplyDto { AspNetUsersId = x.AspNetUsersId, Id = x.Id, CreatedAt = x.CreatedAt, BlogId = x.BlogId, ParentCommentId =x.ParentCommentId, Text = x.Text }).ToListAsync();
+        //    return replies;
+        //}
     }
 }
 

@@ -74,17 +74,17 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                           
+
                                             <ul class="children">
                                                 @if (User.Identity.IsAuthenticated)
                                                 {
-                                                    <div class="post-comments-form" style="display:none" id="commentFormContainer-@item.Id">
+                                                    <div class="post-comments-form" style="display:none;margin-bottom:10px" id="commentFormContainer-@item.Id">
                                                         <div id="respond" class="comment-respond">
                                                             <h3 id="reply-title" class="comment-reply-title">Add A Reply<small></small></h3>
                                                             <form method="post" action="/blog/AddReply" id="commentform" class="comment-form">
                                                                 <input type="hidden" name="BlogId" id="BlogId" value="@Model.BlogGetDto.Data.Id">
                                                                 <input type="hidden" name="AspNetUsersId" id="AspNetUsersId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)">
-                                                                <input type="hidden" name="AppUser" id="AspNetUsersId" value="@User.Identity.Name">
+                                                                <input type="hidden" name="AppUser" id="AppUser" value="@User.Identity.Name">
                                                                 <p class="comment-form-comment">
                                                                     <label for="comment">Reply <span class="required">*</span></label>
                                                                     <textarea id="comment" name="text" cols="45" rows="8" maxlength="65525" required="required"></textarea>
@@ -101,33 +101,59 @@
 
                                                 @if (item.Replies != null && item.Replies.Any())
                                                 {
-                                                    <li class="comment odd alt depth-2" id="comment-@item.Id">
-                                                        <div id="div-comment-21" class="comment-body">
-                                                            <div class="comment-avatar">
-                                                                <div class="comment-author vcard">
-                                                                    <img src="~/assets/img/blog/comment.jpeg" alt="Elliot Alderson" class="avatar">
-                                                                </div>
-                                                            </div>
-                                                            <div class="comment-content">
-                                                                <div class="comment-meta">
-                                                                    <b class="fn"><a class="url">@User.Identity.Name</a></b>
-                                                                    <div class="comment-metadata">
-                                                                        <time>@item.CreatedAt.ToString("MMM dd, yyyy")</time>
+                                                    @*<li class="comment odd alt depth-2" id="comment-@item.Id">
+                <div id="div-comment-21" class="comment-body">
+                    <div class="comment-avatar">
+                        <div class="comment-author vcard">
+                            <img src="~/assets/img/blog/comment.jpeg" alt="Elliot Alderson" class="avatar">
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <div class="comment-meta">
+                            <b class="fn"><a class="url">@User.Identity.Name</a></b>
+                            <div class="comment-metadata">
+                                <time>@item.CreatedAt.ToString("MMM dd, yyyy")</time>
+                            </div>
+                        </div>
+                        <div class="klb-post">
+                            <p>@item.Replies.text</p>
+                        </div>
+                        <div class="reply">
+                            <a rel="nofollow" class="comment-reply-link" href="javascript:void(0)" data-commentid="@item.Id" aria-label="Reply to @User.Identity.Name">Reply</a>
+                        </div>
+                    </div>
+
+                </div>
+            </li>*@
+                                                    foreach (var reply in item.Replies)
+                                                    {
+                                                        <li class="comment odd alt depth-2" id="comment-@reply.Id">
+                                                            <div id="div-comment-21" class="comment-body">
+                                                                <div class="comment-avatar">
+                                                                    <div class="comment-author vcard">
+                                                                        <img src="~/assets/img/blog/comment.jpeg" alt="Elliot Alderson" class="avatar">
                                                                     </div>
                                                                 </div>
-                                                                <div class="klb-post">
-                                                                    <p>@item.Text</p>
-                                                                </div>
-                                                                <div class="reply">
-                                                                    <a rel="nofollow" class="comment-reply-link" href="javascript:void(0)" data-commentid="@item.Id" aria-label="Reply to @User.Identity.Name">Reply</a>
+                                                                <div class="comment-content">
+                                                                    <div class="comment-meta">
+                                                                        <b class="fn"><a class="url">@User.Identity.Name</a></b>
+                                                                        <div class="comment-metadata">
+                                                                            <time>@reply.CreatedAt.ToString("MMM dd, yyyy")</time>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="klb-post">
+                                                                        <p>@reply.Text</p>
+                                                                    </div>
+                                                                    <div class="reply">
+                                                                        <a rel="nofollow" class="comment-reply-link" href="javascript:void(0)" data-commentid="@reply.Id" aria-label="Reply to @User.Identity.Name">Reply</a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-
-                                                        </div>
-                                                    </li>
+                                                        </li>
+                                                    }
                                                 }
                                             </ul>
-                                            
+
                                         }
 
                                         else
@@ -140,16 +166,16 @@
                             {
                                 var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
                                 var userId = userIdClaim?.Value;
-            
-                                <div class="post-comments-form">
+
+                                <div style="display:flex !important" class="post-comments-form1">
                                     <div id="respond" class="comment-respond">
-                                        <h3 id="reply-title" class="comment-reply-title">Add A Comment<small><a rel="nofollow" id="cancel-comment-reply-link" href="/bacola/blog/english-breakfast-tea-with-tasty-donut-desserts/#respond" style="display:none;">Cancel reply</a></small></h3>
+                                        <h3 id="reply-title" class="comment-reply-title">Add A Comment<small><a rel="nofollow" id="cancel-comment-reply-link"  style="display:none;">Cancel reply</a></small></h3>
                                         <form method="post" action="/blog/AddComment" id="commentform" class="comment-form">
 
 
-                                            <input type="hidden" name="BlogId" id="BlogId" value="@Model.BlogGetDto.Data.Id">
+                                            @*<input type="hidden" name="BlogId" id="BlogId" value="@Model.BlogGetDto.Data.Id">
                                             <input type="hidden" name="AspNetUsersId" id="AspNetUsersId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)">
-                                            <input type="hidden" name="AppUser" id="AspNetUsersId" value="@User.Identity.Name">
+                                            <input type="hidden" name="AppUser" id="AspNetUsersId" value="@User.Identity.Name">*@
                                             <p class="comment-form-comment">
                                                 <label for="comment">Comment <span class="required">*</span></label>
                                                 <textarea id="comment" name="text" cols="45" rows="8" maxlength="65525" required="required"></textarea>

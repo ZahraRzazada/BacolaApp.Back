@@ -4,6 +4,7 @@ using Bacola.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bacola.Data.Migrations
 {
     [DbContext(typeof(BacolaDbContext))]
-    partial class BacolaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240322084545_somechangesadd")]
+    partial class somechangesadd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,7 +118,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Baskets", (string)null);
+                    b.ToTable("Baskets");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.BasketItem", b =>
@@ -151,7 +153,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("BasketItems", (string)null);
+                    b.ToTable("BasketItems");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Blog", b =>
@@ -206,7 +208,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Blogs", (string)null);
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Brand", b =>
@@ -232,7 +234,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands", (string)null);
+                    b.ToTable("Brands");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Category", b =>
@@ -263,7 +265,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("ParentCategoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Contact", b =>
@@ -301,7 +303,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contacts", (string)null);
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Coupon", b =>
@@ -337,7 +339,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Coupons", (string)null);
+                    b.ToTable("Coupons");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.HomeSlider", b =>
@@ -379,7 +381,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HomeSliders", (string)null);
+                    b.ToTable("HomeSliders");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Order", b =>
@@ -425,7 +427,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.OrderItem", b =>
@@ -460,7 +462,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.ParentComment", b =>
@@ -497,7 +499,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("ParentComments", (string)null);
+                    b.ToTable("ParentComments");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Product", b =>
@@ -559,7 +561,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.ProductImage", b =>
@@ -593,7 +595,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImages", (string)null);
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Reply", b =>
@@ -635,7 +637,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("ParentCommentId");
 
-                    b.ToTable("Replies", (string)null);
+                    b.ToTable("Replies");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Setting", b =>
@@ -665,7 +667,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Settings", (string)null);
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Specification", b =>
@@ -700,7 +702,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Specification", (string)null);
+                    b.ToTable("Specification");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Tag", b =>
@@ -726,7 +728,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.TagBlog", b =>
@@ -758,7 +760,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("TagBlog", (string)null);
+                    b.ToTable("TagBlog");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.TagProduct", b =>
@@ -790,7 +792,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("TagProduct", (string)null);
+                    b.ToTable("TagProduct");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Wishlist", b =>
@@ -818,7 +820,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Wishlists", (string)null);
+                    b.ToTable("Wishlists");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.WishlistItem", b =>
@@ -853,7 +855,7 @@ namespace Bacola.Data.Migrations
 
                     b.HasIndex("WishlistId");
 
-                    b.ToTable("WishlistItems", (string)null);
+                    b.ToTable("WishlistItems");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -99,7 +99,8 @@ namespace Bacola.Service.Services.Implementations
                 Tags = blog.TagBlogs.Select(y => new TagGetDto { Name = y.Tag.Name, Id = y.Tag.Id }),
                 CategoryGetDto = new CategoryGetDto { Name = blog.Category.Name, Id = blog.Id },
                 Image = blog.Image,
-                Comments=blog.Comments
+                Comments=blog.Comments,
+                Replies=blog.Replies
             };
             return new CustomResponse<BlogGetDto> { IsSuccess = true, Data = blogGetDto };
         }
