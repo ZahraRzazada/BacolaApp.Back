@@ -82,9 +82,9 @@
                                                         <div id="respond" class="comment-respond">
                                                             <h3 id="reply-title" class="comment-reply-title">Add A Reply<small></small></h3>
                                                             <form method="post" action="/blog/AddReply" id="commentform" class="comment-form">
-                                                                <input type="hidden" name="BlogId" id="BlogId" value="@Model.BlogGetDto.Data.Id">
+                                                                @*<input type="hidden" name="BlogId" id="BlogId" value="@Model.BlogGetDto.Data.Id">
                                                                 <input type="hidden" name="AspNetUsersId" id="AspNetUsersId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)">
-                                                                <input type="hidden" name="AppUser" id="AppUser" value="@User.Identity.Name">
+                                                                <input type="hidden" name="AppUser" id="AppUser" value="@User.Identity.Name">*@
                                                                 <p class="comment-form-comment">
                                                                     <label for="comment">Reply <span class="required">*</span></label>
                                                                     <textarea id="comment" name="text" cols="45" rows="8" maxlength="65525" required="required"></textarea>
@@ -99,9 +99,9 @@
                                                     </div>
                                                 }
 
-                                                @if (item.Replies != null && item.Replies.Any())
+                                                @*@if (item.Replies != null && item.Replies.Any())
                                                 {
-                                                    @*<li class="comment odd alt depth-2" id="comment-@item.Id">
+                                                    <li class="comment odd alt depth-2" id="comment-@item.Id">
                 <div id="div-comment-21" class="comment-body">
                     <div class="comment-avatar">
                         <div class="comment-author vcard">
@@ -124,7 +124,7 @@
                     </div>
 
                 </div>
-            </li>*@
+            </li>
                                                     foreach (var reply in item.Replies)
                                                     {
                                                         <li class="comment odd alt depth-2" id="comment-@reply.Id">
@@ -151,7 +151,7 @@
                                                             </div>
                                                         </li>
                                                     }
-                                                }
+                                                }*@
                                             </ul>
 
                                         }

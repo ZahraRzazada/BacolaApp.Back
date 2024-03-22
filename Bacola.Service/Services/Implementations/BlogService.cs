@@ -81,7 +81,7 @@ namespace Bacola.Service.Services.Implementations
 
         public async Task<CustomResponse<BlogGetDto>> GetAsync(int id)
         {
-            Blog? blog = await _blogRepository.GetAsync(x => !x.IsDeleted && x.Id == id, "TagBlogs.Tag", "Category", "Comments", "Replies");
+            Blog? blog = await _blogRepository.GetAsync(x => !x.IsDeleted && x.Id == id, "TagBlogs.Tag", "Category", "Coments");
             if (blog == null)
             {
                 return new CustomResponse<BlogGetDto> { IsSuccess = false, Message = "This Blog doesnt exist" };
@@ -99,8 +99,8 @@ namespace Bacola.Service.Services.Implementations
                 Tags = blog.TagBlogs.Select(y => new TagGetDto { Name = y.Tag.Name, Id = y.Tag.Id }),
                 CategoryGetDto = new CategoryGetDto { Name = blog.Category.Name, Id = blog.Id },
                 Image = blog.Image,
-                Comments=blog.Comments,
-                Replies=blog.Replies
+                Coments=blog.Coments,
+ 
             };
             return new CustomResponse<BlogGetDto> { IsSuccess = true, Data = blogGetDto };
         }

@@ -28,8 +28,8 @@ namespace Bacola.Data.Contexts
             public DbSet<Order> Orders { get; set; }
             public DbSet<OrderItem> OrderItems { get; set; }
             public DbSet<Coupon> Coupons { get; set; }
-            public DbSet<ParentComment> ParentComments { get; set; }
-            public DbSet<Reply> Replies { get; set; }
+            public DbSet<Coment> Coments { get; set; }
+
 
             public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
             {
@@ -47,15 +47,7 @@ namespace Bacola.Data.Contexts
                 }
                 return base.SaveChangesAsync(cancellationToken);
             }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Reply>()
-                .HasOne(r => r.AppUser)
-                .WithMany()
-                .HasForeignKey(r => r.AppUserId)
-                .OnDelete(DeleteBehavior.NoAction);
-        }
+      
     }
 
 }

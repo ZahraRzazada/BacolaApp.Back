@@ -54,21 +54,20 @@ namespace Bacola.App.Controllers
             ViewBag.Categories = _context.Categories.Where(x => !x.IsDeleted).Select(c => new CategoryGetDto { Name = c.Name }).AsNoTrackingWithIdentityResolution();
             blogViewModel.BlogGetDto= await _blogService.GetAsync(id);
 
-            //blogViewModel.Comments = await _commentService.GetAllCommentsAsync();
+            //blogViewModel.Coments = await _commentService;
             //blogViewModel.Replies = await _commentService.GetAllRepliesAsync();
             return View(blogViewModel);
         }
-    
+        public async Task<IActionResult> AddComment()
+        {
+            return View();
+        }
         [HttpPost]
-        public async Task<IActionResult> AddComment(ParentCommentDto dto)
+        public async Task<IActionResult> AddComment(CommentPostDto dto)
         {
             if (!ModelState.IsValid)
             {
-                if (dto.Replies == null)
-                {
-                    dto.Replies = new List<ReplyDto>();
-                    return BadRequest(ModelState);
-                }
+                return View();
      
             }
             var response = await _commentService.CreateCommentAsync(dto);
@@ -80,22 +79,22 @@ namespace Bacola.App.Controllers
             return RedirectToAction("Detail","Blog" , new { id = dto.BlogId});
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddReply(ReplyDto dto)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            var response = await _commentService.CreateReplyAsync(dto);
-            if (!response.IsSuccess)
-            {
-                ModelState.AddModelError("", response.Message);
-                return View();
-            }
-            //var blogId = HttpContext.Session.GetInt32("CurrentBlogId");
-            return RedirectToAction("Detail", "Blog", new { id = dto.BlogId });
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> AddReply(ReplyDto dto)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View();
+        //    }
+        //    var response = await _commentService.CreateReplyAsync(dto);
+        //    if (!response.IsSuccess)
+        //    {
+        //        ModelState.AddModelError("", response.Message);
+        //        return View();
+        //    }
+        //    //var blogId = HttpContext.Session.GetInt32("CurrentBlogId");
+        //    return RedirectToAction("Detail", "Blog", new { id = dto.BlogId });
+        //}
     }
 }
 

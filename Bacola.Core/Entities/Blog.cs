@@ -20,8 +20,8 @@ namespace Bacola.Core.Entities
         public int CategoryId { get; set; }
         public Category Category { get; set; } = null!;
         public List<TagBlog> TagBlogs { get; set; }
-        public List<ParentComment> Comments { get; set; }
-        public List<Reply> Replies { get; set; } = new List<Reply>();
+        public List<Coment> Coments { get; set; }
+
     }
 }
 

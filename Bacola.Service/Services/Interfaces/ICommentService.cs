@@ -7,8 +7,8 @@ namespace Bacola.Service.Services.Interfaces
 {
     public interface ICommentService
 	{
-        Task<CustomResponse<ParentComment>> CreateCommentAsync(ParentCommentDto dto);
-        Task<CustomResponse<Reply>> CreateReplyAsync(ReplyDto dto);
+        Task<CustomResponse<Coment>> CreateCommentAsync(CommentPostDto dto);
+        //Task<CustomResponse<Reply>> CreateReplyAsync(ReplyDto dto);
         //Task<IEnumerable<ParentCommentDto>> GetAllCommentsAsync();
         //Task<IEnumerable<ReplyDto>> GetAllRepliesAsync();
     }

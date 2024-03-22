@@ -5,9 +5,9 @@ using Bacola.Data.Contexts;
 
 namespace Bacola.Data.Repositories
 {
-    public class ParentCommentRepository : Repository<ParentComment>, IParentCommentRepository
+    public class ComentRepository : Repository<Coment>, IComentRepository
     {
-        public ParentCommentRepository(BacolaDbContext context) : base(context)
+        public ComentRepository(BacolaDbContext context) : base(context)
         {
         }
     }

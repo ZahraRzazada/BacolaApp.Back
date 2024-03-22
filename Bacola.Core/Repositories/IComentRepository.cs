@@ -4,7 +4,7 @@ using Bacola.Core.Repositories.Generic;
 
 namespace Bacola.Core.Repositories
 {
-	public interface IReplyRepository:IRepository<Reply>
+	public interface IComentRepository : IRepository<Coment>
 	{
 		
 	}
