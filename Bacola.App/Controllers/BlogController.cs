@@ -54,7 +54,7 @@ namespace Bacola.App.Controllers
             ViewBag.Categories = _context.Categories.Where(x => !x.IsDeleted).Select(c => new CategoryGetDto { Name = c.Name }).AsNoTrackingWithIdentityResolution();
             blogViewModel.BlogGetDto= await _blogService.GetAsync(id);
 
-            //blogViewModel.Coments = await _commentService;
+            blogViewModel.Comments = await _commentService.GetAllCommentsAsync();
             //blogViewModel.Replies = await _commentService.GetAllRepliesAsync();
             return View(blogViewModel);
         }
@@ -67,14 +67,15 @@ namespace Bacola.App.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View();
-     
+                return RedirectToAction("Detail", "Blog", new { id = dto.BlogId });
+
             }
             var response = await _commentService.CreateCommentAsync(dto);
             if (!response.IsSuccess)
             {
                 ModelState.AddModelError("", response.Message);
                 return View();
+
             }
             return RedirectToAction("Detail","Blog" , new { id = dto.BlogId});
         }

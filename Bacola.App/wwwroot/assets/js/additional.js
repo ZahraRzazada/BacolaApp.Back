@@ -32,11 +32,8 @@ rangeInput.forEach((input) => {
 var toggleIcons = document.querySelectorAll('.toggleIcon');
 toggleIcons.forEach(function (icon) {
     icon.addEventListener('click', function () {
-        // Get the target ul element
         var targetId = icon.getAttribute('data-target');
         var targetUl = document.getElementById(targetId);
-
-        // Toggle the display style of the target ul
         if (targetUl.style.display === 'none') {
             targetUl.style.display = 'block';
             icon.classList.remove('fa-plus');
@@ -58,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         replyLink.addEventListener('click', function (event) {
             event.preventDefault(); 
             var commentId = this.getAttribute('data-commentid');
+            console.log(commentId);
             var commentFormContainer = document.getElementById('commentFormContainer-' + commentId);
             if (commentFormContainer) {
                 document.querySelectorAll('.post-comments-form').forEach(function (form) {
@@ -70,5 +68,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+//function showReplyForm(commentId, username) {
+//    var replyFormContainer = document.getElementById("commentFormContainer-" + commentId);
+//    if (replyFormContainer.style.display === "none") {
+
+//        hideAllReplyForms();
+//        // Append the reply form below the corresponding comment
+//        var comment = document.getElementById("comment-" + commentId);
+//        if (comment) {
+//            var replyForm = document.getElementById("commentFormContainer-" + commentId);
+//            comment.appendChild(replyForm);
+//            replyForm.style.display = "block";
+//        }
+//    } else {
+//        replyFormContainer.style.display = "none";
+//    }
+//}
+
+//function hideAllReplyForms() {
+//    var replyForms = document.querySelectorAll(".post-comments-form");
+//    replyForms.forEach(function (form) {
+//        form.style.display = "none";
+//    });
+//}
 
 

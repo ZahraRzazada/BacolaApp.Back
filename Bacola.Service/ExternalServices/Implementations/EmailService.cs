@@ -16,7 +16,7 @@ namespace Bacola.Service.ExternalServices.Implementations
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
 
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("pm4283719@gmail.com", "EduHome App");
+            mailMessage.From = new MailAddress("pm4283719@gmail.com", "Bacola App");
             mailMessage.To.Add(to);
             mailMessage.Subject = subject;
             mailMessage.IsBodyHtml = true;

@@ -219,9 +219,10 @@ namespace Bacola.Service.Services.Implementations
                  DiscountPrice = item.Product.DiscountPercent == 0 ? item.Product.Price : Math.Round((item.Product.Price * (100 - item.Product.DiscountPercent)) / 100, 1),
              }).ToList();
 
-                    //salam
+               
+                    basketGetDto.TotalPrice = basketGetDto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
 
-                    if (basketGetDto.IsCuouponApplied)
+                    if (basketGetDto.IsCouponApplied)
                     {
                         var couponResponse = await ApplyCoupon("", new CustomResponse<BasketGetDto> { IsSuccess = true, Data = basketGetDto });
                         if (couponResponse.IsSuccess)
@@ -230,12 +231,12 @@ namespace Bacola.Service.Services.Implementations
                         }
                         else
                         {
-                
+
                         }
                     }
                     else
                     {
-                        basketGetDto.TotalPrice = basketGetDto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
+
                     }
 
                 }
@@ -334,7 +335,7 @@ namespace Bacola.Service.Services.Implementations
             }
             double discountedTotalPrice = dto.Data.TotalPrice - discountAmount;
             dto.Data.TotalPrice = discountedTotalPrice;
-            dto.Data.IsCuouponApplied = true;
+            dto.Data.IsCouponApplied = true;
             return new CustomResponse<double>
             {
                 IsSuccess = true,

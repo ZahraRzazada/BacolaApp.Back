@@ -26,9 +26,6 @@ namespace Bacola.Service.Services.Implementations
             _http = http;
             _blogRepository = blogRepository;
         }
-
-      
-
         public async Task<CustomResponse<Coment>> CreateCommentAsync(CommentPostDto dto)
         {
            
@@ -36,7 +33,6 @@ namespace Bacola.Service.Services.Implementations
                 if (string.IsNullOrEmpty(dto.Text))
                 {
                 return new CustomResponse<Coment> { IsSuccess = false, Message = "Comment text cannot be empty", Data = null };
-
                 }
 
                 string userId = _http.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -45,13 +41,6 @@ namespace Bacola.Service.Services.Implementations
                 {
                 return new CustomResponse<Coment> { IsSuccess = false, Message = "User is not found", Data = null };
                 } 
-   
-                //var blog = await _blogRepository.Get(dto.BlogId);
-                //if (blog == null)
-                //{
-                //return new CustomResponse<Coment> { IsSuccess = false, Message = "Blog is not found", Data = null };
-                //}
-
                 var coment = new Coment
                 {
                     Text = dto.Text,
@@ -63,9 +52,25 @@ namespace Bacola.Service.Services.Implementations
             await _commentRepositoy.AddAsync(coment);
             await _commentRepositoy.SaveChangesAsync();
             return new CustomResponse<Coment> { IsSuccess = true, Message = "Comment is created successfully", Data = coment };
+        }
+        public async Task<IEnumerable<CommentGetDto>> GetAllCommentsAsync()
+        {
 
-
-
+            IEnumerable<CommentGetDto> comments = await _commentRepositoy.GetQuery(x => !x.IsDeleted)
+                .AsNoTrackingWithIdentityResolution()
+                .Select(x => new CommentGetDto
+                {
+                    Parent = x.Parent,
+                    AppUserId = x.AppUserId,
+                    Id = x.Id,
+                    CreatedAt = x.CreatedAt,
+                    BlogId = x.BlogId,
+                    Text = x.Text,
+                    ParentId = x.ParentId,
+                    Username = x.AppUser.UserName
+                })
+                .ToListAsync();
+            return comments;
         }
 
         //public Task<CustomResponse<Reply>> CreateReplyAsync(ReplyDto dto)
@@ -128,27 +133,6 @@ namespace Bacola.Service.Services.Implementations
         //    return new CustomResponse<Reply> { IsSuccess = true, Message = "Reply is created successfully", Data = reply };
 
         //}
-
-        //public async Task<IEnumerable<ParentCommentDto>> GetAllCommentsAsync()
-        //{
-
-        //    IEnumerable<ParentCommentDto> comments = await _commentRepositoy.GetQuery(x => !x.IsDeleted)
-        //        .AsNoTrackingWithIdentityResolution()
-        //        .Select(x => new ParentCommentDto { AspNetUsersId = x.AspNetUsersId, Id = x.Id, CreatedAt=x.CreatedAt,BlogId = x.BlogId, Text = x.Text,
-        //            Replies = x.Replies.Select(r => new ReplyDto
-        //            {
-        //               Text=r.Text,
-        //                AspNetUsersId=r.AspNetUsersId,
-        //                 BlogId=r.BlogId,
-        //                  CreatedAt=r.CreatedAt,
-        //                   Id=r.Id,
-        //                    ParentCommentId=r.ParentCommentId
-        //            }).ToList()
-        //        })
-        //        .ToListAsync();
-        //    return comments;
-        //}
-
         //public async Task<IEnumerable<ReplyDto>> GetAllRepliesAsync()
         //{
         //    IEnumerable<ReplyDto> replies = await _replyRepositoy.GetQuery(x => !x.IsDeleted)

@@ -29,9 +29,10 @@ namespace Bacola.Data.Contexts
             public DbSet<OrderItem> OrderItems { get; set; }
             public DbSet<Coupon> Coupons { get; set; }
             public DbSet<Coment> Coments { get; set; }
+            public DbSet<mine> Mine { get; set; }
 
 
-            public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
             {
                 foreach (var entry in ChangeTracker.Entries<BaseEntity>())
                 {

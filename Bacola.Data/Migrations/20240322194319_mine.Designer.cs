@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bacola.Data.Migrations
 {
     [DbContext(typeof(BacolaDbContext))]
-    [Migration("20240321114351_Comment")]
-    partial class Comment
+    [Migration("20240322194319_mine")]
+    partial class mine
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -268,6 +268,48 @@ namespace Bacola.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Bacola.Core.Entities.Coment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("BlogId");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Coments");
+                });
+
             modelBuilder.Entity("Bacola.Core.Entities.Contact", b =>
                 {
                     b.Property<int>("Id")
@@ -465,45 +507,6 @@ namespace Bacola.Data.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("Bacola.Core.Entities.ParentComment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AspNetUsersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BlogId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.HasIndex("BlogId");
-
-                    b.ToTable("ParentComments");
-                });
-
             modelBuilder.Entity("Bacola.Core.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -598,45 +601,6 @@ namespace Bacola.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
-                });
-
-            modelBuilder.Entity("Bacola.Core.Entities.Reply", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AspNetUsersId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ParentCommentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.HasIndex("ParentCommentId");
-
-                    b.ToTable("Replies");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Setting", b =>
@@ -1040,6 +1004,31 @@ namespace Bacola.Data.Migrations
                     b.Navigation("ParentCategory");
                 });
 
+            modelBuilder.Entity("Bacola.Core.Entities.Coment", b =>
+                {
+                    b.HasOne("Bacola.Core.Entities.AppUser", "AppUser")
+                        .WithMany("Coments")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Bacola.Core.Entities.Blog", "Blog")
+                        .WithMany("Coments")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Bacola.Core.Entities.Coment", "Parent")
+                        .WithMany()
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Blog");
+
+                    b.Navigation("Parent");
+                });
+
             modelBuilder.Entity("Bacola.Core.Entities.Order", b =>
                 {
                     b.HasOne("Bacola.Core.Entities.AppUser", "AppUser")
@@ -1070,23 +1059,6 @@ namespace Bacola.Data.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Bacola.Core.Entities.ParentComment", b =>
-                {
-                    b.HasOne("Bacola.Core.Entities.AppUser", "AppUser")
-                        .WithMany("Comments")
-                        .HasForeignKey("AppUserId");
-
-                    b.HasOne("Bacola.Core.Entities.Blog", "Blog")
-                        .WithMany("Comments")
-                        .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("Blog");
-                });
-
             modelBuilder.Entity("Bacola.Core.Entities.Product", b =>
                 {
                     b.HasOne("Bacola.Core.Entities.Brand", "Brand")
@@ -1115,23 +1087,6 @@ namespace Bacola.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Bacola.Core.Entities.Reply", b =>
-                {
-                    b.HasOne("Bacola.Core.Entities.AppUser", "AppUser")
-                        .WithMany("Replies")
-                        .HasForeignKey("AppUserId");
-
-                    b.HasOne("Bacola.Core.Entities.ParentComment", "ParentComment")
-                        .WithMany("Replies")
-                        .HasForeignKey("ParentCommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("ParentComment");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Specification", b =>
@@ -1268,11 +1223,9 @@ namespace Bacola.Data.Migrations
                 {
                     b.Navigation("BasketItems");
 
-                    b.Navigation("Comments");
+                    b.Navigation("Coments");
 
                     b.Navigation("Orders");
-
-                    b.Navigation("Replies");
 
                     b.Navigation("WishlistItems");
                 });
@@ -1284,7 +1237,7 @@ namespace Bacola.Data.Migrations
 
             modelBuilder.Entity("Bacola.Core.Entities.Blog", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("Coments");
 
                     b.Navigation("TagBlogs");
                 });
@@ -1306,11 +1259,6 @@ namespace Bacola.Data.Migrations
             modelBuilder.Entity("Bacola.Core.Entities.Order", b =>
                 {
                     b.Navigation("OrderItems");
-                });
-
-            modelBuilder.Entity("Bacola.Core.Entities.ParentComment", b =>
-                {
-                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("Bacola.Core.Entities.Product", b =>

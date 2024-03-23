@@ -11,6 +11,7 @@ namespace Bacola.Core.DTOS
         public string AppUserId { get; set; }
         public string Username { get; set; }
         public int? ParentId { get; set; }
+        public Coment Parent { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 
