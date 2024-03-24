@@ -48,8 +48,7 @@ toggleIcons.forEach(function (icon) {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener('DOMContentLoaded', function () 
     var replyLinks = document.querySelectorAll('.comment-reply-link');
     replyLinks.forEach(function (replyLink) {
         replyLink.addEventListener('click', function (event) {
@@ -70,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+console.log("zhrzhr")
 
 
 

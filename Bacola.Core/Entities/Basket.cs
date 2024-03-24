@@ -9,7 +9,7 @@ namespace Bacola.Core.Entities
         public AppUser AppUser { get; set; } = null!;
 		public List<BasketItem> BasketItems { get; set; } = null!;
 
-		public bool IsCouponApplied { get; set; }
+		//public bool IsCouponApplied { get; set; }
     }
 }
 

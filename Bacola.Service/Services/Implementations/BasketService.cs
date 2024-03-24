@@ -222,22 +222,22 @@ namespace Bacola.Service.Services.Implementations
                
                     basketGetDto.TotalPrice = basketGetDto.basketItems.Sum(x => (x.DiscountPrice * x.Count));
 
-                    if (basketGetDto.IsCouponApplied)
-                    {
-                        var couponResponse = await ApplyCoupon("", new CustomResponse<BasketGetDto> { IsSuccess = true, Data = basketGetDto });
-                        if (couponResponse.IsSuccess)
-                        {
-                            basketGetDto.TotalPrice = couponResponse.Data;
-                        }
-                        else
-                        {
+                    //if (basketGetDto.IsCouponApplied)
+                    //{
+                    //    var couponResponse = await ApplyCoupon("", new CustomResponse<BasketGetDto> { IsSuccess = true, Data = basketGetDto });
+                    //    if (couponResponse.IsSuccess)
+                    //    {
+                    //        basketGetDto.TotalPrice = couponResponse.Data;
+                    //    }
+                    //    else
+                    //    {
 
-                        }
-                    }
-                    else
-                    {
+                    //    }
+                    //}
+                    //else
+                    //{
 
-                    }
+                    //}
 
                 }
             }
@@ -335,7 +335,7 @@ namespace Bacola.Service.Services.Implementations
             }
             double discountedTotalPrice = dto.Data.TotalPrice - discountAmount;
             dto.Data.TotalPrice = discountedTotalPrice;
-            dto.Data.IsCouponApplied = true;
+            //dto.Data.IsCouponApplied = true;
             return new CustomResponse<double>
             {
                 IsSuccess = true,

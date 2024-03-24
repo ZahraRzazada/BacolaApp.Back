@@ -208,35 +208,10 @@
                                    autocomplete="off">
                             <div class="klb-search-results">
                                 <ul id="searchResultsList">
-                                    @foreach (var item in products.Items)
-                                        {
 
-                                        }
-           
-        </ul>
-            @*@foreach (var item in products.Items)
-                                    {
+                                </ul>
 
-                                    <li>
-                                        <div class="search-img">
-                                            <img width="90" height="90" src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" sizes="(max-width: 90px) 100vw, 90px">
-                                        </div>
-                                        <div class="search-content">
-                                            <h1 class="product-title"><a href="">@item.Title</a></h1><span class="price">
-                                                <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>@item.Price</bdi></span></del> <ins>
-                                                    <span class="woocommerce-Price-amount amount">
-                                                        <bdi>
-                                                            <span class="woocommerce-Price-currencySymbol">$</span>@item.DiscountPrice
-                                                        </bdi>
-                                                    </span>
-                                                </ins>
-                                            </span>
-                                        </div>
-                                    </li>
-
-                                    }*@
-
-</div>
+                            </div>
                             <button type="submit" id="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
                             <input type="hidden" name="post_type" value="product">
                         </form>
@@ -663,37 +638,36 @@
 </body>
 </html>
 
-<script>
 
-    document.getElementById("searchForm").addEventListener("submit", function (event) {
-        event.preventDefault();
-        var searchQuery = document.getElementById("searchInput").value.trim();
-        console.log(searchQuery);
-        fetch('/Shop/SearchProduct?search=' + encodeURIComponent(searchQuery))
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                displaySearchResults(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    });
+<Script>
+    document.getElementById('searchInput').addEventListener('input', performSearch);
+    const searchResultsList = document.getElementById('searchResultsList');
+    console.log(searchResultsList);
+    async function performSearch() {
 
+        var searchTerm = document.getElementById('searchInput').value.trim();
+        if (searchTerm.length === 0) {
+            searchResultsList.innerHTML = ``;
+            return;
+        }
+        try {
+            const response = await fetch(`/Shop/SearchProduct?search=${encodeURIComponent(searchTerm)}`);
+            console.log(response)
+            const data = await response.json();
+            console.log(data);
+            searchResultsList.innerHTML = ``;
+            data.data.forEach(item => {
+                const baseUrl = '@Url.Content("~/")';
+                console.log(baseUrl);
+                console.log(item);
+                searchResultsList.innerHTML += `
 
-    function displaySearchResults(data) {
-        var searchResultsList = document.getElementById("searchResultsList");
-        searchResultsList.innerHTML = "";
-        data.forEach(function (item) {
-            var listItem = document.createElement("li");
-            listItem.innerHTML = `
-            <div class="search-img">
-                <img width="90" height="90" src="${item.imageSrc}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" sizes="(max-width: 90px) 100vw, 90px">
-            </div>
+       <li>
+   
             <div class="search-content">
                 <h1 class="product-title"><a href="">${item.title}</a></h1>
                 <span class="price">
-                    <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>${item.price}</bdi></span></del> 
+                    <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>${item.price}</bdi></span></del>
                     <ins>
                         <span class="woocommerce-Price-amount amount">
                             <bdi>
@@ -702,10 +676,18 @@
                         </span>
                     </ins>
                 </span>
-            </div>`;
-            searchResultsList.appendChild(listItem);
-        });
-    }
+            </div>
+       </li>
 
-</script>
+
+            `
+            })
+
+        }
+        catch (error) {
+            console.error(error);
+            searchResultsList.innerHTML = ``;
+        }
+    }
+</Script>
 
