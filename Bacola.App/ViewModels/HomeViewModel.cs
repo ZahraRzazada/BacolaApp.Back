@@ -1,5 +1,6 @@
 ﻿using System;
 using Bacola.Core.DTOS;
+using Bacola.Service.Responses;
 
 namespace Bacola.App.ViewModels
 {

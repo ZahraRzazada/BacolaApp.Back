@@ -112,28 +112,37 @@ namespace Bacola.Service.Services.Implementations
 
         }
 
-        public async Task<IEnumerable<ProductGetDto>> GetAllAsync()
+        public async Task<PagginatedResponse<ProductGetDto>> GetAllAsync(int page = 1)
         {
+            const int PageSize = 20;
+            PagginatedResponse<ProductGetDto> pagginatedResponse = new PagginatedResponse<ProductGetDto>();
+            pagginatedResponse.CurrentPage = page;
             var query = _productRepository.GetQuery(x => !x.IsDeleted)
-                .Include(x => x.Category)
-                .Include(x=>x.Brand)
-                .Include(x => x.ProductImages);
+         .Include(x => x.Category)
+         .Include(x => x.Brand)
+         .Include(x => x.ProductImages)
+         .Skip((page - 1) * PageSize)
+         .Take(PageSize);
+
+            pagginatedResponse.TotalPages = (int)Math.Ceiling((double)query.Count() / PageSize);
+
             IEnumerable<ProductGetDto> productGetDtos = query.Select(x => new ProductGetDto
             {
-                
-                DiscountPercent=x.DiscountPercent,
+
+                DiscountPercent = x.DiscountPercent,
                 Id = x.Id,
-                Brand =new BrandGetDto { Name = x.Brand.Name },
+                Brand = new BrandGetDto { Name = x.Brand.Name },
                 Title = x.Title,
-                InStock=x.InStock,
+                InStock = x.InStock,
                 Category = new CategoryGetDto { Name = x.Category.Name },
                 Price = x.Price,
                 DiscountPrice = x.DiscountPercent == 0 ? x.Price : Math.Round((x.Price * (100 - x.DiscountPercent)) / 100, 1),
                 ProductImages = x.ProductImages
             });
-            return productGetDtos;
-        }
+            pagginatedResponse.Items = productGetDtos;
 
+            return pagginatedResponse;
+        }
         public async Task<CustomResponse<ProductGetDto>> GetAsync(int id)
         {
             var query = _productRepository.GetQuery(x => x.IsDeleted == false && x.Id == id)
@@ -147,18 +156,18 @@ namespace Bacola.Service.Services.Implementations
             ProductGetDto? productGetDto = await query.Select(x => new ProductGetDto
             {
                 Id = x.Id,
-                CreatedAt=x.CreatedAt,
+                CreatedAt = x.CreatedAt,
                 Brand = new BrandGetDto { Name = x.Brand.Name },
                 Category = new CategoryGetDto { Name = x.Category.Name },
                 Description = x.Description,
                 Price = x.Price,
-                DiscountPrice =  x.DiscountPercent == 0 ? x.Price : Math.Round((x.Price * (100 - x.DiscountPercent)) / 100, 1),
-                DiscountPercent =x.DiscountPercent,
+                DiscountPrice = x.DiscountPercent == 0 ? x.Price : Math.Round((x.Price * (100 - x.DiscountPercent)) / 100, 1),
+                DiscountPercent = x.DiscountPercent,
                 Info = x.Info,
                 Title = x.Title,
                 PeriodOfUse = x.PeriodOfUse,
                 IsOrganic = x.IsOrganic,
-                InStock=x.InStock,
+                InStock = x.InStock,
                 ProductImages = x.ProductImages,
                 Specifications = x.Specifications,
                 TagProducts = x.TagProducts
@@ -169,6 +178,7 @@ namespace Bacola.Service.Services.Implementations
             }
             return new CustomResponse<ProductGetDto> { IsSuccess = true, Data = productGetDto };
         }
+
 
         public async Task<CustomResponse<Product>> RemoveAsync(int id)
         {
@@ -341,6 +351,33 @@ namespace Bacola.Service.Services.Implementations
             }
         }
 
+        public async Task<CustomResponse<List<ProductGetDto>>> Search(string search)
+        {
+            var query = _productRepository.GetQuery(x => !x.IsDeleted)
+         .Include(x => x.Category)
+         .Include(x => x.Brand)
+         .Include(x => x.ProductImages)
+         .Where(x =>
+             x.Title.ToLower().Contains(search.ToLower()) ||
+             x.Category.Name.ToLower().Contains(search.ToLower())
+
+         );
+            List<ProductGetDto> productGetDtos = await query.Select(x => new ProductGetDto
+            {
+                DiscountPercent = x.DiscountPercent,
+                Id = x.Id,
+                Brand = new BrandGetDto { Name = x.Brand.Name },
+                Title = x.Title,
+                InStock = x.InStock,
+                Category = new CategoryGetDto { Name = x.Category.Name },
+                Price = x.Price,
+                DiscountPrice = x.DiscountPercent == 0 ? x.Price : Math.Round((x.Price * (100 - x.DiscountPercent)) / 100, 1),
+                ProductImages = x.ProductImages
+            }).ToListAsync();
+
+         return new  CustomResponse<List<ProductGetDto>> { IsSuccess = true, Message = "TProduct Searched succesfully" ,Data=productGetDtos };
+
+        }
 
     }
 }

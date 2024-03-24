@@ -30,7 +30,10 @@ public class HomeController : Controller
         HomeViewModel homeViewModel = new HomeViewModel();
         homeViewModel.Blogs = await _blogService.GetAllAsync();
         homeViewModel.Sliders = await _sliderService.GetAllAsync();
-        homeViewModel.Products = await _productService.GetAllAsync();
+        var paginatedResponse = await _productService.GetAllAsync();
+        IEnumerable<ProductGetDto> products = paginatedResponse.Items;
+
+        homeViewModel.Products = products;
 
         var basketJson = Request.Cookies["basket"];
 

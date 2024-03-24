@@ -69,28 +69,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-//function showReplyForm(commentId, username) {
-//    var replyFormContainer = document.getElementById("commentFormContainer-" + commentId);
-//    if (replyFormContainer.style.display === "none") {
 
-//        hideAllReplyForms();
-//        // Append the reply form below the corresponding comment
-//        var comment = document.getElementById("comment-" + commentId);
-//        if (comment) {
-//            var replyForm = document.getElementById("commentFormContainer-" + commentId);
-//            comment.appendChild(replyForm);
-//            replyForm.style.display = "block";
-//        }
-//    } else {
-//        replyFormContainer.style.display = "none";
-//    }
-//}
 
-//function hideAllReplyForms() {
-//    var replyForms = document.querySelectorAll(".post-comments-form");
-//    replyForms.forEach(function (form) {
-//        form.style.display = "none";
-//    });
-//}
+
+
+
 
 

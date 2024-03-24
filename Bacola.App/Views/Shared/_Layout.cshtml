@@ -40,6 +40,73 @@
           color: #007bff !important; 
           background-color: white !important;
       }
+      .klb-search-results {
+          position: absolute;
+          left: 0;
+          top: 100%;
+          background-color: #ffffff;
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+          border: 1px solid #f3f4f7;
+          border-radius: 3px;
+          width: 100%;
+          z-index: 9999999;
+      }
+          .klb-search-results ul {
+              padding: 0;
+              margin: 0;
+          }
+          .klb-search-results ul li {
+              display: flex;
+              flex-direction: row;
+              padding: 8px;
+              align-items: center;
+          }
+          .klb-search-results .search-img img {
+              background: #fff;
+              border: 1px solid #e8e8e8;
+              height:auto;
+              border-radius: 3px;
+              max-width: 42px;
+              margin-right: 10px;
+          }
+          .klb-search-results .search-content {
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+              align-items: center;
+          }
+          .klb-search-results h1.product-title {
+              font-size: .875rem;
+              font-weight: 500;
+              line-height: 1.4;
+              margin-bottom: 0;
+              margin-right: 10px;
+          }
+          .klb-search-results h1 a {
+              color:#202435;
+          }
+          .klb-search-results span.price {
+              text-align: right;
+              font-weight:700;
+              font-size: 15px;
+          }
+              .klb-search-results span.price del {
+                  color: #c2c2d3;
+                  font-size: 85%;
+              }
+
+              .klb-search-results span.price ins {
+                  display: block;
+                  margin: 0;
+                  text-decoration: none;
+              }
+  
+      .klb-search-results span.price ins span {
+          color: #d51243;
+      }
+  
 
   </style>
 </head>
@@ -136,10 +203,41 @@
                         </a>
                     </div>
                     <div class="header-search">
-                        <form class="search-form" role="search" method="get" id="searchform">
-                            <input type="search" value="" name="s" placeholder="Search for products..."
+                        <form class="search-form" role="search" method="get" id="searchForm">
+                            <input type="search" value="" name="s" id="searchInput" placeholder="Search for products..."
                                    autocomplete="off">
-                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <div class="klb-search-results">
+                                <ul id="searchResultsList">
+                                    @foreach (var item in products.Items)
+                                        {
+
+                                        }
+           
+        </ul>
+            @*@foreach (var item in products.Items)
+                                    {
+
+                                    <li>
+                                        <div class="search-img">
+                                            <img width="90" height="90" src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" sizes="(max-width: 90px) 100vw, 90px">
+                                        </div>
+                                        <div class="search-content">
+                                            <h1 class="product-title"><a href="">@item.Title</a></h1><span class="price">
+                                                <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>@item.Price</bdi></span></del> <ins>
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>
+                                                            <span class="woocommerce-Price-currencySymbol">$</span>@item.DiscountPrice
+                                                        </bdi>
+                                                    </span>
+                                                </ins>
+                                            </span>
+                                        </div>
+                                    </li>
+
+                                    }*@
+
+</div>
+                            <button type="submit" id="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
                             <input type="hidden" name="post_type" value="product">
                         </form>
                     </div>
@@ -564,4 +662,50 @@
     <script src="~/assets/js/app.js"></script>
 </body>
 </html>
+
+<script>
+
+    document.getElementById("searchForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var searchQuery = document.getElementById("searchInput").value.trim();
+        console.log(searchQuery);
+        fetch('/Shop/SearchProduct?search=' + encodeURIComponent(searchQuery))
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                displaySearchResults(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+
+
+    function displaySearchResults(data) {
+        var searchResultsList = document.getElementById("searchResultsList");
+        searchResultsList.innerHTML = "";
+        data.forEach(function (item) {
+            var listItem = document.createElement("li");
+            listItem.innerHTML = `
+            <div class="search-img">
+                <img width="90" height="90" src="${item.imageSrc}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" decoding="async" sizes="(max-width: 90px) 100vw, 90px">
+            </div>
+            <div class="search-content">
+                <h1 class="product-title"><a href="">${item.title}</a></h1>
+                <span class="price">
+                    <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>${item.price}</bdi></span></del> 
+                    <ins>
+                        <span class="woocommerce-Price-amount amount">
+                            <bdi>
+                                <span class="woocommerce-Price-currencySymbol">$</span>${item.discountPrice}
+                            </bdi>
+                        </span>
+                    </ins>
+                </span>
+            </div>`;
+            searchResultsList.appendChild(listItem);
+        });
+    }
+
+</script>
 

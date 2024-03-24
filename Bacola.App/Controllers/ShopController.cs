@@ -205,6 +205,11 @@ namespace Bacola.App.Controllers
 
         }
 
+        public async Task<IActionResult> SearchProduct(string search)
+        {
+            return View(await _productService.Search(search));
+        }
+
     }
 }
 
