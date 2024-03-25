@@ -185,8 +185,6 @@
 
     <script>document.addEventListener('DOMContentLoaded', function () {
             const formContainer = document.getElementById('form-container');
-
-            // Function to add new form group
             function addFormGroup() {
                 const formGroup = document.createElement('div');
                 formGroup.classList.add('form-group');
@@ -201,56 +199,23 @@
                                             </div>
                 `;
                 formContainer.appendChild(formGroup);
-
-                // Attach event listeners to the buttons in the new form group
                 const addBtns = document.querySelectorAll('.add-btn');
                 const removeBtns = document.querySelectorAll('.remove-btn');
                 addBtns.forEach(btn => btn.addEventListener('click', addFormGroup));
                 removeBtns.forEach(btn => btn.addEventListener('click', removeFormGroup));
             }
-
-            // Function to remove form group
             function removeFormGroup(event) {
                 const formGroup = event.target.closest('.form-group');
                 if (formGroup !== null && formContainer.children.length > 1) {
                     formContainer.removeChild(formGroup);
                 }
             }
-
-            // Attach event listener to the button in the initial form group
             const addBtn = document.querySelector('.add-btn');
             addBtn.addEventListener('click', addFormGroup);
             const removeBtn = document.querySelector('.remove-btn');
             removeBtn.addEventListener('click', removeFormGroup);
-        });</script>
-
-    @*<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>$(document).ready(function () {
-            $('#specForm').submit(function (event) {
-                // Prevent the default form submission behavior
-                event.preventDefault();
-
-                // Serialize form data
-                var formData = $(this).serialize();
-
-                // Perform an AJAX request to submit the form data
-                $.ajax({
-                    type: 'POST',
-                    url: 'your_submit_url_here',
-                    data: formData,
-                    success: function (response) {
-                        // Handle the response, if needed
-                        console.log('Form submitted successfully');
-
-                        // You can update the UI or perform any other actions here
-                    },
-                    error: function (xhr, status, error) {
-                        // Handle errors
-                        console.error('Form submission failed:', error);
-                    }
-                });
-            });
-        });</script>*@
+});
+    </script>
 
 
 

@@ -13,9 +13,11 @@
 {
     <div id="update" style="display:none">@TempData["update"]</div>
 }
+
 <main>
+
     <a asp-controller="home" asp-action="index">
-        <i id="Up" class="fa-solid fa-chevron-up"></i>
+        <i id="Up" style="z-index:100" class="fa-solid fa-chevron-up"></i>
     </a>
     @foreach (var item in Model.Products)
     {
@@ -24,13 +26,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <!-- <i class="fa-solid fa-xmark"></i> -->
+     
                         </button>
                     </div>
                     <div class="modal-body">
                         <section id="Productcart">
                             <div class="container">
-
                                 <div class="single-wrapper">
                                     <div class="product-header">
                                         <h1 class="product_title entry-title">
@@ -39,7 +40,7 @@
                                         <div class="bottom">
                                             <div class="product-brand">
                                                 <p>
-                                                    Brands <span>@item.Brand.Name</span>
+                                                    Brands : <span>@item.Brand.Name</span>
                                                 </p>
                                             </div>
                                             <div class="star-rating">
@@ -57,9 +58,19 @@
                                     </div>
                                     <div class="product-body">
                                         <div class="row">
-                                            <div class="col-lg-6 product-slid">
+                                            <div class="col-lg-6 ">
 
-                                                <div class="main-img">
+                                                <div class="main-img2">
+                                                    @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
+                                                    {
+                                                        <img style="width:100%" src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
+                                                    }
+                                                    @*@foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                                    {
+                                                        <img src="~/assets/img/product/@item2.Image" alt="">
+                                                    }*@
+                                                </div>
+                                                @*<div class="addition-img">
                                                     @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
                                                     {
                                                         <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
@@ -68,17 +79,7 @@
                                                     {
                                                         <img src="~/assets/img/product/@item2.Image" alt="">
                                                     }
-                                                </div>
-                                                <div class="addition-img">
-                                                    @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
-                                                    {
-                                                        <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
-                                                    }
-                                                    @foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
-                                                    {
-                                                        <img src="~/assets/img/product/@item2.Image" alt="">
-                                                    }
-                                                </div>
+                                                </div>*@
 
                                             </div>
                                             <div class="col col-12 col-lg-6 product-detail">
@@ -730,66 +731,6 @@
     </section>
     <!-- Slider Section end -->
 </main>
-
-
-@*<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>const data2 = document.getElementById("resetpassword");
-        if (data2 != undefined) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "bottom-top",
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: "warning",
-                iconColor: "#007bff",
-                title: "please go to email "
-            });
-        }
-        const data = document.getElementById("verify");
-        if (data != undefined) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: "bottom-top",
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.onmouseenter = Swal.stopTimer;
-                    toast.onmouseleave = Swal.resumeTimer;
-                }
-            });
-            Toast.fire({
-                icon: "warning",
-                iconColor: "#007bff",
-                title: "please verify your email "
-            });
-
-            const data = document.getElementById("update");
-            if (data != undefined) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: "bottom-top",
-                    showConfirmButton: false,
-                    timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
-                    icon: "warning",
-                    iconColor: "#007bff",
-                    title: "Your Account is updated succesfully "
-                });
-        }</script>*@
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

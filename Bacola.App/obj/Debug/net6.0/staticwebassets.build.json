@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Eyww29D2GTgD9O4uZcjgDcvjOHbzOlEpQ3wFkLRr0Og=",
+  "Hash": "MYsPEYrdX9b2zpgiJhoI9K5fun9s/2SpO3rF67Awgmg=",
   "Source": "Bacola.App",
   "BasePath": "_content/Bacola.App",
   "Mode": "Default",
@@ -969,12 +969,12 @@
       "OriginalItemSpec": "wwwroot/assets/css/checkout.css"
     },
     {
-      "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/css/common.css",
+      "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/css/commonn.css",
       "SourceId": "Bacola.App",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/",
       "BasePath": "_content/Bacola.App",
-      "RelativePath": "assets/css/common.css",
+      "RelativePath": "assets/css/commonn.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -983,7 +983,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/css/common.css"
+      "OriginalItemSpec": "wwwroot/assets/css/commonn.css"
     },
     {
       "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/css/contact.css",
@@ -3961,23 +3961,6 @@
       "OriginalItemSpec": "wwwroot/assets/img/shop/shop-banner2.gif"
     },
     {
-      "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/js/additional.js",
-      "SourceId": "Bacola.App",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/",
-      "BasePath": "_content/Bacola.App",
-      "RelativePath": "assets/js/additional.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/assets/js/additional.js"
-    },
-    {
       "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/js/app.js",
       "SourceId": "Bacola.App",
       "SourceType": "Discovered",
@@ -4010,6 +3993,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/js/jquery.js"
+    },
+    {
+      "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/js/mine.js",
+      "SourceId": "Bacola.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/",
+      "BasePath": "_content/Bacola.App",
+      "RelativePath": "assets/js/mine.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/js/mine.js"
     },
     {
       "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/Templates/Verify.html",

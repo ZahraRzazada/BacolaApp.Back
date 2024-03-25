@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="~/assets/css/common.css">
+    <link rel="stylesheet" href="~/assets/css/commonn.css">
     <link rel="stylesheet" href="~/assets/css/blog.css">
     <link rel="stylesheet" href="~/assets/css/about.css">
     <link rel="stylesheet" href="~/assets/css/cart.css">
@@ -208,7 +208,6 @@
                                    autocomplete="off">
                             <div class="klb-search-results">
                                 <ul id="searchResultsList">
-
                                 </ul>
 
                             </div>
@@ -633,61 +632,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="~/assets/js/additional.js"></script>
+    <script src="~/assets/js/mine.js"></script>
     <script src="~/assets/js/app.js"></script>
 </body>
 </html>
 
 
-<Script>
-    document.getElementById('searchInput').addEventListener('input', performSearch);
-    const searchResultsList = document.getElementById('searchResultsList');
-    console.log(searchResultsList);
-    async function performSearch() {
-
-        var searchTerm = document.getElementById('searchInput').value.trim();
-        if (searchTerm.length === 0) {
-            searchResultsList.innerHTML = ``;
-            return;
-        }
-        try {
-            const response = await fetch(`/Shop/SearchProduct?search=${encodeURIComponent(searchTerm)}`);
-            console.log(response)
-            const data = await response.json();
-            console.log(data);
-            searchResultsList.innerHTML = ``;
-            data.data.forEach(item => {
-                const baseUrl = '@Url.Content("~/")';
-                console.log(baseUrl);
-                console.log(item);
-                searchResultsList.innerHTML += `
-
-       <li>
-   
-            <div class="search-content">
-                <h1 class="product-title"><a href="">${item.title}</a></h1>
-                <span class="price">
-                    <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>${item.price}</bdi></span></del>
-                    <ins>
-                        <span class="woocommerce-Price-amount amount">
-                            <bdi>
-                                <span class="woocommerce-Price-currencySymbol">$</span>${item.discountPrice}
-                            </bdi>
-                        </span>
-                    </ins>
-                </span>
-            </div>
-       </li>
-
-
-            `
-            })
-
-        }
-        catch (error) {
-            console.error(error);
-            searchResultsList.innerHTML = ``;
-        }
-    }
-</Script>
 

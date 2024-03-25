@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{83854AC1-ADB7-4949-A866-AF9CD47C03EF}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Bacola.App PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bacola.App/Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bacola.App/wwwroot/assets/js/mine.js">
     <Files>
+      <File FileName="Bacola.Core/DTOS/Comment/CommentGetDto.cs" Line="1" Column="1" IsPinned="True" />
       <File FileName="Bacola.App/appsettings.Development.json" />
       <File FileName="Bacola.App/appsettings.json" />
       <File FileName="Bacola.App/Program.cs" />
@@ -52,7 +50,7 @@
       <File FileName="Bacola.App/Controllers/BlogController.cs" />
       <File FileName="Bacola.App/Views/Blog/Detail.cshtml" />
       <File FileName="Bacola.Core/Entities/Brand.cs" />
-      <File FileName="Bacola.Core/Entities/Product.cs" />
+      <File FileName="Bacola.Core/Entities/Product.cs" Line="1" Column="1" />
       <File FileName="Bacola.Core/DTOS/Brand/BrandGetDto.cs" />
       <File FileName="Bacola.Core/DTOS/Brand/BrandPostDto.cs" />
       <File FileName="Bacola.Core/Repositories/IBrandRepository.cs" />
@@ -64,7 +62,7 @@
       <File FileName="Bacola.App/Areas/Admin/Views/Brand/Update.cshtml" />
       <File FileName="Bacola.App/Areas/Admin/Controllers/BrandController.cs" />
       <File FileName="Bacola.Core/Entities/TagProduct.cs" />
-      <File FileName="Bacola.Core/Entities/ProductImage.cs" />
+      <File FileName="Bacola.Core/Entities/ProductImage.cs" Line="1" Column="1" />
       <File FileName="Bacola.Core/Entities/Specification.cs" />
       <File FileName="Bacola.Core/DTOS/Product/ProductGetDto.cs" />
       <File FileName="Bacola.Core/DTOS/Product/ProductPostDto.cs" />
@@ -80,8 +78,8 @@
       <File FileName="Bacola.App/Areas/Admin/Views/Home/Index.cshtml" />
       <File FileName="Bacola.App/Areas/Admin/Views/Blog/Create.cshtml" />
       <File FileName="Bacola.App/Controllers/HomeController.cs" />
-      <File FileName="Bacola.App/Controllers/ShopController.cs" Line="209" Column="1" />
-      <File FileName="Bacola.App/Views/Shared/_Layout.cshtml" Line="659" Column="48" />
+      <File FileName="Bacola.App/Controllers/ShopController.cs" />
+      <File FileName="Bacola.App/Views/Shared/_Layout.cshtml" />
       <File FileName="Bacola.App/wwwroot/assets/js/jquery.js" />
       <File FileName="Bacola.App/Views/_ViewStart.cshtml" />
       <File FileName="Bacola.App/Views/Home/Index.cshtml" />
@@ -89,7 +87,6 @@
       <File FileName="Bacola.App/Views/Contact/Index.cshtml" />
       <File FileName="Bacola.App/Controllers/ContactController.cs" />
       <File FileName="Bacola.App/Controllers/AboutController.cs" />
-      <File FileName="Bacola.App/wwwroot/assets/css/common.css" />
       <File FileName="Bacola.Service/Mappers/GlobalMapping.cs" />
       <File FileName="Bacola.Core/Enums/UserRoles.cs" />
       <File FileName="Bacola.Data/Repositories/Generic/Repository.cs" />
@@ -183,7 +180,6 @@
       <File FileName="../../../../usr/local/share/dotnet/sdk/7.0.313/Microsoft.Common.CurrentVersion.targets" />
       <File FileName="Bacola.Data/Migrations/20240311162542_Wishlist.cs" />
       <File FileName="Bacola.Data/Migrations/20240311162542_Wishlist.Designer.cs" />
-      <File FileName="Bacola.App/wwwroot/assets/js/app.js" />
       <File FileName="Bacola.Core/Entities/Order.cs" />
       <File FileName="Bacola.Core/Entities/OrderItem.cs" />
       <File FileName="Bacola.Core/Repositories/IOrderRepository.cs" />
@@ -219,50 +215,58 @@
       <File FileName="Bacola.App/wwwroot/assets/css/shop.css" />
       <File FileName="Bacola.Core/DTOS/Filter/ProductFilterDto.cs" />
       <File FileName="Bacola.App/wwwroot/assets/css/bootstrap.css" />
-      <File FileName="Bacola.App/Views/Shop/Index.cshtml" />
-      <File FileName="Bacola.App/wwwroot/assets/js/additional.js" Line="98" Column="23" />
+      <File FileName="Bacola.App/Views/Shop/Index.cshtml" Line="413" Column="45" />
       <File FileName="Bacola.Service/Services/Interfaces/ICommentService.cs" />
       <File FileName="Bacola.Service/Services/Implementations/CommentService.cs" />
       <File FileName="Bacola.App/ViewModels/BlogViewModel.cs" />
       <File FileName="../../../../usr/local/share/dotnet/sdk/7.0.314/Roslyn/Microsoft.CSharp.Core.targets" />
       <File FileName="Bacola.Core/DTOS/Comment/CommentPostDto.cs" />
-      <File FileName="Bacola.Core/DTOS/Comment/CommentGetDto.cs" />
       <File FileName="Bacola.Core/Repositories/IComentRepository.cs" />
-      <File FileName="Bacola.Data/Migrations/BacolaDbContextModelSnapshot.cs" />
-      <File FileName="Bacola.Data/Migrations/20240315171010_Yeniden.Designer.cs" />
       <File FileName="Bacola.Data/Migrations/20240315171010_Yeniden.cs" />
       <File FileName="Bacola.Core/Entities/mine.cs" />
       <File FileName="Bacola.Data/Migrations/20240322194319_mine.Designer.cs" />
       <File FileName="Bacola.Data/Migrations/20240322194319_mine.cs" />
       <File FileName="Bacola.Service/Responses/PagginatedResponse.cs" />
-      <File FileName="Bacola.App/wwwroot/assets/js/search.js" Line="55" Column="21" />
+      <File FileName="Bacola.Core/Entities/Coment.cs" />
+      <File FileName="Bacola.Core/Entities/Coupon.cs" />
+      <File FileName="Bacola.App/wwwroot/assets/js/app.js" />
+      <File FileName="Bacola.App/wwwroot/assets/js/mine.js" Line="150" Column="13" />
+      <File FileName="Bacola.App/wwwroot/assets/css/contact.css" />
+      <File FileName="Bacola.App/wwwroot/assets/css/commonn.css" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Bacola.App" expanded="True">
             <Node name="Bacola.App">
-              <Node name="Controllers" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
-                </Node>
+                <Node name="Shop" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="assets" expanded="True">
-                  <Node name="js" expanded="True" />
+                  <Node name="js" expanded="True">
+                    <Node name="mine.js" selected="True" />
+                  </Node>
                 </Node>
               </Node>
+              <Node name="appsettings.json" expanded="True" />
             </Node>
             <Node name="Bacola.Core" expanded="True">
               <Node name="DTOS" expanded="True">
-                <Node name="Product" expanded="True" />
+                <Node name="Comment" expanded="True" />
               </Node>
+              <Node name="Entities" expanded="True" />
+            </Node>
+            <Node name="Bacola.Data" expanded="True">
+              <Node name="Migrations" expanded="True" />
             </Node>
             <Node name="Bacola.Service" expanded="True">
+              <Node name="ExternalServices" expanded="True">
+                <Node name="Implementations" expanded="True" />
+              </Node>
+              <Node name="ServiceRegisterations" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Implementations" expanded="True" />
-                <Node name="Interfaces" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -270,10 +274,13 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/Controllers/ShopController.cs" relfile="Bacola.App/Controllers/ShopController.cs" line="208" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Bacola.App PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

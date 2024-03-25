@@ -229,8 +229,8 @@
       "PackagePath": "staticwebassets/assets/css/checkout.css"
     },
     {
-      "Id": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/css/common.css",
-      "PackagePath": "staticwebassets/assets/css/common.css"
+      "Id": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/css/commonn.css",
+      "PackagePath": "staticwebassets/assets/css/commonn.css"
     },
     {
       "Id": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/css/contact.css",
@@ -933,16 +933,16 @@
       "PackagePath": "staticwebassets/assets/img/shop/shop-banner2.gif"
     },
     {
-      "Id": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/js/additional.js",
-      "PackagePath": "staticwebassets/assets/js/additional.js"
-    },
-    {
       "Id": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/js/app.js",
       "PackagePath": "staticwebassets/assets/js/app.js"
     },
     {
       "Id": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/js/jquery.js",
       "PackagePath": "staticwebassets/assets/js/jquery.js"
+    },
+    {
+      "Id": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/js/mine.js",
+      "PackagePath": "staticwebassets/assets/js/mine.js"
     },
     {
       "Id": "obj/Debug/net6.0/staticwebassets/msbuild.Bacola.App.Microsoft.AspNetCore.StaticWebAssets.props",
