@@ -79,23 +79,6 @@ namespace Bacola.App.Controllers
             }
             return RedirectToAction("Detail","Blog" , new { id = dto.BlogId});
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> AddReply(ReplyDto dto)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View();
-        //    }
-        //    var response = await _commentService.CreateReplyAsync(dto);
-        //    if (!response.IsSuccess)
-        //    {
-        //        ModelState.AddModelError("", response.Message);
-        //        return View();
-        //    }
-        //    //var blogId = HttpContext.Session.GetInt32("CurrentBlogId");
-        //    return RedirectToAction("Detail", "Blog", new { id = dto.BlogId });
-        //}
     }
 }
 

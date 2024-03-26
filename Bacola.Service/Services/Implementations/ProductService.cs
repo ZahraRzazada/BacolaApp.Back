@@ -293,22 +293,21 @@ namespace Bacola.Service.Services.Implementations
 
         }
 
-        public async Task<CustomResponse<List<ProductGetDto>>> GetFilteredProducts(ProductFilterDto filter)
+        public async Task<PagginatedResponse<ProductGetDto>> GetFilteredProducts(ProductFilterDto filter)
         {
-            try
-            {
+           
                 var query = _productRepository.GetQuery(x => !x.IsDeleted);
 
                 query = query.Include(p => p.Category)
                              .Include(p => p.Brand);
-                if (filter.categoryId != null)
+                if (filter.categoryIds != null)
                 {
-                    query = query.Where(p => p.CategoryId == filter.categoryId);
+                   query= query.Where(x => filter.categoryIds.Contains(x.CategoryId));
                 }
-                if (filter.brandId != null)
+                if (filter.brandIds != null)
                 {
-                    query = query.Where(p => p.BrandId == filter.brandId);
-                }
+                query = query.Where(x => filter.brandIds.Contains(x.BrandId));
+            }
                 if (filter.fromPrice != null)
                 {
                     query = query.Where(p => p.DiscountPrice >= filter.fromPrice);
@@ -333,22 +332,11 @@ namespace Bacola.Service.Services.Implementations
                     ProductImages = p.ProductImages 
                 }).ToListAsync();
 
-                return new CustomResponse<List<ProductGetDto>>
-                {
-                    IsSuccess = true,
-                    Message = "Products filtered successfully",
-                    Data = products
-                };
-            }
-            catch (Exception ex)
-            {
-                return new CustomResponse<List<ProductGetDto>>
-                {
-                    IsSuccess = false,
-                    Message = $"Error filtering products: {ex.Message}",
-                    Data = null
-                };
-            }
+
+                var dtos = _mapper.Map< IEnumerable<ProductGetDto>>(products);
+            return new() { Items = dtos, };
+            
+        
         }
 
         public async Task<CustomResponse<List<ProductGetDto>>> Search(string search)

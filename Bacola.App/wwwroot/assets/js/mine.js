@@ -61,15 +61,19 @@ async function performSearch() {
         return;
     }
     try {
+        searchButton.style.display = 'none';
         const response = await fetch(`/Shop/SearchProduct?search=${encodeURIComponent(searchTerm)}`);
         console.log(response)
         const data = await response.json();
         console.log(data);
         searchResultsList.innerHTML = ``;
-        shopCards.innerHTML = ``;
+        if (shopCards !== null) {
+            shopCards.innerHTML = ``;
+        }
         data.data.forEach(item => {
             console.log(item);
-            shopCards.innerHTML +=`
+            if (shopCards !== null) {
+                shopCards.innerHTML += `
                      
                             <div  class="product">
                                 <div class="product-card">
@@ -143,6 +147,8 @@ async function performSearch() {
                                 </div>
                             </div>
             `
+            }
+       
             searchResultsList.innerHTML += `
        <li>
             <div class="search-img">
@@ -169,7 +175,10 @@ async function performSearch() {
     catch (error) {
         console.error(error);
         searchResultsList.innerHTML = ``;
-        shopCards.innerHTML = ``;
+        if (shopCards !== null) {
+            shopCards.innerHTML = ``;
+        }
+        
     }
 }
 //--------------

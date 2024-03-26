@@ -1,4 +1,4 @@
-﻿@model PagginatedResponse<ProductGetDto>
+﻿@model ShopViewModel
 
 @if (!string.IsNullOrWhiteSpace((string)TempData["AddBasket"]))
 {
@@ -23,14 +23,14 @@
     <a asp-controller="shop" asp-action="index">
         <i id="Up" style="z-index:100" class="fa-solid fa-chevron-up"></i>
     </a>
-    @foreach (var item in Model.Items)
+    @foreach (var item in Model.Products.Items)
     {
         <div aria-labelledby="@(item.Title+item.Id)Label" id="@(item.Title+item.Id)" class="modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <!-- <i class="fa-solid fa-xmark"></i> -->
+                      
                         </button>
                     </div>
                     <div class="modal-body">
@@ -70,20 +70,6 @@
                                                     {
                                                         <img style="width:100%" src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
                                                     }
-                                                    @*@foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
-                                                    {
-                                                        <img src="~/assets/img/product/@item2.Image" alt="">
-                                                    }
-                                                </div>
-                                                <div class="addition-img">
-                                                    @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
-                                                    {
-                                                        <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
-                                                    }
-                                                    @foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
-                                                    {
-                                                        <img src="~/assets/img/product/@item2.Image" alt="">
-                                                    }*@
                                                 </div>
 
                                             </div>
@@ -118,7 +104,7 @@
                                                     @item.Info
                                                 </p>
                                                 <form class="cart single-ajax"
-                                                      action="https://klbtheme.com/bacola/product/all-natural-italian-style-chicken-meatballs/"
+                                                      action=""
                                                       method="post" enctype="multipart/form-data">
 
                                                     <div class="quantity">
@@ -243,119 +229,128 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-3 content-primary">
-                    <div class="product-filters">
-                        <div class="product-category">
-                            <h4 class="widget-title">Product Categories</h4>
-                            <div class="category-part site-scroll ps ps--active-y ps--scrolling-y"
-                                 style="max-height: 200px; overflow-y: auto;">
-                                <ul>
-                                    @foreach (var item in categories)
-                                    {
-                                        @if (item.ParentCategoryId == null)
+                    <div onchange="this.form.submit()">
+
+                        <div class="product-filters">
+                            <div class="product-category">
+                                <h4 class="widget-title">Product Categories</h4>
+                                <div class="category-part site-scroll ps ps--active-y ps--scrolling-y"
+                                     style="max-height: 200px; overflow-y: auto;">
+                                    <ul>
+                                        @foreach (var item in categories)
                                         {
-                                            <li class="cat-parent">
-                                                <div style="display: flex; justify-content:space-between" class="cpart">
-                                                    <a href="" class="product_cat">
-                                                        <input name="product_cat[]" value="31" id="checkbox" type="checkbox">
-                                                        <label>@item.Name</label>
-                                                    </a>
-                                                    <div class="icon">
-                                                        <i data-target="subcategories-@item.Id" style="color:black; margin-right:20px" class="toggleIcon fa-solid fa-plus"></i>
+                                            @if (item.ParentCategoryId == null)
+                                            {
+                                                <li class="cat-parent">
+                                                    <div style="display: flex; justify-content:space-between" class="cpart">
+                                                        <a asp-action="Index" asp-route-categoryIds="@ViewBag.CategoryIds" asp-route-categoryId="@item.Id" class="product_cat">
+                                                            <input name="product_cat[]" value="@(Model.Filter.CategoryIds.Any(x=>x==item.Id) ? "true" : "false") " id="checkbox" type="checkbox">
+                                                            <label>@item.Name</label>
+                                                        </a>
+                                                        <div class="icon">
+                                                            <i data-target="subcategories-@item.Id" style="color:black; margin-right:20px" class="toggleIcon fa-solid fa-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <ul id="subcategories-@item.Id" class="children" style="display:none">
+                                                        @foreach (var item2 in item.Subcategories)
+                                                        {
+                                                            <li>
+                                                                <a asp-action="Index" asp-route-categoryIds="@ViewBag.CategoryIds" asp-route-categoryId="@item2.Id">
+                                                                    <input  name="product_cat[]" value="@(Model.Filter.CategoryIds.Any(x=>x==item.Id) ? "true" : "false") " id="checkbox" type="checkbox">
+                                                                    <label><span></span>@item2.Name</label>
+                                                                </a>
+                                                            </li>
+
+                                                            }
+                                                    </ul>       
+                                                </li>
+                                                }
+                                        }
+                                    </ul>
+
+                                </div>
+                            </div>
+                            
+                                <div class="price-filter">
+                                    <h4 class="widget-title">Filter by price</h4>
+                                    <div>
+                                        <form>
+                                            <div class="wrapper">
+                                                <div class="slider">
+                                                    <div class="progress"></div>
+                                                </div>
+                                                <div class="range-input">
+                                                    <input type="range" class="range-min" min="0" max="100" value="0"
+                                                           step="10" />
+                                                    <input type="range" class="range-max" min="0" max="100" value="70"
+                                                           step="10" />
+                                                </div>
+                                                <div class="price-input">
+                                                    <div class="field">
+                                                        <p>Price:</p>
+                                                        <span class="input-min price-value"></span>
+                                                        -
+                                                        <span class="input-max price-value"></span>
+                                                    </div>
+                                                    <div class="leftfilter">
+                                                        <button type="submit" class="button">Filter</button>
                                                     </div>
                                                 </div>
-                                                <ul id="subcategories-@item.Id" class="children" style="display:none">
-                                                    @foreach (var item2 in item.Subcategories)
-                                                    {
-                                                        <li>
-                                                            <a href="">
-                                                                <input name="product_cat[]" value="45" id="checkbox" type="checkbox">
-                                                                <label><span></span>@item2.Name</label>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            </li>
-                                        }
-                                    }
-                                </ul>
-
-                            </div>
-                        </div>
-                        <div class="price-filter">
-                            <h4 class="widget-title">Filter by price</h4>
-                            <form>
-                                <div class="wrapper">
-                                    <div class="slider">
-                                        <div class="progress"></div>
-                                    </div>
-                                    <div class="range-input">
-                                        <input type="range" class="range-min" min="0" max="100" value="0"
-                                               step="10" />
-                                        <input type="range" class="range-max" min="0" max="100" value="70"
-                                               step="10" />
-                                    </div>
-                                    <div class="price-input">
-                                        <div class="field">
-                                            <p>Price:</p>
-                                            <span class="input-min price-value"></span>
-                                            -
-                                            <span class="input-max price-value"></span>
-                                        </div>
-                                        <div class="leftfilter">
-                                            <button type="submit" class="button">Filter</button>
-                                        </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="product-status">
-                            <h4 class="widget-title">Product Status</h4>
-                            <div class="status">
+               
+                            <div class="product-status">
+                                <h4 class="widget-title">Product Status</h4>
+                                <div class="status">
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <input name="stockonsale" value="instock" id="instock" type="checkbox">
+                                                <label>
+                                                    In Stock
+                                                </label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <input name="stockonsale" value="instock" id="instock" type="checkbox">
+                                                <label>
+                                                    Is Not In Stock
+                                                </label>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div class="product-brand">
+                                <h4 class="widget-title">Brands</h4>
                                 <ul>
-                                    <li>
-                                        <a href="">
-                                            <input name="stockonsale" value="instock" id="instock" type="checkbox">
-                                            <label>
-                                                In Stock
-                                            </label>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <input name="stockonsale" value="instock" id="instock" type="checkbox">
-                                            <label>
-                                                Is Not In Stock
-                                            </label>
-                                        </a>
-                                    </li>
 
+                                    @foreach (var item in brands)
+                                    {
+                                        <li>
+                                            <a asp-action="Index" asp-route-brandIds="@ViewBag.brandIds" asp-route-categoryId="@item.Id">
+                                                <input name="product_cat[]" value="@(Model.Filter.BrandIds.Any(x=>x==item.Id) ? "true" : "false") " id="checkbox" type="checkbox" >
+                                                <label>
+                                                    @item.Name
+                                                </label>
+                                            </a>
+
+                                        </li>
+                                    }
                                 </ul>
-
+                            </div>
+                            <div class="product-banner">
+                                <img src="~/assets/img/shop/shop-banner2.gif" alt="">
                             </div>
                         </div>
-
-                        <div class="product-brand">
-                            <h4 class="widget-title">Brands</h4>
-                            <ul>
-
-                                @foreach (var item in brands)
-                                {
-                                    <li>
-                                        <a href="">
-                                            <input name="stockonsale" value="instock" id="instock" type="checkbox">
-                                            <label>
-                                                @item.Name
-                                            </label>
-                                        </a>
-
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                        <div class="product-banner">
-                            <img src="~/assets/img/shop/shop-banner2.gif" alt="">
-                        </div>
                     </div>
+
                 </div>
                 <div class="col-12 col-md-12 col-lg-9 shop-primary">
                     <div class="shop-banner">
@@ -398,7 +393,7 @@
                     </div>
                     <div class="container" id="salam" >
                     
-                        @foreach (ProductGetDto item in Model.Items)
+                        @foreach (ProductGetDto item in Model.Products.Items)
                         {
                             <div class="product">
                                 <div class="product-card">
@@ -483,16 +478,16 @@
                     </div>
                     <nav style="display: flex; align-items: center; justify-content: center;" aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item @(1==Model.CurrentPage? "disabled":null)">
-                                <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage-1)" tabindex="-1">Previous</a>
+                            <li class="page-item @(1==Model.Products.CurrentPage? "disabled":null)">
+                                <a class="page-link" asp-action="Index" asp-route-page="@(Model.Products.CurrentPage-1)" tabindex="-1">Previous</a>
                             </li>
-                            @for (int i = 1; i <= Model.TotalPages; i++)
+                            @for (int i = 1; i <= Model.Products.TotalPages; i++)
                             {
-                                <li class="page-item @(i==Model.CurrentPage? "disabled":null)"><a class="page-link" asp-action="Index" asp-route-page="@i">@i</a></li>
+                                <li class="page-item @(i==Model.Products.CurrentPage? "disabled":null)"><a class="page-link" asp-action="Index" asp-route-page="@i">@i</a></li>
 
                             }
-                            <li class="page-item @(Model.TotalPages==Model.CurrentPage? "disabled":null)">
-                                <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage+1)">Next</a>
+                            <li class="page-item @(Model.Products.TotalPages==Model.Products.CurrentPage? "disabled":null)">
+                                <a class="page-link" asp-action="Index" asp-route-page="@(Model.Products.CurrentPage+1)">Next</a>
                             </li>
                         </ul>
                     </nav>
@@ -511,7 +506,7 @@
                     </div>
                     <div class="rproduct-body">
                         <div class="products">
-                            @foreach (ProductGetDto item in Model.Items.Take(4))
+                            @foreach (ProductGetDto item in Model.Products.Items.Take(4))
                             {
                                 <div class="product">
                                     <div class="product-card">

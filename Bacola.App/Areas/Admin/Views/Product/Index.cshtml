@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProductGetDto>
+﻿@model PagginatedResponse<ProductGetDto>
 <div class="page-body">
     <!-- All User Table Start -->
     <div class="container-fluid">
@@ -30,7 +30,7 @@
                                     </thead>
 
                                     <tbody>
-                                        @foreach (ProductGetDto item in Model)
+                                        @foreach (ProductGetDto item in Model.Items)
                                         {
                                             <tr>
                                                 <td>@item.Id</td>

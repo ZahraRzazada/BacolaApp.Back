@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MYsPEYrdX9b2zpgiJhoI9K5fun9s/2SpO3rF67Awgmg=",
+  "Hash": "S8pileeZtRqT+r/yWsk6/futO4Q1MT0ym07AZrQccvU=",
   "Source": "Bacola.App",
   "BasePath": "_content/Bacola.App",
   "Mode": "Default",
@@ -2567,6 +2567,23 @@
       "OriginalItemSpec": "wwwroot/assets/img/product/333a850f-ff21-4ac2-985f-e61c52bad7d6blog-1.jpg"
     },
     {
+      "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/product/36d97f94-f65c-47d6-998a-ee93e537341dslider-image-1.jpg",
+      "SourceId": "Bacola.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/",
+      "BasePath": "_content/Bacola.App",
+      "RelativePath": "assets/img/product/36d97f94-f65c-47d6-998a-ee93e537341dslider-image-1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/img/product/36d97f94-f65c-47d6-998a-ee93e537341dslider-image-1.jpg"
+    },
+    {
       "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/product/380bf545-62e4-4c5f-a43f-a429258eefa1Photo on 24.02.23 at 3.57 PM #2.jpeg",
       "SourceId": "Bacola.App",
       "SourceType": "Discovered",
@@ -2669,6 +2686,23 @@
       "OriginalItemSpec": "wwwroot/assets/img/product/489e794d-86c6-4256-b106-f98297c87570blog-5.jpg"
     },
     {
+      "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/product/48cd6363-8553-4863-bfcd-27ab73c91216slider-3.jpg",
+      "SourceId": "Bacola.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/",
+      "BasePath": "_content/Bacola.App",
+      "RelativePath": "assets/img/product/48cd6363-8553-4863-bfcd-27ab73c91216slider-3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/img/product/48cd6363-8553-4863-bfcd-27ab73c91216slider-3.jpg"
+    },
+    {
       "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/product/4c1df7cd-4d7e-49e5-9651-fb139a3ec850sidebar-banner.gif",
       "SourceId": "Bacola.App",
       "SourceType": "Discovered",
@@ -2769,6 +2803,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/img/product/650f6e25-0b06-4d33-be72-597f84d94cdeWhatsApp Image 2024-02-11 at 21.40.37.jpeg"
+    },
+    {
+      "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/product/68915258-07d3-47fd-a0f9-8c58c089d998bacola-banner-04.jpg",
+      "SourceId": "Bacola.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/",
+      "BasePath": "_content/Bacola.App",
+      "RelativePath": "assets/img/product/68915258-07d3-47fd-a0f9-8c58c089d998bacola-banner-04.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/img/product/68915258-07d3-47fd-a0f9-8c58c089d998bacola-banner-04.jpg"
     },
     {
       "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/product/6fa2687c-69ef-4bfd-82ee-f822a7ec3353blog-4.jpg",
@@ -2990,6 +3041,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/img/product/886d38ba-afae-43f2-94c3-19d2c25c055bblog-4.jpg"
+    },
+    {
+      "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/product/8d13dabe-9b98-4f13-8b6d-3464d5de9ddeslider-image-2.jpg",
+      "SourceId": "Bacola.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/",
+      "BasePath": "_content/Bacola.App",
+      "RelativePath": "assets/img/product/8d13dabe-9b98-4f13-8b6d-3464d5de9ddeslider-image-2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/img/product/8d13dabe-9b98-4f13-8b6d-3464d5de9ddeslider-image-2.jpg"
     },
     {
       "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/product/8da082fe-f64b-424a-9699-1c885cfe38abblog-1.jpg",

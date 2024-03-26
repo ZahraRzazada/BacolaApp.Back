@@ -76,13 +76,6 @@
 
                                         </div>
                                     </div>
-                                    @*<div style="align-items:center" class="mb-4 row align-items-center">
-                                        <label asp-for="DiscountPrice" class="form-label-title col-sm-3 mb-0">Product DiscountPrice</label>
-                                        <div class="col-sm-9">
-                                            <input asp-for="DiscountPrice" class="form-control" type="text" placeholder="Product DiscountPrice">
-
-                                        </div>
-                                    </div>*@
                                     <div style="margin:50px 0px" class="form-group d-flex">
                                         <label style="margin-right:5px" class="col-sm-3 col-lg-3 col-form-label form-label-title">Last Image</label>
                                         <img style="width:50%" class="col-lg-9" src="~/assets/img/product/@Model.ProductImages.Where(x=>!x.IsDeleted&&x.IsMain).FirstOrDefault()?.Image" />" 
@@ -113,11 +106,23 @@
                                         <div style="width:75%" class="form-group">
                                             <select asp-for="CategoryId" class="form-select" aria-label="Default select example">
                                                 <option disabled>Categories</option>
-                                                @foreach (var item in ViewBag.Categories)
+                                                @foreach (var category in ViewBag.Categories)
                                                 {
-                                                    if (item.ParentCategoryId == null)
+                                                    if (category.Subcategories != null && category.Subcategories.Count > 0)
                                                     {
-                                                        <option value="@item.Id">@item.Name</option>
+                                                        <optgroup label="@category.Name">
+                                                            @foreach (var subcategory in category.Subcategories)
+                                                            {
+                                                                <option value="@subcategory.Id">@subcategory.Name</option>
+                                                            }
+                                                        </optgroup>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (category.ParentCategoryId == null)
+                                                        {
+                                                            <option value="@category.Id">@category.Name</option>
+                                                        }
                                                     }
                                                 }
                                             </select>

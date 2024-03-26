@@ -81,7 +81,7 @@ namespace Bacola.App.Areas.Admin.Controllers
                 ViewBag.Brands = await _brandService.GetAllAsync();
                 ViewBag.Categories = await _categoryService.GetAllAsync();
                 var product = await _productService.GetAsync(id);
-                return View(product);
+                return View(product.Data);
             };
             var res = await _productService.UpdateAsync(id, dto);
             if (!res.IsSuccess)
@@ -91,7 +91,7 @@ namespace Bacola.App.Areas.Admin.Controllers
                 ViewBag.Categories = await _categoryService.GetAllAsync();
                 var product = await _productService.GetAsync(id);
                 ModelState.AddModelError("", res.Message);
-                return View(product);
+                return View(product.Data);
             };
             return RedirectToAction(nameof(Index));
         }
