@@ -1,6 +1,4 @@
-﻿
-console.log("razzasdfghj");
-
+﻿console.log("salamjs");
 //PriceFilter
 const rangeInput = document.querySelectorAll(".range-input input");
 const priceValue = document.querySelectorAll(".price-value");
@@ -50,6 +48,7 @@ toggleIcons.forEach(function (icon) {
 //SerachJsDynamiclyHome
 document.getElementById('searchInput').addEventListener('input', performSearch);
 const shopCards = document.getElementById('salam');
+console.log(shopCards);
 const searchbutton = document.getElementById('searchButton');
 const searchResultsList = document.getElementById('searchResultsList');
 async function performSearch() {
@@ -57,21 +56,20 @@ async function performSearch() {
     var searchTerm = document.getElementById('searchInput').value.trim();
     if (searchTerm.length === 0) {
         searchResultsList.innerHTML = ``;
-        shopCards.innerHTML += ``;
+        if (shopCards !== null) {
+            shopCards.innerHTML =`` ;
+        }
         return;
     }
     try {
         searchButton.style.display = 'none';
         const response = await fetch(`/Shop/SearchProduct?search=${encodeURIComponent(searchTerm)}`);
-        console.log(response)
         const data = await response.json();
-        console.log(data);
         searchResultsList.innerHTML = ``;
         if (shopCards !== null) {
-            shopCards.innerHTML = ``;
+            shopCards.innerHTML = ` `;
         }
         data.data.forEach(item => {
-            console.log(item);
             if (shopCards !== null) {
                 shopCards.innerHTML += `
                      
@@ -148,7 +146,6 @@ async function performSearch() {
                             </div>
             `
             }
-       
             searchResultsList.innerHTML += `
        <li>
             <div class="search-img">

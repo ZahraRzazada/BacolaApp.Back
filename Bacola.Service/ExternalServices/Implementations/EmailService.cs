@@ -12,11 +12,11 @@ namespace Bacola.Service.ExternalServices.Implementations
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
             client.EnableSsl = true;
             client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential("pm4283719@gmail.com", "ddzrblqxpzyxysdu");
+            client.Credentials = new NetworkCredential("rzazadazz@gmail.com", "jjobmvpyeqkfpmkc");
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
 
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress("pm4283719@gmail.com", "Bacola App");
+            mailMessage.From = new MailAddress("rzazadazz@gmail.com", "BacolaApp");
             mailMessage.To.Add(to);
             mailMessage.Subject = subject;
             mailMessage.IsBodyHtml = true;

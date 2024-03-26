@@ -304,7 +304,11 @@ namespace Bacola.Service.Services.Implementations
                 {
                    query= query.Where(x => filter.categoryIds.Contains(x.CategoryId));
                 }
-                if (filter.brandIds != null)
+            if (filter.categoryId != null)
+            {
+                query = query.Where(x => filter.categoryId==x.CategoryId);
+            }
+            if (filter.brandIds != null)
                 {
                 query = query.Where(x => filter.brandIds.Contains(x.BrandId));
             }

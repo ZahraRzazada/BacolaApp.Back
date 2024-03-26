@@ -243,10 +243,14 @@
                                             {
                                                 <li class="cat-parent">
                                                     <div style="display: flex; justify-content:space-between" class="cpart">
-                                                        <a asp-action="Index" asp-route-categoryIds="@ViewBag.CategoryIds" asp-route-categoryId="@item.Id" class="product_cat">
-                                                            <input name="product_cat[]" value="@(Model.Filter.CategoryIds.Any(x=>x==item.Id) ? "true" : "false") " id="checkbox" type="checkbox">
-                                                            <label>@item.Name</label>
-                                                        </a>
+                                                       <form method="post" asp-controller="Shop" asp-action="FilterProducts">
+                                                           <a class="product_cat">
+                                                             <button type="submit">
+                                                                 @*<input asp-for="Filter.categoryId.ToString()" id="checkbox" type="checkbox">*@
+                                                             </button>
+                                                               <label>@item.Name</label>
+                                                           </a>
+                                                       </form>
                                                         <div class="icon">
                                                             <i data-target="subcategories-@item.Id" style="color:black; margin-right:20px" class="toggleIcon fa-solid fa-plus"></i>
                                                         </div>
@@ -255,12 +259,11 @@
                                                         @foreach (var item2 in item.Subcategories)
                                                         {
                                                             <li>
-                                                                <a asp-action="Index" asp-route-categoryIds="@ViewBag.CategoryIds" asp-route-categoryId="@item2.Id">
-                                                                    <input  name="product_cat[]" value="@(Model.Filter.CategoryIds.Any(x=>x==item.Id) ? "true" : "false") " id="checkbox" type="checkbox">
+                                                                <a>
+                                                                    <input  name="" value="" id="checkbox" type="checkbox">
                                                                     <label><span></span>@item2.Name</label>
                                                                 </a>
                                                             </li>
-
                                                             }
                                                     </ul>       
                                                 </li>
@@ -334,8 +337,8 @@
                                     @foreach (var item in brands)
                                     {
                                         <li>
-                                            <a asp-action="Index" asp-route-brandIds="@ViewBag.brandIds" asp-route-categoryId="@item.Id">
-                                                <input name="product_cat[]" value="@(Model.Filter.BrandIds.Any(x=>x==item.Id) ? "true" : "false") " id="checkbox" type="checkbox" >
+                                            <a >
+                                                <input name="" value="" id="checkbox" type="checkbox" >
                                                 <label>
                                                     @item.Name
                                                 </label>

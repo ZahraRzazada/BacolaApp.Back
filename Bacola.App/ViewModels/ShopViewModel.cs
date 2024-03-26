@@ -7,7 +7,7 @@ namespace Bacola.App.ViewModels;
 public class ShopViewModel
 {
     public PagginatedResponse<ProductGetDto> Products { get; set; } = new();
-    public FilterVM Filter { get; set; } = new();
+    public ProductFilterDto Filter { get; set; } = new();
 }
 
 

@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{83854AC1-ADB7-4949-A866-AF9CD47C03EF}|Default">
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Bacola.App PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bacola.App/wwwroot/assets/js/mine.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bacola.Service/ExternalServices/Implementations/EmailService.cs">
     <Files>
       <File FileName="Bacola.Core/DTOS/Comment/CommentGetDto.cs" Line="1" Column="1" IsPinned="True" />
       <File FileName="Bacola.App/appsettings.Development.json" />
@@ -73,7 +72,7 @@
       <File FileName="Bacola.Core/DTOS/Product/ProductPostDto.cs" />
       <File FileName="Bacola.Data/Repositories/ProductRepository.cs" />
       <File FileName="Bacola.Core/Repositories/IProductRepository.cs" />
-      <File FileName="Bacola.Service/Services/Implementations/ProductService.cs" />
+      <File FileName="Bacola.Service/Services/Implementations/ProductService.cs" Line="1" Column="1" />
       <File FileName="Bacola.Service/Services/Interfaces/IProductService.cs" />
       <File FileName="Bacola.App/Views/Shop/Detail.cshtml" />
       <File FileName="Bacola.App/Areas/Admin/Controllers/ProductController.cs" />
@@ -139,7 +138,7 @@
       <File FileName="Bacola.Core/DTOS/Account/RegisterDto.cs" />
       <File FileName="Bacola.Core/DTOS/Account/UpdateDto.cs" />
       <File FileName="Bacola.Core/DTOS/Account/LoginDto.cs" />
-      <File FileName="Bacola.Service/ExternalServices/Implementations/EmailService.cs" />
+      <File FileName="Bacola.Service/ExternalServices/Implementations/EmailService.cs" Line="19" Column="78" />
       <File FileName="Bacola.Service/ExternalServices/Interfaces/IEmailService.cs" />
       <File FileName="Bacola.Core/DTOS/Account/ResetPasswordDto.cs" />
       <File FileName="Bacola.App/Controllers/AccountController.cs" />
@@ -218,9 +217,9 @@
       <File FileName="Bacola.App/wwwroot/assets/css/cart.css" />
       <File FileName="Bacola.App/Views/Shop/OrderTrackingDetail.cshtml" />
       <File FileName="Bacola.App/wwwroot/assets/css/shop.css" />
-      <File FileName="Bacola.Core/DTOS/Filter/ProductFilterDto.cs" />
+      <File FileName="Bacola.Core/DTOS/Filter/ProductFilterDto.cs" Line="1" Column="1" />
       <File FileName="Bacola.App/wwwroot/assets/css/bootstrap.css" />
-      <File FileName="Bacola.App/Views/Shop/Index.cshtml" Line="26" Column="48" />
+      <File FileName="Bacola.App/Views/Shop/Index.cshtml" />
       <File FileName="Bacola.Service/Services/Interfaces/ICommentService.cs" />
       <File FileName="Bacola.Service/Services/Implementations/CommentService.cs" />
       <File FileName="Bacola.App/ViewModels/BlogViewModel.cs" />
@@ -235,7 +234,7 @@
       <File FileName="Bacola.Core/Entities/Coment.cs" />
       <File FileName="Bacola.Core/Entities/Coupon.cs" />
       <File FileName="Bacola.App/wwwroot/assets/js/app.js" />
-      <File FileName="Bacola.App/wwwroot/assets/js/mine.js" Line="60" Column="35" />
+      <File FileName="Bacola.App/wwwroot/assets/js/mine.js" Line="61" Column="10" />
       <File FileName="Bacola.App/wwwroot/assets/css/contact.css" />
       <File FileName="Bacola.App/wwwroot/assets/css/commonn.css" />
       <File FileName="Bacola.App/ViewModels/FilterVM.cs" />
@@ -246,14 +245,9 @@
         <State name="__root__">
           <Node name="Bacola.App" expanded="True">
             <Node name="Bacola.App">
-              <Node name="Views" expanded="True">
-                <Node name="Shop" expanded="True" />
-              </Node>
-              <Node name="wwwroot">
-                <Node name="assets">
-                  <Node name="js">
-                    <Node name="mine.js" selected="True" />
-                  </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="assets" expanded="True">
+                  <Node name="js" expanded="True" />
                 </Node>
               </Node>
               <Node name="appsettings.json" expanded="True" />
@@ -261,16 +255,28 @@
             <Node name="Bacola.Core" expanded="True">
               <Node name="DTOS" expanded="True">
                 <Node name="Comment" expanded="True" />
+                <Node name="Filter" expanded="True" />
               </Node>
             </Node>
             <Node name="Bacola.Data" expanded="True">
               <Node name="Repositories" expanded="True" />
+            </Node>
+            <Node name="Bacola.Service">
+              <Node name="ExternalServices">
+                <Node name="Implementations">
+                  <Node name="EmailService.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="Services" expanded="True">
+                <Node name="Implementations" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Bacola.App PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
