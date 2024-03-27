@@ -15,10 +15,10 @@ namespace Bacola.Core.DTOS
         public double Price { get; set; }
         public double DiscountPercent { get; set; }
         public double DiscountPrice { get; set; }
-        public BrandGetDto Brand { get; set; } = null!;
         public int BrandId { get; set; }
-        public CategoryGetDto Category { get; set; } = null!;
         public int CategoryId { get; set; }
+        public BrandGetDto Brand { get; set; } = null!;
+        public CategoryGetDto Category { get; set; } = null!;
         public List<TagProduct> TagProducts { get; set; } = null!;
         public List<Specification> Specifications { get; set; } = null!;
         public List<ProductImage> ProductImages { get; set; } = null!;

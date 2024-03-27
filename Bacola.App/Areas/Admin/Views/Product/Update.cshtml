@@ -1,5 +1,5 @@
 ﻿
-@model ProductGetDto
+@model ProductPutDto
 <div class="page-body">
     <!-- New Product Add Start -->
     <div class="container-fluid">
@@ -83,7 +83,7 @@
                                     <div style="margin:50px 0px" class="form-group ">
                                         <div style="display:flex">
                                             <label style="margin-right:5px" class="col-sm-3 col-lg-3 col-form-label form-label-title">Main Images</label>
-                                            <input type="file" accept="image/*" name="MainImageFile" class="form-control" placeholder="MainImage">
+                                            <input type="file" accept="image/*" asp-for="MainImage" class="form-control" placeholder="MainImage">
                                         </div>
 
                                     </div>
@@ -97,7 +97,7 @@
                                     <div style="margin:50px 0px" class="form-group ">
                                         <div style="display:flex">
                                             <label style="margin-right:5px" class="col-sm-3 col-lg-3 col-form-label form-label-title">Addition Images</label>
-                                            <input multiple accept="image/*" type="file" name="ProductImageFile" class="form-control" placeholder="AdditionImages">
+                                            <input multiple accept="image/*" type="file" asp-for="ProductImages" name="ProductImageFile" class="form-control" placeholder="AdditionImages">
                                         </div>
                                     </div>
 
@@ -148,7 +148,7 @@
                                         <label class="col-lg-3 col-form-label form-label-title">Multiple Tags</label>
                                         <div class="col-lg-9">
                                             <div class="form-group">
-                                                <select asp-for="TagProducts" class="form-select" aria-label="Default select example">
+                                                <select asp-for="TagIds" class="form-select" aria-label="Default select example">
 
                                                     @foreach (var item in ViewBag.Tags)
                                                     {

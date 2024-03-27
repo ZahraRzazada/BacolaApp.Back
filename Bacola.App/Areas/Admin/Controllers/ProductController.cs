@@ -64,23 +64,30 @@ namespace Bacola.App.Areas.Admin.Controllers
             };
             return RedirectToAction(nameof(Index));
         }
+
+
+
+
         public async Task<IActionResult> Update(int id)
         {
             ViewBag.Tags = await _tagService.GetAllAsync();
             ViewBag.Brands = await _brandService.GetAllAsync();
             ViewBag.Categories = await _categoryService.GetAllAsync();
-            var product = await _productService.GetAsync(id);
+            var product = await _productService.GetPutAsync(id);
             return View(product.Data);
         }
+
+
+
         [HttpPost]
-        public async Task<IActionResult> Update(int id, ProductPostDto dto)
+        public async Task<IActionResult> Update(int id, ProductPutDto dto)
         {
             if (!ModelState.IsValid)
             {
                 ViewBag.Tags = await _tagService.GetAllAsync();
                 ViewBag.Brands = await _brandService.GetAllAsync();
                 ViewBag.Categories = await _categoryService.GetAllAsync();
-                var product = await _productService.GetAsync(id);
+                var product = await _productService.GetPutAsync(id);
                 return View(product.Data);
             };
             var res = await _productService.UpdateAsync(id, dto);
@@ -89,7 +96,7 @@ namespace Bacola.App.Areas.Admin.Controllers
                 ViewBag.Tags = await _tagService.GetAllAsync();
                 ViewBag.Brands = await _brandService.GetAllAsync();
                 ViewBag.Categories = await _categoryService.GetAllAsync();
-                var product = await _productService.GetAsync(id);
+                var product = await _productService.GetPutAsync(id);
                 ModelState.AddModelError("", res.Message);
                 return View(product.Data);
             };

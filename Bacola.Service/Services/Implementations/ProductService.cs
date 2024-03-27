@@ -1,6 +1,4 @@
-﻿using System;
-using System.Reflection.Metadata;
-using AutoMapper;
+﻿using AutoMapper;
 using Bacola.Core.DTOS;
 using Bacola.Core.Entities;
 using Bacola.Core.Repositories;
@@ -143,6 +141,7 @@ namespace Bacola.Service.Services.Implementations
 
             return pagginatedResponse;
         }
+
         public async Task<CustomResponse<ProductGetDto>> GetAsync(int id)
         {
             var query = _productRepository.GetQuery(x => x.IsDeleted == false && x.Id == id)
@@ -192,6 +191,7 @@ namespace Bacola.Service.Services.Implementations
             await _productRepository.SaveChangesAsync();
             return new CustomResponse<Product> { IsSuccess = true, Message = $"{product.Title} is removed successfully", Data = product };
         }
+
         public async Task<CustomResponse<Product>> UpdateAsync(int id, ProductPostDto dto)
         {
             if (dto.SpecificationKeys == null || dto.SpecificationValues == null || dto.SpecificationValues.Count() != dto.SpecificationKeys.Count())
@@ -293,55 +293,112 @@ namespace Bacola.Service.Services.Implementations
 
         }
 
-        public async Task<PagginatedResponse<ProductGetDto>> GetFilteredProducts(ProductFilterDto filter)
+
+
+        public async Task<CustomResponse<Product>> UpdateAsync(int id, ProductPutDto dto)
         {
-           
-                var query = _productRepository.GetQuery(x => !x.IsDeleted);
-
-                query = query.Include(p => p.Category)
-                             .Include(p => p.Brand);
-                if (filter.categoryIds != null)
-                {
-                   query= query.Where(x => filter.categoryIds.Contains(x.CategoryId));
-                }
-            if (filter.categoryId != null)
+            if (dto.SpecificationKeys == null || dto.SpecificationValues == null || dto.SpecificationValues.Count() != dto.SpecificationKeys.Count())
             {
-                query = query.Where(x => filter.categoryId==x.CategoryId);
+                return new CustomResponse<Product> { IsSuccess = false, Message = "The Specification is not valid" };
             }
-            if (filter.brandIds != null)
-                {
-                query = query.Where(x => filter.brandIds.Contains(x.BrandId));
+            var product = await _productRepository.GetQuery(x => x.IsDeleted == false && x.Id == id)
+               .Include(x => x.ProductImages)
+               .Include(x => x.Category)
+               .Include(x => x.Brand)
+               .Include(x => x.Specifications)
+               .Include(x => x.TagProducts)
+               .ThenInclude(x => x.Tag)
+               .FirstOrDefaultAsync();
+            if (product == null)
+            {
+                return new CustomResponse<Product> { IsSuccess = false, Message = "This Product doesnt exist" };
             }
-                if (filter.fromPrice != null)
+            product.DiscountPercent = dto.DiscountPercent;
+            product.BrandId = dto.BrandId;
+           
+            product.CategoryId = dto.CategoryId;
+            product.Description = dto.Description;
+            product.Price = dto.Price;
+            product.DiscountPrice = dto.DiscountPrice;
+            product.Info = dto.Info;
+            product.Title = dto.Title;
+            product.PeriodOfUse = dto.PeriodOfUse;
+            product.IsOrganic = dto.IsOrganic;
+            product.InStock = dto.InStock;
+            product.Specifications.Clear();
+            for (int i = 0; i < dto.SpecificationKeys.Count(); i++)
+            {
+                product.Specifications.Add(new Specification
                 {
-                    query = query.Where(p => p.DiscountPrice >= filter.fromPrice);
-                }
-                if (filter.toPrice != null)
+                    Product = product,
+                    Key = dto.SpecificationKeys[i],
+                    Value = dto.SpecificationValues[i],
+                });
+            }
+            product.TagProducts.Clear();
+            foreach (var item in dto.TagIds)
+            {
+                product.TagProducts.Add(new TagProduct
                 {
-                    query = query.Where(p => p.DiscountPrice <= filter.toPrice);
-                }
-                if (filter.IsInStock != null)
+                    Product = product,
+                    TagId = item,
+                });
+            }
+            if (dto.ProductImageFiles != null)
+            {
+                foreach (var item in dto.ProductImageFiles)
                 {
-                    query = query.Where(p => p.InStock == filter.IsInStock);
-                }
-                var products = await query.Select(p => new ProductGetDto
-                {
-                    Id = p.Id,
-                    Category = new CategoryGetDto { Name = p.Category.Name },
-                    Brand = new BrandGetDto { Name = p.Brand.Name },
-                    Title = p.Title,
-                    InStock = p.InStock, 
-                    Price = p.Price,
-                    DiscountPrice = p.DiscountPercent == 0 ? p.Price : (p.Price * p.DiscountPercent) / 100,
-                    ProductImages = p.ProductImages 
-                }).ToListAsync();
+                    if (!item.IsImage())
+                    {
+                        return new CustomResponse<Product> { IsSuccess = false, Message = "Image is not valid" };
+                    }
 
+                    if (item.IsSizeOk(1))
+                    {
+                        return new CustomResponse<Product> { IsSuccess = false, Message = "Size of Image is not valid" };
+                    }
 
-                var dtos = _mapper.Map< IEnumerable<ProductGetDto>>(products);
-            return new() { Items = dtos, };
-            
-        
+                    string image = item.SaveFile(_env.WebRootPath, "assets/img/product");
+
+                    product.ProductImages.Add(new ProductImage
+                    {
+                        Image = image,
+                        IsMain = false,
+                        Product = product,
+                    });
+                }
+            }
+             if (dto.MainImage != null)
+            {
+                if (!dto.MainImage.IsImage())
+                {
+                    return new CustomResponse<Product> { IsSuccess = false, Message = "Image is not valid" };
+                }
+
+                if (dto.MainImage.IsSizeOk(1))
+                {
+                    return new CustomResponse<Product> { IsSuccess = false, Message = "Size of Image is not valid" };
+                }
+
+                string mainImage = dto.MainImage.SaveFile(_env.WebRootPath, "assets/img/product");
+
+                product.ProductImages.Remove(product.ProductImages.FirstOrDefault(x => x.IsMain));
+
+                product.ProductImages.Add(new ProductImage
+                {
+                    Image = mainImage,
+                    IsMain = true,
+                    Product = product,
+                });
+            }
+            await _productRepository.UpdateAsync(product);
+            await _productRepository.SaveChangesAsync();
+            return new CustomResponse<Product> { IsSuccess = true, Message = $"{product.Title} is updated successfully", Data = product };
+
         }
+
+
+
 
         public async Task<CustomResponse<List<ProductGetDto>>> Search(string search)
         {
@@ -371,6 +428,78 @@ namespace Bacola.Service.Services.Implementations
 
         }
 
+
+
+
+        public async Task<PagginatedResponse<ProductGetDto>> GetFilteredProducts(ProductFilterDto filter)
+        {
+
+            var query = _productRepository.GetQuery(x => !x.IsDeleted);
+
+            query = query.Include(p => p.Category)
+                         .Include(p => p.Brand);
+            if (filter.categoryIds != null)
+            {
+                query = query.Where(x => filter.categoryIds.Contains(x.CategoryId));
+            }
+           
+            if (filter.brandIds != null)
+            {
+                query = query.Where(x => filter.brandIds.Contains(x.BrandId));
+            }
+            if (filter.fromPrice != null)
+            {
+                query = query.Where(p => p.DiscountPrice >= filter.fromPrice);
+            }
+            if (filter.toPrice != null)
+            {
+                query = query.Where(p => p.DiscountPrice <= filter.toPrice);
+            }
+            if (filter.IsInStock != null)
+            {
+                query = query.Where(p => p.InStock == filter.IsInStock);
+            }
+            var products = await query.Select(p => new ProductGetDto
+            {
+                Id = p.Id,
+                Category = new CategoryGetDto { Name = p.Category.Name },
+                Brand = new BrandGetDto { Name = p.Brand.Name },
+                Title = p.Title,
+                InStock = p.InStock,
+                Price = p.Price,
+                DiscountPrice = p.DiscountPercent == 0 ? p.Price : (p.Price * p.DiscountPercent) / 100,
+                ProductImages = p.ProductImages
+            }).ToListAsync();
+
+
+            var dtos = _mapper.Map<IEnumerable<ProductGetDto>>(products);
+            return new() { Items = dtos, };
+
+
+        }
+
+        public async Task<CustomResponse<ProductPutDto>> GetPutAsync(int id)
+        {
+            var product = await _productRepository.GetAsync(x => x.IsDeleted == false && x.Id == id, "ProductImages", "TagProducts.Tag", "Category", "Brand", "Specifications");
+
+
+
+
+            var productGetDto = _mapper.Map<ProductPutDto>(product);
+            productGetDto.TagIds = product.TagProducts.Select(x => x.TagId).ToList();
+            if (product == null)
+            {
+                return new CustomResponse<ProductPutDto> { IsSuccess = false, Message = "This Product doesnt exist" };
+            }
+            return new CustomResponse<ProductPutDto> { IsSuccess = true, Data = productGetDto };
+        }
+
+        //public async Task<PagginatedResponse<ProductGetDto>> FilterByCategory(List<int> categoryIds)
+        //{
+        //    var query = _productRepository.GetQuery(x => !x.IsDeleted);
+        //    var categories = query.Where(x=>categoryIds.Contains(x.CategoryId));
+        //    return new PagginatedResponse<ProductGetDto> { Items=categories};
+        //}
     }
 }
 

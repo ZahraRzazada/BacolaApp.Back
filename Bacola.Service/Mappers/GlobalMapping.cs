@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Bacola.Core.DTOS;
 using Bacola.Core.Entities;
 
@@ -13,10 +12,11 @@ namespace Bacola.Service.Mappers
             CreateMap<Tag, TagPostDto>().ReverseMap();
             CreateMap<Blog, BlogGetDto>().ReverseMap();
             CreateMap<Blog, BlogPostDto>().ReverseMap();
-            CreateMap<Brand, BrandGetDto>().ReverseMap();
+            CreateMap<Brand, BrandGetDto>().ReverseMap();   
             CreateMap<Brand, BrandPostDto>().ReverseMap();
             CreateMap<Product, ProductGetDto>().ReverseMap();
             CreateMap<Product, ProductPostDto>().ReverseMap();
+            CreateMap<Product, ProductPutDto>().ReverseMap();
             CreateMap<Contact, ContactGetDto>().ReverseMap();
             CreateMap<Contact, ContactPostDto>().ReverseMap();
             CreateMap<Setting, SettingGetDto>().ReverseMap();

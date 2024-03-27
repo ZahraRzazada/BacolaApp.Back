@@ -11,10 +11,14 @@ namespace Bacola.Service.Services.Interfaces
 		public Task<CustomResponse<Product>> RemoveAsync(int id);
 		public Task<CustomResponse<Product>> CreateAsync(ProductPostDto dto);
 		public Task<CustomResponse<Product>> UpdateAsync(int id, ProductPostDto dto);
-		public Task<PagginatedResponse<ProductGetDto>> GetAllAsync(int page = 1);
+        public Task<CustomResponse<Product>> UpdateAsync(int id, ProductPutDto dto);
+
+        public Task<PagginatedResponse<ProductGetDto>> GetAllAsync(int page = 1);
         public Task<CustomResponse<ProductGetDto>> GetAsync(int id);
-		public Task<CustomResponse<List<ProductGetDto>>> Search(string search);
-		public Task<PagginatedResponse<ProductGetDto>> GetFilteredProducts(ProductFilterDto filter);
+        public Task<CustomResponse<ProductPutDto>> GetPutAsync(int id);
+        public Task<CustomResponse<List<ProductGetDto>>> Search(string search);
+		//public Task<PagginatedResponse<ProductGetDto>> FilterByCategory(List<int> categoryIds);
+		Task<PagginatedResponse<ProductGetDto>> GetFilteredProducts(ProductFilterDto filter);
     }
 }
 
