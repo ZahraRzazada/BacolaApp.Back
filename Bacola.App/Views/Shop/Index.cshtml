@@ -232,60 +232,61 @@
                     <div onchange="this.form.submit()">
 
                         <div class="product-filters">
-                            <div class="product-category">
-                                <h4 class="widget-title">Product Categories</h4>
-                                <div class="category-part site-scroll ps ps--active-y ps--scrolling-y"
-                                     style="max-height: 200px; overflow-y: auto;">
-                                    <ul>
-                                        @foreach (var item in categories)
-                                        {
-                                            @if (item.ParentCategoryId == null)
+                            <form asp-action="Index" method="get" asp-controller="shop">
+                                <div class="product-category">
+                                    <h4 class="widget-title">Product Categories</h4>
+                                    <div class="category-part site-scroll ps ps--active-y ps--scrolling-y"
+                                         style="max-height: 200px; overflow-y: auto;">
+                                        <ul>
+                                            @foreach (var item in categories)
                                             {
-                                                <li class="cat-parent">
-                                                    <div style="display: flex; justify-content:space-between" class="cpart">
-                                                        <form method="post" asp-controller="Shop" asp-action="CategoryFilter">
-                                                            <a asp-route-categoryId="@item.Id" asp-route-categoryIds="@ViewBag.CategoryIds" asp-route-brandIds="@ViewBag.BrandIds" class="product_cat">
-                                                                <input id="checkbox" type="checkbox">
-                                                                
-                                                                    <input   id="categoryId" type="hidden" />
-                                                                <label>@item.Name</label>
-                                                            </a>
-                                                        </form>
-                                                        <div class="icon">
-                                                            <i data-target="subcategories-@item.Id" style="color:black; margin-right:20px" class="toggleIcon fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </div>
-                                                    <ul id="subcategories-@item.Id" class="children" style="display:none">
-                                                        @foreach (var item2 in item.Subcategories)
-                                                        {
-                                                            <li>
-                                                                <a asp-route-categoryId="@item2.Id" asp-route-brandIds="@ViewBag.BrandIds"  asp-route-categoryIds="@ViewBag.CategoryIds">
-                                                                    <input  name="" value="" id="checkbox" type="checkbox">
-                                                                    <label><span></span>@item2.Name</label>
-                                                                </a>
-                                                            </li>
-                                                            }
-                                                    </ul>       
-                                                </li>
-                                                }
-                                        }
-                                    </ul>
+                                                @if (item.ParentCategoryId == null)
+                                                {
+                                                    <li class="cat-parent">
+                                                        <div style="display: flex; justify-content:space-between" class="cpart">
+                                                    
+                                                                <a asp-route-categoryId="@item.Id" asp-route-categoryIds="@ViewBag.CategoryIds" asp-route-brandIds="@ViewBag.BrandIds" class="product_cat">
+                                                                    <input id="checkbox" type="checkbox">
 
+                                                                    <input id="categoryId" type="hidden" />
+                                                                    <label>@item.Name</label>
+                                                                </a>
+                                                    
+                                                            <div class="icon">
+                                                                <i data-target="subcategories-@item.Id" style="color:black; margin-right:20px" class="toggleIcon fa-solid fa-plus"></i>
+                                                            </div>
+                                                        </div>
+                                                        <ul id="subcategories-@item.Id" class="children" style="display:none">
+                                                            @foreach (var item2 in item.Subcategories)
+                                                            {
+                                                                <li>
+                                                                    <a asp-route-categoryId="@item2.Id" asp-route-brandIds="@ViewBag.BrandIds" asp-route-categoryIds="@ViewBag.CategoryIds">
+                                                                        <input name="" value="" id="checkbox" type="checkbox">
+                                                                        <label><span></span>@item2.Name</label>
+                                                                    </a>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+
+                                    </div>
                                 </div>
-                            </div>
-                            
+
                                 <div class="price-filter">
                                     <h4 class="widget-title">Filter by price</h4>
                                     <div>
-                                        <form>
+                                        
                                             <div class="wrapper">
                                                 <div class="slider">
                                                     <div class="progress"></div>
                                                 </div>
                                                 <div class="range-input">
-                                                    <input type="range" class="range-min" min="0" max="100" value="0"
+                                                    <input name="Filter.fromPrice" type="range" class="range-min" min="0" max="100" value="0"
                                                            step="10" />
-                                                    <input type="range" class="range-max" min="0" max="100" value="70"
+                                                    <input name="Filter.toPrice" type="range" class="range-max" min="0" max="100" value="100"
                                                            step="10" />
                                                 </div>
                                                 <div class="price-input">
@@ -296,58 +297,36 @@
                                                         <span class="input-max price-value"></span>
                                                     </div>
                                                     <div class="leftfilter">
+                                                        <input type="hidden" asp-route-brandIds="@ViewBag.BrandIds" asp-route-categoryIds="@ViewBag.CategoryIds"  /> 
                                                         <button type="submit" class="button">Filter</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
+                                
                                     </div>
                                 </div>
-               
-                            <div class="product-status">
-                                <h4 class="widget-title">Product Status</h4>
-                                <div class="status">
+
+
+
+                                <div class="product-brand">
+                                    <h4 class="widget-title">Brands</h4>
                                     <ul>
-                                        <li>
-                                            <a href="">
-                                                <input name="stockonsale" value="instock" id="instock" type="checkbox">
-                                                <label>
-                                                    In Stock
-                                                </label>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <input name="stockonsale" value="instock" id="instock" type="checkbox">
-                                                <label>
-                                                    Is Not In Stock
-                                                </label>
-                                            </a>
-                                        </li>
 
+                                        @foreach (var item in brands)
+                                        {
+                                            <li>
+                                                <a asp-route-brandId="@item.Id" asp-route-brandIds="@ViewBag.BrandIds" asp-route-categoryIds="@ViewBag.CategoryIds">
+                                                    <input name="" value="" id="checkbox" type="checkbox">
+                                                    <label>
+                                                        @item.Name
+                                                    </label>
+                                                </a>
+
+                                            </li>
+                                        }
                                     </ul>
-
                                 </div>
-                            </div>
-
-                            <div class="product-brand">
-                                <h4 class="widget-title">Brands</h4>
-                                <ul>
-
-                                    @foreach (var item in brands)
-                                    {
-                                        <li>
-                                            <a asp-route-brandId="@item.Id" asp-route-brandIds="@ViewBag.BrandIds" asp-route-categoryIds="@ViewBag.CategoryIds">
-                                                <input name="" value="" id="checkbox" type="checkbox" >
-                                                <label>
-                                                    @item.Name
-                                                </label>
-                                            </a>
-
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
+                            </form>
                             <div class="product-banner">
                                 <img src="~/assets/img/shop/shop-banner2.gif" alt="">
                             </div>

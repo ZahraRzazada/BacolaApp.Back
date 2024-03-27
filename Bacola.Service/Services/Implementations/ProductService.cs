@@ -447,14 +447,14 @@ namespace Bacola.Service.Services.Implementations
             {
                 query = query.Where(x => filter.brandIds.Contains(x.BrandId));
             }
-            if (filter.fromPrice != null)
-            {
-                query = query.Where(p => p.DiscountPrice >= filter.fromPrice);
-            }
-            if (filter.toPrice != null)
-            {
-                query = query.Where(p => p.DiscountPrice <= filter.toPrice);
-            }
+            //if (filter.fromPrice != null)
+            //{
+            //    query = query.Where(p => p.DiscountPrice >= filter.fromPrice);
+            //}
+            //if (filter.toPrice != null)
+            //{
+            //    query = query.Where(p => p.DiscountPrice <= filter.toPrice);
+            //}
             if (filter.IsInStock != null)
             {
                 query = query.Where(p => p.InStock == filter.IsInStock);

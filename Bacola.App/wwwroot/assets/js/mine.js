@@ -48,22 +48,22 @@ toggleIcons.forEach(function (icon) {
 //SerachJsDynamiclyHome
 document.getElementById('searchInput').addEventListener('input', performSearch);
 const shopCards = document.getElementById('salam');
-console.log(shopCards);
 const searchbutton = document.getElementById('searchButton');
 const searchResultsList = document.getElementById('searchResultsList');
 async function performSearch() {
-
+    const response = await fetch(`/Shop/SearchProduct?search=${encodeURIComponent(searchTerm)}`);
     var searchTerm = document.getElementById('searchInput').value.trim();
     if (searchTerm.length === 0) {
+        console.log("Pis Zhr");
         searchResultsList.innerHTML = ``;
+
         if (shopCards !== null) {
-            shopCards.innerHTML =`` ;
+            location.reload();
+           
         }
-        return;
     }
     try {
         searchButton.style.display = 'none';
-        const response = await fetch(`/Shop/SearchProduct?search=${encodeURIComponent(searchTerm)}`);
         const data = await response.json();
         searchResultsList.innerHTML = ``;
         if (shopCards !== null) {

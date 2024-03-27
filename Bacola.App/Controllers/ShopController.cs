@@ -32,8 +32,9 @@ public class ShopController : Controller
 
 
 
-    public async Task<ActionResult> Index(string? categoryIds,int? categoryId,string? brandIds,int? brandId)
+    public async Task<ActionResult> Index(ShopViewModel model,string? categoryIds,int? categoryId,string? brandIds,int? brandId,int? minPrice,int? maxPrice)
     {
+
         ShopViewModel vm = new() {
             Products = await _productService.GetAllAsync()
         };
@@ -106,6 +107,13 @@ public class ShopController : Controller
         }
 
         }
+        if (model.Filter.fromPrice != null && model.Filter.toPrice != null)
+        {
+            vm.Products.Items = vm.Products.Items.Where(x => x.Price >= model.Filter.fromPrice && x.Price <= model.Filter.toPrice);
+
+        }
+
+        
         return View(vm);
     }   
     public async Task<IActionResult> Detail(int id)
