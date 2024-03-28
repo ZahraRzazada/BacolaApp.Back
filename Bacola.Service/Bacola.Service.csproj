@@ -21,7 +21,6 @@
     <None Remove="Mappers\" />
     <None Remove="Responses\" />
     <None Remove="Helpers\" />
-    <None Remove="Middlewares\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
@@ -35,7 +34,6 @@
     <Folder Include="Mappers\" />
     <Folder Include="Responses\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Middlewares\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />

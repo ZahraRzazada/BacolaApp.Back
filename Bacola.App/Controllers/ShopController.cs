@@ -130,13 +130,7 @@ public class ShopController : Controller
 
 
     }
-    [HttpPost]
-    public async Task<IActionResult> Filter(ProductFilterDto model)
-    {
-
-        return default;
-
-    }
+ 
 
     public async Task<IActionResult> Detail(int id)
     {

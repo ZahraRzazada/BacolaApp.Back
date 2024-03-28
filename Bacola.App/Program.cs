@@ -3,7 +3,7 @@ using Bacola.Data;
 using Bacola.Data.Contexts;
 using Bacola.Data.RepositoryRegisterations;
 using Bacola.Service.Mappers;
-using Bacola.Service.Middlewares;
+
 using Bacola.Service.ServiceRegisterations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -34,7 +34,7 @@ app.UseRouting();
 app.UseAuthentication(); 
 app.UseAuthorization();
 
-//app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+
 app.UseEndpoints(endpoint =>
 {
 

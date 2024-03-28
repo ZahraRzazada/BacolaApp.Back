@@ -232,7 +232,7 @@
                     <div onchange="this.form.submit()">
 
                         <div class="product-filters">
-                            <form asp-action="Index" method="post" asp-controller="shop">
+                
                                 <div class="product-category">
                                     <h4 class="widget-title">Product Categories</h4>
                                     <div class="category-part site-scroll ps ps--active-y ps--scrolling-y"
@@ -244,12 +244,14 @@
                                                 {
                                                     <li class="cat-parent">
                                                         <div style="display: flex; justify-content:space-between" class="cpart">
-                                                    
-                                                                    <input id="checkbox" type="checkbox">
 
-                                                                    <input id="categoryId" type="hidden" />
-                                                                    <label id="checkbox">@item.Name</label>
-                                                    
+                                                            <a asp-route-categoryId="@item.Id" asp-route-categoryIds="@ViewBag.CategoryIds" asp-route-brandIds="@ViewBag.BrandIds" class="product_cat">
+                                                                <input id="checkbox" type="checkbox">
+
+                                                                <input id="categoryId" type="hidden" />
+                                                                <label>@item.Name</label>
+                                                            </a>
+
                                                             <div class="icon">
                                                                 <i data-target="subcategories-@item.Id" style="color:black; margin-right:20px" class="toggleIcon fa-solid fa-plus"></i>
                                                             </div>
@@ -272,20 +274,20 @@
 
                                     </div>
                                 </div>
+                           
 
                                 <div class="price-filter">
                                     <h4 class="widget-title">Filter by price</h4>
                                     <div>
-                                        
+                                        <form asp-action="Index" method="get" asp-controller="shop">
                                             <div class="wrapper">
                                                 <div class="slider">
                                                     <div class="progress"></div>
                                                 </div>
                                                 <div class="range-input">
                                                     <input name="Filter.fromPrice" type="range" class="range-min" min="0" max="100" value="0"
-                                                           step="10" />
-                                                    <input name="Filter.toPrice" type="range" class="range-max" min="0" max="100" value="100"
-                                                           step="10" />
+                               step="10" />
+                                                    <input name="Filter.toPrice" type="range" class="range-max" min="0" max="100" value="100" step="10" />
                                                 </div>
                                                 <div class="price-input">
                                                     <div class="field">
@@ -295,14 +297,16 @@
                                                         <span class="input-max price-value"></span>
                                                     </div>
                                                     <div class="leftfilter">
-                                                        
-                                                        <a asp-route-minPrice="@Model.Filter.fromPrice" asp-route-brandIds="@ViewBag.BrandIds" asp-route-categoryIds="@ViewBag.CategoryIds" type="subm class="button">Filter</a>
+                                                        <button type="submit" class="button">Filter</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                
+                                        </form>
                                     </div>
                                 </div>
+
+
+
 
 
 
@@ -324,7 +328,7 @@
                                         }
                                     </ul>
                                 </div>
-                            </form>
+                     
                             <div class="product-banner">
                                 <img src="~/assets/img/shop/shop-banner2.gif" alt="">
                             </div>

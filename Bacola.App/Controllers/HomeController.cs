@@ -1,7 +1,10 @@
 ﻿using System.Diagnostics;
 using Bacola.App.ViewModels;
 using Bacola.Core.DTOS;
+using Bacola.Core.Entities;
 using Bacola.Data.Contexts;
+using Bacola.Service.ExternalServices.Implementations;
+using Bacola.Service.ExternalServices.Interfaces;
 using Bacola.Service.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,13 +15,14 @@ namespace Bacola.App.Controllers;
 public class HomeController : Controller
 {
     readonly BacolaDbContext _context;
+    readonly IEmailService _emailService;
     readonly IHomeSliderService _sliderService;
     readonly IProductService _productService;
     readonly IBasketService _basketService;
     readonly IWishlistService _wishlistService;
 
 
-    public HomeController(IHomeSliderService sliderService, IBlogService blogService, IProductService productService, IBasketService basketService, IWishlistService wishlistService, BacolaDbContext context)
+    public HomeController(IHomeSliderService sliderService, IBlogService blogService, IProductService productService, IBasketService basketService, IWishlistService wishlistService, BacolaDbContext context, IEmailService emailService)
     {
         _sliderService = sliderService;
         _blogService = blogService;
@@ -26,6 +30,7 @@ public class HomeController : Controller
         _basketService = basketService;
         _wishlistService = wishlistService;
         _context = context;
+        _emailService = emailService;
     }
 
     readonly IBlogService _blogService;
@@ -78,8 +83,15 @@ public class HomeController : Controller
         var existemail = await _context.Subscribe.AnyAsync(x => x.EmailAddress.ToLower() == EmailAddress.ToLower());
         if(!existemail)
         {
+            Subscribe subscribe = new()
+            {
+                EmailAddress = EmailAddress,
+
+            };
             await _context.Subscribe.AddAsync(new Core.Entities.Subscribe { EmailAddress = EmailAddress });
             await _context.SaveChangesAsync();
+            await _emailService.SendEmail(EmailAddress, "Subscription Confirmation", "Thank you for subscribing!");
+
         }
         if (returnUrl!=null)
         {
@@ -87,9 +99,6 @@ public class HomeController : Controller
         }
         return RedirectToAction(nameof(Index));
     }
-    public IActionResult ErrorPage(string error)
-    {
-        return View(model:error);
-    }
+    
 }
 

@@ -12,6 +12,7 @@ namespace Bacola.Service.ServiceRegisterations
         public static void ServiceLaierServiceRegister(this IServiceCollection services)
         {
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<CategoryService>();
             services.AddScoped<BrandService>();
             services.AddScoped<BasketService>();
@@ -33,6 +34,7 @@ namespace Bacola.Service.ServiceRegisterations
             services.AddScoped<ICommentService, CommentService>();
             services.AddHttpContextAccessor();
             services.AddScoped<IEmailService, EmailService>();
+
 
         }
 
