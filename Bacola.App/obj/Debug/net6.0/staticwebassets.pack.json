@@ -993,6 +993,10 @@
       "PackagePath": "staticwebassets/assets/js/app.js"
     },
     {
+      "Id": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/js/filter.js",
+      "PackagePath": "staticwebassets/assets/js/filter.js"
+    },
+    {
       "Id": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/js/jquery.js",
       "PackagePath": "staticwebassets/assets/js/jquery.js"
     },

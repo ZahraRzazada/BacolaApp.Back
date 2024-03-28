@@ -31,91 +31,113 @@ public class ShopController : Controller
     }
 
 
+    #region
 
-    public async Task<ActionResult> Index(ShopViewModel model,string? categoryIds,int? categoryId,string? brandIds,int? brandId,int? minPrice,int? maxPrice)
+    //public async Task<ActionResult> Index(ShopViewModel model, string? categoryIds, int? categoryId, string? brandIds, int? brandId, int? minPrice, int? maxPrice)
+    //{
+
+    //    ShopViewModel vm = new()
+    //    {
+    //        Products = await _productService.GetAllAsync()
+    //    };
+
+    //    List<int> categoryIdsList = new();
+    //    if (categoryIds != null)
+    //    {
+    //        try
+    //        {
+
+    //            categoryIdsList = JsonSerializer.Deserialize<List<int>>(categoryIds);
+    //        }
+    //        catch (Exception)
+    //        {
+
+    //        }
+    //    }
+    //    if (categoryId is not null)
+    //    {
+    //        if (categoryIdsList.Any(x => x == categoryId))
+    //            categoryIdsList.Remove((int)categoryId);
+    //        else
+    //            categoryIdsList.Add((int)categoryId);
+    //    }
+    //    var list = "[" + string.Join(',', categoryIdsList) + "]";
+    //    if (categoryIdsList.Count > 0)
+    //        ViewBag.CategoryIds = list;
+    //    vm.Filter.categoryIds = categoryIdsList;
+
+
+
+    //    List<int> brandIdsList = new();
+    //    if (brandIds != null)
+    //    {
+    //        try
+    //        {
+
+    //            brandIdsList = JsonSerializer.Deserialize<List<int>>(brandIds);
+    //        }
+    //        catch (Exception)
+    //        {
+
+    //        }
+    //    }
+    //    if (brandId is not null)
+    //    {
+    //        if (brandIdsList.Any(x => x == brandId))
+    //            brandIdsList.Remove((int)brandId);
+    //        else
+    //            brandIdsList.Add((int)brandId);
+    //    }
+    //    var list2 = "[" + string.Join(',', brandIdsList) + "]";
+    //    if (brandIdsList.Count > 0)
+    //        ViewBag.BrandIds = list2;
+    //    //vm.Filter.BrandIds = brandIdsList;
+    //    if (brandIdsList.Count > 0 && categoryIdsList.Count > 0)
+    //    {
+    //        vm.Products = await _productService.GetFilteredProducts(new() { brandIds = brandIdsList, categoryIds = categoryIdsList });
+
+    //    }
+    //    else
+    //    {
+    //        if (brandIdsList.Count > 0)
+    //        {
+    //            vm.Products = await _productService.GetFilteredProducts(new() { brandIds = brandIdsList });
+    //        }
+    //        if (categoryIdsList.Count > 0)
+    //        {
+    //            vm.Products = await _productService.GetFilteredProducts(new() { categoryIds = categoryIdsList });
+    //        }
+
+    //    }
+    //    if (model.Filter.fromPrice != null && model.Filter.toPrice != null)
+    //    {
+    //        vm.Products.Items = vm.Products.Items.Where(x => x.Price >= model.Filter.fromPrice && x.Price <= model.Filter.toPrice);
+
+    //    }
+
+
+    //    return View(vm);
+    //}
+    #endregion
+
+    public async Task<IActionResult> Index(ShopViewModel model)
+    {
+        ShopViewModel vm = new()
+       {
+           Products = await _productService.GetAllAsync()
+       };
+        return View(vm);
+
+
+    }
+    [HttpPost]
+    public async Task<IActionResult> Filter(ProductFilterDto model)
     {
 
-        ShopViewModel vm = new() {
-            Products = await _productService.GetAllAsync()
-        };
+        return default;
 
-        List<int> categoryIdsList = new();
-        if (categoryIds != null)
-        {
-            try
-            {
+    }
 
-                categoryIdsList = JsonSerializer.Deserialize<List<int>>(categoryIds);
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-        if (categoryId is not null)
-        {
-            if (categoryIdsList.Any(x => x == categoryId))
-                categoryIdsList.Remove((int)categoryId);
-            else
-                categoryIdsList.Add((int)categoryId);
-        }
-        var list = "[" + string.Join(',', categoryIdsList) + "]";
-        if (categoryIdsList.Count > 0)
-            ViewBag.CategoryIds = list;
-        vm.Filter.categoryIds = categoryIdsList;
-     
-
-
-        List<int> brandIdsList = new();
-        if (brandIds != null)
-        {
-            try
-            {
-
-                brandIdsList = JsonSerializer.Deserialize<List<int>>(brandIds);
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-        if (brandId is not null)
-        {
-            if (brandIdsList.Any(x => x == brandId))
-                brandIdsList.Remove((int)brandId);
-            else
-                brandIdsList.Add((int)brandId);
-        }
-        var list2 = "[" + string.Join(',', brandIdsList) + "]";
-        if (brandIdsList.Count > 0)
-            ViewBag.BrandIds = list2;
-        //vm.Filter.BrandIds = brandIdsList;
-        if(brandIdsList.Count>0 && categoryIdsList.Count > 0)
-        {
-            vm.Products = await _productService.GetFilteredProducts(new() { brandIds = brandIdsList,categoryIds=categoryIdsList });
-
-        }
-        else
-        {
-        if (brandIdsList.Count > 0)
-        {
-            vm.Products = await _productService.GetFilteredProducts(new() { brandIds = brandIdsList });
-        }
-        if (categoryIdsList.Count > 0)
-        {
-            vm.Products = await _productService.GetFilteredProducts(new() { categoryIds = categoryIdsList });
-        }
-
-        }
-        if (model.Filter.fromPrice != null && model.Filter.toPrice != null)
-        {
-            vm.Products.Items = vm.Products.Items.Where(x => x.Price >= model.Filter.fromPrice && x.Price <= model.Filter.toPrice);
-
-        }
-
-        
-        return View(vm);
-    }   
     public async Task<IActionResult> Detail(int id)
     {
         var res = await _productService.GetAsync(id);

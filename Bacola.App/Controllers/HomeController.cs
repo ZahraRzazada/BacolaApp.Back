@@ -4,6 +4,7 @@ using Bacola.Core.DTOS;
 using Bacola.Data.Contexts;
 using Bacola.Service.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace Bacola.App.Controllers;
@@ -74,13 +75,21 @@ public class HomeController : Controller
     }
     public async Task<IActionResult> Subscribe(string EmailAddress, string? returnUrl)
     {
-        await _context.Subscribe.AddAsync(new Core.Entities.Subscribe { EmailAddress = EmailAddress });
-        await _context.SaveChangesAsync();
+        var existemail = await _context.Subscribe.AnyAsync(x => x.EmailAddress.ToLower() == EmailAddress.ToLower());
+        if(!existemail)
+        {
+            await _context.Subscribe.AddAsync(new Core.Entities.Subscribe { EmailAddress = EmailAddress });
+            await _context.SaveChangesAsync();
+        }
         if (returnUrl!=null)
         {
             return Redirect(returnUrl);
         }
         return RedirectToAction(nameof(Index));
+    }
+    public IActionResult ErrorPage(string error)
+    {
+        return View(model:error);
     }
 }
 

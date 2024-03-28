@@ -8,6 +8,7 @@ public class ShopViewModel
 {
     public PagginatedResponse<ProductGetDto> Products { get; set; } = new();
     public ProductFilterDto Filter { get; set; } = new();
+
 }
 
 

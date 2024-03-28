@@ -232,7 +232,7 @@
                     <div onchange="this.form.submit()">
 
                         <div class="product-filters">
-                            <form asp-action="Index" method="get" asp-controller="shop">
+                            <form asp-action="Index" method="post" asp-controller="shop">
                                 <div class="product-category">
                                     <h4 class="widget-title">Product Categories</h4>
                                     <div class="category-part site-scroll ps ps--active-y ps--scrolling-y"
@@ -245,12 +245,10 @@
                                                     <li class="cat-parent">
                                                         <div style="display: flex; justify-content:space-between" class="cpart">
                                                     
-                                                                <a asp-route-categoryId="@item.Id" asp-route-categoryIds="@ViewBag.CategoryIds" asp-route-brandIds="@ViewBag.BrandIds" class="product_cat">
                                                                     <input id="checkbox" type="checkbox">
 
                                                                     <input id="categoryId" type="hidden" />
-                                                                    <label>@item.Name</label>
-                                                                </a>
+                                                                    <label id="checkbox">@item.Name</label>
                                                     
                                                             <div class="icon">
                                                                 <i data-target="subcategories-@item.Id" style="color:black; margin-right:20px" class="toggleIcon fa-solid fa-plus"></i>
@@ -297,8 +295,8 @@
                                                         <span class="input-max price-value"></span>
                                                     </div>
                                                     <div class="leftfilter">
-                                                        <input type="hidden" asp-route-brandIds="@ViewBag.BrandIds" asp-route-categoryIds="@ViewBag.CategoryIds"  /> 
-                                                        <button type="submit" class="button">Filter</button>
+                                                        
+                                                        <a asp-route-minPrice="@Model.Filter.fromPrice" asp-route-brandIds="@ViewBag.BrandIds" asp-route-categoryIds="@ViewBag.CategoryIds" type="subm class="button">Filter</a>
                                                     </div>
                                                 </div>
                                             </div>
