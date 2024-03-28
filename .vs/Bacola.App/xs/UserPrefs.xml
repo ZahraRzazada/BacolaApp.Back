@@ -1,41 +1,47 @@
 ﻿<Properties StartupConfiguration="{83854AC1-ADB7-4949-A866-AF9CD47C03EF}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Bacola.App PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Bacola.App/Views/Shop/Index.cshtml">
     <Files>
       <File FileName="Bacola.Core/DTOS/Comment/CommentGetDto.cs" Line="20" Column="1" IsPinned="True" />
-      <File FileName="Bacola.App/Areas/Admin/Controllers/SettingController.cs" Line="19" Column="29" />
-      <File FileName="Bacola.App/Areas/Admin/Views/Setting/Index.cshtml" Line="32" Column="54" />
-      <File FileName="Bacola.Service/Services/Interfaces/ISettingService.cs" Line="12" Column="5" />
-      <File FileName="Bacola.Service/Services/Implementations/SettingService.cs" Line="41" Column="118" />
-      <File FileName="Bacola.App/Views/Shared/_Layout.cshtml" Line="298" Column="34" />
-      <File FileName="Bacola.App/Areas/Admin/Views/Setting/Update.cshtml" Line="15" Column="82" />
-      <File FileName="Bacola.Core/DTOS/Subscribe/SubscribeDto.cs" Line="6" Column="35" />
-      <File FileName="Bacola.Core/Entities/Subscribe.cs" Line="1" Column="1" />
-      <File FileName="Bacola.Service/Services/Implementations/AccountService.cs" Line="282" Column="8" />
-      <File FileName="Bacola.App/Controllers/HomeController.cs" Line="95" Column="1" />
-      <File FileName="Bacola.Data/Contexts/BacolaDbContext.cs" Line="33" Column="42" />
-      <File FileName="Bacola.App/Controllers/ShopController.cs" Line="133" Column="2" />
-      <File FileName="Bacola.Service/ExternalServices/Implementations/EmailService.cs" Line="10" Column="36" />
-      <File FileName="Bacola.App/Program.cs" Line="6" Column="1" />
-      <File FileName="Bacola.App/Views/Shop/Index.cshtml" Line="282" Column="100" />
-      <File FileName="Bacola.App/ViewModels/ShopViewModel.cs" Line="10" Column="20" />
-      <File FileName="Bacola.App/wwwroot/assets/js/mine.js" Line="78" Column="10" />
-      <File FileName="Bacola.App/wwwroot/assets/js/jquery.js" Line="1" Column="1" />
-      <File FileName="Bacola.App/wwwroot/assets/js/Filter.js" Line="21" Column="28" />
-      <File FileName="Bacola.App/Areas/Admin/Views/Blog/Create.cshtml" Line="1" Column="15" />
-      <File FileName="../../../../usr/local/share/dotnet/sdk/7.0.314/Microsoft.Common.CurrentVersion.targets" Line="4752" Column="5" />
-      <File FileName="Bacola.Core/DTOS/Blog/BlogPostDto.cs" Line="20" Column="1" />
-      <File FileName="Bacola.Core/DTOS/Filter/ProductFilterDto.cs" Line="7" Column="27" />
-      <File FileName="Bacola.App/wwwroot/assets/js/app.js" Line="1" Column="1" />
-      <File FileName="Bacola.Service/Responses/CustomResponse.cs" Line="11" Column="1" />
-      <File FileName="Bacola.App/Controllers/ContactController.cs" Line="1" Column="1" />
-      <File FileName="Bacola.App/Controllers/BlogController.cs" Line="60" Column="10" />
-      <File FileName="Bacola.App/Controllers/AccountController.cs" Line="105" Column="19" />
-      <File FileName="Bacola.Service/ServiceRegisterations/ServiceLayerServiceRegisterExtention.cs" Line="15" Column="63" />
+      <File FileName="Bacola.App/Areas/Admin/Controllers/SettingController.cs" />
+      <File FileName="Bacola.App/Areas/Admin/Views/Setting/Index.cshtml" />
+      <File FileName="Bacola.Service/Services/Interfaces/ISettingService.cs" />
+      <File FileName="Bacola.Service/Services/Implementations/SettingService.cs" />
+      <File FileName="Bacola.App/Views/Shared/_Layout.cshtml" />
+      <File FileName="Bacola.App/Areas/Admin/Views/Setting/Update.cshtml" />
+      <File FileName="Bacola.Core/DTOS/Subscribe/SubscribeDto.cs" />
+      <File FileName="Bacola.Core/Entities/Subscribe.cs" />
+      <File FileName="Bacola.Service/Services/Implementations/AccountService.cs" />
+      <File FileName="Bacola.App/Controllers/HomeController.cs" />
+      <File FileName="Bacola.Data/Contexts/BacolaDbContext.cs" />
+      <File FileName="Bacola.App/Controllers/ShopController.cs" />
+      <File FileName="Bacola.Service/ExternalServices/Implementations/EmailService.cs" />
+      <File FileName="Bacola.App/Program.cs" />
+      <File FileName="Bacola.App/Views/Shop/Index.cshtml" Line="391" Column="60" />
+      <File FileName="Bacola.App/ViewModels/ShopViewModel.cs" />
+      <File FileName="Bacola.App/wwwroot/assets/js/mine.js" />
+      <File FileName="Bacola.App/wwwroot/assets/js/jquery.js" />
+      <File FileName="Bacola.App/wwwroot/assets/js/Filter.js" />
+      <File FileName="Bacola.App/Areas/Admin/Views/Blog/Create.cshtml" />
+      <File FileName="../../../../usr/local/share/dotnet/sdk/7.0.314/Microsoft.Common.CurrentVersion.targets" />
+      <File FileName="Bacola.Core/DTOS/Blog/BlogPostDto.cs" />
+      <File FileName="Bacola.Core/DTOS/Filter/ProductFilterDto.cs" />
+      <File FileName="Bacola.App/wwwroot/assets/js/app.js" />
+      <File FileName="Bacola.Service/Responses/CustomResponse.cs" />
+      <File FileName="Bacola.App/Controllers/ContactController.cs" />
+      <File FileName="Bacola.App/Controllers/BlogController.cs" />
+      <File FileName="Bacola.App/Controllers/AccountController.cs" />
+      <File FileName="Bacola.Service/ServiceRegisterations/ServiceLayerServiceRegisterExtention.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Bacola.App" expanded="True" selected="True">
+          <Node name="Bacola.App" selected="True">
             <Node name="Bacola.App" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Properties" expanded="True" />
@@ -46,6 +52,9 @@
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="assets" expanded="True">
+                  <Node name="img" expanded="True">
+                    <Node name="blog" expanded="True" />
+                  </Node>
                   <Node name="js" expanded="True" />
                 </Node>
                 <Node name="Templates" expanded="True" />
@@ -54,6 +63,7 @@
             <Node name="Bacola.Core" expanded="True">
               <Node name="DTOS" expanded="True">
                 <Node name="Blog" expanded="True" />
+                <Node name="Comment" expanded="True" />
                 <Node name="Filter" expanded="True" />
                 <Node name="Subscribe" expanded="True" />
                 <Node name="Tag" expanded="True" />
@@ -78,11 +88,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Bacola.App PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
 </Properties>

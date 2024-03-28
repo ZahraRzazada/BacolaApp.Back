@@ -16,8 +16,8 @@ function validateRange(e) {
             rangeInput[1].value = minVal + priceGap;
         }
     } else {
-        priceValue[0].textContent = `$${minVal}`;
-        priceValue[1].textContent = `$${maxVal}`;
+        priceValue[0].textContent = minVal;
+        priceValue[1].textContent = maxVal;
         range.style.left = `${(minVal / rangeInput[0].max) * 100}%`;
         range.style.right = `${100 - (maxVal / rangeInput[1].max) * 100}%`;
     }

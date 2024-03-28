@@ -30,7 +30,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                      
                         </button>
                     </div>
                     <div class="modal-body">
@@ -47,7 +46,7 @@
                                                 <p>
                                                     Brands: <span>@item.Brand.Name</span>
                                                 </p>
-                                          </div>
+                                            </div>
                                             <div class="star-rating">
                                                 <i class="fa-solid fa-star"></i>
                                                 <i class="fa-solid fa-star"></i>
@@ -229,106 +228,100 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-3 content-primary">
-                    <div onchange="this.form.submit()">
+                    <div>
 
                         <div class="product-filters">
-                
-                                <div class="product-category">
-                                    <h4 class="widget-title">Product Categories</h4>
-                                    <div class="category-part site-scroll ps ps--active-y ps--scrolling-y"
-                                         style="max-height: 200px; overflow-y: auto;">
-                                        <ul>
-                                            @foreach (var item in categories)
-                                            {
-                                                @if (item.ParentCategoryId == null)
-                                                {
-                                                    <li class="cat-parent">
-                                                        <div style="display: flex; justify-content:space-between" class="cpart">
 
-                                                            <a asp-route-categoryId="@item.Id" asp-route-categoryIds="@ViewBag.CategoryIds" asp-route-brandIds="@ViewBag.BrandIds" class="product_cat">
-                                                                <input id="checkbox" type="checkbox">
-
-                                                                <input id="categoryId" type="hidden" />
-                                                                <label>@item.Name</label>
-                                                            </a>
-
-                                                            <div class="icon">
-                                                                <i data-target="subcategories-@item.Id" style="color:black; margin-right:20px" class="toggleIcon fa-solid fa-plus"></i>
-                                                            </div>
-                                                        </div>
-                                                        <ul id="subcategories-@item.Id" class="children" style="display:none">
-                                                            @foreach (var item2 in item.Subcategories)
-                                                            {
-                                                                <li>
-                                                                    <a asp-route-categoryId="@item2.Id" asp-route-brandIds="@ViewBag.BrandIds" asp-route-categoryIds="@ViewBag.CategoryIds">
-                                                                        <input name="" value="" id="checkbox" type="checkbox">
-                                                                        <label><span></span>@item2.Name</label>
-                                                                    </a>
-                                                                </li>
-                                                            }
-                                                        </ul>
-                                                    </li>
-                                                }
-                                            }
-                                        </ul>
-
-                                    </div>
-                                </div>
-                           
-
-                                <div class="price-filter">
-                                    <h4 class="widget-title">Filter by price</h4>
-                                    <div>
-                                        <form asp-action="Index" method="get" asp-controller="shop">
-                                            <div class="wrapper">
-                                                <div class="slider">
-                                                    <div class="progress"></div>
-                                                </div>
-                                                <div class="range-input">
-                                                    <input name="Filter.fromPrice" type="range" class="range-min" min="0" max="100" value="0"
-                               step="10" />
-                                                    <input name="Filter.toPrice" type="range" class="range-max" min="0" max="100" value="100" step="10" />
-                                                </div>
-                                                <div class="price-input">
-                                                    <div class="field">
-                                                        <p>Price:</p>
-                                                        <span class="input-min price-value"></span>
-                                                        -
-                                                        <span class="input-max price-value"></span>
-                                                    </div>
-                                                    <div class="leftfilter">
-                                                        <button type="submit" class="button">Filter</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-
-
-
-
-
-                                <div class="product-brand">
-                                    <h4 class="widget-title">Brands</h4>
+                            <div class="product-category">
+                                <h4 class="widget-title">Product Categories</h4>
+                                <div class="category-part site-scroll ps ps--active-y ps--scrolling-y"
+                                     style="max-height: 200px; overflow-y: auto;">
                                     <ul>
-
-                                        @foreach (var item in brands)
+                                        @foreach (var item in categories)
                                         {
-                                            <li>
-                                                <a asp-route-brandId="@item.Id" asp-route-brandIds="@ViewBag.BrandIds" asp-route-categoryIds="@ViewBag.CategoryIds">
-                                                    <input name="" value="" id="checkbox" type="checkbox">
-                                                    <label>
-                                                        @item.Name
-                                                    </label>
-                                                </a>
+                                            @if (item.ParentCategoryId == null)
+                                            {
+                                                <li class="cat-parent">
+                                                    <div style="display: flex; justify-content:space-between" class="cpart">
 
-                                            </li>
+                                                        <input class="@item.Id" id="checkbox" type="checkbox">
+
+                                                        <label class="@item.Id" id="checkbox">@item.Name</label>
+
+                                                        <div class="icon">
+                                                            <i data-target="subcategories-@item.Id" style="color:black; margin-right:20px" class="toggleIcon fa-solid fa-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <ul id="subcategories-@item.Id" class="children" style="display:none">
+                                                        @foreach (var item2 in item.Subcategories)
+                                                        {
+                                                            <li>
+                                                                <input class="@item.Id" name="" value="" id="checkbox" type="checkbox">
+                                                                <label class="@item.Id" id="checkbox"><span></span>@item2.Name</label>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
                                         }
                                     </ul>
+
                                 </div>
-                     
+                            </div>
+
+
+                            <div class="price-filter">
+                                <h4 class="widget-title">Filter by price</h4>
+                                <div>
+
+                                    <form>
+                                        <div class="wrapper">
+                                            <div class="slider">
+                                                <div class="progress"></div>
+                                            </div>
+                                            <div class="range-input">
+                                                <input id="MinPrice" name="Filter.fromPrice" type="range" class="range-min" min="0" max="100" value="0"
+                                                       step="10" />
+                                                <input id="MaxPrice" name="Filter.toPrice" type="range" class="range-max" min="0" max="100" value="100"
+                                                       step="10" />
+                                            </div>
+                                            <div class="price-input">
+                                                <div class="field">
+                                                    <p>Price:</p>
+                                                    <span class="input-min price-value">0</span>
+                                                    -
+                                                    <span class="input-max price-value">100</span>
+                                                </div>
+                                              
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div class="product-brand">
+                                <h4 class="widget-title">Brands</h4>
+                                <ul>
+
+                                    @foreach (var item in brands)
+                                    {
+                                        <li>
+                                            <input class="@item.Id" name="" value="" id="checkboxBrend" type="checkbox">
+                                            <label class="@item.Id" id="checkboxBrend">
+                                                @item.Name
+                                            </label>
+
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+
                             <div class="product-banner">
                                 <img src="~/assets/img/shop/shop-banner2.gif" alt="">
                             </div>
@@ -375,8 +368,8 @@
                             </select>
                         </div>
                     </div>
-                    <div class="container" id="salam" >
-                    
+                    <div class="container" id="Allproducts">
+
                         @foreach (ProductGetDto item in Model.Products.Items)
                         {
                             <div class="product">
@@ -582,6 +575,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>document.addEventListener("DOMContentLoaded", function () {
         const resetPasswordData = document.getElementById("basket");
         if (resetPasswordData !== null) {
@@ -680,10 +674,11 @@ document.getElementById('searchInput').addEventListener('input', performSearch);
 
 
 </script>
+<script src="~/assets/js/filter.js"></script>
 
 
 
 
-    
+
 
 
