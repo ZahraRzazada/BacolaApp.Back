@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Bacola.App.ViewModels;
 using Bacola.Core.DTOS;
+using Bacola.Data.Contexts;
 using Bacola.Service.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -9,19 +10,21 @@ namespace Bacola.App.Controllers;
 
 public class HomeController : Controller
 {
+    readonly BacolaDbContext _context;
     readonly IHomeSliderService _sliderService;
     readonly IProductService _productService;
     readonly IBasketService _basketService;
     readonly IWishlistService _wishlistService;
 
 
-    public HomeController(IHomeSliderService sliderService, IBlogService blogService, IProductService productService, IBasketService basketService, IWishlistService wishlistService)
+    public HomeController(IHomeSliderService sliderService, IBlogService blogService, IProductService productService, IBasketService basketService, IWishlistService wishlistService, BacolaDbContext context)
     {
         _sliderService = sliderService;
         _blogService = blogService;
         _productService = productService;
         _basketService = basketService;
         _wishlistService = wishlistService;
+        _context = context;
     }
 
     readonly IBlogService _blogService;
@@ -68,6 +71,16 @@ public class HomeController : Controller
             }
         }
         return View(homeViewModel);
+    }
+    public async Task<IActionResult> Subscribe(string EmailAddress, string? returnUrl)
+    {
+        await _context.Subscribe.AddAsync(new Core.Entities.Subscribe { EmailAddress = EmailAddress });
+        await _context.SaveChangesAsync();
+        if (returnUrl!=null)
+        {
+            return Redirect(returnUrl);
+        }
+        return RedirectToAction(nameof(Index));
     }
 }
 

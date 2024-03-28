@@ -4,18 +4,18 @@ using Bacola.Core.Entities;
 using Bacola.Service.Responses;
 using Microsoft.AspNetCore.Http;
 
-namespace Bacola.Service.Services.Interfaces
-{
+namespace Bacola.Service.Services.Interfaces;
+
 	public interface ISettingService
 	{
-        public Task<IEnumerable<SettingGetDto>> GetAllAsync();
+     Task<List<Setting>> GetAllAsync();
+    Task<Dictionary<string, string>> GetAllSettings();
 
-        public Task<CustomResponse<Setting>> CreateAsync(SettingPostDto dto);
+     Task<CustomResponse<Setting>> CreateAsync(SettingPostDto dto);
 
-        public Task<CustomResponse<Setting>> RemoveAsync(int id);
+   Task<CustomResponse<Setting>> RemoveAsync(int id);
 
-        public Task<CustomResponse<Setting>> UpdateAsync(int id, SettingPostDto dto);
-        public Task<CustomResponse<SettingGetDto>> GetAsync(int id);
-    }
+     Task<CustomResponse<Setting>> UpdateAsync(int id, SettingPostDto dto);
+    Task<CustomResponse<SettingGetDto>> GetAsync(int id);
 }
 

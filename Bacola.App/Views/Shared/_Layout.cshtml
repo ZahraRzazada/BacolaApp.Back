@@ -8,7 +8,19 @@
 
     var products = await _productService.GetAllAsync();
 }
+@inject SettingService _settingService
+@{
 
+    var settings = await _settingService.GetAllSettings();
+}
+@inject BasketService basketService
+
+@{
+    var basketResponse = await basketService.GetBasket();
+    var basketGetDto = basketResponse.Data;
+    double totalPrice = basketGetDto.TotalPrice;
+
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,83 +46,90 @@
     <link rel="stylesheet" href="~/assets/css/shop.css">
 
 
-  <style>
-      .custom-alert-style {
-          font-size: 1.5rem !important;
-          color: #007bff !important; 
-          background-color: white !important;
-      }
-      .klb-search-results {
-          position: absolute;
-          left: 0;
-          top: 100%;
-          background-color: #ffffff;
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-          border: 1px solid #f3f4f7;
-          border-radius: 3px;
-          width: 100%;
-          z-index: 9999999;
-          max-height: 250px; 
-          overflow-y: auto;
-      }
-          .klb-search-results ul {
-              padding: 0;
-              margin: 0;
-          }
-          .klb-search-results ul li {
-              display: flex;
-              flex-direction: row;
-              padding: 8px;
-              align-items: center;
-          }
-          .klb-search-results .search-img img {
-              background: #fff;
-              border: 1px solid #e8e8e8;
-              height:auto;
-              border-radius: 3px;
-              max-width: 42px;
-              margin-right: 10px;
-          }
-          .klb-search-results .search-content {
-              display: flex;
-              justify-content: space-between;
-              width: 100%;
-              align-items: center;
-          }
-          .klb-search-results h1.product-title {
-              font-size: .875rem;
-              font-weight: 500;
-              line-height: 1.4;
-              margin-bottom: 0;
-              margin-right: 10px;
-          }
-          .klb-search-results h1 a {
-              color:#202435;
-          }
-          .klb-search-results span.price {
-              text-align: right;
-              font-weight:700;
-              font-size: 15px;
-          }
-              .klb-search-results span.price del {
-                  color: #c2c2d3;
-                  font-size: 85%;
-              }
+    <style>
+        .custom-alert-style {
+            font-size: 1.5rem !important;
+            color: #007bff !important;
+            background-color: white !important;
+        }
 
-              .klb-search-results span.price ins {
-                  display: block;
-                  margin: 0;
-                  text-decoration: none;
-              }
-  
-      .klb-search-results span.price ins span {
-          color: #d51243;
-      }
-  
+        .klb-search-results {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: #ffffff;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            border: 1px solid #f3f4f7;
+            border-radius: 3px;
+            width: 100%;
+            z-index: 9999999;
+            max-height: 250px;
+            overflow-y: auto;
+        }
 
-  </style>
+            .klb-search-results ul {
+                padding: 0;
+                margin: 0;
+            }
+
+                .klb-search-results ul li {
+                    display: flex;
+                    flex-direction: row;
+                    padding: 8px;
+                    align-items: center;
+                }
+
+            .klb-search-results .search-img img {
+                background: #fff;
+                border: 1px solid #e8e8e8;
+                height: auto;
+                border-radius: 3px;
+                max-width: 42px;
+                margin-right: 10px;
+            }
+
+            .klb-search-results .search-content {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                align-items: center;
+            }
+
+            .klb-search-results h1.product-title {
+                font-size: .875rem;
+                font-weight: 500;
+                line-height: 1.4;
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+
+            .klb-search-results h1 a {
+                color: #202435;
+            }
+
+            .klb-search-results span.price {
+                text-align: right;
+                font-weight: 700;
+                font-size: 15px;
+            }
+
+                .klb-search-results span.price del {
+                    color: #c2c2d3;
+                    font-size: 85%;
+                }
+
+                .klb-search-results span.price ins {
+                    display: block;
+                    margin: 0;
+                    text-decoration: none;
+                }
+
+                    .klb-search-results span.price ins span {
+                        color: #d51243;
+                    }
+    </style>
 </head>
 <body>
 
@@ -189,7 +208,7 @@
             <div class="container">
                 <div class="columncolumn-left">
                     <a href="/home.html">
-                        <img class="desktop-logo hide-mobile" src="~/assets/img/logo/bacola-logo.png"
+                        <img class="desktop-logo hide-mobile" src="~/assets/img/logo/@settings["Logo"]"
                              alt="Bacola – Grocery Market and Food Theme">
                         <img class="d-none mobile-logo hide-desktop" src="~/assets/img/logo/bacola-logo-mobile.png"
                              alt="Bacola – Grocery Market and Food Theme">
@@ -206,7 +225,7 @@
                     </div>
                     <div class="header-search">
                         <form class="search-form" role="search" method="get" id="searchForm">
-                            <input type="search" value="" name="s" id="searchInput" placeholder="Search for products..."
+                            <input type="search" value="" name="s" id="searchInput2" placeholder="Search for products..."
                                    autocomplete="off">
                             <div class="klb-search-results">
                                 <ul id="searchResultsList">
@@ -221,12 +240,12 @@
                 <div class="columncolumn-right">
 
                     <div class="header-cart">
-                        <a href="">
+                        <a asp-controller="account" asp-action="login">
                             <div class="user-icon">
                                 <i class="fa-regular fa-user"></i>
                             </div>
                             <div class="cart-price">
-                                <span>$100</span>
+                                <span>Total Price: @totalPrice</span>
                             </div>
 
                             <a asp-controller="shop" asp-action="Basket">
@@ -435,13 +454,13 @@
                                 <p>Join our email subscription now to get updates on promotions and coupons.</p>
                             </div>
                             <div class="subscribe-form">
-                                <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-635" method="post" data-id="635" data-name="Bacola">
+                                <form asp-controller="home" asp-action="subscribe" asp-route-returnUrl="@Context.Request.Path.Value" id="mc4wp-form-1" class="mc4wp-form mc4wp-form-635" method="post" data-id="635" data-name="Bacola">
                                     <div class="form-field">
                                         <i class="fa-regular fa-envelope"></i>
-                                        <input class="subscribe-input" type="email" name="EMAIL" placeholder="Your email address" required="">
+                                        <input class="subscribe-input" type="email" name="EmailAddress" placeholder="Your email address" required="">
                                         <input class="btn" type="submit" value="Subscribe">
                                     </div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off"></label><input type="hidden" name="_mc4wp_timestamp" value="1707291566"><input type="hidden" name="_mc4wp_form_id" value="635"><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1"><div class="mc4wp-response"></div>
-                                </form><!-- / Mailchimp for WordPress Plugin -->
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -580,8 +599,8 @@
                             <i class="fa-solid fa-phone-volume"></i>
                         </div>
                         <div class="sit-nom">
-                            <h4 class="entry-title">8 800 555-55</h4>
-                            <span>Working 8:00 - 22:00</span>
+                            <h4 class="entry-title">@settings["Number"]</h4>
+                            <span>@settings["Hours"]</span>
                         </div>
                     </div>
                 </div>

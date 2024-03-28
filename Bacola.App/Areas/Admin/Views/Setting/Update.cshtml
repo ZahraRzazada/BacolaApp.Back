@@ -17,7 +17,7 @@
                                     <div style="align-items:center" class="mb-4 row align-items-center">
                                         <label asp-for="Key" class="form-label-title col-sm-3 mb-0">Setting Key</label>
                                         <div class="col-sm-9">
-                                            <input asp-for="Key" class="form-control" type="text" placeholder="Setting Key">
+                                            <input asp-for="Key" class="form-control" type="text" placeholder="Setting Key" readonly>
                                             <span class="text text-danger" asp-validation-for="Key"></span>
                                         </div>
                                     </div>
@@ -26,6 +26,11 @@
                                         <div class="col-sm-9">
                                             <input asp-for="Value" class="form-control" type="text" placeholder="Value">
                                             <span class="text text-danger" asp-validation-for="Value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 row align-items-center">
+                                        <div class="col-sm-9 offset-sm-3">
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </form>

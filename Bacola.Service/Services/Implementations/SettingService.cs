@@ -30,10 +30,16 @@ namespace Bacola.Service.Services.Implementations
         }
     
 
-        public async Task<IEnumerable<SettingGetDto>> GetAllAsync()
+        public async Task<List<Setting>> GetAllAsync()
         {
-            IEnumerable<SettingGetDto> settings = await _settingRepository.GetQuery(x => !x.IsDeleted)
-           .AsNoTrackingWithIdentityResolution().Select(x => new SettingGetDto { Key = x.Key, Id = x.Id, Value = x.Value }).ToListAsync();
+            var settings = await _settingRepository.GetQuery(x => !x.IsDeleted).ToListAsync();
+       
+            return settings;
+        }
+        public async Task<Dictionary<string, string>> GetAllSettings()
+        {
+            var settings = await _settingRepository.GetQuery(x => !x.IsDeleted).ToDictionaryAsync(x=>x.Key,x=>x.Value);
+
             return settings;
         }
 

@@ -17,10 +17,9 @@
                                 <div class="blog-wrappers">
                                     <span><i class="fa-regular fa-clock"></i>@item.Date.ToString("dd.MM.yyyy")</span>
                                     <span><i class="fa-regular fa-bookmark"></i>@item.CategoryGetDto.Name</span>
-                                    @foreach (var item2 in item.Tags)
-                                    {
-                                        <span><i class="fa-solid fa-hashtag"></i>@item2.Name</span>
-                                    }
+                                   
+                                    <span><i class="fa-solid fa-hashtag"></i>@string.Join(", ", item.Tags.Select(tag => tag.Name))</span>
+                                 
 
                                 </div>
                                 <div class="blog-title">

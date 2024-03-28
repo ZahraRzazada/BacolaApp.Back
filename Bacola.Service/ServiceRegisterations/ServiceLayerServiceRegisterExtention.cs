@@ -14,6 +14,8 @@ namespace Bacola.Service.ServiceRegisterations
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<CategoryService>();
             services.AddScoped<BrandService>();
+            services.AddScoped<BasketService>();
+            services.AddScoped<SettingService>();
             services.AddScoped<ProductService>();
             services.AddScoped<ITagService, TagService>();
             services.AddScoped<IBlogService, BlogService>();

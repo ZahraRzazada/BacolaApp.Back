@@ -203,10 +203,23 @@
                 <div id="sidebarEffect"></div>
                 <div>
                     <div class="logo-wrapper logo-wrapper-center">
-                        <a asp-controller="Home" asp-action="Index" asp-area="@null" style="color: white;font-size:30px;font-weight:700;margin:0px;padding:0px"  data-bs-original-title="" title="">
+                        <a asp-controller="Home" id="logoLogout" asp-action="Index" asp-area="@null" style="color: white;font-size:30px;font-weight:700;margin:0px;padding:0px"  data-bs-original-title="" title="">
                             Bacola
                           
                         </a>
+
+                        <script>
+
+                            var logout = document.getElementById('logoLogout');
+
+                            logout.addEventListener('click', () => {
+                                fetch('http://localhost:5017/Account/logout');
+                            })
+
+
+                        </script>
+
+
                         <div class="back-btn">
                             <i class="fa fa-angle-left"></i>
                         </div>
@@ -460,20 +473,20 @@
                                     </ul>
                                 </li>
 
-                                <li class="sidebar-list">
+                                @*<li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="taxes.html">
                                         <i class="fa-regular fa-square-check"></i>
                                         <span>Tax</span>
                                         <i style="margin-left: 123px;" class="fa-solid fa-chevron-right"></i>
                                     </a>
-                                </li>
+                                </li>*@
 
-                                <li class="sidebar-list">
+                                @*<li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title link-nav" href="product-review.html">
                                         <i class="fa-regular fa-comment"></i>
                                         <span>Product Review</span>
                                     </a>
-                                </li>
+                                </li>*@
 
                                 <!-- <li class="sidebar-list">
         <a class="sidebar-link sidebar-title link-nav" href="support-ticket.html">

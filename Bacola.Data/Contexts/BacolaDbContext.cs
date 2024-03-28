@@ -30,6 +30,7 @@ namespace Bacola.Data.Contexts
             public DbSet<Coupon> Coupons { get; set; }
             public DbSet<Coment> Coments { get; set; }
             public DbSet<mine> Mine { get; set; }
+        public DbSet<Subscribe> Subscribe { get; set; }
 
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

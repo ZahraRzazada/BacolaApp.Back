@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SettingGetDto>
+﻿@model List<Setting>
 <div class="page-body">
     <!-- All User Table Start -->
     <div class="container-fluid">
@@ -29,14 +29,13 @@
                                     </thead>
 
                                     <tbody>
-                                        @foreach (SettingGetDto item in Model)
+                                        @foreach (var item in Model)
                                         {
                                             <tr>
                                                 <td>@item.Key</td>
                                                 <td>@item.Value</td>
                                                 <td>@item.CreatedAt.ToString("dd.MM.yyyy")</td>
                                                 <td>
-                                                    <a onclick="return confirm('are you sure?')" asp-action="remove" asp-route-id="@item.Id" class="badge badge-danger">Remove</a>
                                                     <a asp-action="update" asp-route-id="@item.Id" class="badge badge-warning">Update</a>
                                                 </td>
                                             </tr>

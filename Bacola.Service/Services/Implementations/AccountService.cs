@@ -14,19 +14,21 @@ using System.Data;
 using Bacola.Core.Enums;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Bacola.Data.Contexts;
 
 namespace Bacola.Service.Services.Implementations
 {
     public class AccountService : IAccountService
     {
         readonly IMapper _mapper;
+        readonly BacolaDbContext _context;
         readonly RoleManager<IdentityRole> _roleManager;
         readonly UserManager<AppUser> _userManager;
         readonly SignInManager<AppUser> _signInManager;
         readonly IHttpContextAccessor _http;
         readonly IWebHostEnvironment _webHostEnviroment;
 
-        public AccountService(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager, IWebHostEnvironment webHostEnviroment, IHttpContextAccessor http, IMapper mapper)
+        public AccountService(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager, IWebHostEnvironment webHostEnviroment, IHttpContextAccessor http, IMapper mapper, BacolaDbContext context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -35,6 +37,7 @@ namespace Bacola.Service.Services.Implementations
             _webHostEnviroment = webHostEnviroment;
             _http = http;
             _mapper = mapper;
+            _context = context;
         }
         public async Task<CustomResponse<AppUser>> Login(LoginDto dto,bool isForAdminPanel)
         {
@@ -274,6 +277,10 @@ namespace Bacola.Service.Services.Implementations
             adminUser.EmailConfirmed = true;
             return new CustomResponse<AppUser> { IsSuccess = true, Message = "Admin is created successfully", Data = adminUser };
         }
+
+       
+        
+
     }
 }
 

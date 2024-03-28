@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yubeqIY19jaiEhKluhA8rwiwJXo+CinqhpwAP9cTyh0=",
+  "Hash": "ab1giFihnZ+9xM0YjyNjV6kum9mGkf0nX5mEoDSSqe0=",
   "Source": "Bacola.App",
   "BasePath": "_content/Bacola.App",
   "Mode": "Default",
@@ -1766,6 +1766,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/img/blog/comment.jpeg"
+    },
+    {
+      "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/blog/d6f60da4-b52d-42bf-ba04-16684fc8ecd7slider-3.jpg",
+      "SourceId": "Bacola.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/",
+      "BasePath": "_content/Bacola.App",
+      "RelativePath": "assets/img/blog/d6f60da4-b52d-42bf-ba04-16684fc8ecd7slider-3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/img/blog/d6f60da4-b52d-42bf-ba04-16684fc8ecd7slider-3.jpg"
     },
     {
       "Identity": "/Users/zahrarzazada/Desktop/BacolaApp.BackProject-master/Bacola.App/wwwroot/assets/img/blog/db1103f4-817c-4208-8611-b0822dd6f8c0WhatsApp Image 2024-02-11 at 21.40.37.jpeg",

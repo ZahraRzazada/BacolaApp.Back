@@ -147,7 +147,7 @@
                                 </ul>
                             </div>
                             <p class="p1">Category:  <span>@Model.Category.Name</span></p>
-                            <p class="p2">Tags: </p>
+                            <p class="p2">Tags: @string.Join(", ", Model.TagProducts.Select(tag => tag.Tag.Name))</p>
                             <div class="product-share">
                                 <ul>
                                     <li>

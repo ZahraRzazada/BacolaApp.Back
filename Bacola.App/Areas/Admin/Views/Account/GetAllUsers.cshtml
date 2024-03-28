@@ -19,7 +19,7 @@
                                             <th>Username</th>
                                             <th>FullName</th>
                                             <th>Email</th>
-                                            <th>Options</th>
+                               
                                         </tr>
                                     </thead>
 
@@ -30,10 +30,7 @@
                                                 <td>@user.UserName</td>
                                                 <td>@user.FullName</td>
                                                 <td>@user.Email</td>
-                                                <td>
-                                                    <a onclick="return confirm('are you sure?')" asp-action="remove" asp-route-id="@user.Id" class="badge badge-danger">Remove</a>
-                                                 
-                                                </td>
+                                             
                                             </tr>
                                         }
                                     </tbody>

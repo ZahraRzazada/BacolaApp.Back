@@ -46,23 +46,30 @@ toggleIcons.forEach(function (icon) {
 
 //--------------
 //SerachJsDynamiclyHome
-document.getElementById('searchInput').addEventListener('input', performSearch);
+var z = document.getElementById('searchInput2');
+z.addEventListener('input', performSearch);
+console.log(z);
+console.log('salam');
 const shopCards = document.getElementById('salam');
+
+
+
+if (shopCards !== null) {
+    var backup = shopCards.innerHTML;
+}
+console.log(backup);
+
 const searchbutton = document.getElementById('searchButton');
 const searchResultsList = document.getElementById('searchResultsList');
 async function performSearch() {
-    const response = await fetch(`/Shop/SearchProduct?search=${encodeURIComponent(searchTerm)}`);
-    var searchTerm = document.getElementById('searchInput').value.trim();
-    if (searchTerm.length === 0) {
-        console.log("Pis Zhr");
-        searchResultsList.innerHTML = ``;
+    var searchTerm = document.getElementById('searchInput2').value.trim();
+    searchTerm = z.value.trim();
 
-        if (shopCards !== null) {
-            location.reload();
-           
-        }
-    }
+   
+     
+    
     try {
+        const response = await fetch(`/Shop/SearchProduct?search=${encodeURIComponent(searchTerm)}`);
         searchButton.style.display = 'none';
         const data = await response.json();
         searchResultsList.innerHTML = ``;
@@ -172,8 +179,9 @@ async function performSearch() {
     catch (error) {
         console.error(error);
         searchResultsList.innerHTML = ``;
+
         if (shopCards !== null) {
-            shopCards.innerHTML = ``;
+            shopCards.innerHTML = backup;
         }
         
     }

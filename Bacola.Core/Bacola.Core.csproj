@@ -27,6 +27,7 @@
     <None Remove="DTOS\Coupon\" />
     <None Remove="DTOS\Filter\" />
     <None Remove="DTOS\Comment\" />
+    <None Remove="DTOS\Subscribe\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOS\" />
@@ -49,6 +50,7 @@
     <Folder Include="DTOS\Coupon\" />
     <Folder Include="DTOS\Filter\" />
     <Folder Include="DTOS\Comment\" />
+    <Folder Include="DTOS\Subscribe\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />

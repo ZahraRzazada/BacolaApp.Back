@@ -25,9 +25,10 @@ namespace Bacola.App.Areas.Admin.Controllers
 
             public async Task<IActionResult> Index()
             {
-                return View(await _SettingService.GetAllAsync());
+            var data = await _SettingService.GetAllAsync();
+            return View(data); ;
             }
-            public async Task<IActionResult> Create()
+            public IActionResult Create()
             {
                 return View();
             }
@@ -48,11 +49,7 @@ namespace Bacola.App.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            public async Task<IActionResult> Remove(int id)
-            {
-                await _SettingService.RemoveAsync(id);
-                return RedirectToAction(nameof(Index));
-            }
+            
 
             public async Task<IActionResult> Update(int id)
             {
