@@ -38,7 +38,7 @@
                                                 <td>@item.Category.Name</td>
                                                 <td>
                                                     <div class="table-image">
-                                                        <img src="~/assets/img/product/@item.ProductImages.FirstOrDefault(x=>x.IsMain&&!x.IsDeleted)?.Image" >
+                                                        <img src="~/assets/img/product/@item.ProductImages.FirstOrDefault(x=>x.IsMain&&!x.IsDeleted)?.Image">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -49,6 +49,23 @@
                                         }
                                     </tbody>
                                 </table>
+
+                                <nav style="display: flex; align-items: center; justify-content: center;margin-top:30px" aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage - 1)" tabindex="-1">Previous</a>
+                                        </li>
+                                        @for (int i = 1; i <= Model.TotalPages; i++)
+                                        {
+                                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                                <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                                            </li>
+                                        }
+                                        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage + 1)">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>

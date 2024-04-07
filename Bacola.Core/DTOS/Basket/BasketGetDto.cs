@@ -8,6 +8,7 @@ namespace Bacola.Core.DTOS
 	{
         public List<BasketItemDto> basketItems { get; set; }
         public double TotalPrice { get; set; }
+        public double? CuponPrice { get; set; }
         public bool IsCouponApplied { get; set; }
         public BasketGetDto()
         {

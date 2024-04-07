@@ -35,7 +35,6 @@
                     <div class="modal-body">
                         <section id="Productcart">
                             <div class="container">
-
                                 <div class="single-wrapper">
                                     <div class="product-header">
                                         <h1 class="product_title entry-title">
@@ -44,7 +43,7 @@
                                         <div class="bottom">
                                             <div class="product-brand">
                                                 <p>
-                                                    Brands: <span>@item.Brand.Name</span>
+                                                    Brands : <span>@item.Brand.Name</span>
                                                 </p>
                                             </div>
                                             <div class="star-rating">
@@ -62,14 +61,28 @@
                                     </div>
                                     <div class="product-body">
                                         <div class="row">
-                                            <div class="col-lg-6 product-slid">
+                                            <div class="col-lg-6 ">
 
                                                 <div class="main-img2">
                                                     @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
                                                     {
                                                         <img style="width:100%" src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
                                                     }
+                                                    @*@foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                                        {
+                                                            <img src="~/assets/img/product/@item2.Image" alt="">
+                                                        }*@
                                                 </div>
+                                                @*<div class="addition-img">
+                                                        @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
+                                                        {
+                                                            <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
+                                                        }
+                                                        @foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                                        {
+                                                            <img src="~/assets/img/product/@item2.Image" alt="">
+                                                        }
+                                                    </div>*@
 
                                             </div>
                                             <div class="col col-12 col-lg-6 product-detail">
@@ -103,7 +116,7 @@
                                                     @item.Info
                                                 </p>
                                                 <form class="cart single-ajax"
-                                                      action=""
+                                                      action="https://klbtheme.com/bacola/product/all-natural-italian-style-chicken-meatballs/"
                                                       method="post" enctype="multipart/form-data">
 
                                                     <div class="quantity">
@@ -292,7 +305,7 @@
                                                     -
                                                     <span class="input-max price-value">100</span>
                                                 </div>
-                                              
+
                                             </div>
                                         </div>
                                     </form>
@@ -372,11 +385,11 @@
 
                         @foreach (ProductGetDto item in Model.Products.Items)
                         {
-                            <div class="product">
+                            <div style="height:105%" class="product">
                                 <div class="product-card">
                                     <div class="card-thumbnail">
                                         <div class="card-badges">
-                                            <span class="badge on-sale">@item.DiscountPercent</span>
+                                            <span class="badge on-sale">@item.DiscountPercent %</span>
                                             <span class="badge recommend">recommended</span>
                                         </div>
                                         <a asp-controller="shop" asp-action="detail" asp-route-id="@item.Id" class="img-box">
@@ -416,11 +429,11 @@
                                         <div class="card-price">
                                             <del>
                                                 <bdi>
-                                                    <span class="price-amount old-price">@item.Price</span>
+                                                    <span class="price-amount old-price">$ @item.Price</span>
                                                 </bdi>
                                             </del>
                                             <ins>
-                                                <bdi><span class="price-amount new-price">@item.DiscountPrice</span></bdi>
+                                                <bdi><span class="price-amount new-price">$ @item.DiscountPrice</span></bdi>
                                             </ins>
                                         </div>
                                         <div class="product-fade-block">
@@ -455,19 +468,21 @@
                     </div>
                     <nav style="display: flex; align-items: center; justify-content: center;" aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item @(1==Model.Products.CurrentPage? "disabled":null)">
-                                <a class="page-link" asp-action="Index" asp-route-page="@(Model.Products.CurrentPage-1)" tabindex="-1">Previous</a>
+                            <li class="page-item @(Model.Products.CurrentPage == 1 ? "disabled" : "")">
+                                <a class="page-link" asp-action="Index" asp-route-page="@(Model.Products.CurrentPage - 1)" tabindex="-1">Previous</a>
                             </li>
                             @for (int i = 1; i <= Model.Products.TotalPages; i++)
                             {
-                                <li class="page-item @(i==Model.Products.CurrentPage? "disabled":null)"><a class="page-link" asp-action="Index" asp-route-page="@i">@i</a></li>
-
+                                <li class="page-item @(i == Model.Products.CurrentPage ? "active" : "")">
+                                    <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                                </li>
                             }
-                            <li class="page-item @(Model.Products.TotalPages==Model.Products.CurrentPage? "disabled":null)">
-                                <a class="page-link" asp-action="Index" asp-route-page="@(Model.Products.CurrentPage+1)">Next</a>
+                            <li class="page-item @(Model.Products.CurrentPage == Model.Products.TotalPages ? "disabled" : "")">
+                                <a class="page-link" asp-action="Index" asp-route-page="@(Model.Products.CurrentPage + 1)">Next</a>
                             </li>
                         </ul>
                     </nav>
+
                 </div>
             </div>
         </div>
@@ -573,6 +588,8 @@
     </section>
 </main>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -674,6 +691,7 @@ document.getElementById('searchInput').addEventListener('input', performSearch);
 
 
 </script>
+
 <script src="~/assets/js/filter.js"></script>
 
 

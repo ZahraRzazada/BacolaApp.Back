@@ -183,14 +183,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a
-                                       asp-controller="account" asp-action="logout">
+                                    <a asp-controller="account" asp-action="logout">
                                         <i data-feather="log-out"></i>
                                         <span>Log out</span>
                                     </a>
                                 </li>
                             </ul>
-                         </li>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -203,21 +202,16 @@
                 <div id="sidebarEffect"></div>
                 <div>
                     <div class="logo-wrapper logo-wrapper-center">
-                        <a asp-controller="Home" id="logoLogout" asp-action="Index" asp-area="@null" style="color: white;font-size:30px;font-weight:700;margin:0px;padding:0px"  data-bs-original-title="" title="">
+                        <a asp-controller="Home" id="logoLogout" asp-action="Index" asp-area="@null" style="color: white;font-size:30px;font-weight:700;margin:0px;padding:0px" data-bs-original-title="" title="">
                             Bacola
-                          
+
                         </a>
 
-                        <script>
-
-                            var logout = document.getElementById('logoLogout');
+                        <script>var logout = document.getElementById('logoLogout');
 
                             logout.addEventListener('click', () => {
                                 fetch('http://localhost:5017/Account/logout');
-                            })
-
-
-                        </script>
+                            })</script>
 
 
                         <div class="back-btn">
@@ -408,11 +402,11 @@
                                 </li>
 
                                 @*<li class="sidebar-list">
-            <a class="sidebar-link sidebar-title link-nav" href="media.html">
-                <i class="fa-solid fa-compress"></i>
-                <span>Media</span>
-            </a>
-        </li>*@
+                                        <a class="sidebar-link sidebar-title link-nav" href="media.html">
+                                            <i class="fa-solid fa-compress"></i>
+                                            <span>Media</span>
+                                        </a>
+                                    </li>*@
 
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title" href="javascript:void(0)">
@@ -423,7 +417,7 @@
                                     <ul class="sidebar-submenu">
                                         <li>
                                             <a asp-controller="Order" asp-action="Index">Order List</a>
-                                        </li> 
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list">
@@ -433,28 +427,28 @@
                                         <i style="margin-left: 50px;" class="fa-solid fa-chevron-right"></i>
                                     </a>
                                     <ul class="sidebar-submenu">
-                <li>
-                    <a asp-controller="Order" asp-action="OrderTracking">Status of Orders</a>
-                </li>
+                                        <li>
+                                            <a asp-controller="Order" asp-action="OrderTracking">Status of Orders</a>
+                                        </li>
                                     </ul>
                                 </li>
 
                                 @*<li class="sidebar-list">
-            <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>Localization</span>
-                <i style="margin-left:70px;" class="fa-solid fa-chevron-right"></i>
-            </a>
-            <ul class="sidebar-submenu">
-                <li>
-                    <a href="translation.html">Translation</a>
-                </li>
+                                        <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            <span>Localization</span>
+                                            <i style="margin-left:70px;" class="fa-solid fa-chevron-right"></i>
+                                        </a>
+                                        <ul class="sidebar-submenu">
+                                            <li>
+                                                <a href="translation.html">Translation</a>
+                                            </li>
 
-                <li>
-                    <a href="currency-rates.html">Currency Rates</a>
-                </li>
-            </ul>
-        </li>*@
+                                            <li>
+                                                <a href="currency-rates.html">Currency Rates</a>
+                                            </li>
+                                        </ul>
+                                    </li>*@
 
                                 <li class="sidebar-list">
                                     <a class="linear-icon-link sidebar-link sidebar-title" href="javascript:void(0)">
@@ -474,38 +468,38 @@
                                 </li>
 
                                 @*<li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="taxes.html">
-                                        <i class="fa-regular fa-square-check"></i>
-                                        <span>Tax</span>
-                                        <i style="margin-left: 123px;" class="fa-solid fa-chevron-right"></i>
-                                    </a>
-                                </li>*@
+                                        <a class="sidebar-link sidebar-title link-nav" href="taxes.html">
+                                            <i class="fa-regular fa-square-check"></i>
+                                            <span>Tax</span>
+                                            <i style="margin-left: 123px;" class="fa-solid fa-chevron-right"></i>
+                                        </a>
+                                    </li>*@
 
                                 @*<li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="product-review.html">
-                                        <i class="fa-regular fa-comment"></i>
-                                        <span>Product Review</span>
-                                    </a>
-                                </li>*@
+                                        <a class="sidebar-link sidebar-title link-nav" href="product-review.html">
+                                            <i class="fa-regular fa-comment"></i>
+                                            <span>Product Review</span>
+                                        </a>
+                                    </li>*@
 
                                 <!-- <li class="sidebar-list">
-        <a class="sidebar-link sidebar-title link-nav" href="support-ticket.html">
-            <i class="ri-phone-line"></i>
-            <span>Support Ticket</span>
-        </a>
-    </li> --
+                                    <a class="sidebar-link sidebar-title link-nav" href="support-ticket.html">
+                                        <i class="ri-phone-line"></i>
+                                        <span>Support Ticket</span>
+                                    </a>
+                                </li> --
+                                                            <!-- <li class="sidebar-list">
+                                    <a class="sidebar-link sidebar-title link-nav" href="reports.html">
+                                        <i class="ri-file-chart-line"></i>
+                                        <span>Reports</span>
+                                    </a>
+                                </li> -->
                                 <!-- <li class="sidebar-list">
-        <a class="sidebar-link sidebar-title link-nav" href="reports.html">
-            <i class="ri-file-chart-line"></i>
-            <span>Reports</span>
-        </a>
-    </li> -->
-                                <!-- <li class="sidebar-list">
-        <a class="sidebar-link sidebar-title link-nav" href="list-page.html">
-            <i class="ri-list-check"></i>
-            <span>List Page</span>
-        </a>
-    </li> -->
+                                    <a class="sidebar-link sidebar-title link-nav" href="list-page.html">
+                                        <i class="ri-list-check"></i>
+                                        <span>List Page</span>
+                                    </a>
+                                </li> -->
                             </ul>
                         </div>
 
@@ -557,53 +551,53 @@
     <!-- Modal End -->
     <!-- latest js -->
 
-  <script src="~/admin/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="~/admin/assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- Bootstrap js -->
-  <script src="~/admin/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/admin/assets/js/bootstrap.bundle.min.js"></script>
 
     <!-- feather icon js -->
-  <script src="~/admin/assets/js/feather.min.js"></script>
-  <script src="~/admin/assets/js/feather-icon.js"></script>
+    <script src="~/admin/assets/js/feather.min.js"></script>
+    <script src="~/admin/assets/js/feather-icon.js"></script>
 
     <!-- scrollbar simplebar js -->
-  <script src="~/admin/assets/js/simplebar.js"></script>
-  <script src="~/admin/assets/js/custom.js"></script>
+    <script src="~/admin/assets/js/simplebar.js"></script>
+    <script src="~/admin/assets/js/custom.js"></script>
 
     <!-- Sidebar jquery -->
-  <script src="~/admin/assets/js/config.js"></script>
+    <script src="~/admin/assets/js/config.js"></script>
 
     <!-- tooltip init js -->
-  @*<script src="~/admin/assets/js/tooltip-init.js"></script>*@
+    @*<script src="~/admin/assets/js/tooltip-init.js"></script>*@
 
     <!-- Plugins JS -->
-  <script src="~/admin/assets/js/sidebar-menu.js"></script>
-  <script src="~/admin/assets/js/bootstrap-notify.min.js"></script>
-  <script src="~/admin/assets/js/index.js"></script>
+    <script src="~/admin/assets/js/sidebar-menu.js"></script>
+    <script src="~/admin/assets/js/bootstrap-notify.min.js"></script>
+    <script src="~/admin/assets/js/index.js"></script>
 
     <!-- Apexchar js -->
-  @*<script src="~/admin/assets/js/chart/apex-chart/apex-chart1.js"></script>
-  <script src="~/admin/assets/js/chart/apex-chart/moment.min.js"></script>
-  <script src="~/admin/assets/js/chart/apex-chart/apex-chart.js"></script>
-  <script src="~/admin/assets/js/chart/apex-chart/stock-prices.js"></script>
-  <script src="~/admin/assets/js/chart/apex-chart/chart-custom1.js"></script>*@
+    @*<script src="~/admin/assets/js/chart/apex-chart/apex-chart1.js"></script>
+        <script src="~/admin/assets/js/chart/apex-chart/moment.min.js"></script>
+        <script src="~/admin/assets/js/chart/apex-chart/apex-chart.js"></script>
+        <script src="~/admin/assets/js/chart/apex-chart/stock-prices.js"></script>
+        <script src="~/admin/assets/js/chart/apex-chart/chart-custom1.js"></script>*@
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- slick slider js -->
-  <script src="~/admin/assets/js/slick.min.js"></script>
-  <script src="~/admin/assets/js/custom-slick.js"></script>
+    <script src="~/admin/assets/js/slick.min.js"></script>
+    <script src="~/admin/assets/js/custom-slick.js"></script>
 
     <!-- customizer js -->
-  <script src="~/admin/assets/js/customizer.js"></script>
+    <script src="~/admin/assets/js/customizer.js"></script>
 
     <!-- ratio js -->
-  <script src="~/admin/assets/js/ratio.js"></script>
+    <script src="~/admin/assets/js/ratio.js"></script>
 
     <!-- sidebar effect -->
-  <script src="~/admin/assets/js/sidebareffect.js"></script>
+    <script src="~/admin/assets/js/sidebareffect.js"></script>
 
     <!-- Theme js -->
-  <script src="~/admin/assets/js/script.js"></script>
+    <script src="~/admin/assets/js/script.js"></script>
 </body>
 
 </html>

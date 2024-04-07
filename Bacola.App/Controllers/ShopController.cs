@@ -33,11 +33,11 @@ public class ShopController : Controller
         _orderService = orderService;
         _productRepository = productRepository;
     }
-    public async Task<IActionResult> Index(ShopViewModel model)
+    public async Task<IActionResult> Index(ShopViewModel model, int page = 1)
     {
         ShopViewModel vm = new()
         {
-            Products = await _productService.GetAllAsync()
+            Products = await _productService.GetAllAsync(page)
         };
         return View(vm);
 
@@ -51,27 +51,27 @@ public class ShopController : Controller
 
         if (model.brandIds != null && model.categoryIds != null)
         {
-            product = await _productRepository.GetQuery(p => model.brandIds.Contains(p.BrandId) && model.categoryIds.Contains(p.CategoryId)).ToListAsync();
+            product = await _productRepository.GetQuery(p => model.brandIds.Contains(p.BrandId) && model.categoryIds.Contains(p.CategoryId)).Include(x=>x.ProductImages).ToListAsync();
         }
         else if (model.brandIds != null)
         {
-            product = await _productRepository.GetQuery(p => model.brandIds.Contains(p.BrandId)).ToListAsync();
+            product = await _productRepository.GetQuery(p => model.brandIds.Contains(p.BrandId)).Include(x => x.ProductImages).ToListAsync();
         }
         else if (model.categoryIds != null)
         {
-            product = await _productRepository.GetQuery(p => model.categoryIds.Contains(p.CategoryId )|| model.categoryIds.Contains(p.Id)).ToListAsync();
+            product = await _productRepository.GetQuery(p => model.categoryIds.Contains(p.CategoryId )|| model.categoryIds.Contains(p.Id)).Include(x => x.ProductImages).ToListAsync();
         }
         if(model.fromPrice != null && model.toPrice != null)
         {
-            product = await _productRepository.GetQuery(p => p.Price >= model.fromPrice &&  p.Price <= model.toPrice ).ToListAsync();
+            product = await _productRepository.GetQuery(p => p.Price >= model.fromPrice &&  p.Price <= model.toPrice ).Include(x => x.ProductImages).ToListAsync();
         }
         else if (model.fromPrice != null)
         {
-            product = await _productRepository.GetQuery(p => p.Price >= model.fromPrice).ToListAsync();
+            product = await _productRepository.GetQuery(p => p.Price >= model.fromPrice).Include(x => x.ProductImages).ToListAsync();
         }
         else if (model.toPrice != null)
         {
-            product = await _productRepository.GetQuery(p => p.Price <= model.toPrice).ToListAsync();
+            product = await _productRepository.GetQuery(p => p.Price <= model.toPrice).Include(x => x.ProductImages).ToListAsync();
         }
 
         return PartialView("_ShopPartial", product);
@@ -241,33 +241,15 @@ public class ShopController : Controller
         else
         {
             TempData["Succes"] = response.Message;
+            TempData["DiscountPrice"] = dto.Data.CuponPrice;
             return RedirectToAction("Basket", "Shop");
         }
     }
 
-    //[HttpPost]
-    //public async Task<IActionResult> FilterProducts(ProductFilterDto dto)
-    //{
-    //    var res = await _productService.GetFilteredProducts(dto);
-    //    return View(res.Items);
-
-    //}
-
     public async Task<IActionResult> SearchProduct(string search)
     {
-        
-  
             var results = await _productService.Search(search);
-            return Json(results);
-        
+            return Json(results);  
     }
-    [HttpPost]
-    public async Task<IActionResult> CategoryFilter(ShopViewModel categoryId)
-    {
-        //var a = categoryId.Filter.categoryId;
-        //var res = await _productService.FilterByCategory(categoryId);
-        return View();
-    }
-
 }
 

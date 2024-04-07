@@ -88,11 +88,32 @@ namespace Bacola.Service.Services.Implementations
             string orderItemsInfo = "";
             foreach (var orderItem in order.OrderItems)
             {
-                orderItemsInfo += $"Product: {orderItem.Product.Title}, Quantity: {orderItem.Count}, Price: {orderItem.Product.DiscountPrice}\n";
+                var roundedPrice = Math.Round(orderItem.Product.Price, 2);
+                orderItemsInfo += $"Product: {orderItem.Product.Title}, Quantity: {orderItem.Count}, Price: {(roundedPrice)*(orderItem.Count)}\n";
+            }
+            string statusString;
+            switch (order.Status)
+            {
+                case 0:
+                    statusString = "Pending";
+                    break;
+                case 1:
+                    statusString = "Accept";
+                    break;
+                case 2:
+                    statusString = "Success";
+                    break;
+                case 3:
+                    statusString = "Reject";
+                    break;
+                default:
+                    statusString = "Unknown";
+                    break;
             }
 
+       
             Helper.SendMessageToTelegram($"New Order - Id: {order.Id}\n" +
-    $"Status: {order.Status}\n" +
+   $"Status: {statusString}\n" +
     $"OrderItems:\n{orderItemsInfo}");
         }
 

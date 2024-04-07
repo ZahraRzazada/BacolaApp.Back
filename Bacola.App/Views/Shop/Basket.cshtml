@@ -18,7 +18,7 @@
         <i id="Up" style="z-index:100" class="fa-solid fa-chevron-up"></i>
     </a>
     @if (ViewBag.BasketData.basketItems.Count > 0)
-    {
+        {
         <section id="Basket">
             <div class="container">
                 <div class="woocommerce">
@@ -51,7 +51,7 @@
                                         <tbody>
 
                                             @foreach (var item in Model.Data.basketItems)
-                                            {
+                                                {
                                                 <tr class="woocommerce-cart-form__cart-item cart_item">
 
                                                     <td class="product-thumbnail">
@@ -83,7 +83,7 @@
                                                         <a class="remove" aria-label="Remove All Natural Italian-Style Chicken Meatballs from cart" data-product_id="430" data-product_sku="ZU49VOR"><i class="klbth-icon-cancel"></i></a>
                                                     </td>
                                                 </tr>
-                                            }
+                                                }
 
 
                                             <tr>
@@ -93,10 +93,11 @@
                                                     <div class="actions-wrapper">
                                                         <div class="coupon">
                                                             <label for="coupon_code" class="d-none screen-reader-text">Coupon:</label>
-                                                            @*@(ViewData.BasketItems=ViewBag.BasketData.basketItems)*@
+
 
                                                             <input type="hidden" asp-for="@Model.Data.basketItems" />
-                                                            <input type="hidden" asp-for="@Model.Data.TotalPrice" />
+                                                                    <input type="hidden" asp-for="@Model.Data.TotalPrice" />
+                                                         
                                                             <input type="text" name="code" class="form-control" id="coupon_code" value="" placeholder="Coupon code">
                                                             <button type="submit" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
                                                         </div>
@@ -147,7 +148,20 @@
                                             </tr>
                                             <tr class="order-total">
                                                 <th>Total</th>
-                                                <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>@Model.Data.TotalPrice</bdi></span></strong> </td>
+                                                @{
+
+                                                    if (TempData["DiscountPrice"] == null)
+                                                    {
+                                                        <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>@Model.Data.TotalPrice</bdi></span></strong> </td>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>@TempData["DiscountPrice"]</bdi></span></strong> </td>
+
+                                                    }
+
+                                                }
                                             </tr>
 
 

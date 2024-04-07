@@ -521,7 +521,8 @@ body {
 #Shop-part .container .row .shop-primary .container .product {
   position: relative !important;
   width: 100%;
-  height: 100%;
+  height: 105% !important;
+
   border: 1px solid #edeef5;
   background-color: #fff;
   transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
@@ -543,6 +544,7 @@ body {
 }
 #Shop-part .container .row .shop-primary .container .product:hover {
   border: 1px solid #c2c2d3;
+  border-radius:10px !important;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   z-index: 3;
   background-color: white;

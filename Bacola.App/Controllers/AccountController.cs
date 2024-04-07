@@ -102,7 +102,7 @@ namespace Bacola.App.Controllers
             body = body.Replace("{{url}}", url);
 
 
-            await _emailService.SendEmail(res.Data.Email, "Verify Email", body);
+            await _emailService.SendEmail(dto.Email, "Verify Email", body);
 
             TempData["emailverify"] = "verify";
             return RedirectToAction("index", "home");

@@ -57,7 +57,7 @@ const shopCards = document.getElementById('salam');
 if (shopCards !== null) {
     var backup = shopCards.innerHTML;
 }
-console.log(backup);
+
 
 const searchbutton = document.getElementById('searchButton');
 const searchResultsList = document.getElementById('searchResultsList');

@@ -26,7 +26,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-     
                         </button>
                     </div>
                     <div class="modal-body">
@@ -66,20 +65,20 @@
                                                         <img style="width:100%" src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
                                                     }
                                                     @*@foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
-                                                    {
-                                                        <img src="~/assets/img/product/@item2.Image" alt="">
-                                                    }*@
+                                                        {
+                                                            <img src="~/assets/img/product/@item2.Image" alt="">
+                                                        }*@
                                                 </div>
                                                 @*<div class="addition-img">
-                                                    @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
-                                                    {
-                                                        <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
-                                                    }
-                                                    @foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
-                                                    {
-                                                        <img src="~/assets/img/product/@item2.Image" alt="">
-                                                    }
-                                                </div>*@
+                                                        @if (@item.ProductImages.Any(x => x.IsMain && !x.IsDeleted))
+                                                        {
+                                                            <img src="~/assets/img/product/@item.ProductImages.First(x => x.IsMain && !x.IsDeleted).Image" alt="">
+                                                        }
+                                                        @foreach (var item2 in item.ProductImages.Where(y => !y.IsMain && !y.IsDeleted))
+                                                        {
+                                                            <img src="~/assets/img/product/@item2.Image" alt="">
+                                                        }
+                                                    </div>*@
 
                                             </div>
                                             <div class="col col-12 col-lg-6 product-detail">
@@ -557,13 +556,14 @@
                             </div>
                         </div>
                         <div class="container">
-                            @foreach (ProductGetDto item in Model.Products)
+                            @foreach (ProductGetDto item in Model.Products.Take(8))
                             {
-                                <div class="product">
+
+                                <div style="height:105%" class="product">
                                     <div class="product-card">
                                         <div class="card-thumbnail">
                                             <div class="card-badges">
-                                                <span class="badge on-sale">@item.DiscountPercent%</span>
+                                                <span class="badge on-sale">@item.DiscountPercent %</span>
                                                 <span class="badge recommend">recommended</span>
                                             </div>
                                             <a asp-controller="shop" asp-action="detail" asp-route-id="@item.Id" class="img-box">
@@ -591,7 +591,7 @@
                                             }
                                             else
                                             {
-                                                <span class="stock-state">Is Not In Stock</span>
+                                                <span class="stock-state">IsNotInStock</span>
                                             }
                                             <div class="card-rating">
                                                 <i class="fa-solid fa-star rating-star"></i>
@@ -603,11 +603,11 @@
                                             <div class="card-price">
                                                 <del>
                                                     <bdi>
-                                                        <span class="price-amount old-price">@item.Price</span>
+                                                        <span class="price-amount old-price">$ @item.Price</span>
                                                     </bdi>
                                                 </del>
                                                 <ins>
-                                                    <bdi><span class="price-amount new-price">@item.DiscountPrice</span></bdi>
+                                                    <bdi><span class="price-amount new-price">$ @item.DiscountPrice</span></bdi>
                                                 </ins>
                                             </div>
                                             <div class="product-fade-block">
@@ -637,6 +637,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+
                             }
                         </div>
 

@@ -112,21 +112,21 @@ namespace Bacola.Service.Services.Implementations
 
         public async Task<PagginatedResponse<ProductGetDto>> GetAllAsync(int page = 1)
         {
-            const int PageSize = 20;
+            const int PageSize = 12;
             PagginatedResponse<ProductGetDto> pagginatedResponse = new PagginatedResponse<ProductGetDto>();
             pagginatedResponse.CurrentPage = page;
             var query = _productRepository.GetQuery(x => !x.IsDeleted)
          .Include(x => x.Category)
          .Include(x => x.Brand)
-         .Include(x => x.ProductImages)
-         .Skip((page - 1) * PageSize)
-         .Take(PageSize);
+         .Include(x => x.ProductImages);
 
-            pagginatedResponse.TotalPages = (int)Math.Ceiling((double)query.Count() / PageSize);
 
-            IEnumerable<ProductGetDto> productGetDtos = query.Select(x => new ProductGetDto
-            {
+            int totalProductsCount = query.Count();
+            pagginatedResponse.TotalPages = (int)Math.Ceiling((double)totalProductsCount / PageSize);
 
+            IEnumerable<ProductGetDto> productGetDtos = query.Skip((page - 1) * PageSize)
+         .Take(PageSize).Select(x => new ProductGetDto
+            {Description=x.Description,
                 DiscountPercent = x.DiscountPercent,
                 Id = x.Id,
                 Brand = new BrandGetDto { Name = x.Brand.Name },
@@ -181,7 +181,8 @@ namespace Bacola.Service.Services.Implementations
 
         public async Task<CustomResponse<Product>> RemoveAsync(int id)
         {
-            Product product = new Product();
+
+            Product product = await _productRepository.GetAsync(x => !x.IsDeleted && x.Id == id);
             if (product == null)
             {
                 return new CustomResponse<Product> { IsSuccess = false, Message = "This Product doesnt exist" };

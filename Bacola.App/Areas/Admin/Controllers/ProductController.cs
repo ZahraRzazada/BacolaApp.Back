@@ -32,9 +32,9 @@ namespace Bacola.App.Areas.Admin.Controllers
         readonly IBrandService _brandService;
         readonly ICategoryService _categoryService;
         readonly IProductImageService _productImageService;
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page=1)
         {
-            return View( await _productService.GetAllAsync());
+            return View( await _productService.GetAllAsync(page));
         }
         public async Task<IActionResult> Create()
         {
